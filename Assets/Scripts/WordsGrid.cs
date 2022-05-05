@@ -132,11 +132,13 @@ public class WordsGrid : MonoBehaviour
         {
             finalScale.x -= adjustment;
             finalScale.y -= adjustment;
+            finalScale.z -= adjustment;
 
-            if (finalScale.x <= 0 || finalScale.y <= 0)
+            if (finalScale.x <= 0 || finalScale.y <= 0 || finalScale.z < 0)
             {
                 finalScale.x = adjustment;
                 finalScale.y = adjustment;
+                finalScale.z = adjustment;
                 return finalScale;
             }
         }

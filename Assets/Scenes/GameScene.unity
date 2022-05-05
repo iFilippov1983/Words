@@ -2235,7 +2235,7 @@ MonoBehaviour:
   alphabetData: {fileID: 11400000, guid: 85ae267b5d14ae34fa39c51c94bb7341, type: 2}
   squareOffset: 0.06
   topPosition: 4.55
-  _defaultScale: {x: 1.5, y: 1.5, z: 1}
+  _defaultScale: {x: 1, y: 1, z: 1}
 --- !u!4 &1623755025
 Transform:
   m_ObjectHideFlags: 0
