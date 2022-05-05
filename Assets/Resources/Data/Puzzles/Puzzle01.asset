@@ -13,43 +13,55 @@ MonoBehaviour:
   m_Name: Puzzle01
   m_EditorClassIdentifier: 
   TimeInSeconds: 0
-  Columns: 5
-  Rows: 5
+  Columns: 6
+  Rows: 6
   Board:
-  - Size: 5
-    Row:
-    - M
-    - Q
-    - S
-    - F
-    - O
-  - Size: 5
-    Row:
-    - M
-    - N
-    - U
-    - X
-    - K
-  - Size: 5
-    Row:
-    - Q
-    - M
-    - M
-    - S
-    - T
-  - Size: 5
-    Row:
-    - S
-    - E
-    - M
-    - S
-    - O
-  - Size: 5
+  - Size: 6
     Row:
     - G
-    - W
-    - R
     - N
-    - C
-  SearchingWords:
-  - Word: SUMMER
+    - V
+    - J
+    - L
+    - P
+  - Size: 6
+    Row:
+    - V
+    - U
+    - J
+    - W
+    - A
+    - E
+  - Size: 6
+    Row:
+    - V
+    - Q
+    - Y
+    - D
+    - K
+    - Y
+  - Size: 6
+    Row:
+    - S
+    - O
+    - B
+    - W
+    - P
+    - F
+  - Size: 6
+    Row:
+    - O
+    - R
+    - R
+    - B
+    - T
+    - H
+  - Size: 6
+    Row:
+    - T
+    - L
+    - G
+    - Q
+    - B
+    - P
+  SearchingWords: []
