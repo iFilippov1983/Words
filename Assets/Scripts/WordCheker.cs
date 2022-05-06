@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.WordComparison;
 using UnityEngine;
 
 public class WordCheker : MonoBehaviour
@@ -17,6 +18,9 @@ public class WordCheker : MonoBehaviour
     private Vector3 _rayStartPosition;
     private List<int> _correcSquareList = new List<int>();
 
+    [SerializeField] private List<TextAsset> dictionaries;
+    private WordFinder _wordFinder;
+
     private void OnEnable()
     {
         GameEvents.OnCheckSquare += SquareSelected;
@@ -33,6 +37,8 @@ public class WordCheker : MonoBehaviour
     {
         _assignedPoints = 0;
         _completedWords = 0;
+
+        _wordFinder = new WordFinder(dictionaries, ' ');
     }
 
     private void Update()
@@ -99,6 +105,9 @@ public class WordCheker : MonoBehaviour
 
     private void CheckWord()
     {
+        var isWordFound = _wordFinder.FindWord(_word);
+        Debug.Log(isWordFound ? $"{_word} found" : $"{_word} not found");
+
         foreach (var searchingWord in _currentGameData.selectedBoardData.SearchingWords)
         {
             if (_word.Equals(searchingWord))

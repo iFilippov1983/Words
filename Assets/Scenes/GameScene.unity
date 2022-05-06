@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -608,6 +608,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentGameData: {fileID: 11400000, guid: 48e013318f178e2459d3b352d68db4bc, type: 2}
+  dictionaries:
+  - {fileID: 4900000, guid: fec027833ca15ca4689cf2f842154e72, type: 3}
+  - {fileID: 4900000, guid: 0eb2a86855daab94e8adb1c3106f2007, type: 3}
+  - {fileID: 4900000, guid: 6d0b00adb6016814488e623cefc8410c, type: 3}
+  - {fileID: 4900000, guid: 7c7bb11a0c0e1f94d8971f63b26a6c7f, type: 3}
+  - {fileID: 4900000, guid: 8ac1be7c83c9d8e4fa44d76f1454f1aa, type: 3}
+  - {fileID: 4900000, guid: bffd0bc31f104dd4bae9fb5c9843196b, type: 3}
+  - {fileID: 4900000, guid: e77cfc4d12e7c024d8b1a47a3a1a5786, type: 3}
+  - {fileID: 4900000, guid: 1614eb664dff963439738849367d2b32, type: 3}
 --- !u!1 &1756701540
 GameObject:
   m_ObjectHideFlags: 0
