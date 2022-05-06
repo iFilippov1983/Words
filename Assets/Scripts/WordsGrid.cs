@@ -10,17 +10,29 @@ public class WordsGrid : MonoBehaviour
 
     public float squareOffset = 0.0f;
     public float topPosition;
+    public Transform floorTransform;
 
-    [SerializeField] private Vector3 _defaultScale = new Vector3(1.5f, 1.5f, 1f);
+    [SerializeField] private Vector3 _defaultScale = new Vector3(1f, 1f, 1f);
+    [SerializeField] private Vector3 _minimumScale = new Vector3(0.59f, 0.59f, 0.59f);
+    [SerializeField] private float _startPositionFactor = 1.25f;
+
     private List<GameObject> _squareList = new List<GameObject>();
     private Camera _camera;
-    
+    private Vector3 _finalScale;
 
     void Start()
     {
         _camera = Camera.main;
+        SetSelfPosition();
         SpawnGridSquares();
         SetSquaresPosition();
+    }
+
+    private void SetSelfPosition()
+    {
+        _finalScale = GetSquareScale(_defaultScale, _minimumScale);
+        float yPosition = floorTransform.position.y + floorTransform.localScale.y + currentGameData.selectedBoardData.Rows * _finalScale.y * _startPositionFactor;
+        transform.position = new Vector3(0, yPosition, 0);
     }
 
     private void SetSquaresPosition()
@@ -75,11 +87,13 @@ public class WordsGrid : MonoBehaviour
     {
         if (currentGameData != null)
         {
-            var squareScale = GetSquareScale(_defaultScale);
-            foreach (var squares in currentGameData.selectedBoardData.Board)
+            var squareScale = GetSquareScale(_defaultScale, _minimumScale);
+            for (int i = 0; i < currentGameData.selectedBoardData.Board.Length; i++)
             {
-                foreach (var squareLetter in squares.Row)
+                var board = currentGameData.selectedBoardData.Board[i];
+                for (int k = 0; k < board.Size; k++)
                 {
+                    string squareLetter = board.Row[k];
                     var normalLetterData = alphabetData.AlphabetNormal.Find(data => data.Letter == squareLetter);
                     var selectedLetterData = alphabetData.AlphabetHighlighted.Find(data => data.Letter == squareLetter);
                     var correctLetterData = alphabetData.AlphabetWrong.Find(data => data.Letter == squareLetter);
@@ -97,52 +111,49 @@ public class WordsGrid : MonoBehaviour
                     }
                     else 
                     {
+                        string name = $"[Column {i + 1} : Row {k + 1} : {squareLetter}]";
                         var square = Instantiate(gridSquarePrefab);
+                        square.name = name;
                         square.GetComponent<GridSquare>().SetSprite(normalLetterData, selectedLetterData, correctLetterData);
                         var squareTransform = square.GetComponent<Transform>();
                         squareTransform.SetParent(this.transform);
                         squareTransform.position = Vector3.zero;
                         squareTransform.localScale = squareScale;
                         _squareList.Add(square);
-
-                        //var square = Instantiate(gridSquarePrefab);
-                        //square.GetComponent<GridSquare>().SetSprite(normalLetterData, selectedLetterData, correctLetterData);
-                        //square.transform.SetParent(this.transform);
-                        //square.transform.position = new Vector3(0f, 0f, 0f);
-                        //square.transform.localScale = squareScale;
-                        //_squareList.Add(square);
-
-                        //_squareList.Add(Instantiate(gridSquarePrefab));
-                        //_squareList[_squareList.Count - 1].GetComponent<GridSquare>().SetSprite(normalLetterData, selectedLetterData, correctLetterData);
-                        //_squareList[_squareList.Count - 1].transform.SetParent(this.transform);
-                        //_squareList[_squareList.Count - 1].GetComponent<Transform>().position = new Vector3(0f, 0f, 0f);
-                        //_squareList[_squareList.Count - 1].transform.localScale = squareScale;
                     }
                 }
             }
         }
     }
 
-    private Vector3 GetSquareScale(Vector3 defaultScale)
+    private Vector3 GetSquareScale(Vector3 defaultScale, Vector3 minimumScale)
     {
-        Vector3 finalScale = defaultScale;
+        _finalScale = defaultScale;
         float adjustment = 0.01f;
 
-        while (ShouldScaleDown(finalScale))
+        while (ShouldScaleDown(_finalScale))
         {
-            finalScale.x -= adjustment;
-            finalScale.y -= adjustment;
-            finalScale.z -= adjustment;
+            _finalScale.x -= adjustment;
+            _finalScale.y -= adjustment;
+            _finalScale.z -= adjustment;
 
-            if (finalScale.x <= 0 || finalScale.y <= 0 || finalScale.z < 0)
+            if (_finalScale.x <= 0 || _finalScale.y <= 0 || _finalScale.z < 0)
             {
-                finalScale.x = adjustment;
-                finalScale.y = adjustment;
-                finalScale.z = adjustment;
-                return finalScale;
+                _finalScale.x = adjustment;
+                _finalScale.y = adjustment;
+                _finalScale.z = adjustment;
+                return _finalScale;
+            }
+
+            if (_finalScale.x <= minimumScale.x || _finalScale.y <= minimumScale.y || _finalScale.z < minimumScale.z)
+            {
+                _finalScale.x = minimumScale.x;
+                _finalScale.y = minimumScale.y;
+                _finalScale.z = minimumScale.z;
+                return _finalScale;
             }
         }
-        return finalScale;
+        return _finalScale;
     }
 
     private bool ShouldScaleDown(Vector3 targetScale)

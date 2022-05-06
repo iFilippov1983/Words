@@ -75,7 +75,7 @@ public class BoardDataDrawer : Editor
 
         var rowStyle = new GUIStyle();
         rowStyle.fixedHeight = 25;
-        rowStyle.fixedWidth = 40;
+        rowStyle.fixedWidth = 25;
         rowStyle.alignment = TextAnchor.MiddleCenter;
 
         var textFieldStyle = new GUIStyle();

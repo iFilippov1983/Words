@@ -14,54 +14,84 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeInSeconds: 0
   Columns: 6
-  Rows: 6
+  Rows: 11
   Board:
-  - Size: 6
+  - Size: 11
+    Row:
+    - E
+    - D
+    - H
+    - U
+    - G
+    - H
+    - A
+    - I
+    - K
+    - U
+    - T
+  - Size: 11
+    Row:
+    - O
+    - O
+    - K
+    - B
+    - C
+    - O
+    - V
+    - G
+    - A
+    - M
+    - E
+  - Size: 11
     Row:
     - G
-    - N
-    - V
-    - J
-    - L
-    - P
-  - Size: 6
-    Row:
-    - V
-    - U
-    - J
-    - W
-    - A
-    - E
-  - Size: 6
-    Row:
-    - V
-    - Q
-    - Y
-    - D
-    - K
-    - Y
-  - Size: 6
-    Row:
-    - S
     - O
-    - B
-    - W
-    - P
     - F
-  - Size: 6
-    Row:
-    - O
-    - R
-    - R
+    - H
+    - N
+    - U
     - B
+    - L
+    - H
+    - E
+    - T
+  - Size: 11
+    Row:
+    - K
+    - M
+    - F
+    - S
+    - S
+    - S
+    - C
+    - J
+    - Q
+    - M
+    - R
+  - Size: 11
+    Row:
+    - B
+    - Z
+    - C
+    - E
+    - E
+    - E
+    - S
+    - A
+    - Z
+    - D
+    - Y
+  - Size: 11
+    Row:
+    - R
+    - G
+    - S
+    - N
+    - F
+    - B
+    - V
+    - G
     - T
     - H
-  - Size: 6
-    Row:
-    - T
-    - L
-    - G
-    - Q
-    - B
     - P
   SearchingWords: []
