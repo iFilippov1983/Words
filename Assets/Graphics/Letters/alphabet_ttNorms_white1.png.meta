@@ -25,61 +25,61 @@ TextureImporter:
     second: G
   - first:
       213: 4180495476952046322
-    second: alphabet_ttNorms_white1_7
+    second: H
   - first:
       213: 3871856791426766246
-    second: alphabet_ttNorms_white1_8
+    second: I
   - first:
       213: 7676912957928456779
-    second: alphabet_ttNorms_white1_9
+    second: J
   - first:
       213: 8046301959395308707
-    second: alphabet_ttNorms_white1_10
+    second: K
   - first:
       213: -4149593065956406053
-    second: alphabet_ttNorms_white1_11
+    second: L
   - first:
       213: -662315618515327198
-    second: alphabet_ttNorms_white1_12
+    second: M
   - first:
       213: 5825451152689317361
-    second: alphabet_ttNorms_white1_13
+    second: N
   - first:
       213: -7247265350861990847
-    second: alphabet_ttNorms_white1_14
+    second: O
   - first:
       213: -7576807146331286802
-    second: alphabet_ttNorms_white1_15
+    second: P
   - first:
       213: 6191746642245318308
-    second: alphabet_ttNorms_white1_16
+    second: Q
   - first:
       213: -8417910370320144043
-    second: alphabet_ttNorms_white1_17
+    second: R
   - first:
       213: 5759577830877507396
-    second: alphabet_ttNorms_white1_18
+    second: S
   - first:
       213: -1706044987556893140
-    second: alphabet_ttNorms_white1_19
+    second: T
   - first:
       213: 3329979139501510428
-    second: alphabet_ttNorms_white1_20
+    second: U
   - first:
       213: -7749645453293338220
-    second: alphabet_ttNorms_white1_21
+    second: V
   - first:
       213: -1037109886144094792
-    second: alphabet_ttNorms_white1_22
+    second: W
   - first:
       213: 3025566644777732292
-    second: alphabet_ttNorms_white1_23
+    second: X
   - first:
       213: -5162877978222936360
-    second: alphabet_ttNorms_white1_24
+    second: Y
   - first:
       213: 2417227619692567449
-    second: alphabet_ttNorms_white1_25
+    second: Z
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -124,7 +124,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 300
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -340,7 +340,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_7
+      name: H
       rect:
         serializedVersion: 2
         x: 170
@@ -361,7 +361,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_8
+      name: I
       rect:
         serializedVersion: 2
         x: 340
@@ -382,7 +382,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_9
+      name: J
       rect:
         serializedVersion: 2
         x: 510
@@ -403,7 +403,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_10
+      name: K
       rect:
         serializedVersion: 2
         x: 680
@@ -424,7 +424,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_11
+      name: L
       rect:
         serializedVersion: 2
         x: 850
@@ -445,7 +445,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_12
+      name: M
       rect:
         serializedVersion: 2
         x: 0
@@ -466,7 +466,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_13
+      name: N
       rect:
         serializedVersion: 2
         x: 170
@@ -487,7 +487,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_14
+      name: O
       rect:
         serializedVersion: 2
         x: 340
@@ -508,7 +508,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_15
+      name: P
       rect:
         serializedVersion: 2
         x: 510
@@ -529,7 +529,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_16
+      name: Q
       rect:
         serializedVersion: 2
         x: 680
@@ -550,7 +550,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_17
+      name: R
       rect:
         serializedVersion: 2
         x: 850
@@ -571,7 +571,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_18
+      name: S
       rect:
         serializedVersion: 2
         x: 0
@@ -592,7 +592,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_19
+      name: T
       rect:
         serializedVersion: 2
         x: 170
@@ -613,7 +613,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_20
+      name: U
       rect:
         serializedVersion: 2
         x: 340
@@ -634,7 +634,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_21
+      name: V
       rect:
         serializedVersion: 2
         x: 510
@@ -655,7 +655,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_22
+      name: W
       rect:
         serializedVersion: 2
         x: 680
@@ -676,7 +676,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_23
+      name: X
       rect:
         serializedVersion: 2
         x: 850
@@ -697,7 +697,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_24
+      name: Y
       rect:
         serializedVersion: 2
         x: 0
@@ -718,7 +718,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: alphabet_ttNorms_white1_25
+      name: Z
       rect:
         serializedVersion: 2
         x: 170
