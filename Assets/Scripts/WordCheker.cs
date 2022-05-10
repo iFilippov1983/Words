@@ -18,7 +18,7 @@ public class WordCheker : MonoBehaviour
     private Vector3 _rayStartPosition;
     private List<int> _correcSquareList = new List<int>();
 
-    [SerializeField] private List<TextAsset> dictionaries;
+    [SerializeField] private List<TextAsset> _dictionaries;
     private WordFinder _wordFinder;
 
     private void OnEnable()
@@ -38,7 +38,7 @@ public class WordCheker : MonoBehaviour
         _assignedPoints = 0;
         _completedWords = 0;
 
-        _wordFinder = new WordFinder(dictionaries, ' ');
+        _wordFinder = new WordFinder(_dictionaries, ' ');
     }
 
     private void Update()
@@ -105,16 +105,19 @@ public class WordCheker : MonoBehaviour
 
     private void CheckWord()
     {
-        var isWordFound = _wordFinder.FindWord(_word);
-        Debug.Log(isWordFound ? $"{_word} found" : $"{_word} not found");
-
         foreach (var searchingWord in _currentGameData.selectedBoardData.SearchingWords)
         {
-            if (_word.Equals(searchingWord))
+            if (_word.Equals(searchingWord.Word))
             {
+                GameEvents.CorrectWordMethod(_word, _correcSquareList);
                 _word = string.Empty;
+                _correcSquareList.Clear();
                 return;
-                //TODO implement success method
+            }
+            else
+            {
+                //var isWordFound = _wordFinder.FindWord(_word);
+                //Debug.Log(isWordFound ? $"{_word} found" : $"{_word} not found");
             }
         }
     }

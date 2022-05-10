@@ -610,6 +610,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentGameData: {fileID: 11400000, guid: 48e013318f178e2459d3b352d68db4bc, type: 2}
+  _dictionaries:
+  - {fileID: 0}
 --- !u!120 &1623755027
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -824,6 +826,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1575577017, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
+      propertyPath: offset
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575577017, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
+      propertyPath: maxRows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575577017, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
+      propertyPath: maxColumns
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7770522330857194147, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
       propertyPath: m_Name
       value: UICanvas

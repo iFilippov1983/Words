@@ -114,7 +114,11 @@ public class WordsGrid : MonoBehaviour
                         string name = $"[Column {i + 1} : Row {k + 1} : {squareLetter}]";
                         var square = Instantiate(gridSquarePrefab);
                         square.name = name;
-                        square.GetComponent<GridSquare>().SetSprite(normalLetterData, selectedLetterData, correctLetterData);
+
+                        var gridSquare = square.GetComponent<GridSquare>();
+                        gridSquare.SetSprite(normalLetterData, selectedLetterData, correctLetterData);
+                        gridSquare.SetIndex(_squareList.Count);
+
                         var squareTransform = square.GetComponent<Transform>();
                         squareTransform.SetParent(this.transform);
                         squareTransform.position = Vector3.zero;

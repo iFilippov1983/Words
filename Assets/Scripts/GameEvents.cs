@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class GameEvents
@@ -9,7 +11,7 @@ public static class GameEvents
     { 
         OnEnableSquareSelection?.Invoke();
     }
-
+    //************
     public delegate void DisableSquareSelection();
     public static event DisableSquareSelection OnDisableSquareSelection;
 
@@ -17,7 +19,7 @@ public static class GameEvents
     {
         OnDisableSquareSelection?.Invoke();
     }
-
+    //************
     public delegate void SelectSquare(Vector3 position);
     public static event SelectSquare OnSelectSquare;
 
@@ -25,7 +27,7 @@ public static class GameEvents
     {
         OnSelectSquare?.Invoke(position);
     }
-
+    //************
     public delegate void CheckSquare(string letter, Vector3 squarePosition, int squareIndex);
     public static event CheckSquare OnCheckSquare;
 
@@ -33,7 +35,7 @@ public static class GameEvents
     {
         OnCheckSquare?.Invoke(letter, squarePosition, squareIndex);
     }
-
+    //************
     public delegate void ClearSelection();
     public static event ClearSelection OnClearSelection;
 
@@ -41,4 +43,13 @@ public static class GameEvents
     {
         OnClearSelection?.Invoke();
     }
+    //************
+    public delegate void CorrectWord(string word, List<int> squareIndexes);
+    public static event CorrectWord OnCorrectWord;
+
+    public static void CorrectWordMethod(string word, List<int> squareIndexes)
+    { 
+        OnCorrectWord?.Invoke(word, squareIndexes);
+    }
+    //************
 }

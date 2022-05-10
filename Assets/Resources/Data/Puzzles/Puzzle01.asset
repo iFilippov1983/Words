@@ -94,4 +94,7 @@ MonoBehaviour:
     - T
     - H
     - P
-  SearchingWords: []
+  SearchingWords:
+  - Word: HOUSE
+  - Word: CAT
+  - Word: GAME

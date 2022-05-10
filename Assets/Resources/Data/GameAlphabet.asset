@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AlphabetPlane:
   - Letter: A
-    Sprite: {fileID: 21300000, guid: efa35a71cc308c045be6611e03f10131, type: 3}
+    Sprite: {fileID: -4621801069067253746, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: B
-    Sprite: {fileID: 21300000, guid: 2015b45a71c77b14985c42fea9460a03, type: 3}
+    Sprite: {fileID: -2729377279038803077, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: C
-    Sprite: {fileID: 21300000, guid: 25f2ed846654a4c4a8880040ef2803a0, type: 3}
+    Sprite: {fileID: -4491241113970369089, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: D
-    Sprite: {fileID: 21300000, guid: adc55ab73d99ee148884aa1803cabe73, type: 3}
+    Sprite: {fileID: 6381386699427508479, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: E
-    Sprite: {fileID: 21300000, guid: 5dabaf735a43b8249932ab5cb1a6d91b, type: 3}
+    Sprite: {fileID: -6546138190928922225, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: F
     Sprite: {fileID: 21300000, guid: 8734904802cc2d941add9295128260c8, type: 3}
   - Letter: G
@@ -173,54 +173,54 @@ MonoBehaviour:
     Sprite: {fileID: -7957037537646073043, guid: 2ee730036dd55434f86bb9b241f3e0ca, type: 3}
   AlphabetWrong:
   - Letter: A
-    Sprite: {fileID: 21300000, guid: ffa85b49b363ce942abefcc2b407b47c, type: 3}
+    Sprite: {fileID: -4621801069067253746, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: B
-    Sprite: {fileID: 21300000, guid: b0e77c2d7e393454da2fa2a93abfaa27, type: 3}
+    Sprite: {fileID: -2729377279038803077, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: C
-    Sprite: {fileID: 21300000, guid: d064ca62d74ebd249b3706c75cd7ccb5, type: 3}
+    Sprite: {fileID: -4491241113970369089, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: D
-    Sprite: {fileID: 21300000, guid: f95ebb3bad149694ca2fa77e7225e8b8, type: 3}
+    Sprite: {fileID: 6381386699427508479, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: E
-    Sprite: {fileID: 21300000, guid: a84043c13ece32a4a91422d1095542f8, type: 3}
+    Sprite: {fileID: -6546138190928922225, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: F
-    Sprite: {fileID: 21300000, guid: a3db2ef3300b59348bde80702a95966c, type: 3}
+    Sprite: {fileID: -2036967257042309879, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: G
-    Sprite: {fileID: 21300000, guid: 9fac393feb9d9e243ab7371aaf0d138f, type: 3}
+    Sprite: {fileID: 5730847220186826903, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: H
-    Sprite: {fileID: 21300000, guid: a9d41b654519d5847b60ccd2525e5a90, type: 3}
+    Sprite: {fileID: 5795835781373117686, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: I
-    Sprite: {fileID: 21300000, guid: cfe01f75f6e310b40a1c2ce60b3b421c, type: 3}
+    Sprite: {fileID: 2617587259598350935, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: J
-    Sprite: {fileID: 21300000, guid: 05fcce5e7eff864449529dcc7adc8323, type: 3}
+    Sprite: {fileID: 2269202480672559720, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: K
-    Sprite: {fileID: 21300000, guid: 462be584c16acda40a19f1099840c440, type: 3}
+    Sprite: {fileID: 3868582939401916662, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: L
-    Sprite: {fileID: 21300000, guid: c8bf33e61ab68b748ae0ed6f42c55590, type: 3}
+    Sprite: {fileID: -3498996185036132362, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: M
-    Sprite: {fileID: 21300000, guid: e914dee74cf012346b32c04c23d5c920, type: 3}
+    Sprite: {fileID: 8597180400886579898, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: N
-    Sprite: {fileID: 21300000, guid: feca41c5fe2cf4449bacfab1ec633a31, type: 3}
+    Sprite: {fileID: 942592325979994609, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: O
-    Sprite: {fileID: 21300000, guid: aa789e437540f3a48b5e9cce8cacb10a, type: 3}
+    Sprite: {fileID: 8972085584567605739, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: P
-    Sprite: {fileID: 21300000, guid: 8fb8a4eb86bdeda4293c502c9c7ffef0, type: 3}
+    Sprite: {fileID: -6292148438542222267, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: Q
-    Sprite: {fileID: 21300000, guid: 14d2fd4620426244d81f33334cc323f0, type: 3}
+    Sprite: {fileID: 4225514333362550499, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: R
-    Sprite: {fileID: 21300000, guid: b55caecff2f321c4f93e79da32200426, type: 3}
+    Sprite: {fileID: 4000468793202018025, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: S
-    Sprite: {fileID: 21300000, guid: 524f6d1920d17364b9cb84f7ff12132d, type: 3}
+    Sprite: {fileID: -7301812495571785466, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: T
-    Sprite: {fileID: 21300000, guid: 06627649866c5a442b09c8764d0154df, type: 3}
+    Sprite: {fileID: -9104824364598520129, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: U
-    Sprite: {fileID: 21300000, guid: 495c1bc54ad66fe42a4fc5a18e390d0e, type: 3}
+    Sprite: {fileID: -3711843403810411029, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: V
-    Sprite: {fileID: 21300000, guid: e28d6be67424ef6448e880acf8ed37ca, type: 3}
+    Sprite: {fileID: -3991540298044295896, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: W
-    Sprite: {fileID: 21300000, guid: da6fc5c2f39d90948b791f8beb937194, type: 3}
+    Sprite: {fileID: 3163631909510525342, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: X
-    Sprite: {fileID: 21300000, guid: 19fffd7adf6174a49848ef02298bc90f, type: 3}
+    Sprite: {fileID: -8797254970827832002, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: Y
-    Sprite: {fileID: 21300000, guid: 0fa132b9f71b53749afc04ce5c3b6f83, type: 3}
+    Sprite: {fileID: -1769269945719897465, guid: a9adc980625a5364f8c169248fba464d, type: 3}
   - Letter: Z
-    Sprite: {fileID: 21300000, guid: 441a95516b5666e4d80af8fd661c144c, type: 3}
+    Sprite: {fileID: 5648164983160466684, guid: a9adc980625a5364f8c169248fba464d, type: 3}

@@ -34,6 +34,7 @@ public class GridSquare : MonoBehaviour
         GameEvents.OnEnableSquareSelection += OnEnableSquareSelection;
         GameEvents.OnDisableSquareSelection += OnDisableSquareSelection;
         GameEvents.OnSelectSquare += OnSelectSquare;
+        GameEvents.OnCorrectWord += CorrectWord;
     }
 
     private void OnDisable()
@@ -41,6 +42,19 @@ public class GridSquare : MonoBehaviour
         GameEvents.OnEnableSquareSelection -= OnEnableSquareSelection;
         GameEvents.OnDisableSquareSelection -= OnDisableSquareSelection;
         GameEvents.OnSelectSquare -= OnSelectSquare;
+        GameEvents.OnCorrectWord -= CorrectWord;
+    }
+
+    private void CorrectWord(string word, List<int> squareIndexes)
+    {
+        if (_isSelected && squareIndexes.Contains(_index))
+        {
+            _isCorrect = true;
+            _displayedSprite.sprite = _correctLetterData.Sprite;
+        }
+
+        _isSelected = false;
+        _isClicked = false;
     }
 
     public void SetSprite
@@ -77,7 +91,7 @@ public class GridSquare : MonoBehaviour
         else
             _displayedSprite.sprite = _normalLetterData.Sprite;
 
-        if(_toBeDestroyed)
+        if(_toBeDestroyed && _isCorrect)
             Destroy(gameObject);
     }
 
