@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class GameEvents
@@ -9,8 +7,6 @@ public static class GameEvents
 
     public static void EnableSquareSelectionMethod()
     { 
-        //if(OnEnableScoreSelection != null)
-        //    OnEnableScoreSelection();
         OnEnableSquareSelection?.Invoke();
     }
 
@@ -19,8 +15,6 @@ public static class GameEvents
 
     public static void DisableSquareSelectionMethod()
     {
-        //if(OnDisableScoreSelection != null)
-        //    OnDisableScoreSelection();
         OnDisableSquareSelection?.Invoke();
     }
 
@@ -29,8 +23,6 @@ public static class GameEvents
 
     public static void SelectSquareMethod(Vector3 position)
     {
-        //if(OnSelectSquare != null)
-        //    OnSelectSquare();
         OnSelectSquare?.Invoke(position);
     }
 
@@ -39,8 +31,6 @@ public static class GameEvents
 
     public static void CheckSquareMethod(string letter, Vector3 squarePosition, int squareIndex)
     {
-        //if(OnCheckSquare != null)
-        //    OnCheckSquare();
         OnCheckSquare?.Invoke(letter, squarePosition, squareIndex);
     }
 
@@ -49,8 +39,6 @@ public static class GameEvents
 
     public static void ClearSelectionMethod()
     {
-        //if(OnClearSelection != null)
-        //    OnClearSelection();
         OnClearSelection?.Invoke();
     }
 }

@@ -17,12 +17,16 @@ public class GridSquare : MonoBehaviour
     private int _index = -1;
     private bool _isCorrect;
 
+    private bool _toBeDestroyed;
+
     private void Start()
     {
         _displayedSprite = GetComponent<SpriteRenderer>();
         _isSelected = false;
         _isClicked = false;
         _isCorrect = false;
+
+        _toBeDestroyed = false;
     }
 
     private void OnEnable()
@@ -72,6 +76,9 @@ public class GridSquare : MonoBehaviour
             _displayedSprite.sprite = _correctLetterData.Sprite;
         else
             _displayedSprite.sprite = _normalLetterData.Sprite;
+
+        if(_toBeDestroyed)
+            Destroy(gameObject);
     }
 
     private void OnSelectSquare(Vector3 position)
@@ -82,7 +89,6 @@ public class GridSquare : MonoBehaviour
 
     private void OnMouseDown()
     {
-        //OnEnableSquareSelection();
         GameEvents.EnableSquareSelectionMethod();
         CheckSquare();
         _displayedSprite.sprite = _selectedLetterData.Sprite;
@@ -91,6 +97,11 @@ public class GridSquare : MonoBehaviour
     private void OnMouseEnter()
     {
         CheckSquare();
+    }
+
+    private void OnMouseExit()
+    {
+        
     }
 
     private void OnMouseUp()
@@ -105,6 +116,8 @@ public class GridSquare : MonoBehaviour
         {
             _isSelected = true;
             GameEvents.CheckSquareMethod(_normalLetterData.Letter, gameObject.transform.position, _index);
+
+            _toBeDestroyed = true;
         }
     }
 }
