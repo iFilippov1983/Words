@@ -96,7 +96,7 @@ public class WordsGrid : MonoBehaviour
                     string squareLetter = board.Row[k];
                     var normalLetterData = alphabetData.AlphabetNormal.Find(data => data.Letter == squareLetter);
                     var selectedLetterData = alphabetData.AlphabetHighlighted.Find(data => data.Letter == squareLetter);
-                    var correctLetterData = alphabetData.AlphabetWrong.Find(data => data.Letter == squareLetter);
+                    var correctLetterData = alphabetData.AlphabetCorrect.Find(data => data.Letter == squareLetter);
 
                     if (normalLetterData.Sprite == null || selectedLetterData.Sprite == null)
                     {

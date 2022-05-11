@@ -418,7 +418,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BackGroundColor: {r: 0.20392157, g: 0.8392157, b: 0.9529412, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -610,8 +610,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentGameData: {fileID: 11400000, guid: 48e013318f178e2459d3b352d68db4bc, type: 2}
+  _dataProfile: {fileID: 11400000, guid: 9d61609ae2bf1f14bb00b16ee5eecf8f, type: 2}
   _dictionaries:
-  - {fileID: 0}
+  - {fileID: 4900000, guid: fec027833ca15ca4689cf2f842154e72, type: 3}
+  - {fileID: 4900000, guid: 0eb2a86855daab94e8adb1c3106f2007, type: 3}
+  - {fileID: 4900000, guid: 6d0b00adb6016814488e623cefc8410c, type: 3}
+  - {fileID: 4900000, guid: 7c7bb11a0c0e1f94d8971f63b26a6c7f, type: 3}
+  - {fileID: 4900000, guid: 8ac1be7c83c9d8e4fa44d76f1454f1aa, type: 3}
+  - {fileID: 4900000, guid: bffd0bc31f104dd4bae9fb5c9843196b, type: 3}
+  - {fileID: 4900000, guid: e77cfc4d12e7c024d8b1a47a3a1a5786, type: 3}
+  - {fileID: 4900000, guid: 1614eb664dff963439738849367d2b32, type: 3}
 --- !u!120 &1623755027
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -826,18 +834,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1575577017, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: offset
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1575577017, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: maxRows
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1575577017, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: maxColumns
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 7770522330857194147, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
       propertyPath: m_Name
       value: UICanvas

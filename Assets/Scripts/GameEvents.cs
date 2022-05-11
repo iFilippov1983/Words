@@ -52,4 +52,12 @@ public static class GameEvents
         OnCorrectWord?.Invoke(word, squareIndexes);
     }
     //************
+    public delegate void CorrectExtraWord(List<int> squareIndexes);
+    public static event CorrectExtraWord OnCorrectExtraWord;
+
+    public static void OnCorrectExtraWordMethod(List<int> squareIndexes)
+    { 
+        OnCorrectExtraWord?.Invoke(squareIndexes);
+    }
+    //************
 }

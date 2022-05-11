@@ -17,5 +17,5 @@ public class AlphabetData : ScriptableObject
     public List<LetterData> AlphabetPlane = new List<LetterData>();
     public List<LetterData> AlphabetNormal = new List<LetterData>();
     public List<LetterData> AlphabetHighlighted = new List<LetterData>();
-    public List<LetterData> AlphabetWrong = new List<LetterData>();
+    public List<LetterData> AlphabetCorrect = new List<LetterData>();
 }

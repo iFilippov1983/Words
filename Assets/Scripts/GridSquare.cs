@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using static AlphabetData;
 
@@ -17,6 +18,7 @@ public class GridSquare : MonoBehaviour
     private int _index = -1;
     private bool _isCorrect;
 
+    private bool _isInExtraWord;
     private bool _toBeDestroyed;
 
     private void Start()
@@ -26,6 +28,7 @@ public class GridSquare : MonoBehaviour
         _isClicked = false;
         _isCorrect = false;
 
+        _isInExtraWord = false;
         _toBeDestroyed = false;
     }
 
@@ -35,6 +38,7 @@ public class GridSquare : MonoBehaviour
         GameEvents.OnDisableSquareSelection += OnDisableSquareSelection;
         GameEvents.OnSelectSquare += OnSelectSquare;
         GameEvents.OnCorrectWord += CorrectWord;
+        GameEvents.OnCorrectExtraWord += CorrectExtraWord;
     }
 
     private void OnDisable()
@@ -43,6 +47,7 @@ public class GridSquare : MonoBehaviour
         GameEvents.OnDisableSquareSelection -= OnDisableSquareSelection;
         GameEvents.OnSelectSquare -= OnSelectSquare;
         GameEvents.OnCorrectWord -= CorrectWord;
+        GameEvents.OnCorrectExtraWord -= CorrectExtraWord;
     }
 
     private void CorrectWord(string word, List<int> squareIndexes)
@@ -51,10 +56,24 @@ public class GridSquare : MonoBehaviour
         {
             _isCorrect = true;
             _displayedSprite.sprite = _correctLetterData.Sprite;
+            _toBeDestroyed = true;
         }
 
-        _isSelected = false;
-        _isClicked = false;
+        //_isSelected = false;
+        //_isClicked = false;
+    }
+
+    private void CorrectExtraWord(List<int> squareIndexes)
+    {
+
+        if (_isSelected && squareIndexes.Contains(_index))
+        {
+            _isInExtraWord = true;
+            //_displayedSprite.sprite = _correctLetterData.Sprite;
+        }
+
+        //_isSelected = false;
+        //_isClicked = false;
     }
 
     public void SetSprite
@@ -68,7 +87,6 @@ public class GridSquare : MonoBehaviour
         _selectedLetterData = selectedLetterData;
         _correctLetterData = correctLetterData;
 
-        //_displayedSprite.sprite = _normalLetterData.Sprite; //
         GetComponent<SpriteRenderer>().sprite = _normalLetterData.Sprite;
     }
 
@@ -86,7 +104,7 @@ public class GridSquare : MonoBehaviour
         _isSelected = false;
         _isClicked = false;
 
-        if(_isCorrect)
+        if(_isCorrect || _isInExtraWord)
             _displayedSprite.sprite = _correctLetterData.Sprite;
         else
             _displayedSprite.sprite = _normalLetterData.Sprite;
@@ -130,8 +148,6 @@ public class GridSquare : MonoBehaviour
         {
             _isSelected = true;
             GameEvents.CheckSquareMethod(_normalLetterData.Letter, gameObject.transform.position, _index);
-
-            _toBeDestroyed = true;
         }
     }
 }

@@ -20,7 +20,7 @@ public class AlphabetDataDrawer : Editor
         InitializeReordableList(ref AlphabetPlainList, "AlphabetPlane", "Alphabet Plane");                      //name of AlphabetData.AlphabetPlane public List
         InitializeReordableList(ref AlphabetNormalList, "AlphabetNormal", "Alphabet Normal");                   //name of AlphabetData.AlphabetNormal public List
         InitializeReordableList(ref AlphabetHighlightedList, "AlphabetHighlighted", "Alphabet Highlighted");    //name of AlphabetData.AlphabetHighlighted public List
-        InitializeReordableList(ref AlphabetWrongList, "AlphabetWrong", "Alphabet Wrong");                      //name of AlphabetData.AlphabetWrong public List
+        InitializeReordableList(ref AlphabetWrongList, "AlphabetCorrect", "Alphabet Correct");                  //name of AlphabetData.AlphabetCorrect public List
     }
 
     public override void OnInspectorGUI()
