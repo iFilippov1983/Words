@@ -21,6 +21,10 @@ public class BoardDataDrawer : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
+
+        //GameDataInstance.TimeInSeconds = 
+        //    EditorGUILayout.FloatField("Max Game Time (seconds)", GameDataInstance.TimeInSeconds);
+
         DrawColumnsRowsInputFields();
         EditorGUILayout.Space();
         ConvertToUpperButton();
@@ -48,6 +52,7 @@ public class BoardDataDrawer : Editor
         var columnsTemp = GameDataInstance.Columns;
         var rowsTemp = GameDataInstance.Rows;
 
+        GameDataInstance.TimeInSeconds = EditorGUILayout.FloatField("Max Game Time (seconds)", GameDataInstance.TimeInSeconds);
         GameDataInstance.Columns = EditorGUILayout.IntField("Columns", GameDataInstance.Columns);
         GameDataInstance.Rows = EditorGUILayout.IntField("Rows", GameDataInstance.Rows);
 

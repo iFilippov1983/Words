@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
   m_Name: Smart_00
   m_EditorClassIdentifier: 
-  TimeInSeconds: 0
+  TimeInSeconds: 90
   Columns: 6
   Rows: 11
   Board:

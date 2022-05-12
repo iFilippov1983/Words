@@ -24,7 +24,7 @@ public class WinPopup : MonoBehaviour
 
     private async void ShowWinPoppup()
     {
-        await Task.Delay(1000);
+        await Task.Delay(2000);
         winPopup.SetActive(true);
     }
 
