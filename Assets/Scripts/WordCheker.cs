@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using Game.WordComparison;
 using UnityEngine;
@@ -24,12 +23,14 @@ public class WordCheker : MonoBehaviour
 
         GameEvents.OnCheckSquare += SquareSelected;
         GameEvents.OnClearSelection += ClearSelection;
+        GameEvents.OnLoadLevel += LoadNextGameLevel;
     }
 
     private void OnDisable()
     {
         GameEvents.OnCheckSquare -= SquareSelected;
         GameEvents.OnClearSelection -= ClearSelection;
+        GameEvents.OnLoadLevel -= LoadNextGameLevel;
     }
 
     private void Start()
@@ -38,6 +39,11 @@ public class WordCheker : MonoBehaviour
         _completedWords = 0;
 
         _wordFinder = new WordFinder(_dictionaries, ' ');
+    }
+
+    private void LoadNextGameLevel()
+    {
+        SceneManager.LoadScene(Literal.Scene_GameScene);
     }
 
     private void SquareSelected(string letter, Vector3 squarePosition, int squareIndex)
@@ -65,6 +71,7 @@ public class WordCheker : MonoBehaviour
             if (_word.Equals(searchingWord.Word))
             {
                 GameEvents.CorrectWordMethod(_word, _correcSquareList);
+                _completedWords++;
                 //_word = string.Empty;
                 //_correcSquareList.Clear();
                 CheckBoardCompleted();
@@ -107,19 +114,19 @@ public class WordCheker : MonoBehaviour
             var currentBoardIndex = DataSaver.ReadCategoryCurrentIndexValues(categoryName);
             int nextBoardIndex = -1;
             int currentCategoryIndex = 0;
-            bool readNextLevelName = false;
+            bool readNextCategoryName = false;
 
             for (int index = 0; index < gameLevelData.Data.Count; index++)
             {
-                if (readNextLevelName)
+                if (readNextCategoryName)
                 {
                     nextBoardIndex = DataSaver.ReadCategoryCurrentIndexValues(gameLevelData.Data[index].CategoryName);
-                    readNextLevelName = false;
+                    readNextCategoryName = false;
                 }
 
                 if (gameLevelData.Data[index].CategoryName.Equals(categoryName))
                 { 
-                    readNextLevelName = true;
+                    readNextCategoryName = true;
                     currentCategoryIndex = index;
                 }
             }
@@ -134,7 +141,7 @@ public class WordCheker : MonoBehaviour
             if (currentBoardIndex >= currentCategorySize)
             {
                 currentCategoryIndex++;
-                if (currentCategoryIndex < gameLevelData.Data.Count) //If this is not last category
+                if (currentCategoryIndex < gameLevelData.Data.Count) //If this is not the last category
                 {
                     categoryName = gameLevelData.Data[currentCategoryIndex].CategoryName;
                     currentBoardIndex = 0;
@@ -161,8 +168,7 @@ public class WordCheker : MonoBehaviour
         }
     }
 
-
-
+    
     ////Use this code if selection direction change limitation is needed
     //public GameData _currentGameData;
 

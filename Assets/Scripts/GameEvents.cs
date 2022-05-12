@@ -83,4 +83,14 @@ public static class GameEvents
     {
         OnUnlockNextCategory?.Invoke();
     }
+    //************
+
+    public delegate void LoadLevel();
+    public static event LoadLevel OnLoadLevel;
+
+    public static void LoadNextLevelMethod()
+    { 
+        OnLoadLevel?.Invoke();
+    }
+    //************
 }
