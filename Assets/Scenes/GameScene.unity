@@ -513,7 +513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6041e75327c4f8e43834beba2ac25128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentGameData: {fileID: 11400000, guid: 48e013318f178e2459d3b352d68db4bc, type: 2}
+  currentGameData: {fileID: 11400000, guid: 48e013318f178e2459d3b352d68db4bc, type: 2}
+  gameLevelData: {fileID: 11400000, guid: 75deecb38375e8241956861d3ed15356, type: 2}
   _dataProfile: {fileID: 11400000, guid: 9d61609ae2bf1f14bb00b16ee5eecf8f, type: 2}
   _dictionaries:
   - {fileID: 4900000, guid: fec027833ca15ca4689cf2f842154e72, type: 3}
