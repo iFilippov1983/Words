@@ -53,7 +53,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MatCapTex:
-        m_Texture: {fileID: 2800000, guid: 89da13b6c5b2314479ce9f80edc02727, type: 3}
+        m_Texture: {fileID: 2800000, guid: be8f4eca082cf42439e1f8efe1eb3d5f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -119,8 +119,8 @@ Material:
     - _RampBandsSmoothing: 0.1
     - _RampOffset: 0
     - _RampScale: 1
-    - _RampSmoothing: 0.225
-    - _RampThreshold: 0.516
+    - _RampSmoothing: 0.772
+    - _RampThreshold: 0.715
     - _RampType: 0
     - _ReceiveShadowsOff: 1
     - _ReflectionMapType: 0
@@ -132,7 +132,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpecularMapType: 1
-    - _SpecularRoughness: 0.245
+    - _SpecularRoughness: 0.524
     - _SpecularToonSize: 0.25
     - _SpecularToonSmoothness: 0.05
     - _SpecularType: 0
@@ -154,14 +154,14 @@ Material:
     - _UseSpecular: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 0, b: 0.12690353, a: 1}
+    - _BaseColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MatCapColor: {r: 1, g: 0.9764151, b: 0.9764151, a: 1}
+    - _HColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
+    - _MatCapColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.5}
-    - _SColor: {r: 0.3962264, g: 0.1738163, b: 0.1738163, a: 1}
-    - _SpecularColor: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 1}
+    - _SColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
