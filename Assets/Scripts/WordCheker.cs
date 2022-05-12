@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Game.WordComparison;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WordCheker : MonoBehaviour
 {
@@ -66,6 +67,7 @@ public class WordCheker : MonoBehaviour
                 GameEvents.CorrectWordMethod(_word, _correcSquareList);
                 //_word = string.Empty;
                 //_correcSquareList.Clear();
+                CheckBoardCompleted();
                 return;
             }
         }
@@ -96,7 +98,7 @@ public class WordCheker : MonoBehaviour
 
     private void CheckBoardCompleted()
     {
-        bool loadNextLevel = false;
+        bool loadNextCategory = false;
 
         if (currentGameData.selectedBoardData.SearchingWords.Count.Equals(_completedWords))
         {
@@ -123,18 +125,43 @@ public class WordCheker : MonoBehaviour
             }
 
             int currentCategorySize = gameLevelData.Data[currentCategoryIndex].BoardData.Count;
-            if (currentCategoryIndex < currentCategorySize)
+            if (currentBoardIndex < currentCategorySize)
                 currentBoardIndex++;
 
             DataSaver.SaveCategoryData(categoryName, currentBoardIndex);
 
             //Unlock next category
             if (currentBoardIndex >= currentCategorySize)
-            { 
-                
+            {
+                currentCategoryIndex++;
+                if (currentCategoryIndex < gameLevelData.Data.Count) //If this is not last category
+                {
+                    categoryName = gameLevelData.Data[currentCategoryIndex].CategoryName;
+                    currentBoardIndex = 0;
+                    loadNextCategory = true;
+
+                    if (nextBoardIndex <= 0)
+                    {
+                        DataSaver.SaveCategoryData(categoryName, currentBoardIndex);
+                    }
+
+                }
+                else
+                {
+                    SceneManager.LoadScene(Literal.Scene_SelectCategory);
+                }
             }
+            else
+            {
+                GameEvents.BoardCompletedMethod();
+            }
+
+            if (loadNextCategory)
+                GameEvents.UnlockNextCategoryMethod();
         }
     }
+
+
 
     ////Use this code if selection direction change limitation is needed
     //public GameData _currentGameData;

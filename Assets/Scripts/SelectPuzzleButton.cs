@@ -11,7 +11,7 @@ public class SelectPuzzleButton : MonoBehaviour
     public Text categoryText;
     public Image progressBarFilling;
     
-    private string _gameSceneName = "GameScene";
+    private string _gameSceneName = Literal.Scene_GameScene;
     private bool _levelLocked;
 
     void Start()
