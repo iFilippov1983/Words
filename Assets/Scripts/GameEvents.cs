@@ -93,4 +93,13 @@ public static class GameEvents
         OnLoadLevel?.Invoke();
     }
     //************
+
+    public delegate void GameOver();
+    public static event GameOver OnGameOver;
+
+    public static void GameOverMethod()
+    {
+        OnGameOver?.Invoke();
+    }
+    //************
 }
