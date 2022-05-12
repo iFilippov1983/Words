@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Brainbreaking_00
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 0
+  Columns: 6
+  Rows: 11
+  Board:
+  - Size: 11
+    Row:
+    - E
+    - D
+    - H
+    - U
+    - G
+    - H
+    - A
+    - I
+    - K
+    - U
+    - T
+  - Size: 11
+    Row:
+    - O
+    - O
+    - K
+    - B
+    - C
+    - O
+    - V
+    - G
+    - A
+    - M
+    - E
+  - Size: 11
+    Row:
+    - G
+    - O
+    - F
+    - H
+    - N
+    - U
+    - B
+    - L
+    - H
+    - E
+    - T
+  - Size: 11
+    Row:
+    - K
+    - M
+    - F
+    - S
+    - S
+    - S
+    - C
+    - J
+    - Q
+    - M
+    - R
+  - Size: 11
+    Row:
+    - B
+    - Z
+    - C
+    - E
+    - E
+    - E
+    - S
+    - A
+    - Z
+    - D
+    - Y
+  - Size: 11
+    Row:
+    - R
+    - G
+    - S
+    - N
+    - F
+    - B
+    - V
+    - G
+    - T
+    - H
+    - P
+  SearchingWords:
+  - Word: HOUSE
+  - Word: CAT
+  - Word: GAME
