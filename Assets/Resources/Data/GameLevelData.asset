@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a8d69212bd9b542b5b88c3686fe8fc, type: 3}
+  m_Name: GameLevelData
+  m_EditorClassIdentifier: 
+  Data:
+  - CategoryName: Easy
+    BoardData:
+    - {fileID: 11400000, guid: b29051e1c34f7ec4bbb21ad6c8c406e0, type: 2}
+    - {fileID: 11400000, guid: e1ca8363c0d34e84cb693be5a1925f07, type: 2}
+    - {fileID: 11400000, guid: 02b497c4e18dc2d48becf92e710a92f7, type: 2}
+  - CategoryName: Normal
+    BoardData:
+    - {fileID: 11400000, guid: 5f4108f78b8b7dd48acb42b012addf3f, type: 2}
+  - CategoryName: Smart
+    BoardData:
+    - {fileID: 11400000, guid: 4390b8783b41d0641bae055057e3b763, type: 2}
+  - CategoryName: Advanced
+    BoardData:
+    - {fileID: 11400000, guid: 378fd9deaa9ec7c4d86c57103f9d4bc0, type: 2}
+  - CategoryName: Hard
+    BoardData:
+    - {fileID: 11400000, guid: cf01763c96d0ee74a93f1b7195f23fcb, type: 2}
+  - CategoryName: Braibreaking
+    BoardData:
+    - {fileID: 11400000, guid: 4855fae7ff48f55489bf6df4578f30b7, type: 2}

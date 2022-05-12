@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class WordCheker : MonoBehaviour
 {
-    public GameData _currentGameData;
+    public GameData currentGameData;
+    public GameLevelData gameLevelData;
 
     private string _word;
     private int _assignedPoints = 0;
@@ -58,7 +59,7 @@ public class WordCheker : MonoBehaviour
 
     private void CheckWord()
     {
-        foreach (var searchingWord in _currentGameData.selectedBoardData.SearchingWords)
+        foreach (var searchingWord in currentGameData.selectedBoardData.SearchingWords)
         {
             if (_word.Equals(searchingWord.Word))
             {
@@ -93,6 +94,47 @@ public class WordCheker : MonoBehaviour
         _word = string.Empty;
     }
 
+    private void CheckBoardCompleted()
+    {
+        bool loadNextLevel = false;
+
+        if (currentGameData.selectedBoardData.SearchingWords.Count.Equals(_completedWords))
+        {
+            //Save current level progress
+            var categoryName = currentGameData.selectedCategoryName;
+            var currentBoardIndex = DataSaver.ReadCategoryCurrentIndexValues(categoryName);
+            int nextBoardIndex = -1;
+            int currentCategoryIndex = 0;
+            bool readNextLevelName = false;
+
+            for (int index = 0; index < gameLevelData.Data.Count; index++)
+            {
+                if (readNextLevelName)
+                {
+                    nextBoardIndex = DataSaver.ReadCategoryCurrentIndexValues(gameLevelData.Data[index].CategoryName);
+                    readNextLevelName = false;
+                }
+
+                if (gameLevelData.Data[index].CategoryName.Equals(categoryName))
+                { 
+                    readNextLevelName = true;
+                    currentCategoryIndex = index;
+                }
+            }
+
+            int currentCategorySize = gameLevelData.Data[currentCategoryIndex].BoardData.Count;
+            if (currentCategoryIndex < currentCategorySize)
+                currentBoardIndex++;
+
+            DataSaver.SaveCategoryData(categoryName, currentBoardIndex);
+
+            //Unlock next category
+            if (currentBoardIndex >= currentCategorySize)
+            { 
+                
+            }
+        }
+    }
 
     ////Use this code if selection direction change limitation is needed
     //public GameData _currentGameData;
