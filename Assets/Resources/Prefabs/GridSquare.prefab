@@ -163,7 +163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 130848, guid: d16221e794fe16e4e8994a7f8c770561, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 490358, guid: d16221e794fe16e4e8994a7f8c770561, type: 3}
       propertyPath: m_RootOrder
@@ -483,6 +483,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BalloonPopExplosion
       objectReference: {fileID: 0}
+    - target: {fileID: 118945056452148007, guid: a9335e37fcc79c24ea48129c0c91370e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9335e37fcc79c24ea48129c0c91370e, type: 3}
 --- !u!4 &4197167632690721751 stripped
@@ -557,6 +561,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Balloon_1
       objectReference: {fileID: 0}
+    - target: {fileID: 5460780627713979942, guid: 91b2cb79f48affb46ba4579333d7d83d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91b2cb79f48affb46ba4579333d7d83d, type: 3}
 --- !u!4 &169168940040682485 stripped
@@ -577,7 +585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 313826405790222304, guid: 4ea8bebce39bb8a42958002abbfbcdcc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 333869280075937208, guid: 4ea8bebce39bb8a42958002abbfbcdcc, type: 3}
       propertyPath: m_RootOrder
