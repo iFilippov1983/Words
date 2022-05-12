@@ -21,6 +21,8 @@ public class GridSquare : MonoBehaviour
     private bool _isInExtraWord;
     private bool _toBeDestroyed;
 
+    public LetterData NormalLetterData => _normalLetterData;
+
     private void Start()
     {
         _displayedSprite = GetComponent<SpriteRenderer>();
