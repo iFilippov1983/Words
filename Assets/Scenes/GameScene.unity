@@ -537,6 +537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e74f7f54bf0ad4087152240f1902c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelData: {fileID: 11400000, guid: 75deecb38375e8241956861d3ed15356, type: 2}
 --- !u!114 &1055333737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,6 +926,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7207781294172240323, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1055333736}
+    - target: {fileID: 7770522330857194144, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 7770522330857194147, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
       propertyPath: m_Name
       value: UICanvas
