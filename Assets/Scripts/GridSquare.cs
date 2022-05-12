@@ -8,6 +8,8 @@ public class GridSquare : MonoBehaviour
 {
     public int SquareIndex { get; set; }
 
+    [SerializeField] private ParticleSystem _highlightedEffect;
+
     private LetterData _normalLetterData;
     private LetterData _selectedLetterData;
     private LetterData _correctLetterData;
@@ -96,7 +98,7 @@ public class GridSquare : MonoBehaviour
     public int GetIndex() => _index;
 
     public void OnEnableSquareSelection()
-    {
+    {       
         _isClicked = true;
         _isSelected = false;
     }
@@ -106,10 +108,16 @@ public class GridSquare : MonoBehaviour
         _isSelected = false;
         _isClicked = false;
 
-        if(_isCorrect || _isInExtraWord)
+        if (_isCorrect || _isInExtraWord)
+        {
             _displayedSprite.sprite = _correctLetterData.Sprite;
+        }
         else
+        {
             _displayedSprite.sprite = _normalLetterData.Sprite;
+            _highlightedEffect.gameObject.SetActive(false);
+        }
+            
 
         if(_toBeDestroyed && _isCorrect)
             Destroy(gameObject);
@@ -118,7 +126,10 @@ public class GridSquare : MonoBehaviour
     private void OnSelectSquare(Vector3 position)
     {
         if (this.gameObject.transform.position == position)
+        {
             _displayedSprite.sprite = _selectedLetterData.Sprite;
+        }
+            
     }
 
     private void OnMouseDown()
@@ -148,6 +159,9 @@ public class GridSquare : MonoBehaviour
     {
         if (_isSelected == false && _isClicked)
         {
+            _highlightedEffect.gameObject.SetActive(true);
+            _highlightedEffect.Play();
+
             _isSelected = true;
             GameEvents.CheckSquareMethod(_normalLetterData.Letter, gameObject.transform.position, _index);
         }
