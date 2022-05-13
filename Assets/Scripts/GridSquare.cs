@@ -173,7 +173,7 @@ public class GridSquare : MonoBehaviour
             _highlightedEffect.Play();
 
             _isSelected = true;
-            GameEvents.CheckSquareMethod(_normalLetterData.Letter, gameObject.transform.position, _index);
+            GameEvents.CheckSquareMethod(_normalLetterData.Letter, transform.position, _index);
         }
     }
 }

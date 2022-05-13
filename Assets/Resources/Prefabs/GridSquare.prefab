@@ -162,7 +162,7 @@ ConstantForce:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3771015850833405470}
   m_Enabled: 1
-  m_Force: {x: 0, y: -100, z: 0}
+  m_Force: {x: 0, y: -450, z: 0}
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
@@ -580,7 +580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5460780627713979942, guid: 91b2cb79f48affb46ba4579333d7d83d, type: 3}
       propertyPath: m_Name
-      value: Balloon_1
+      value: Ball
       objectReference: {fileID: 0}
     - target: {fileID: 5460780627713979942, guid: 91b2cb79f48affb46ba4579333d7d83d, type: 3}
       propertyPath: m_IsActive
