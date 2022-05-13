@@ -31,6 +31,12 @@ namespace Game
             GameEvents.OnEnableSquareSelection += OnEnableSquareSelection;
             GameEvents.OnDisableSquareSelection += OnDisableSquareSelection;
             GameEvents.OnCorrectExtraWord += OnCorrectExtraWord;
+            GameEvents.OnCorrectWord += OnCorrectWord;
+        }
+
+        private void OnCorrectWord(string word, List<int> squareindexes)
+        {
+            coinsToSpawn = noCoins;
         }
 
         private void OnCheckSquare(string letter, Vector3 squareposition, int squareindex)
@@ -44,11 +50,14 @@ namespace Game
             GameEvents.OnEnableSquareSelection -= OnEnableSquareSelection;
             GameEvents.OnDisableSquareSelection -= OnDisableSquareSelection;
             GameEvents.OnCorrectExtraWord -= OnCorrectExtraWord;
+            GameEvents.OnCorrectWord -= OnCorrectWord;
         }
 
         private void OnDisableSquareSelection()
         {
-            StartCoroutine(SpawnCoinsWithInterval(coinsToSpawn, spawnInterval));
+            if (coinsToSpawn != noCoins)
+                StartCoroutine(SpawnCoinsWithInterval(coinsToSpawn, spawnInterval));
+            
             coinsToSpawn = noCoins;
         }
 
@@ -63,12 +72,12 @@ namespace Game
             spawnPositions.Clear();
         }
 
-        private IEnumerator SpawnCoinsWithInterval(int count, float delay)
+        private IEnumerator SpawnCoinsWithInterval(int coinCount, float interval)
         {
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < coinCount; i++)
             {
                 SpawnCoin(spawnPositions[i]);
-                yield return new WaitForSeconds(delay);
+                yield return new WaitForSeconds(interval);
             }
         }
 
