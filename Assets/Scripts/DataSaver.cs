@@ -1,3 +1,4 @@
+using Game;
 using UnityEngine;
 
 public class DataSaver
@@ -28,6 +29,9 @@ public class DataSaver
 
         //Ulock first level
         PlayerPrefs.SetInt(levelData.Data[0].CategoryName, 0);
+        
+        PlayerPrefs.SetInt(CurrencyManager.coinsKey, 0);
+        
         PlayerPrefs.Save();
     }
 }
