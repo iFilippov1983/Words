@@ -18,18 +18,28 @@ public class SearchingWord : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEvents.OnCorrectWord += CorrectWord;
+        GameEvents.OnWordGetTarget += WordGetTarget;
+        //GameEvents.OnCorrectWord += CorrectWord;
     }
 
     private void OnDisable()
     {
-        GameEvents.OnCorrectWord -= CorrectWord;
+        GameEvents.OnWordGetTarget -= WordGetTarget;
+        //GameEvents.OnCorrectWord -= CorrectWord;
     }
 
     public void SetWord(string word)
     { 
         _word = word;
         displayedText.text = _word;
+    }
+
+    private void WordGetTarget(string word)
+    {
+        if (word.Equals(_word))
+        {
+            crossLine.gameObject.SetActive(true);
+        }
     }
 
     private void CorrectWord(string word, List<int> squareIndexes)

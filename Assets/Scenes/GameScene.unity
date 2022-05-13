@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 432324968}
   - component: {fileID: 432324967}
   m_Layer: 0
-  m_Name: coin spawner
+  m_Name: CoinSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -670,12 +670,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432324966}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1055333734}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &590185280
 GameObject:
@@ -959,7 +959,7 @@ RectTransform:
   m_Children:
   - {fileID: 1172634094}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1082,6 +1082,8 @@ Transform:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 722436780}
+  - {fileID: 1333455948}
+  - {fileID: 432324968}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1222,7 +1224,7 @@ GameObject:
   - component: {fileID: 1333455948}
   - component: {fileID: 1333455947}
   m_Layer: 0
-  m_Name: currency manager
+  m_Name: CurrencyManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1250,12 +1252,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333455946}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -11.132156, y: -2.4829974, z: -4.771654}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1055333734}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1623755023
 GameObject:
@@ -1308,6 +1310,49 @@ Transform:
   m_Children:
   - {fileID: 2096405189}
   - {fileID: 412304607}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1696610383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1696610385}
+  - component: {fileID: 1696610384}
+  m_Layer: 0
+  m_Name: ThresholdPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1696610384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696610383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 146aecdf3079b6d45bdb41ee9a6b50ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1696610385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696610383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.86, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1571,30 +1616,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1055333736}
     - target: {fileID: 7770522330031551739, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: m_Colors.m_PressedColor.b
-      value: 0.5294118
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770522330031551739, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: m_Colors.m_PressedColor.g
-      value: 0.5294118
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770522330031551739, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: m_Colors.m_PressedColor.r
-      value: 0.5294118
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770522330031551739, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.b
-      value: 0.95294124
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770522330031551739, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 0.7254902
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770522330031551739, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.r
-      value: 0.46274513
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770522330031551739, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1055333736}
@@ -1616,7 +1637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7770522330857194151, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7770522330857194151, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
       propertyPath: m_AnchorMax.x

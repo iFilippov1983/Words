@@ -102,4 +102,13 @@ public static class GameEvents
         OnGameOver?.Invoke();
     }
     //************
+
+    public delegate void WordGetTarget(string word);
+    public static event WordGetTarget OnWordGetTarget;
+
+    public static void WordGetTargetMethod(string word)
+    { 
+        OnWordGetTarget?.Invoke(word);
+    }
+    //************
 }

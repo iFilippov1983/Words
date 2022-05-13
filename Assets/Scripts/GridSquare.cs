@@ -132,7 +132,7 @@ public class GridSquare : MonoBehaviour
         _isSelected = false;
         _isClicked = false;
 
-        if (_isCorrect || _isInExtraWord)
+        if (_isCorrect)// || _isInExtraWord)
         {
             _displayedSprite.sprite = _correctLetterData.Sprite;
         }

@@ -132,6 +132,7 @@ namespace Game
                 yield return null;
             }
 
+            GameEvents.WordGetTargetMethod(correctWord);
             ClearFlyingLetters();
         }
 
