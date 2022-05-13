@@ -15,13 +15,16 @@ public class GridSquare : MonoBehaviour
     private LetterData _normalLetterData;
     private LetterData _selectedLetterData;
     private LetterData _correctLetterData;
-
     private SpriteRenderer _displayedSprite;
+    private Animator _animator;
+    private Transform _thisTransform;
+    private Vector3 _thresholdPoint;
+
+    private int _index = -1;
+    private bool _notVisible;
     private bool _isSelected;
     private bool _isClicked;
-    private int _index = -1;
     private bool _isCorrect;
-
     private bool _isInExtraWord;
     private bool _toBeDestroyed;
 
@@ -29,11 +32,15 @@ public class GridSquare : MonoBehaviour
 
     private void Start()
     {
+        _thresholdPoint = FindObjectOfType<ThresholdView>().transform.position;
         _displayedSprite = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
+        _thisTransform = gameObject.transform;
+
+        _notVisible = true;
         _isSelected = false;
         _isClicked = false;
         _isCorrect = false;
-
         _isInExtraWord = false;
         _toBeDestroyed = false;
     }
@@ -55,6 +62,21 @@ public class GridSquare : MonoBehaviour
         GameEvents.OnCorrectWord -= CorrectWord;
         GameEvents.OnCorrectExtraWord -= CorrectExtraWord;
     }
+
+    private void FixedUpdate()
+    {
+        CheckGlobalPosition();
+    }
+
+    private void CheckGlobalPosition()
+    {
+        if (_thisTransform.position.y < _thresholdPoint.y && _notVisible)
+        {
+            _animator.SetBool(Literal.AnimBool_isVisible, true);
+            _notVisible = false;
+        }
+    }
+
 
     private void CorrectWord(string word, List<int> squareIndexes)
     {
