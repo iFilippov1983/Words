@@ -18,6 +18,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: b29051e1c34f7ec4bbb21ad6c8c406e0, type: 2}
     - {fileID: 11400000, guid: e1ca8363c0d34e84cb693be5a1925f07, type: 2}
     - {fileID: 11400000, guid: 02b497c4e18dc2d48becf92e710a92f7, type: 2}
+    - {fileID: 11400000, guid: 5ded05ee093204a448dd86ba81e4c5b9, type: 2}
+    - {fileID: 11400000, guid: 162a48ad1c2434048b8bbbf42ddefdab, type: 2}
   - CategoryName: Normal
     BoardData:
     - {fileID: 11400000, guid: 5f4108f78b8b7dd48acb42b012addf3f, type: 2}
