@@ -133,6 +133,8 @@ namespace Game
             GameEvents.OnCheckSquare -= OnCheckSquare;
             GameEvents.OnDisableSquareSelection -= OnDisableSquareSelection;
             GameEvents.OnCorrectWord -= OnCorrectWord;
+
+            StopAllCoroutines();
         }
 
         private void OnCheckSquare(string letter, Vector3 squareposition, int squareindex)

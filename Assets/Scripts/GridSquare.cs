@@ -8,6 +8,10 @@ public class GridSquare : MonoBehaviour
 {
     public int SquareIndex { get; set; }
 
+    [SerializeField] private GameObject _bodyObject;
+    [SerializeField] private ParticleSystem _highlightedEffect;
+    [SerializeField] private ParticleSystem _destroyEffect;
+
     private LetterData _normalLetterData;
     private LetterData _selectedLetterData;
     private LetterData _correctLetterData;
@@ -96,29 +100,46 @@ public class GridSquare : MonoBehaviour
     public int GetIndex() => _index;
 
     public void OnEnableSquareSelection()
-    {
+    {       
         _isClicked = true;
         _isSelected = false;
     }
 
-    public void OnDisableSquareSelection()
+    public async void OnDisableSquareSelection()
     { 
         _isSelected = false;
         _isClicked = false;
 
-        if(_isCorrect || _isInExtraWord)
+        if (_isCorrect || _isInExtraWord)
+        {
             _displayedSprite.sprite = _correctLetterData.Sprite;
+        }
         else
+        {
             _displayedSprite.sprite = _normalLetterData.Sprite;
+            _highlightedEffect.gameObject.SetActive(false);
+        }
 
-        if(_toBeDestroyed && _isCorrect)
+        if (_toBeDestroyed && _isCorrect)
+        {
+            _displayedSprite.enabled = false;
+            _bodyObject.gameObject.SetActive(false);
+            _destroyEffect.gameObject.SetActive(true);
+            _destroyEffect.Play();
+            while(_destroyEffect.isPlaying)
+                await Task.Yield();
+
             Destroy(gameObject);
+        }
     }
 
     private void OnSelectSquare(Vector3 position)
     {
         if (this.gameObject.transform.position == position)
+        {
             _displayedSprite.sprite = _selectedLetterData.Sprite;
+        }
+            
     }
 
     private void OnMouseDown()
@@ -148,6 +169,9 @@ public class GridSquare : MonoBehaviour
     {
         if (_isSelected == false && _isClicked)
         {
+            _highlightedEffect.gameObject.SetActive(true);
+            _highlightedEffect.Play();
+
             _isSelected = true;
             GameEvents.CheckSquareMethod(_normalLetterData.Letter, gameObject.transform.position, _index);
         }
