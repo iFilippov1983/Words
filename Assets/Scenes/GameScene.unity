@@ -512,7 +512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 5646211165640957445, guid: 05c0245064c39354cabf67ba8c8272f2, type: 3}
   uiParent: {fileID: 324632156}
-  target: {fileID: 1131394706}
+  target: {fileID: 7770522329497429779}
   spawnInterval: 0.07
   distanceToCamera: -2
   flySpeed: 1
@@ -1049,17 +1049,6 @@ Transform:
   m_Father: {fileID: 1055333734}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1052431927 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4626726435273560720, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-  m_PrefabInstance: {fileID: 7770522329497429778}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1055333733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,11 +1136,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGameData: {fileID: 11400000, guid: 48e013318f178e2459d3b352d68db4bc, type: 2}
   levelData: {fileID: 11400000, guid: 75deecb38375e8241956861d3ed15356, type: 2}
---- !u!224 &1131394706 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2597717246924844049, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-  m_PrefabInstance: {fileID: 7770522329497429778}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1172634093
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,7 +1240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7799b727966dd41448e543dbb5b24158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinsText: {fileID: 1052431927}
+  coinsText: {fileID: 7770522329497429780}
   coinSpawner: {fileID: 432324967}
   coinsForLevelComplete: 10
 --- !u!4 &1333455948
@@ -1708,3 +1692,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
+--- !u!224 &7770522329497429779 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1882534230250341166, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
+  m_PrefabInstance: {fileID: 7770522329497429778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7770522329497429780 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9032374575129752542, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
+  m_PrefabInstance: {fileID: 7770522329497429778}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
