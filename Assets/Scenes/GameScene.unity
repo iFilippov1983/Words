@@ -154,41 +154,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flyingLetterTarget: {fileID: 590185281}
   flyingLetterPrefab: {fileID: 3991070488075891891, guid: 42e6c8bb51f1c9948a75081a0988d8c6, type: 3}
-  flySpeed: 1
+  flySpeed: 1.2
   letterSpacing: 0.3
   xCurve:
-    m_Mode: 2
+    m_Mode: 1
     m_CurveMultiplier: 1
     m_CurveMin:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: -2
-        outSlope: -2
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.5
-        value: -1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -197,30 +170,39 @@ MonoBehaviour:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.5
-        value: 1
+        value: 1.0003204
         inSlope: 0
         outSlope: 0
-        tangentMode: 34
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.16895792
+        value: 1.0035726
+        inSlope: 0.012086457
+        outSlope: 0.012086457
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.47398844
+        value: 1.004907
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0
-        inSlope: -2
-        outSlope: -2
-        tangentMode: 34
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -228,7 +210,7 @@ MonoBehaviour:
     m_ConstantMin: 0
     m_ConstantMax: 0
   yCurve:
-    m_Mode: 0
+    m_Mode: 1
     m_CurveMultiplier: 1
     m_CurveMin:
       serializedVersion: 2
@@ -269,17 +251,17 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 0
         value: 0
-        inSlope: 2
-        outSlope: 2
+        inSlope: 1.5792152
+        outSlope: 1.5792152
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.5
-        value: 1
-        inSlope: 0
-        outSlope: 0
+        time: 0.5173416
+        value: 0.8169937
+        inSlope: -0.056740224
+        outSlope: -0.056740224
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
@@ -287,8 +269,8 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -2
-        outSlope: -2
+        inSlope: -1.6926956
+        outSlope: -1.6926956
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
@@ -1388,10 +1370,6 @@ PrefabInstance:
     - target: {fileID: 7770522330857194151, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770522331046985939, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 5.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}

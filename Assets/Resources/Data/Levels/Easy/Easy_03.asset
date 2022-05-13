@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
   m_Name: Easy_03
   m_EditorClassIdentifier: 
-  TimeInSeconds: 110
+  TimeInSeconds: 120
   Columns: 6
   Rows: 12
   Board:
