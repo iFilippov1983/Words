@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SerchingWordsList : MonoBehaviour
 {
+    
     public GameData currentGameData;
     public GameObject searchingWordPrefab;
     public float offset = 0.0f;
