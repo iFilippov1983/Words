@@ -167,36 +167,6 @@ namespace Game
             }
         }
 
-        private Vector3[] GetLettersStartPosition(IReadOnlyList<GameObject> letters)
-        {
-            var positions = new Vector3[letters.Count];
-
-            for (var i = 0; i < positions.Length; i++)
-                positions[i] = letters[i].transform.position;
-
-            return positions;
-        }
-
-        private Vector3[] GetLettersEndPosition(Vector3 targetPos, ICollection letters, float letterSpacing)
-        {
-            var positions = new Vector3[letters.Count];
-
-            for (var i = 0; i < positions.Length; i++)
-                positions[i] = targetPos + Vector3.right * (i * letterSpacing);
-
-            var center = Vector3.Lerp(
-                positions[0],
-                positions[positions.Length - 1],
-                0.5f);
-
-            var centerOffset = positions[0] - center;
-
-            for (var i = 0; i < positions.Length; i++)
-                positions[i] += centerOffset;
-
-            return positions;
-        }
-
         private void ClearFlyingLetters()
         {
             foreach (var flyingLetter in letters)
