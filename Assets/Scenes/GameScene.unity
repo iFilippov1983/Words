@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 412304607}
   - component: {fileID: 412304606}
   - component: {fileID: 412304608}
+  - component: {fileID: 412304609}
   m_Layer: 0
   m_Name: WordAnimation
   m_TagString: Untagged
@@ -158,8 +159,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fdb6ac76442a2941960e49c543f250f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskWordsParent: {fileID: 1797228272}
+  wordAnimation: {fileID: 412304609}
   letterFactory: {fileID: 412304608}
+  taskWordsParent: {fileID: 1797228272}
+--- !u!4 &412304607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412304605}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1623755025}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &412304608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412304605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b796fc6781f245229c5dcc110142d055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flyingLetterPrefab: {fileID: 3991070488075891891, guid: 42e6c8bb51f1c9948a75081a0988d8c6, type: 3}
+--- !u!114 &412304609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412304605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6950ad8f9f5349c8999298853eaf59ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   moveInterval: 0.05
   firstLetterFlySpeed: 1.1
   letterFollowSpeed: 14
@@ -221,33 +262,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &412304607
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 412304605}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1623755025}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &412304608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 412304605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b796fc6781f245229c5dcc110142d055, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flyingLetterPrefab: {fileID: 3991070488075891891, guid: 42e6c8bb51f1c9948a75081a0988d8c6, type: 3}
 --- !u!1 &432324966
 GameObject:
   m_ObjectHideFlags: 0
