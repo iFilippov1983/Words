@@ -1296,7 +1296,7 @@ MonoBehaviour:
   floorTransform: {fileID: 1756701544}
   _defaultScale: {x: 1, y: 1, z: 1}
   _minimumScale: {x: 0.69, y: 0.69, z: 0.69}
-  _startPositionFactor: 1
+  _startPositionFactor: 0.9
 --- !u!4 &1623755025
 Transform:
   m_ObjectHideFlags: 0
@@ -1521,7 +1521,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 63a65024807a304488929139be248d4f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
