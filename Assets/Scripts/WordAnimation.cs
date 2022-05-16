@@ -1,42 +1,55 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Game
 {
     public class WordAnimation : MonoBehaviour
     {
+        public static Action<SearchingWord> LetterReachedSearchingWord;
         [SerializeField] private Transform taskWordsParent;
-        [SerializeField] private Transform flyingLetterTarget;
         [SerializeField] private GameObject flyingLetterPrefab;
         [Space] [SerializeField] private float flySpeed;
-         [SerializeField] private float normalizeSpeed;
-        [SerializeField] private float letterSpacingNormalized;
-        [SerializeField] private float letterSpacingEnd;
-        [SerializeField] private ParticleSystem.MinMaxCurve xCurve;
-        [SerializeField] private ParticleSystem.MinMaxCurve yCurve;
-        [SerializeField] private ParticleSystem.MinMaxCurve zCurve;
-        [SerializeField] private ParticleSystem.MinMaxCurve sizeOffset;
+        [SerializeField] private float moveInterval;
+        [SerializeField] private float scaleSpeed;
+        [SerializeField] private AnimationCurve scaleCurve;
+        [SerializeField] private AnimationCurve timeCurve;
+        private readonly List<GameObject> letters = new List<GameObject>();
+        private readonly List<SearchingWord> taskWords = new List<SearchingWord>();
         private Camera _camera;
-        private readonly List<GameObject> flyingLetters = new List<GameObject>();
+        private string correctWord;
         private bool isCorrectWordFound;
         private bool shouldCreateFlyingLetters = true;
-        private string correctWord;
-        private List<SearchingWord> taskWords = new List<SearchingWord>();
 
         private IEnumerator Start()
         {
             _camera = Camera.main;
 
             GameEvents.OnCheckSquare += OnCheckSquare;
+            GameEvents.OnEnableSquareSelection += OnEnableSquareSelection;
             GameEvents.OnDisableSquareSelection += OnDisableSquareSelection;
             GameEvents.OnCorrectWord += OnCorrectWord;
 
             yield return new WaitWhile(() => taskWordsParent.childCount == 0);
 
             taskWordsParent.GetComponentsInChildren(taskWords);
+        }
+
+        private void OnEnableSquareSelection()
+        {
+            shouldCreateFlyingLetters = true;
+            ClearFlyingLetters();
+        }
+
+        private void OnDestroy()
+        {
+            GameEvents.OnCheckSquare -= OnCheckSquare;
+            GameEvents.OnEnableSquareSelection -= OnEnableSquareSelection;
+            GameEvents.OnDisableSquareSelection -= OnDisableSquareSelection;
+            GameEvents.OnCorrectWord -= OnCorrectWord;
+
+            StopAllCoroutines();
         }
 
         private void OnCorrectWord(string word, List<int> squareindexes)
@@ -47,143 +60,122 @@ namespace Game
 
         private void OnDisableSquareSelection()
         {
-            shouldCreateFlyingLetters = true;
-
-            if (isCorrectWordFound)
-            {
-                foreach (var flyingLetter in flyingLetters)
-                    flyingLetter.SetActive(true);
-
-                StartCoroutine(MoveLetters());
-                isCorrectWordFound = false;
+            if (!isCorrectWordFound)
                 return;
-            }
 
-            ClearFlyingLetters();
+            isCorrectWordFound = false;
+
+            StartCoroutine(MoveLettersWithInterval(moveInterval));
         }
 
-        private Vector3 GetSearchingWordPosition(string word)
+        private IEnumerator MoveLettersWithInterval(float interval)
+        {
+            Transform moveTarget = null;
+
+            while (letters.Count > 0)
+            {
+                var letter = letters[0];
+
+                letter.SetActive(true);
+                letters.Remove(letter);
+
+                StartCoroutine(MoveLetter(letter.transform, moveTarget, isMovingToSearchedWord: moveTarget == null));
+
+                moveTarget = letter.transform;
+
+                yield return new WaitForSeconds(interval);
+            }
+        }
+
+        private SearchingWord GetSearchingWord(string word)
         {
             var taskWord = taskWords.Find(x => string.Equals(x.displayedText.text.ToLower(), word.ToLower()));
 
-            if (taskWord != null) 
-                return taskWord.transform.position;
-            
+            if (taskWord != null)
+                return taskWord;
+
             Debug.LogError("task word not found");
-            return Vector3.zero;
+            return null;
         }
 
-        private IEnumerator MoveLetters()
+        private IEnumerator MoveLetter(Transform letter, Transform target,bool isMovingToSearchedWord)
         {
-            var lettersStartPositions = GetLettersStartPosition(flyingLetters);
-            var center = Vector3.Lerp(flyingLetters[0].transform.position,
-                flyingLetters[flyingLetters.Count - 1].transform.position, 0.5f);
-            var lettersEndPositionsNormalized = GetLettersEndPosition(center, flyingLetters ,letterSpacingNormalized);
-            var lettersEndPositions = GetLettersEndPosition(GetSearchingWordPosition(correctWord), flyingLetters, letterSpacingEnd);
-            var scale = flyingLetters[0].transform.localScale;
+            var searchingWord = GetSearchingWord(correctWord);
 
+            if (isMovingToSearchedWord)
+                yield return MoveLetterToPosition(letter, searchingWord.transform.position);
+            else
+                yield return MoveLetterToTarget(letter, target);
+
+            yield return HideLetter(letter);
+
+            LetterReachedSearchingWord?.Invoke(searchingWord);
+            GameEvents.WordGetTargetMethod(correctWord);
+            
+            Destroy(letter.gameObject);
+        }
+
+        private IEnumerator MoveLetterToTarget(Transform letter, Transform target)
+        {
+            var lastTargetPos = target.position;
             var travelPercent = 0f;
-            while (travelPercent < 1)
+
+            while (Vector3.Distance(letter.position, lastTargetPos) > 0.05f)
             {
-                for (var i = 0; i < flyingLetters.Count; i++)
-                {
-                    var letterTransform = flyingLetters[i].transform;
-
-                    letterTransform.position = Vector3.Lerp(
-                        lettersStartPositions[i],
-                        lettersEndPositionsNormalized[i],
-                        travelPercent);
-                }
-
-                travelPercent += normalizeSpeed * Time.deltaTime;
-
-                yield return null;
-            }
-
-            
-            travelPercent = 0f;
-            lettersStartPositions = GetLettersStartPosition(flyingLetters);
-            
-            while (travelPercent < 1)
-            {
-                for (var i = 0; i < flyingLetters.Count; i++)
-                {
-                    var letterTransform = flyingLetters[i].transform;
-
-                    letterTransform.position = Vector3.Lerp(
-                        lettersStartPositions[i],
-                        lettersEndPositions[i],
-                        travelPercent);
-
-                    var offset = new Vector3(
-                        xCurve.Evaluate(travelPercent),
-                        yCurve.Evaluate(travelPercent),
-                        zCurve.Evaluate(travelPercent)
-                    );
-
-                    letterTransform.position += offset;
-                }
-
-                foreach (var flyingLetter in flyingLetters)
-                    flyingLetter.transform.localScale = scale * sizeOffset.Evaluate(travelPercent);
+                letter.position = Vector3.Lerp(
+                    letter.position,
+                    lastTargetPos,
+                    Time.deltaTime * (travelPercent * 14f));
 
                 travelPercent += flySpeed * Time.deltaTime;
 
                 yield return null;
+                
+                if (target != null)
+                    lastTargetPos = target.position;
             }
-
-            GameEvents.WordGetTargetMethod(correctWord);
-            ClearFlyingLetters();
         }
 
-        private Vector3[] GetLettersStartPosition(IReadOnlyList<GameObject> letters)
+        private IEnumerator MoveLetterToPosition(Transform letter, Vector3 position)
         {
-            var positions = new Vector3[letters.Count];
+            var lettersStartPosition = letter.position;
+            var travelPercent = 0f;
 
-            for (var i = 0; i < positions.Length; i++)
-                positions[i] = letters[i].transform.position;
+            while (travelPercent < 1)
+            {
+                letter.position = Vector3.Lerp(
+                    lettersStartPosition,
+                    position,
+                    timeCurve.Evaluate(travelPercent));
+                
+                travelPercent += flySpeed * Time.deltaTime;
 
-            return positions;
+                yield return null;
+            }
         }
-
-        private Vector3[] GetLettersEndPosition(Vector3 targetPos, ICollection letters, float letterSpacing)
+        
+        private IEnumerator HideLetter(Transform letter)
         {
-            var positions = new Vector3[letters.Count];
+            var percent = 0f;
+            var defaultScale = letter.localScale;
 
-            for (var i = 0; i < positions.Length; i++)
-                positions[i] = targetPos + Vector3.right * (i * letterSpacing);
-
-            var center = Vector3.Lerp(
-                positions[0],
-                positions[positions.Length - 1],
-                0.5f);
-
-            var centerOffset = positions[0] - center;
-
-            for (var i = 0; i < positions.Length; i++)
-                positions[i] += centerOffset;
-
-            return positions;
+            while (percent < 1f)
+            {
+                percent += scaleSpeed * Time.deltaTime;
+                letter.localScale = defaultScale * scaleCurve.Evaluate(percent);
+                yield return null;
+            }
         }
 
         private void ClearFlyingLetters()
         {
-            foreach (var flyingLetter in flyingLetters)
+            foreach (var flyingLetter in letters)
                 Destroy(flyingLetter);
 
-            flyingLetters.Clear();
+            letters.Clear();
         }
 
-        private void OnDestroy()
-        {
-            GameEvents.OnCheckSquare -= OnCheckSquare;
-            GameEvents.OnDisableSquareSelection -= OnDisableSquareSelection;
-            GameEvents.OnCorrectWord -= OnCorrectWord;
-
-            StopAllCoroutines();
-        }
-
-        private void OnCheckSquare(string letter, Vector3 squareposition, int squareindex)
+        private void OnCheckSquare(string letterValue, Vector3 squareposition, int squareindex)
         {
             if (!shouldCreateFlyingLetters)
                 return;
@@ -197,13 +189,13 @@ namespace Game
                 return;
             }
 
-            var flyingLetter = Instantiate(flyingLetterPrefab, squareposition, Quaternion.identity, transform);
-            flyingLetters.Add(flyingLetter);
+            var letter = Instantiate(flyingLetterPrefab, squareposition, Quaternion.identity, transform);
+            letters.Add(letter);
 
             var gridSquare = hit.transform.GetComponent<GridSquare>();
             var letterSprite = gridSquare.NormalLetterData.Sprite;
 
-            flyingLetter.GetComponent<SpriteRenderer>().sprite = letterSprite;
+            letter.GetComponent<SpriteRenderer>().sprite = letterSprite;
 
             if (isCorrectWordFound)
                 shouldCreateFlyingLetters = false;
