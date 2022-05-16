@@ -10,6 +10,7 @@ public class SearchingWord : MonoBehaviour
     public Image crossLine;
 
     private string _word;
+    public string Word => _word;
 
     void Start()
     {
