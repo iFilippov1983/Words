@@ -8,9 +8,11 @@ public class WordCheker : MonoBehaviour
     public GameData currentGameData;
     public GameLevelData gameLevelData;
 
+    private const string UsedWords = "UsedWords";
     private string _word;
     private int _assignedPoints = 0;
     private int _completedWords = 0;
+    private bool _currentLevelNotCompleted;
     private List<int> _correctSquareList = new List<int>();
 
     [SerializeField] private DataProfile _dataProfile;
@@ -19,7 +21,11 @@ public class WordCheker : MonoBehaviour
 
     private void OnEnable()
     {
-        _dataProfile.UsedExtraWords.Clear();//TODO: delete after debug and save system implementation
+        _dataProfile.SetUsedExtraWordsList(DataSaver.LoadSavedStringList(UsedWords));
+
+        Debug.Log(_dataProfile.UsedExtraWords.Count);
+
+        _currentLevelNotCompleted = true;
 
         GameEvents.OnCheckSquare += SquareSelected;
         GameEvents.OnClearSelection += ClearSelection;
@@ -31,6 +37,21 @@ public class WordCheker : MonoBehaviour
         GameEvents.OnCheckSquare -= SquareSelected;
         GameEvents.OnClearSelection -= ClearSelection;
         GameEvents.OnLoadLevel -= LoadNextGameLevel;
+
+        if (_currentLevelNotCompleted)
+        {
+            DataSaver.SaveStringDataFromList(UsedWords, _dataProfile.UsedExtraWords);
+
+            Debug.Log("Extra words list data SAVED");
+        }
+        else
+        {
+            DataSaver.ClearSavedStringListData(UsedWords);
+
+            Debug.Log("Extra words list data CLEARED");
+        }
+
+        _dataProfile.UsedExtraWords.Clear();
     }
 
     private void Start()
@@ -107,16 +128,17 @@ public class WordCheker : MonoBehaviour
         {
             //Save current level progress
             var categoryName = currentGameData.selectedCategoryName;
-            var currentBoardIndex = DataSaver.ReadCategoryCurrentIndexValues(categoryName);
+            var currentBoardIndex = DataSaver.LoadIntData(categoryName);
             int nextBoardIndex = -1;
             int currentCategoryIndex = 0;
             bool readNextCategoryName = false;
+            _currentLevelNotCompleted = false;
 
             for (int index = 0; index < gameLevelData.Data.Count; index++)
             {
                 if (readNextCategoryName)
                 {
-                    nextBoardIndex = DataSaver.ReadCategoryCurrentIndexValues(gameLevelData.Data[index].CategoryName);
+                    nextBoardIndex = DataSaver.LoadIntData(gameLevelData.Data[index].CategoryName);
                     readNextCategoryName = false;
                 }
 
@@ -131,7 +153,7 @@ public class WordCheker : MonoBehaviour
             if (currentBoardIndex < currentCategorySize)
                 currentBoardIndex++;
 
-            DataSaver.SaveCategoryData(categoryName, currentBoardIndex);
+            DataSaver.SaveIntData(categoryName, currentBoardIndex);
 
             //Unlock next category
             if (currentBoardIndex >= currentCategorySize)
@@ -145,7 +167,7 @@ public class WordCheker : MonoBehaviour
 
                     if (nextBoardIndex <= 0)
                     {
-                        DataSaver.SaveCategoryData(categoryName, currentBoardIndex);
+                        DataSaver.SaveIntData(categoryName, currentBoardIndex);
                     }
 
                 }
@@ -160,7 +182,11 @@ public class WordCheker : MonoBehaviour
             }
 
             if (loadNextCategory)
+            {
                 GameEvents.UnlockNextCategoryMethod();
+                SceneManager.LoadScene(Literal.Scene_SelectCategory);
+            }
+                
         }
     }
 

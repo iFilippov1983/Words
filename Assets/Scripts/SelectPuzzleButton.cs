@@ -40,13 +40,13 @@ public class SelectPuzzleButton : MonoBehaviour
         {
             if (data.CategoryName.Equals(gameObject.name))
             {
-                currentIndex = DataSaver.ReadCategoryCurrentIndexValues(gameObject.name);
+                currentIndex = DataSaver.LoadIntData(gameObject.name);
                 totalBoards = data.BoardData.Count;
 
                 if (levelData.Data[0].CategoryName.Equals(gameObject.name) && currentIndex < 0)
                 {
-                    DataSaver.SaveCategoryData(levelData.Data[0].CategoryName, 0);//Unlocks first level
-                    currentIndex = DataSaver.ReadCategoryCurrentIndexValues(gameObject.name);
+                    DataSaver.SaveIntData(levelData.Data[0].CategoryName, 0);//Unlocks first level
+                    currentIndex = DataSaver.LoadIntData(gameObject.name);
                     totalBoards = data.BoardData.Count;
                 }
             }

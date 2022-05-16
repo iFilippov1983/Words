@@ -11,4 +11,6 @@ public class DataProfile : ScriptableObject
     private List<string> _usedExtraWords = new List<string>();
 
     public List<string> UsedExtraWords => _usedExtraWords;
+
+    public void SetUsedExtraWordsList(List<string> list) => _usedExtraWords = list;
 }

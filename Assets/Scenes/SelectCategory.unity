@@ -667,7 +667,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e74f7f54bf0ad4087152240f1902c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelData: {fileID: 0}
+  _levelData: {fileID: 0}
+  _dataProfile: {fileID: 0}
 --- !u!1001 &699804545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -919,7 +920,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e74f7f54bf0ad4087152240f1902c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelData: {fileID: 11400000, guid: 75deecb38375e8241956861d3ed15356, type: 2}
+  _levelData: {fileID: 11400000, guid: 75deecb38375e8241956861d3ed15356, type: 2}
+  _dataProfile: {fileID: 11400000, guid: 9d61609ae2bf1f14bb00b16ee5eecf8f, type: 2}
 --- !u!1 &1273153677
 GameObject:
   m_ObjectHideFlags: 0

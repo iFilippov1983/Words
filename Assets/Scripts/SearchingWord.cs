@@ -42,11 +42,11 @@ public class SearchingWord : MonoBehaviour
         }
     }
 
-    private void CorrectWord(string word, List<int> squareIndexes)
-    {
-        if (word.Equals(_word))
-        {
-            crossLine.gameObject.SetActive(true);
-        }
-    }
+    //private void CorrectWord(string word, List<int> squareIndexes)
+    //{
+    //    if (word.Equals(_word))
+    //    {
+    //        crossLine.gameObject.SetActive(true);
+    //    }
+    //}
 }
