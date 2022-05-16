@@ -31,7 +31,7 @@ public class DataSaver
         PlayerPrefs.SetInt(levelData.Data[0].CategoryName, 0);
         
         PlayerPrefs.SetInt(CurrencyManager.coinsKey, 0);
-        
+       
         PlayerPrefs.Save();
     }
 }
