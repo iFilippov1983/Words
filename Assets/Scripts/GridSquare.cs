@@ -25,6 +25,7 @@ public class GridSquare : MonoBehaviour
     private Transform _thisTransform;
     private Vector3 _thresholdPoint;
 
+    private int _showDelay = 1200;
     private int _maxDelay = 1000;
     private int _index = -1;
     private bool _notVisible;
@@ -96,22 +97,30 @@ public class GridSquare : MonoBehaviour
             _bodyMesh.material = _bodyMatHighlighted;
             _toBeDestroyed = true;
         }
-
-        //_isSelected = false;
-        //_isClicked = false;
     }
 
     private void CorrectExtraWord(List<int> squareIndexes)
     {
-
         if (_isSelected && squareIndexes.Contains(_index))
         {
             _isInExtraWord = true;
-            //_displayedSprite.sprite = _correctLetterData.Sprite;
         }
+    }
 
-        //_isSelected = false;
-        //_isClicked = false;
+    private async void ShowExtraWord()
+    {
+        _bodyMesh.material = _bodyMatExtra;
+        await Task.Delay(_showDelay);
+        _bodyMesh.material = _bodyMatNormal;
+    }
+
+    private async void ShowWrongWord()
+    {
+        _bodyMesh.material = _bodyMatWrong;
+        _animator.SetBool(Literal.AnimBool_isWrong, true);
+        await Task.Delay(_showDelay);
+        _bodyMesh.material = _bodyMatNormal;
+        _animator.SetBool(Literal.AnimBool_isWrong, false);
     }
 
     public void SetSprite
@@ -139,17 +148,17 @@ public class GridSquare : MonoBehaviour
 
     public async void OnDisableSquareSelection()
     { 
-        _isSelected = false;
-        _isClicked = false;
-
-        if (_isCorrect)// || _isInExtraWord)
+        if (_isCorrect)
         {
             _displayedSprite.sprite = _correctLetterData.Sprite;
+            _bodyMesh.material = _bodyMatHighlighted;
         }
-        else
+        else if(_isSelected && !_isInExtraWord)
         {
+            ShowWrongWord();
             _displayedSprite.sprite = _normalLetterData.Sprite;
             _highlightedEffect.gameObject.SetActive(false);
+            _animator.SetBool(Literal.AnimBool_isHighlighted, false);
         }
 
         if (_toBeDestroyed && _isCorrect)
@@ -163,6 +172,16 @@ public class GridSquare : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        if (_isInExtraWord)
+        {
+            _animator.SetBool(Literal.AnimBool_isHighlighted, false);
+            ShowExtraWord();
+            _isInExtraWord = false;
+        }
+
+        _isSelected = false;
+        _isClicked = false;
     }
 
     private void OnSelectSquare(Vector3 position)
@@ -170,6 +189,8 @@ public class GridSquare : MonoBehaviour
         if (this.gameObject.transform.position == position)
         {
             _displayedSprite.sprite = _selectedLetterData.Sprite;
+            _bodyMesh.material = _bodyMatHighlighted;
+            _animator.SetBool(Literal.AnimBool_isHighlighted, true);
         }
             
     }
@@ -179,6 +200,8 @@ public class GridSquare : MonoBehaviour
         GameEvents.EnableSquareSelectionMethod();
         CheckSquare();
         _displayedSprite.sprite = _selectedLetterData.Sprite;
+        _bodyMesh.material = _bodyMatHighlighted;
+        _animator.SetBool(Literal.AnimBool_isHighlighted, true);
     }
 
     private void OnMouseEnter()

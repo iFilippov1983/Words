@@ -53,10 +53,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bodyObject: {fileID: 653816814099702095}
-  _bodyMatNormal: {fileID: 0}
-  _bodyMatHighlighted: {fileID: 0}
-  _bodyMatWrong: {fileID: 0}
-  _bodyMatExtra: {fileID: 0}
+  _bodyMatNormal: {fileID: 2100000, guid: ab28b8002bd1ca64786d1538ac6770aa, type: 2}
+  _bodyMatHighlighted: {fileID: 2100000, guid: c5c5306bd38a3eb468984329380a3d3d, type: 2}
+  _bodyMatWrong: {fileID: 2100000, guid: 22820b09a59e4584cbda203d81dfecf9, type: 2}
+  _bodyMatExtra: {fileID: 2100000, guid: 94998a62e74f7e341a9b726b8d5cdad1, type: 2}
   _highlightedEffect: {fileID: 4538631040463112226}
   _destroyEffect: {fileID: 4197167632675551815}
 --- !u!212 &3771015850833405467

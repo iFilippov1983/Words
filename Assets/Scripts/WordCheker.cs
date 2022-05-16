@@ -11,7 +11,7 @@ public class WordCheker : MonoBehaviour
     private string _word;
     private int _assignedPoints = 0;
     private int _completedWords = 0;
-    private List<int> _correcSquareList = new List<int>();
+    private List<int> _correctSquareList = new List<int>();
 
     [SerializeField] private DataProfile _dataProfile;
     [SerializeField] private List<TextAsset> _dictionaries;
@@ -50,12 +50,12 @@ public class WordCheker : MonoBehaviour
     {
         if (_assignedPoints == 0)
         {
-            _correcSquareList.Add(squareIndex);
+            _correctSquareList.Add(squareIndex);
             _word += letter;
         }
         else
         {
-            _correcSquareList.Add(squareIndex);
+            _correctSquareList.Add(squareIndex);
             GameEvents.SelectSquareMethod(squarePosition);
             _word += letter;
             CheckWord();
@@ -70,10 +70,8 @@ public class WordCheker : MonoBehaviour
         {
             if (_word.Equals(searchingWord.Word))
             {
-                GameEvents.CorrectWordMethod(_word, _correcSquareList);
+                GameEvents.CorrectWordMethod(_word, _correctSquareList);
                 _completedWords++;
-                //_word = string.Empty;
-                //_correcSquareList.Clear();
                 CheckBoardCompleted();
                 return;
             }
@@ -87,10 +85,8 @@ public class WordCheker : MonoBehaviour
 
         if (foundExtraWord && !alreadyUsedWord)
         {
-            GameEvents.OnCorrectExtraWordMethod(_correcSquareList);
+            GameEvents.OnCorrectExtraWordMethod(_correctSquareList);
             _dataProfile.UsedExtraWords.Add(_word);
-            //_word = string.Empty;
-            //_correcSquareList.Clear();
         }
 
         //Debug.Log(foundExtraWord ? $"{_word} found" : $"{_word} not found");
@@ -99,7 +95,7 @@ public class WordCheker : MonoBehaviour
     private void ClearSelection()
     {
         _assignedPoints = 0;
-        _correcSquareList.Clear();
+        _correctSquareList.Clear();
         _word = string.Empty;
     }
 
