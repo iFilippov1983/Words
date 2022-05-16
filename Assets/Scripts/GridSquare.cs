@@ -9,6 +9,10 @@ public class GridSquare : MonoBehaviour
     public int SquareIndex { get; set; }
 
     [SerializeField] private GameObject _bodyObject;
+    [SerializeField] private Material _bodyMatNormal;
+    [SerializeField] private Material _bodyMatHighlighted;
+    [SerializeField] private Material _bodyMatWrong;
+    [SerializeField] private Material _bodyMatExtra;
     [SerializeField] private ParticleSystem _highlightedEffect;
     [SerializeField] private ParticleSystem _destroyEffect;
 
@@ -16,10 +20,12 @@ public class GridSquare : MonoBehaviour
     private LetterData _selectedLetterData;
     private LetterData _correctLetterData;
     private SpriteRenderer _displayedSprite;
+    private MeshRenderer _bodyMesh;
     private Animator _animator;
     private Transform _thisTransform;
     private Vector3 _thresholdPoint;
 
+    private int _maxDelay = 1000;
     private int _index = -1;
     private bool _notVisible;
     private bool _isSelected;
@@ -34,6 +40,7 @@ public class GridSquare : MonoBehaviour
     {
         _thresholdPoint = FindObjectOfType<ThresholdView>().transform.position;
         _displayedSprite = GetComponent<SpriteRenderer>();
+        _bodyMesh = _bodyObject.GetComponent<MeshRenderer>();
         _animator = GetComponent<Animator>();
         _thisTransform = gameObject.transform;
 
@@ -68,15 +75,17 @@ public class GridSquare : MonoBehaviour
         CheckGlobalPosition();
     }
 
-    private void CheckGlobalPosition()
+    private async void CheckGlobalPosition()
     {
         if (_thisTransform.position.y < _thresholdPoint.y && _notVisible)
         {
             _animator.SetBool(Literal.AnimBool_isVisible, true);
             _notVisible = false;
+            var delay = Random.Range(0, _maxDelay);
+            await Task.Delay(delay);
+            _animator.SetTrigger(Literal.AnimTrigger_Idle);
         }
     }
-
 
     private void CorrectWord(string word, List<int> squareIndexes)
     {
@@ -84,6 +93,7 @@ public class GridSquare : MonoBehaviour
         {
             _isCorrect = true;
             _displayedSprite.sprite = _correctLetterData.Sprite;
+            _bodyMesh.material = _bodyMatHighlighted;
             _toBeDestroyed = true;
         }
 
