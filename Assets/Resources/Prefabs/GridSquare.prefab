@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3771015850833405466}
   - component: {fileID: 3771015850833405468}
-  - component: {fileID: 3771015850833405467}
   - component: {fileID: 2638639604887004130}
   - component: {fileID: 4616842192161261760}
-  - component: {fileID: 685794401482844359}
   - component: {fileID: 2519559264511169558}
+  - component: {fileID: 685794401482844359}
   m_Layer: 0
   m_Name: GridSquare
   m_TagString: Untagged
@@ -61,57 +60,6 @@ MonoBehaviour:
   _bodyMatExtra: {fileID: 2100000, guid: 94998a62e74f7e341a9b726b8d5cdad1, type: 2}
   _highlightedEffect: {fileID: 4538631040463112226}
   _destroyEffect: {fileID: 4197167632675551815}
---- !u!212 &3771015850833405467
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3771015850833405470}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -1297821949430411114, guid: ccac8f514c8e5df46938b4f1ab821df8, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!65 &2638639604887004130
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -123,8 +71,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.588385, y: 1.6876286, z: 0.8522194}
-  m_Center: {x: 0.011444703, y: 0.26610416, z: 0.43364492}
+  m_Size: {x: 0.6, y: 1.7, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &4616842192161261760
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -141,6 +89,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 2
+--- !u!75 &2519559264511169558
+ConstantForce:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3771015850833405470}
+  m_Enabled: 1
+  m_Force: {x: 0, y: -150, z: 0}
+  m_RelativeForce: {x: 0, y: -150, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}
 --- !u!95 &685794401482844359
 Animator:
   serializedVersion: 3
@@ -160,18 +120,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!75 &2519559264511169558
-ConstantForce:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3771015850833405470}
-  m_Enabled: 1
-  m_Force: {x: 0, y: -200, z: 0}
-  m_RelativeForce: {x: 0, y: -200, z: 0}
-  m_Torque: {x: 0, y: 0, z: 0}
-  m_RelativeTorque: {x: 0, y: 0, z: 0}
 --- !u!1 &6784429489648341360
 GameObject:
   m_ObjectHideFlags: 0
