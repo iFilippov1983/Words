@@ -21,11 +21,7 @@ public class WordCheker : MonoBehaviour
 
     private void OnEnable()
     {
-        _dataProfile.SetUsedExtraWordsList(DataSaver.LoadSavedStringList(UsedWords));
-
-        Debug.Log("Current used extra words list count: " + _dataProfile.UsedExtraWords.Count);
-
-        _currentLevelNotCompleted = true;
+        Init();
 
         GameEvents.OnCheckSquare += SquareSelected;
         GameEvents.OnClearSelection += ClearSelection;
@@ -38,6 +34,31 @@ public class WordCheker : MonoBehaviour
         GameEvents.OnClearSelection -= ClearSelection;
         GameEvents.OnLoadLevel -= LoadNextGameLevel;
 
+        Cleanup();
+    }
+
+    private void Start()
+    {
+        _assignedPoints = 0;
+        _completedWords = 0;
+
+        _wordFinder = new WordFinder(_dictionaries, ' ');
+    }
+
+    private void Init()
+    {
+        _dataProfile.SetUsedExtraWordsList(DataSaver.LoadSavedStringList(UsedWords));
+        Debug.Log("Current used extra words list count: " + _dataProfile.UsedExtraWords.Count);
+
+        _dataProfile.CurrenLevelNumber = DataSaver.LoadIntData(currentGameData.selectedCategoryName) + 1;
+
+        TinySauce.OnGameStarted(_dataProfile.CurrenLevelNumber.ToString());
+
+        _currentLevelNotCompleted = true;
+    }
+
+    private void Cleanup()
+    {
         if (_currentLevelNotCompleted)
         {
             DataSaver.SaveStringDataFromList(UsedWords, _dataProfile.UsedExtraWords);
@@ -51,15 +72,9 @@ public class WordCheker : MonoBehaviour
             Debug.Log("Extra words list data CLEARED");
         }
 
+        TinySauce.OnGameFinished(!_currentLevelNotCompleted, 0f, _dataProfile.CurrenLevelNumber.ToString());
+
         _dataProfile.UsedExtraWords.Clear();
-    }
-
-    private void Start()
-    {
-        _assignedPoints = 0;
-        _completedWords = 0;
-
-        _wordFinder = new WordFinder(_dictionaries, ' ');
     }
 
     private void LoadNextGameLevel()
@@ -170,6 +185,7 @@ public class WordCheker : MonoBehaviour
                         DataSaver.SaveIntData(categoryName, currentBoardIndex);
                     }
 
+                    GameEvents.BoardCompletedMethod(loadNextCategory);
                 }
                 else
                 {
@@ -178,13 +194,12 @@ public class WordCheker : MonoBehaviour
             }
             else
             {
-                GameEvents.BoardCompletedMethod();
+                GameEvents.BoardCompletedMethod(loadNextCategory);
             }
 
             if (loadNextCategory)
             {
                 GameEvents.UnlockNextCategoryMethod();
-                SceneManager.LoadScene(Literal.Scene_SelectCategory);
             }
                 
         }

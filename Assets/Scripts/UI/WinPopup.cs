@@ -1,9 +1,11 @@
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinPopup : MonoBehaviour
 {
     public GameObject winPopup;
+    public bool _categoryCompleted;
 
     void Start()
     {
@@ -20,14 +22,18 @@ public class WinPopup : MonoBehaviour
         GameEvents.OnBoardComleted -= ShowWinPoppup;
     }
 
-    private async void ShowWinPoppup()
+    private async void ShowWinPoppup(bool categoryCompleted)
     {
         await Task.Delay(2500);
         winPopup.SetActive(true);
+        _categoryCompleted = categoryCompleted;
     }
 
     public void LoadNextLevel()
     {
-        GameEvents.LoadNextLevelMethod();
+        if(_categoryCompleted)
+            SceneManager.LoadScene(Literal.Scene_SelectCategory);
+        else
+            GameEvents.LoadNextLevelMethod();
     }
 }
