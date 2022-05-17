@@ -60,15 +60,18 @@ public class DataSaver
 
     public static void ClearGameData(GameLevelData levelData)
     {
-        foreach (var data in levelData.Data)
-        {
-            PlayerPrefs.SetInt(data.CategoryName, -1);
-        }
 
-        foreach (var name in _listNames)
-        { 
-            ClearSavedStringListData(name);
-        }
+        //foreach (var data in levelData.Data)
+        //{
+        //    PlayerPrefs.SetInt(data.CategoryName, -1);
+        //}
+
+        //foreach (var name in _listNames)
+        //{ 
+        //    ClearSavedStringListData(name);
+        //}
+
+        PlayerPrefs.DeleteAll();
         _listNames.Clear();
 
         //Ulock first level
@@ -89,6 +92,8 @@ public class DataSaver
                 string key = listName + index.ToString();
                 PlayerPrefs.DeleteKey(key);
             }
+
+            PlayerPrefs.DeleteKey(listName);
         }
         _countIndex = -1;
         _stringList.Clear();

@@ -10,6 +10,7 @@ public class WordCheker : MonoBehaviour
 
     private const string UsedWords = "UsedWords";
     private string _word;
+    private string _extraWord;
     private int _assignedPoints = 0;
     private int _completedWords = 0;
     private bool _currentLevelNotCompleted;
@@ -26,6 +27,7 @@ public class WordCheker : MonoBehaviour
         GameEvents.OnCheckSquare += SquareSelected;
         GameEvents.OnClearSelection += ClearSelection;
         GameEvents.OnLoadLevel += LoadNextGameLevel;
+        GameEvents.OnGameOver += OnGameOver;
     }
 
     private void OnDisable()
@@ -33,6 +35,7 @@ public class WordCheker : MonoBehaviour
         GameEvents.OnCheckSquare -= SquareSelected;
         GameEvents.OnClearSelection -= ClearSelection;
         GameEvents.OnLoadLevel -= LoadNextGameLevel;
+        GameEvents.OnGameOver -= OnGameOver;
 
         Cleanup();
     }
@@ -77,10 +80,9 @@ public class WordCheker : MonoBehaviour
         _dataProfile.UsedExtraWords.Clear();
     }
 
-    private void LoadNextGameLevel()
-    {
-        SceneManager.LoadScene(Literal.Scene_GameScene);
-    }
+    private void LoadNextGameLevel() => SceneManager.LoadScene(Literal.Scene_GameScene);
+
+    private void OnGameOver() => _currentLevelNotCompleted = false;// Lets player reuse allready used extra words if he've lost
 
     private void SquareSelected(string letter, Vector3 squarePosition, int squareIndex)
     {
@@ -94,7 +96,7 @@ public class WordCheker : MonoBehaviour
             _correctSquareList.Add(squareIndex);
             GameEvents.SelectSquareMethod(squarePosition);
             _word += letter;
-            CheckWord();
+            //CheckWord();
         }
 
         _assignedPoints++;
@@ -115,7 +117,7 @@ public class WordCheker : MonoBehaviour
 
         bool foundExtraWord = _wordFinder.FindWord(_word);
         bool alreadyUsedWord = _dataProfile.UsedExtraWords.Contains(_word);
-
+        
         //Debug.Log($"extra: {foundExtraWord}");
         //Debug.Log($"in List: {alreadyUsedWord}");
 
@@ -123,6 +125,9 @@ public class WordCheker : MonoBehaviour
         {
             GameEvents.OnCorrectExtraWordMethod(_correctSquareList);
             _dataProfile.UsedExtraWords.Add(_word);
+
+            _extraWord = _word;
+            Debug.Log($"Extra word: {_extraWord} is ADDED to list");
         }
 
         //Debug.Log(foundExtraWord ? $"{_word} found" : $"{_word} not found");
@@ -130,9 +135,20 @@ public class WordCheker : MonoBehaviour
 
     private void ClearSelection()
     {
+        CheckWord();
+
         _assignedPoints = 0;
         _correctSquareList.Clear();
+
+        //if (_word.Equals(_extraWord) == false && string.IsNullOrEmpty(_extraWord) == false)
+        //{
+        //    _dataProfile.UsedExtraWords.Remove(_extraWord);
+
+        //    Debug.Log($"Extra word: {_extraWord} is REMOVED from list");
+        //}
+            
         _word = string.Empty;
+        _extraWord = string.Empty;
     }
 
     private void CheckBoardCompleted()
