@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 [Serializable]
 [CreateAssetMenu(fileName = "DataProfile", menuName = "Data/DataProfile")]
 public class DataProfile : ScriptableObject
 {
-    //public int CurrenLevel;
+    public int CurrenLevelNumber;
+
     private List<string> _usedExtraWords = new List<string>();
 
     public List<string> UsedExtraWords => _usedExtraWords;

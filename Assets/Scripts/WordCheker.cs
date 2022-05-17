@@ -23,7 +23,7 @@ public class WordCheker : MonoBehaviour
     {
         _dataProfile.SetUsedExtraWordsList(DataSaver.LoadSavedStringList(UsedWords));
 
-        Debug.Log(_dataProfile.UsedExtraWords.Count);
+        Debug.Log("Current used extra words list count: " + _dataProfile.UsedExtraWords.Count);
 
         _currentLevelNotCompleted = true;
 

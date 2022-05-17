@@ -36,8 +36,6 @@ public class DataSaver
                 string key = listName + index.ToString();
                 _stringList.Add(PlayerPrefs.GetString(key));
             }
-
-            //ClearSavedStringListData(listName);
         }
 
         return _stringList;
@@ -55,7 +53,7 @@ public class DataSaver
             PlayerPrefs.SetString(key, listToSave[index]);
         }
 
-        Debug.Log("Count index " + _countIndex);
+        Debug.Log("Data saver count index " + _countIndex);
 
         PlayerPrefs.Save();
     }
