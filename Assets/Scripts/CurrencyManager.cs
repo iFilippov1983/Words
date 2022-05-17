@@ -20,7 +20,7 @@ namespace Game
      
         private void Start()
         {
-            var loadedCoins = DataSaver.ReadCategoryCurrentIndexValues(coinsKey);
+            var loadedCoins = DataSaver.LoadIntData(coinsKey);
             SetCoins(Mathf.Max(0, loadedCoins));
             
             coinSpawner.CoinArrived += OnCoinArrived;
@@ -33,7 +33,7 @@ namespace Game
 
         private void OnDestroy()
         {
-            DataSaver.SaveCategoryData(coinsKey, Coins);
+            DataSaver.SaveIntData(coinsKey, Coins);
         }
 
         public void SetCoins(int coins)

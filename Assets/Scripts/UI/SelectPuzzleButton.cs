@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -8,10 +6,10 @@ public class SelectPuzzleButton : MonoBehaviour
 {
     public GameData gameData;
     public GameLevelData levelData;
+    public DataProfile dataProfile;
     public Text categoryText;
     public Image progressBarFilling;
     
-    private string _gameSceneName = Literal.Scene_GameScene;
     private bool _levelLocked;
 
     void Start()
@@ -40,13 +38,13 @@ public class SelectPuzzleButton : MonoBehaviour
         {
             if (data.CategoryName.Equals(gameObject.name))
             {
-                currentIndex = DataSaver.ReadCategoryCurrentIndexValues(gameObject.name);
+                currentIndex = DataSaver.LoadIntData(gameObject.name);
                 totalBoards = data.BoardData.Count;
 
                 if (levelData.Data[0].CategoryName.Equals(gameObject.name) && currentIndex < 0)
                 {
-                    DataSaver.SaveCategoryData(levelData.Data[0].CategoryName, 0);//Unlocks first level
-                    currentIndex = DataSaver.ReadCategoryCurrentIndexValues(gameObject.name);
+                    DataSaver.SaveIntData(levelData.Data[0].CategoryName, 0);//Unlocks first level
+                    currentIndex = DataSaver.LoadIntData(gameObject.name);
                     totalBoards = data.BoardData.Count;
                 }
             }
@@ -62,11 +60,13 @@ public class SelectPuzzleButton : MonoBehaviour
         progressBarFilling.fillAmount = (currentIndex > 0 && totalBoards > 0) 
             ? (float)currentIndex / (float) totalBoards 
             : 0f;
+
+        dataProfile.CurrenLevelNumber = currentIndex;
     }
 
     private void OnButtonClick()
     { 
         gameData.selectedCategoryName = gameObject.name;
-        SceneManager.LoadScene(_gameSceneName);
+        SceneManager.LoadScene(Literal.Scene_GameScene);
     }
 }

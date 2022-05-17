@@ -8,6 +8,7 @@ public class GridSquare : MonoBehaviour
 {
     public int SquareIndex { get; set; }
 
+    [SerializeField] private SpriteRenderer _displayedSprite;
     [SerializeField] private GameObject _bodyObject;
     [SerializeField] private Material _bodyMatNormal;
     [SerializeField] private Material _bodyMatHighlighted;
@@ -19,12 +20,13 @@ public class GridSquare : MonoBehaviour
     private LetterData _normalLetterData;
     private LetterData _selectedLetterData;
     private LetterData _correctLetterData;
-    private SpriteRenderer _displayedSprite;
+    
     private MeshRenderer _bodyMesh;
     private Animator _animator;
     private Transform _thisTransform;
     private Vector3 _thresholdPoint;
 
+    private int _showDelay = 1200;
     private int _maxDelay = 1000;
     private int _index = -1;
     private bool _notVisible;
@@ -39,7 +41,6 @@ public class GridSquare : MonoBehaviour
     private void Start()
     {
         _thresholdPoint = FindObjectOfType<ThresholdView>().transform.position;
-        _displayedSprite = GetComponent<SpriteRenderer>();
         _bodyMesh = _bodyObject.GetComponent<MeshRenderer>();
         _animator = GetComponent<Animator>();
         _thisTransform = gameObject.transform;
@@ -70,6 +71,104 @@ public class GridSquare : MonoBehaviour
         GameEvents.OnCorrectExtraWord -= CorrectExtraWord;
     }
 
+    private void OnMouseDown()
+    {
+        GameEvents.EnableSquareSelectionMethod();
+        CheckSquare();
+        _displayedSprite.sprite = _selectedLetterData.Sprite;
+        _bodyMesh.material = _bodyMatHighlighted;
+        _animator.SetBool(Literal.AnimBool_isHighlighted, true);
+    }
+
+    private void OnMouseEnter()
+    {
+        CheckSquare();
+    }
+
+    private void OnMouseExit()
+    {
+
+    }
+
+    private void OnMouseUp()
+    {
+        GameEvents.ClearSelectionMethod();
+        GameEvents.DisableSquareSelectionMethod();
+    }
+
+    public void SetSprite
+       (
+       LetterData normalLetterData,
+       LetterData selectedLetterData,
+       LetterData correctLetterData
+       )
+    {
+        _normalLetterData = normalLetterData;
+        _selectedLetterData = selectedLetterData;
+        _correctLetterData = correctLetterData;
+
+        _displayedSprite.sprite = _normalLetterData.Sprite;
+    }
+
+    public void SetIndex(int index) => _index = index;
+    public int GetIndex() => _index;
+
+    public void OnEnableSquareSelection()
+    {
+        _isClicked = true;
+        _isSelected = false;
+    }
+
+    public void CheckSquare()
+    {
+        if (_isSelected == false && _isClicked)
+        {
+            _highlightedEffect.gameObject.SetActive(true);
+            _highlightedEffect.Play();
+
+            _isSelected = true;
+            GameEvents.CheckSquareMethod(_normalLetterData.Letter, transform.position, _index);
+        }
+    }
+
+    private async void OnDisableSquareSelection()
+    {
+        if (_isCorrect)
+        {
+            _displayedSprite.sprite = _correctLetterData.Sprite;
+            _bodyMesh.material = _bodyMatHighlighted;
+        }
+        else if (_isSelected && !_isInExtraWord)
+        {
+            ShowWrongWord();
+            _displayedSprite.sprite = _normalLetterData.Sprite;
+            _highlightedEffect.gameObject.SetActive(false);
+            _animator.SetBool(Literal.AnimBool_isHighlighted, false);
+        }
+
+        if (_toBeDestroyed && _isCorrect)
+        {
+            _displayedSprite.enabled = false;
+            _bodyObject.gameObject.SetActive(false);
+            _destroyEffect.gameObject.SetActive(true);
+            _destroyEffect.Play();
+            while (_destroyEffect.isPlaying)
+                await Task.Yield();
+
+            Destroy(gameObject);
+        }
+
+        if (_isInExtraWord)
+        {
+            _animator.SetBool(Literal.AnimBool_isHighlighted, false);
+            ShowExtraWord();
+            _isInExtraWord = false;
+        }
+
+        _isSelected = false;
+        _isClicked = false;
+    }
+
     private void FixedUpdate()
     {
         CheckGlobalPosition();
@@ -96,73 +195,34 @@ public class GridSquare : MonoBehaviour
             _bodyMesh.material = _bodyMatHighlighted;
             _toBeDestroyed = true;
         }
-
-        //_isSelected = false;
-        //_isClicked = false;
     }
 
     private void CorrectExtraWord(List<int> squareIndexes)
     {
-
         if (_isSelected && squareIndexes.Contains(_index))
         {
             _isInExtraWord = true;
-            //_displayedSprite.sprite = _correctLetterData.Sprite;
         }
-
-        //_isSelected = false;
-        //_isClicked = false;
     }
 
-    public void SetSprite
-        (
-        LetterData normalLetterData,
-        LetterData selectedLetterData,
-        LetterData correctLetterData
-        )
+    private async void ShowExtraWord()
     {
-        _normalLetterData = normalLetterData;
-        _selectedLetterData = selectedLetterData;
-        _correctLetterData = correctLetterData;
-
-        GetComponent<SpriteRenderer>().sprite = _normalLetterData.Sprite;
+        _bodyMesh.material = _bodyMatExtra;
+        await Task.Delay(_showDelay);
+        if(_bodyMesh != null)
+            _bodyMesh.material = _bodyMatNormal;
     }
 
-    public void SetIndex(int index) => _index = index;
-    public int GetIndex() => _index;
-
-    public void OnEnableSquareSelection()
-    {       
-        _isClicked = true;
-        _isSelected = false;
-    }
-
-    public async void OnDisableSquareSelection()
-    { 
-        _isSelected = false;
-        _isClicked = false;
-
-        if (_isCorrect)// || _isInExtraWord)
+    private async void ShowWrongWord()
+    {
+        _bodyMesh.material = _bodyMatWrong;
+        _animator.SetBool(Literal.AnimBool_isWrong, true);
+        await Task.Delay(_showDelay);
+        if (_bodyMesh != null)
         {
-            _displayedSprite.sprite = _correctLetterData.Sprite;
-        }
-        else
-        {
-            _displayedSprite.sprite = _normalLetterData.Sprite;
-            _highlightedEffect.gameObject.SetActive(false);
-        }
-
-        if (_toBeDestroyed && _isCorrect)
-        {
-            _displayedSprite.enabled = false;
-            _bodyObject.gameObject.SetActive(false);
-            _destroyEffect.gameObject.SetActive(true);
-            _destroyEffect.Play();
-            while(_destroyEffect.isPlaying)
-                await Task.Yield();
-
-            Destroy(gameObject);
-        }
+            _bodyMesh.material = _bodyMatNormal;
+            _animator.SetBool(Literal.AnimBool_isWrong, false);
+        } 
     }
 
     private void OnSelectSquare(Vector3 position)
@@ -170,42 +230,8 @@ public class GridSquare : MonoBehaviour
         if (this.gameObject.transform.position == position)
         {
             _displayedSprite.sprite = _selectedLetterData.Sprite;
-        }
-            
-    }
-
-    private void OnMouseDown()
-    {
-        GameEvents.EnableSquareSelectionMethod();
-        CheckSquare();
-        _displayedSprite.sprite = _selectedLetterData.Sprite;
-    }
-
-    private void OnMouseEnter()
-    {
-        CheckSquare();
-    }
-
-    private void OnMouseExit()
-    {
-        
-    }
-
-    private void OnMouseUp()
-    {
-        GameEvents.ClearSelectionMethod();
-        GameEvents.DisableSquareSelectionMethod();
-    }
-
-    public void CheckSquare()
-    {
-        if (_isSelected == false && _isClicked)
-        {
-            _highlightedEffect.gameObject.SetActive(true);
-            _highlightedEffect.Play();
-
-            _isSelected = true;
-            GameEvents.CheckSquareMethod(_normalLetterData.Letter, transform.position, _index);
-        }
+            _bodyMesh.material = _bodyMatHighlighted;
+            _animator.SetBool(Literal.AnimBool_isHighlighted, true);
+        } 
     }
 }

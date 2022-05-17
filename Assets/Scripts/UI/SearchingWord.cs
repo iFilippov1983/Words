@@ -10,6 +10,7 @@ public class SearchingWord : MonoBehaviour
     public Image crossLine;
 
     private string _word;
+    public string Word => _word;
 
     void Start()
     {
@@ -42,11 +43,11 @@ public class SearchingWord : MonoBehaviour
         }
     }
 
-    private void CorrectWord(string word, List<int> squareIndexes)
-    {
-        if (word.Equals(_word))
-        {
-            crossLine.gameObject.SetActive(true);
-        }
-    }
+    //private void CorrectWord(string word, List<int> squareIndexes)
+    //{
+    //    if (word.Equals(_word))
+    //    {
+    //        crossLine.gameObject.SetActive(true);
+    //    }
+    //}
 }

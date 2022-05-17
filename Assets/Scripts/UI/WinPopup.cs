@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -24,7 +22,7 @@ public class WinPopup : MonoBehaviour
 
     private async void ShowWinPoppup()
     {
-        await Task.Delay(2000);
+        await Task.Delay(2500);
         winPopup.SetActive(true);
     }
 
