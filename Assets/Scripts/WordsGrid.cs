@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +7,8 @@ public class WordsGrid : MonoBehaviour
     public GameObject gridSquarePrefab;
     public AlphabetData alphabetData;
 
-    public float squareOffset = 0.0f;
+    public float squareOffsetX = 0.0f;
+    public float squareOffsetY = 0.0f;
     public float topPosition;
     public Transform floorTransform;
 
@@ -37,12 +37,12 @@ public class WordsGrid : MonoBehaviour
 
     private void SetSquaresPosition()
     {
-        Rect squareRect = _squareList[0].GetComponent<SpriteRenderer>().sprite.rect;
+        Rect squareRect = _squareList[0].GetComponentInChildren<SpriteRenderer>().sprite.rect;
         Transform squareTransform = _squareList[0].GetComponent<Transform>();
         Vector2 offset = new Vector2
         {
-            x = (squareRect.width * squareTransform.localScale.x + squareOffset) * 0.01f,
-            y = (squareRect.height * squareTransform.localScale.y + squareOffset) * 0.01f
+            x = (squareRect.width * squareTransform.localScale.x + squareOffsetX) * 0.01f,
+            y = (squareRect.height * squareTransform.localScale.y + squareOffsetY) * 0.01f
         };
 
         var startPosition = GetFirstSquarePosition();
@@ -67,7 +67,7 @@ public class WordsGrid : MonoBehaviour
     private Vector2 GetFirstSquarePosition()
     {
         var startPosition = new Vector2(0f, transform.position.y);
-        var squareRect = _squareList[0].GetComponent<SpriteRenderer>().sprite.rect;
+        var squareRect = _squareList[0].GetComponentInChildren<SpriteRenderer>().sprite.rect;
         var squareTransform = _squareList[0].GetComponent<Transform>();
         var squareSize = new Vector2(0f, 0f);
 
@@ -163,12 +163,12 @@ public class WordsGrid : MonoBehaviour
 
     private bool ShouldScaleDown(Vector3 targetScale)
     { 
-        Rect squareRect = gridSquarePrefab.GetComponent<SpriteRenderer>().sprite.rect;
+        Rect squareRect = gridSquarePrefab.GetComponentInChildren<SpriteRenderer>().sprite.rect;
         var squareSize = new Vector2(0f, 0f);
         var startPosition = new Vector2(0f, 0f);
 
-        squareSize.x = (squareRect.width * targetScale.x) + squareOffset;
-        squareSize.y = (squareRect.height * targetScale.y) + squareOffset;
+        squareSize.x = (squareRect.width * targetScale.x) + squareOffsetX;
+        squareSize.y = (squareRect.height * targetScale.y) + squareOffsetY;
 
         float midWidthPosition = ((currentGameData.selectedBoardData.Columns * squareSize.x) / 2) * 0.01f;
         float midWidthHeight = ((currentGameData.selectedBoardData.Rows * squareSize.y) / 2) * 0.01f;
