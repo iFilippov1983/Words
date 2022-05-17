@@ -2,23 +2,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Game
 {
-    public class WordAnimation: MonoBehaviour
+    public class WordAnimation : MonoBehaviour
     {
         public static Action<SearchingWord> LetterReachedSearchingWord;
-        [SerializeField] private float moveInterval;
-        [SerializeField] private float firstLetterFlySpeed;
-        [SerializeField] private float letterFollowSpeed;
-        [SerializeField] private float endScaleSpeed;
-        [SerializeField] private AnimationCurve scaleCurve;
         [SerializeField] private AnimationCurve timeCurve;
-        private WaitForSeconds moveStartInterval;
+        [Space] [SerializeField] private float moveInterval;
+        [SerializeField] private float endScalingDelay;
+        [Space] [SerializeField] private float firstLetterFlySpeed;
+        [SerializeField] private float letterFollowSpeed;
+        [Space] [SerializeField] private float endScaleSpeed;
+        [SerializeField] private AnimationCurve scaleCurve;
+        [Space] [SerializeField] private float resizeSpeed;
+        [SerializeField] private AnimationCurve resizeCurve;
+        [SerializeField] private Vector3 endLetterSize;
+        
+        private WaitForSeconds moveIntervalWfs;
+        private WaitForSeconds endScalingDelayFirstWfs;
+        private WaitForSeconds endScalingDelayWfs;
 
         private void Start()
         {
-            moveStartInterval = new WaitForSeconds(moveInterval);
+            moveIntervalWfs = new WaitForSeconds(moveInterval);
+            endScalingDelayWfs = new WaitForSeconds(endScalingDelay);
+            endScalingDelayFirstWfs = new WaitForSeconds(endScalingDelay + 0.2f);
         }
 
         private void OnDestroy()
@@ -31,31 +41,49 @@ namespace Game
             StartCoroutine(StartAnimation(letters, searchingWord));
         }
 
-        private IEnumerator StartAnimation(List<GameObject> letters,  SearchingWord searchingWord)
+        private IEnumerator StartAnimation(List<GameObject> letters, SearchingWord searchingWord)
         {
             Transform moveTarget = null;
 
             foreach (var letter in letters)
                 letter.SetActive(true);
+            
+            var endPositions = GetLettersEndPosition(
+                searchingWord.transform.position,
+                letters.Count,
+                endLetterSize.x / 2f);
 
-            foreach (var letter in letters)
+            for (var i = 0; i < letters.Count; i++)
             {
-                StartCoroutine(MoveLetter(letter.transform, moveTarget, searchingWord));
-
+                var letter = letters[i];
+             
+                StartCoroutine(Animate(letter.transform, moveTarget, endPositions[i], searchingWord));
+           
                 moveTarget = letter.transform;
 
-                yield return moveStartInterval;
+                yield return moveIntervalWfs;
             }
         }
 
-        private IEnumerator MoveLetter(Transform letter, Transform targetLetter,SearchingWord searchingWord)
-        {
-            if (targetLetter == null)
-                yield return MoveLetterToPosition(letter, searchingWord.transform.position);
-            else
-                yield return MoveLetterToTarget(letter, targetLetter);
 
-            yield return HideLetter(letter);
+        private IEnumerator Animate(Transform letter, Transform targetLetter, Vector3 endPosition, SearchingWord searchingWord)
+        {
+            StartCoroutine(Rescale(letter, endLetterSize, resizeSpeed, resizeCurve));
+
+            if (targetLetter == null)
+            {
+                yield return MoveToPosition(letter, endPosition, firstLetterFlySpeed, timeCurve);
+                yield return endScalingDelayFirstWfs;
+            }
+            else
+            {
+                yield return MoveToTarget(letter, targetLetter);
+                yield return MoveToPosition(letter, endPosition, firstLetterFlySpeed * 6f);
+                yield return endScalingDelayWfs;
+            }
+
+            yield return ScaleToZero(letter, endScaleSpeed, scaleCurve);
+
 
             LetterReachedSearchingWord?.Invoke(searchingWord);
             GameEvents.WordGetTargetMethod(searchingWord.Word);
@@ -63,17 +91,19 @@ namespace Game
             Destroy(letter.gameObject);
         }
 
-        private IEnumerator MoveLetterToTarget(Transform letter, Transform target)
+        private IEnumerator MoveToTarget(Transform letter, Transform target)
         {
             var lastTargetPos = target.position;
             var travelPercent = 0f;
+            var initialPercentOffset = 0.25f;
 
-            while (Vector3.Distance(letter.position, lastTargetPos) > 0.05f)
+            while (Vector3.Distance(letter.position, lastTargetPos) > 0.85f || travelPercent < 0.8f)
             {
-                letter.position = Vector3.Lerp(
-                    letter.position,
-                    lastTargetPos,
-                    Time.deltaTime * (travelPercent * letterFollowSpeed));
+                var speed = Time.deltaTime *
+                            (travelPercent * letterFollowSpeed *
+                             timeCurve.Evaluate(travelPercent + initialPercentOffset));
+
+                letter.position = Vector3.Lerp(letter.position, lastTargetPos, speed);
 
                 travelPercent += firstLetterFlySpeed * Time.deltaTime;
 
@@ -84,35 +114,85 @@ namespace Game
             }
         }
 
-        private IEnumerator MoveLetterToPosition(Transform letter, Vector3 position)
+        private static IEnumerator MoveToPosition(Transform target, Vector3 position, float speed, AnimationCurve curve)
         {
-            var lettersStartPosition = letter.position;
+            var startPosition = target.position;
             var travelPercent = 0f;
 
             while (travelPercent < 1)
             {
-                letter.position = Vector3.Lerp(
-                    lettersStartPosition,
+                target.position = Vector3.Lerp(
+                    startPosition,
                     position,
-                    timeCurve.Evaluate(travelPercent));
+                    curve.Evaluate(travelPercent));
 
-                travelPercent += firstLetterFlySpeed * Time.deltaTime;
+                travelPercent += speed * Time.deltaTime;
 
                 yield return null;
             }
         }
 
-        private IEnumerator HideLetter(Transform letter)
+        private static IEnumerator MoveToPosition(Transform target, Vector3 position, float speed)
         {
-            var percent = 0f;
-            var defaultScale = letter.localScale;
+            var lettersStartPosition = target.position;
+            var travelPercent = 0f;
 
-            while (percent < 1f)
+            while (travelPercent <= 1)
             {
-                percent += endScaleSpeed * Time.deltaTime;
-                letter.localScale = defaultScale * scaleCurve.Evaluate(percent);
+                target.position = Vector3.Lerp(
+                    lettersStartPosition,
+                    position,
+                    travelPercent);
+
+                travelPercent += speed * Time.deltaTime;
+
                 yield return null;
             }
+        }
+        
+        private static IEnumerator Rescale(Transform target, Vector3 targetScale, float speed, AnimationCurve curve)
+        {
+            var percent = 0f;
+            var startScale = target.localScale;
+            while (percent < 1f)
+            {
+                percent += speed * Time.deltaTime;
+                target.localScale = Vector3.Lerp(startScale, targetScale, curve.Evaluate(percent));
+                yield return null;
+            }
+        }
+
+        private static IEnumerator ScaleToZero(Transform letter, float speed, AnimationCurve curve)
+        {
+            var percent = 0f;
+            var startScale = letter.localScale;
+
+            while (percent <= 1f)
+            {
+                percent += speed * Time.deltaTime;
+                letter.localScale = startScale * curve.Evaluate(percent);
+                yield return null;
+            }
+        }
+
+        private static Vector3[] GetLettersEndPosition(Vector3 endPosition, int letterCount, float letterSpacing)
+        {
+            var positions = new Vector3[letterCount];
+
+            for (var i = 0; i < positions.Length; i++)
+                positions[i] = endPosition + Vector3.right * (i * letterSpacing);
+
+            var center = Vector3.Lerp(
+                positions[0],
+                positions[positions.Length - 1],
+                0.5f);
+
+            var centerOffset = positions[0] - center;
+
+            for (var i = 0; i < positions.Length; i++)
+                positions[i] += centerOffset;
+
+            return positions;
         }
     }
 }

@@ -30,6 +30,7 @@ public class Timer : MonoBehaviour
         GameEvents.OnUnlockNextCategory -= StopTimer;
     }
 
+    public void StopTimer(bool categoryCompleted) => _stopTimer = true;
     public void StopTimer() => _stopTimer = true;
 
     private void Update()

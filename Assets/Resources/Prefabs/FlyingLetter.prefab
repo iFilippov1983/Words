@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3991070488075891891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 2448139677623652102}
   m_Father: {fileID: 0}
@@ -164,7 +164,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.89123154
+        value: 0.6617813
         inSlope: -0.56140363
         outSlope: -0.56140363
         tangentMode: 0
@@ -185,7 +185,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.8640194, b: 1, a: 0.5529412}
+      key0: {r: 0, g: 0.8640194, b: 1, a: 0.32941177}
       key1: {r: 0, g: 0.72122526, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -218,6 +218,6 @@ TrailRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0
   m_Autodestruct: 0
   m_Emitting: 1

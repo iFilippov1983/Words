@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameOverPopup : MonoBehaviour
 {
     public GameObject gameOverPopup;
+    public GameObject continueGameForCoins;
     public GameObject continueGameAfterAdsButton;
 
     private void Start()
@@ -24,6 +23,7 @@ public class GameOverPopup : MonoBehaviour
     private void ShowGameOverPopup()
     {
         gameOverPopup.SetActive(true);
+        //continueGameForCoins.GetComponent<Button>().interactable = true;
         continueGameAfterAdsButton.GetComponent <Button>().interactable = false;
     }
 }

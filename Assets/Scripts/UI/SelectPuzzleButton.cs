@@ -60,8 +60,6 @@ public class SelectPuzzleButton : MonoBehaviour
         progressBarFilling.fillAmount = (currentIndex > 0 && totalBoards > 0) 
             ? (float)currentIndex / (float) totalBoards 
             : 0f;
-
-        dataProfile.CurrenLevelNumber = currentIndex;
     }
 
     private void OnButtonClick()

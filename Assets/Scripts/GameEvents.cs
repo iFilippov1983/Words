@@ -67,12 +67,12 @@ public static class GameEvents
     }
     //************
 
-    public delegate void BoardComleted();
+    public delegate void BoardComleted(bool categoryCompleted);
     public static event BoardComleted OnBoardComleted;
 
-    public static void BoardCompletedMethod()
+    public static void BoardCompletedMethod(bool categoryCompleted)
     {
-        OnBoardComleted?.Invoke();
+        OnBoardComleted?.Invoke(categoryCompleted);
     }
     //************
 
