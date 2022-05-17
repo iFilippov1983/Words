@@ -54,7 +54,12 @@ namespace Game
         private void OnDisableSquareSelection()
         {
             if (!isCorrectWordFound)
+            {
+                foreach (var letter in letters)
+                    Destroy(letter.gameObject);
+
                 return;
+            }
             
             wordAnimation.Play(new List<GameObject>(letters), GetSearchingWord(correctWord));
             correctWord = string.Empty;
