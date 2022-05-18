@@ -557,8 +557,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 00:00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dd5fe92165d2c894f8c24a8c5adcdd72, type: 2}
+  m_sharedMaterial: {fileID: 1180072795380844779, guid: dd5fe92165d2c894f8c24a8c5adcdd72, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1658,7 +1658,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7075613758478519190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10, y: 262, z: 5}
+  m_LocalPosition: {x: -2, y: 262, z: 23}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 3978727359637190192}
@@ -1705,7 +1705,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -150
   m_Sprite: {fileID: 21300000, guid: f29f57419d021874b9f0db7063c79b28, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.16862746}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.13333334}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -2091,8 +2091,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 97d0b8d8b5b5a474397d00ed34acca2f, type: 2}
+  m_sharedMaterial: {fileID: 8513649197584094351, guid: 97d0b8d8b5b5a474397d00ed34acca2f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2328,7 +2328,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.26, y: 8.1}
+  m_AnchoredPosition: {x: -3.182, y: 8.015999}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7770522330031551737
@@ -2346,7 +2346,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7770522330031551733}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -2566,7 +2566,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &7770522330857194144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2637,7 +2637,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7770522331046985938}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -2727,8 +2727,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LEVEL
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 97d0b8d8b5b5a474397d00ed34acca2f, type: 2}
+  m_sharedMaterial: {fileID: 8513649197584094351, guid: 97d0b8d8b5b5a474397d00ed34acca2f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2897,6 +2897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverPopup: {fileID: 82053804939834724}
+  continueGameForCoins: {fileID: 0}
   continueGameAfterAdsButton: {fileID: 4269061965797916540}
 --- !u!1 &8140277868576771914
 GameObject:
@@ -3234,8 +3235,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8982760314313023921}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 278, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalPosition: {x: 0, y: 267, z: 0}
+  m_LocalScale: {x: 100.00001, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 3978727359637190192}
   m_RootOrder: 0
@@ -3280,12 +3281,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -150
-  m_Sprite: {fileID: 21300000, guid: f29f57419d021874b9f0db7063c79b28, type: 3}
-  m_Color: {r: 1, g: 0.4784314, b: 0, a: 1}
+  m_Sprite: {fileID: 829543524816325172, guid: aca197d43e5f5c54cbbd32867d0bbf99, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 110, y: 22.2}
+  m_Size: {x: 10.73, y: 2.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3337,6 +3338,18 @@ PrefabInstance:
     - target: {fileID: 7056492549971628614, guid: 05c0245064c39354cabf67ba8c8272f2, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056492549971628614, guid: 05c0245064c39354cabf67ba8c8272f2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.540711
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056492549971628614, guid: 05c0245064c39354cabf67ba8c8272f2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.540711
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056492549971628614, guid: 05c0245064c39354cabf67ba8c8272f2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.540711
       objectReference: {fileID: 0}
     - target: {fileID: 7056492549971628614, guid: 05c0245064c39354cabf67ba8c8272f2, type: 3}
       propertyPath: m_LocalPosition.x
