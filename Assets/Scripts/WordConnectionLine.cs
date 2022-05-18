@@ -14,6 +14,7 @@ namespace Game
         private Camera _camera;
         private bool canUpdate;
         private LineRenderer lastLine => lines.Peek();
+        private int lastPointIndex => lastLine.positionCount - 1;
         private void Start()
         {
             _camera = Camera.main;
@@ -30,12 +31,13 @@ namespace Game
 
         private void OnSelectSquare(string letter, Vector3 position, int index)
         {
+            // on first selection
             if (canUpdate == false)
                 AddLinePosition(position + selectedPointOffset);
 
             canUpdate = true;
 
-            lastLine.SetPosition(1, position + selectedPointOffset);
+            lastLine.SetPosition(lastPointIndex, position + selectedPointOffset);
             AddLinePosition(position + selectedPointOffset);
         }
 
@@ -46,11 +48,11 @@ namespace Game
 
             if (Input.GetMouseButton(0))
             {
-                var mousePos = Input.mousePosition;
-                mousePos.z = distanceToCamera;
+                var mousePosition = Input.mousePosition;
+                mousePosition.z = distanceToCamera;
 
-                var lineEndPos = _camera.ScreenToWorldPoint(mousePos);
-                lastLine.SetPosition(1, lineEndPos);
+                var lineEndPosition = _camera.ScreenToWorldPoint(mousePosition);
+                lastLine.SetPosition(lastPointIndex, lineEndPosition);
             }
 
             if (Input.GetMouseButtonUp(0))
@@ -66,6 +68,7 @@ namespace Game
             {
                 line.positionCount = 0;
                 line.gameObject.SetActive(false);
+                
                 despawnedLines.Push(line);
             }
             
@@ -81,7 +84,7 @@ namespace Game
             line.gameObject.SetActive(true);
             line.positionCount = 2;
 
-            for (int i = 0; i < line.positionCount; i++)
+            for (var i = 0; i < line.positionCount; i++)
                 line.SetPosition(i, position);
             
             lines.Push(line);
