@@ -96,7 +96,6 @@ public class WordCheker : MonoBehaviour
             _correctSquareList.Add(squareIndex);
             GameEvents.SelectSquareMethod(squarePosition);
             _word += letter;
-            //CheckWord();
         }
 
         _assignedPoints++;
