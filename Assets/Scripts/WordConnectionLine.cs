@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,14 +5,15 @@ namespace Game
 {
     public class WordConnectionLine : MonoBehaviour
     {
+        [SerializeField] private GameObject linePrefab;
         [SerializeField] private float distanceToCamera;
         [SerializeField] private Vector3 selectedPointOffset;
-        [SerializeField] private LineRenderer _lineRenderer;
+        private readonly Stack<LineRenderer> despawnedLines = new Stack<LineRenderer>();
+        private readonly Stack<LineRenderer> lines = new Stack<LineRenderer>();
+       
         private Camera _camera;
         private bool canUpdate;
-
-        private int lineEndPositionIndex => _lineRenderer.positionCount - 1;
-
+        private LineRenderer lastLine => lines.Peek();
         private void Start()
         {
             _camera = Camera.main;
@@ -32,27 +31,26 @@ namespace Game
         private void OnSelectSquare(string letter, Vector3 position, int index)
         {
             if (canUpdate == false)
-                AddLinePosition(position);
-            
-            canUpdate = true;
-            
-            _lineRenderer.SetPosition(lineEndPositionIndex, position + selectedPointOffset);
+                AddLinePosition(position + selectedPointOffset);
 
-            AddLinePosition(position);
+            canUpdate = true;
+
+            lastLine.SetPosition(1, position + selectedPointOffset);
+            AddLinePosition(position + selectedPointOffset);
         }
 
         private void Update()
         {
             if (!canUpdate)
                 return;
-            
+
             if (Input.GetMouseButton(0))
             {
                 var mousePos = Input.mousePosition;
                 mousePos.z = distanceToCamera;
 
                 var lineEndPos = _camera.ScreenToWorldPoint(mousePos);
-                _lineRenderer.SetPosition(lineEndPositionIndex, lineEndPos);
+                lastLine.SetPosition(1, lineEndPos);
             }
 
             if (Input.GetMouseButtonUp(0))
@@ -64,13 +62,29 @@ namespace Game
 
         private void ResetLinePositionCount()
         {
-            _lineRenderer.positionCount = 0;
+            foreach (var line in lines)
+            {
+                line.positionCount = 0;
+                line.gameObject.SetActive(false);
+                despawnedLines.Push(line);
+            }
+            
+            lines.Clear();
         }
 
         private void AddLinePosition(Vector3 position)
         {
-            _lineRenderer.positionCount += 1;
-            _lineRenderer.SetPosition(lineEndPositionIndex, position);
+            var line = despawnedLines.Count == 0
+                ? Instantiate(linePrefab, transform).GetComponent<LineRenderer>()
+                : despawnedLines.Pop();
+            
+            line.gameObject.SetActive(true);
+            line.positionCount = 2;
+
+            for (int i = 0; i < line.positionCount; i++)
+                line.SetPosition(i, position);
+            
+            lines.Push(line);
         }
     }
 }
