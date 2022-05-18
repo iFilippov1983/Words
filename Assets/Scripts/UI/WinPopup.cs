@@ -1,3 +1,4 @@
+using Lofelt.NiceVibrations;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class WinPopup : MonoBehaviour
 {
     public GameObject winPopup;
+    public GameObject messageField;
     public bool _categoryCompleted;
 
     void Start()
@@ -29,11 +31,29 @@ public class WinPopup : MonoBehaviour
         _categoryCompleted = categoryCompleted;
     }
 
-    public void LoadNextLevel()
+    public async void LoadNextLevel()
     {
-        if(_categoryCompleted)
-            SceneManager.LoadScene(Literal.Scene_SelectCategory);
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+        Debug.Log("[Haptic] WinPopup - LoadNextLevel");
+
+        if (_categoryCompleted)
+        {
+            await ShowMessage();
+            SceneManager.LoadScene(Literal.Scene_MainMenu);
+            //SceneManager.LoadScene(Literal.Scene_SelectCategory);// Comment previous two lines of code and comment this line out if category selection avalable
+        }
         else
             GameEvents.LoadNextLevelMethod();
+    }
+
+    private async Task ShowMessage()
+    {
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.MediumImpact);
+        Debug.Log("[Haptic] WinPopup - ShowMessage");
+
+        var animation = messageField.GetComponent<Animation>();
+        animation.Play();
+        while (animation.isPlaying)
+            await Task.Yield();
     }
 }

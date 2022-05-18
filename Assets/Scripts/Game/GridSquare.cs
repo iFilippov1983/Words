@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -73,6 +72,9 @@ public class GridSquare : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (_notVisible) 
+            return;
+
         GameEvents.EnableSquareSelectionMethod();
         CheckSquare();
         _displayedSprite.sprite = _selectedLetterData.Sprite;
@@ -82,6 +84,9 @@ public class GridSquare : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        if (_notVisible) 
+            return;
+
         CheckSquare();
     }
 
@@ -94,6 +99,11 @@ public class GridSquare : MonoBehaviour
     {
         GameEvents.ClearSelectionMethod();
         GameEvents.DisableSquareSelectionMethod();
+    }
+
+    private void FixedUpdate()
+    {
+        CheckGlobalPosition();
     }
 
     public void SetSprite
@@ -169,11 +179,6 @@ public class GridSquare : MonoBehaviour
         _isClicked = false;
     }
 
-    private void FixedUpdate()
-    {
-        CheckGlobalPosition();
-    }
-
     private async void CheckGlobalPosition()
     {
         if (_thisTransform.position.y < _thresholdPoint.y && _notVisible)
@@ -234,4 +239,6 @@ public class GridSquare : MonoBehaviour
             _animator.SetBool(Literal.AnimBool_isHighlighted, true);
         } 
     }
+
+
 }

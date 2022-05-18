@@ -184,6 +184,7 @@ public class WordCheker : MonoBehaviour
             if (currentBoardIndex < currentCategorySize)
                 currentBoardIndex++;
 
+            Debug.Log($"Category: {categoryName}; Board index: {currentBoardIndex}");
             DataSaver.SaveIntData(categoryName, currentBoardIndex);
 
             //Unlock next category
@@ -203,10 +204,10 @@ public class WordCheker : MonoBehaviour
 
                     GameEvents.BoardCompletedMethod(loadNextCategory);
                 }
-                else
-                {
-                    SceneManager.LoadScene(Literal.Scene_SelectCategory);
-                }
+                //else 
+                //{
+                //    SceneManager.LoadScene(Literal.Scene_SelectCategory);
+                //}
             }
             else
             {

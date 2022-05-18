@@ -1,6 +1,5 @@
+using Lofelt.NiceVibrations;
 using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,13 +9,24 @@ public class GameUtility : MonoBehaviour
     [SerializeField] private GameLevelData _levelData;
     [SerializeField] private DataProfile _dataProfile;
 
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
+
     public void LoadScene(string sceneName)
     {
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+        Debug.Log("[Haptic] GameUtility - LoadScene");
+
         SceneManager.LoadScene(sceneName);
     }
 
     public void CloseApplication()
-    { 
+    {
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+        Debug.Log("[Haptic] GameUtility - CloseApplication");
+
         Application.Quit();
 
 #if UNITY_EDITOR
@@ -30,4 +40,16 @@ public class GameUtility : MonoBehaviour
         DataSaver.ClearGameData(_levelData);
         _dataProfile.UsedExtraWords.Clear();
     }
+
+    // Haptic types
+    //
+    // Selection : a light vibration on Android, and a light impact on iOS
+    // Success : a light then heavy vibration on Android, and a success impact on iOS
+    // Warning : a heavy then medium vibration on Android, and a warning impact on iOS
+    // Failure : a medium / heavy / heavy / light vibration pattern on Android, and a failure impact on iOS
+    // Light : a light impact on iOS and a short and light vibration on Android.
+    // Medium : a medium impact on iOS and a medium and regular vibration on Android
+    // Heavy : a heavy impact on iOS and a long and heavy vibration on Android
+    // Rigid : a short and hard impact
+    // Soft : a slightly longer and softer impact
 }

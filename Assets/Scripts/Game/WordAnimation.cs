@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lofelt.NiceVibrations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -84,7 +85,6 @@ namespace Game
 
             yield return ScaleToZero(letter, endScaleSpeed, scaleCurve);
 
-
             LetterReachedSearchingWord?.Invoke(searchingWord);
             GameEvents.WordGetTargetMethod(searchingWord.Word);
 
@@ -132,6 +132,9 @@ namespace Game
             }
 
             target.position = position;
+
+            HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+            Debug.Log("[Haptic] WordAnimation - Animate[MoveToPosition]");
         }
 
         private static IEnumerator MoveToPosition(Transform target, Vector3 position, float speed)
@@ -152,6 +155,9 @@ namespace Game
             }
 
             target.position = position;
+
+            HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+            Debug.Log("[Haptic] WordAnimation - Animate[MoveToPosition 2]");
         }
         
         private static IEnumerator Rescale(Transform target, Vector3 targetScale, float speed, AnimationCurve curve)

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using Lofelt.NiceVibrations;
 
 public class GameOverPopup : MonoBehaviour
 {
@@ -63,6 +64,9 @@ public class GameOverPopup : MonoBehaviour
 
     private async void ShowMessage()
     {
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.MediumImpact);
+        Debug.Log("[Haptic] GameOverPopup - ShowMessage");
+
         var animation = messageField.GetComponent<Animation>();
         animation.Play();
         while(animation.isPlaying)

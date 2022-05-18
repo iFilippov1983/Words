@@ -1,4 +1,4 @@
-using System;
+using Lofelt.NiceVibrations;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,6 +36,9 @@ public static class GameEvents
 
     public static void CheckSquareMethod(string letter, Vector3 squarePosition, int squareIndex)
     {
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+        Debug.Log("[Haptic] GameEvents - CheckSquareMethod");
+
         OnCheckSquare?.Invoke(letter, squarePosition, squareIndex);
     }
     //************
@@ -53,7 +56,10 @@ public static class GameEvents
     public static event CorrectWord OnCorrectWord;
 
     public static void CorrectWordMethod(string word, List<int> squareIndexes)
-    { 
+    {
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+        Debug.Log("[Haptic] GameEvents - CorrectWordMethod");
+
         OnCorrectWord?.Invoke(word, squareIndexes);
     }
     //************
@@ -62,7 +68,10 @@ public static class GameEvents
     public static event CorrectExtraWord OnCorrectExtraWord;
 
     public static void OnCorrectExtraWordMethod(List<int> squareIndexes)
-    { 
+    {
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+        Debug.Log("[Haptic] GameEvents - OnCorrectExtraWordMethod");
+
         OnCorrectExtraWord?.Invoke(squareIndexes);
     }
     //************
