@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Easy_14
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 6
+  Rows: 17
+  Board:
+  - Size: 17
+    Row:
+    - Q
+    - G
+    - L
+    - O
+    - D
+    - C
+    - L
+    - P
+    - A
+    - N
+    - Q
+    - K
+    - K
+    - N
+    - G
+    - T
+    - E
+  - Size: 17
+    Row:
+    - Q
+    - T
+    - C
+    - C
+    - I
+    - X
+    - W
+    - M
+    - E
+    - P
+    - J
+    - G
+    - Z
+    - I
+    - P
+    - T
+    - S
+  - Size: 17
+    Row:
+    - R
+    - K
+    - V
+    - F
+    - U
+    - P
+    - L
+    - A
+    - Y
+    - J
+    - O
+    - K
+    - W
+    - O
+    - C
+    - D
+    - B
+  - Size: 17
+    Row:
+    - C
+    - R
+    - Y
+    - M
+    - I
+    - B
+    - U
+    - Z
+    - P
+    - Z
+    - L
+    - O
+    - T
+    - B
+    - B
+    - K
+    - U
+  - Size: 17
+    Row:
+    - M
+    - A
+    - T
+    - J
+    - R
+    - T
+    - I
+    - C
+    - T
+    - U
+    - K
+    - U
+    - M
+    - P
+    - Z
+    - E
+    - R
+  - Size: 17
+    Row:
+    - Q
+    - A
+    - I
+    - F
+    - P
+    - N
+    - W
+    - I
+    - N
+    - D
+    - J
+    - O
+    - W
+    - J
+    - O
+    - N
+    - N
+  SearchingWords:
+  - Word: JUMP
+  - Word: KICK
+  - Word: BURN
+  - Word: LOOK
+  - Word: PLAY
+  - Word: WIND
+  - Word: ZONE
+  - Word: TEST

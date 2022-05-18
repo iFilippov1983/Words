@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Easy_08
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 6
+  Rows: 14
+  Board:
+  - Size: 14
+    Row:
+    - T
+    - J
+    - F
+    - R
+    - H
+    - K
+    - X
+    - W
+    - F
+    - A
+    - S
+    - T
+    - B
+    - I
+  - Size: 14
+    Row:
+    - R
+    - Z
+    - K
+    - S
+    - H
+    - B
+    - A
+    - G
+    - Q
+    - I
+    - E
+    - U
+    - D
+    - M
+  - Size: 14
+    Row:
+    - H
+    - B
+    - P
+    - M
+    - O
+    - M
+    - X
+    - O
+    - E
+    - X
+    - I
+    - B
+    - B
+    - A
+  - Size: 14
+    Row:
+    - Z
+    - T
+    - G
+    - G
+    - W
+    - E
+    - R
+    - L
+    - T
+    - L
+    - O
+    - F
+    - O
+    - G
+  - Size: 14
+    Row:
+    - L
+    - B
+    - R
+    - I
+    - U
+    - P
+    - V
+    - D
+    - D
+    - N
+    - L
+    - I
+    - X
+    - E
+  - Size: 14
+    Row:
+    - Z
+    - B
+    - E
+    - A
+    - X
+    - E
+    - P
+    - T
+    - X
+    - L
+    - O
+    - G
+    - I
+    - C
+  SearchingWords:
+  - Word: AXE
+  - Word: BOX
+  - Word: FAST
+  - Word: GOLD
+  - Word: LOGIC
+  - Word: BUILD
+  - Word: IMAGE
