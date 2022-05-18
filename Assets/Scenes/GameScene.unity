@@ -1015,6 +1015,7 @@ MonoBehaviour:
   coinsText: {fileID: 7770522329497429780}
   coinSpawner: {fileID: 432324967}
   coinsForLevelComplete: 10
+  _coinCost: 1
 --- !u!4 &1333455948
 Transform:
   m_ObjectHideFlags: 0
@@ -1378,18 +1379,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5742109223706408650, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1055333736}
-    - target: {fileID: 7207781294172240323, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1055333736}
-    - target: {fileID: 7770522330031551739, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1055333736}
     - target: {fileID: 7770522330857194147, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
       propertyPath: m_Name
       value: UICanvas

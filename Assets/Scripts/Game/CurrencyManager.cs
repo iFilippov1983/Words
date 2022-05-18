@@ -11,11 +11,16 @@ namespace Game
     {
         public const string coinsKey = "coins";
        
-        public static event Action<int> CoinsAdded;
+        public static event Action<int> CoinsAmountChanged;
+        public static event Action<int> TryChangeCoinsAmount;
+        public static event Action CoinsAmountChangeImpossible;
 
         [SerializeField] private TMP_Text coinsText;
         [SerializeField] private CoinSpawner coinSpawner;
         [Space] [SerializeField] private int coinsForLevelComplete;
+        [SerializeField] private int _coinCost;
+        private static bool _canBuy;
+
         public int Coins { get; private set; }
      
         private void Start()
@@ -24,16 +29,20 @@ namespace Game
             SetCoins(Mathf.Max(0, loadedCoins));
             
             coinSpawner.CoinArrived += OnCoinArrived;
+            TryChangeCoinsAmount += ChangeCoinsAmount;
         }
 
         private void OnCoinArrived()
         {
-            AddCoins(1);
+            ChangeCoinsAmount(_coinCost);
         }
 
         private void OnDestroy()
         {
             DataSaver.SaveIntData(coinsKey, Coins);
+
+            coinSpawner.CoinArrived -= OnCoinArrived;
+            TryChangeCoinsAmount -= ChangeCoinsAmount;
         }
 
         public void SetCoins(int coins)
@@ -44,7 +53,7 @@ namespace Game
         
         public void AddCoinsForLevelComplete()
         {
-            AddCoins(coinsForLevelComplete);
+            ChangeCoinsAmount(coinsForLevelComplete);
         }
 
         private void UpdateText()
@@ -54,10 +63,26 @@ namespace Game
 
         [Button]
         [HideInEditorMode]
-        public void AddCoins(int amount)
+        private void ChangeCoinsAmount(int amount)
         {
-            SetCoins(Coins + amount);
-            CoinsAdded?.Invoke(amount);
+            var newAmount = Coins + amount;
+            if (newAmount < 0)
+            {
+                _canBuy = false;
+                CoinsAmountChangeImpossible?.Invoke();
+            }
+            else
+            {
+                _canBuy = true;
+                SetCoins(newAmount);
+                CoinsAmountChanged?.Invoke(amount);
+            }
+        }
+
+        public static bool TryChangeCoinsAmountMethod(int amount)
+        {
+            TryChangeCoinsAmount?.Invoke(amount);
+            return _canBuy;
         }
     }
 }

@@ -5,6 +5,7 @@ public class Timer : MonoBehaviour
 {
     public GameData currentGameData;
     public TextMeshProUGUI timerText;
+    public float extraTime = 60f;
 
     private float _timeLeft;
     private float _minutes;
@@ -22,16 +23,26 @@ public class Timer : MonoBehaviour
 
         GameEvents.OnBoardComleted += StopTimer;
         GameEvents.OnUnlockNextCategory += StopTimer;
+        GameOverPopup.ContinueWhithExtraTime += RestartTimer;
     }
 
     private void OnDisable()
     {
         GameEvents.OnBoardComleted -= StopTimer;
         GameEvents.OnUnlockNextCategory -= StopTimer;
+        GameOverPopup.ContinueWhithExtraTime -= RestartTimer;
     }
 
     public void StopTimer(bool categoryCompleted) => _stopTimer = true;
     public void StopTimer() => _stopTimer = true;
+
+    public void RestartTimer()
+    {
+        _stopTimer = false;
+        _timeOut = false;
+        _timeLeft = extraTime;
+        _oneSecondDown = _timeLeft - 1f;
+    }
 
     private void Update()
     {
