@@ -12,6 +12,7 @@ namespace Game
         public const string coinsKey = "coins";
        
         public static event Action<int> CoinsAdded;
+        public static event Action<int> CoinsRemoved;
 
         [SerializeField] private TMP_Text coinsText;
         [SerializeField] private CoinSpawner coinSpawner;
@@ -34,6 +35,13 @@ namespace Game
         private void OnDestroy()
         {
             DataSaver.SaveIntData(coinsKey, Coins);
+            coinSpawner.CoinArrived -= OnCoinArrived;
+        }
+
+        public void RemoveCoins(int amount)
+        {
+            SetCoins(Coins - amount);
+            CoinsRemoved?.Invoke(amount);
         }
 
         public void SetCoins(int coins)
