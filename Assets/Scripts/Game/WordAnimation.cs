@@ -119,7 +119,7 @@ namespace Game
             var startPosition = target.position;
             var travelPercent = 0f;
 
-            while (travelPercent < 1)
+            while (travelPercent <= 1f)
             {
                 target.position = Vector3.Lerp(
                     startPosition,
@@ -130,6 +130,8 @@ namespace Game
 
                 yield return null;
             }
+
+            target.position = position;
         }
 
         private static IEnumerator MoveToPosition(Transform target, Vector3 position, float speed)
@@ -148,6 +150,8 @@ namespace Game
 
                 yield return null;
             }
+
+            target.position = position;
         }
         
         private static IEnumerator Rescale(Transform target, Vector3 targetScale, float speed, AnimationCurve curve)
