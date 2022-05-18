@@ -8,6 +8,7 @@ namespace Game
     public class WordConnectionLine : MonoBehaviour
     {
         [SerializeField] private float distanceToCamera;
+        [SerializeField] private Vector3 selectedPointOffset;
         [SerializeField] private LineRenderer _lineRenderer;
         private Camera _camera;
         private bool canUpdate;
@@ -34,9 +35,8 @@ namespace Game
                 AddLinePosition(position);
             
             canUpdate = true;
-
-            if (_lineRenderer.positionCount > 0)
-                _lineRenderer.SetPosition(lineEndPositionIndex, position);
+            
+            _lineRenderer.SetPosition(lineEndPositionIndex, position + selectedPointOffset);
 
             AddLinePosition(position);
         }

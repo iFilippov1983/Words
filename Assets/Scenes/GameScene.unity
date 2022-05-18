@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1257,7 +1257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b736538d297352740b0dac070fb4856d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToCamera: 10
+  distanceToCamera: 15
+  selectedPointOffset: {x: 0, y: 0, z: 1}
   _lineRenderer: {fileID: 2096405190}
 --- !u!4 &2096405189
 Transform:
@@ -1363,10 +1364,10 @@ LineRenderer:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
+    numCornerVertices: 15
+    numCapVertices: 15
     alignment: 1
-    textureMode: 1
+    textureMode: 3
     shadowBias: 0.5
     generateLightingData: 0
   m_UseWorldSpace: 1
