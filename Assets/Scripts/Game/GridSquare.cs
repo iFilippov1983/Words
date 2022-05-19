@@ -34,8 +34,8 @@ public class GridSquare : MonoBehaviour
     private bool _isCorrect;
     private bool _isInExtraWord;
     private bool _toBeDestroyed;
-
-    public LetterData NormalLetterData => _normalLetterData;
+    
+    public LetterData SelectedLetterData => _selectedLetterData;
 
     private void Start()
     {
