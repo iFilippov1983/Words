@@ -191,24 +191,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConfettiBlastBlue
       objectReference: {fileID: 0}
-    - target: {fileID: 164112, guid: a54f4434684ca0143bf644289de35374, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 458528, guid: a54f4434684ca0143bf644289de35374, type: 3}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 458528, guid: a54f4434684ca0143bf644289de35374, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 458528, guid: a54f4434684ca0143bf644289de35374, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 458528, guid: a54f4434684ca0143bf644289de35374, type: 3}
-      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 458528, guid: a54f4434684ca0143bf644289de35374, type: 3}
@@ -250,34 +234,6 @@ PrefabInstance:
     - target: {fileID: 458528, guid: a54f4434684ca0143bf644289de35374, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 19816240, guid: a54f4434684ca0143bf644289de35374, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 19859704, guid: a54f4434684ca0143bf644289de35374, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 19890786, guid: a54f4434684ca0143bf644289de35374, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 19890786, guid: a54f4434684ca0143bf644289de35374, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 19890786, guid: a54f4434684ca0143bf644289de35374, type: 3}
-      propertyPath: InitialModule.startSize.minScalar
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 19890786, guid: a54f4434684ca0143bf644289de35374, type: 3}
-      propertyPath: InitialModule.startRotation.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 19890786, guid: a54f4434684ca0143bf644289de35374, type: 3}
-      propertyPath: InitialModule.startSpeed.minScalar
-      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a54f4434684ca0143bf644289de35374, type: 3}
