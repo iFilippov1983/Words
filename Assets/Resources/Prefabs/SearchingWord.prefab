@@ -14570,6 +14570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d6483e92590e404187c30a3f6762802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitParticleSystem: {fileID: 1235983926874618342}
   displayedText: {fileID: 4175566986554858086}
   crossLine: {fileID: 7564140161464282885}
 --- !u!1 &6646490460204893910
