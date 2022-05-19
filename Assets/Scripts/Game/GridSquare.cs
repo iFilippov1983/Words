@@ -162,6 +162,7 @@ public class GridSquare : MonoBehaviour
             _bodyObject.gameObject.SetActive(false);
             _destroyEffect.gameObject.SetActive(true);
             _destroyEffect.Play();
+
             while (_destroyEffect.isPlaying)
                 await Task.Yield();
 

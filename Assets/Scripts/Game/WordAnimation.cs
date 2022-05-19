@@ -9,7 +9,7 @@ namespace Game
 {
     public class WordAnimation : MonoBehaviour
     {
-        public static Action<SearchingWord> LetterReachedSearchingWord;
+        public static event Action<SearchingWord> LetterReachedSearchingWord;
         [SerializeField] private AnimationCurve timeCurve;
         [Space] [SerializeField] private float moveInterval;
         [SerializeField] private float endScalingDelay;
@@ -87,6 +87,8 @@ namespace Game
 
             LetterReachedSearchingWord?.Invoke(searchingWord);
             GameEvents.WordGetTargetMethod(searchingWord.Word);
+            
+            searchingWord.PlayAnimation();
 
             Destroy(letter.gameObject);
         }
