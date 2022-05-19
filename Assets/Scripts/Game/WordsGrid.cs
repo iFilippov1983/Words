@@ -18,11 +18,13 @@ public class WordsGrid : MonoBehaviour
 
     private List<GameObject> _squareList = new List<GameObject>();
     private Camera _camera;
+    private FloorController _floorController;
     private Vector3 _finalScale;
 
     void Start()
     {
         _camera = Camera.main;
+        _floorController = FindObjectOfType<FloorController>();
         SetSelfPosition();
         SpawnGridSquares();
         SetSquaresPosition();
@@ -31,6 +33,7 @@ public class WordsGrid : MonoBehaviour
     private void SetSelfPosition()
     {
         _finalScale = GetSquareScale(_defaultScale, _minimumScale);
+        _floorController.SetPosition();//(_finalScale)
         float yPosition = floorTransform.position.y + floorTransform.localScale.y + currentGameData.selectedBoardData.Rows * _finalScale.y * _startPositionFactor;
         transform.position = new Vector3(0, yPosition, 0);
     }
@@ -97,6 +100,7 @@ public class WordsGrid : MonoBehaviour
                     var normalLetterData = alphabetData.AlphabetNormal.Find(data => data.Letter == squareLetter);
                     var selectedLetterData = alphabetData.AlphabetHighlighted.Find(data => data.Letter == squareLetter);
                     var correctLetterData = alphabetData.AlphabetCorrect.Find(data => data.Letter == squareLetter);
+                    var planeLetterData = alphabetData.AlphabetPlane.Find(data => data.Letter == squareLetter);
 
                     if (normalLetterData.Sprite == null || selectedLetterData.Sprite == null)
                     {
@@ -121,7 +125,7 @@ public class WordsGrid : MonoBehaviour
                         squareTransform.localScale = squareScale;
 
                         var gridSquare = square.GetComponent<GridSquare>();
-                        gridSquare.SetSprite(normalLetterData, selectedLetterData, correctLetterData);
+                        gridSquare.SetSprite(normalLetterData, selectedLetterData, correctLetterData, planeLetterData);
                         gridSquare.SetIndex(_squareList.Count);
 
                         _squareList.Add(square);

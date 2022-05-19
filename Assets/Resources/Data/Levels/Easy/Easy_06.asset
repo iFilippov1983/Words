@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
-  m_Name: Easy_04
+  m_Name: Easy_06
   m_EditorClassIdentifier: 
   TimeInSeconds: 120
   Columns: 6
@@ -18,90 +18,94 @@ MonoBehaviour:
   Board:
   - Size: 12
     Row:
-    - N
-    - R
-    - W
-    - Z
-    - T
+    - U
     - A
+    - B
+    - C
     - P
+    - G
+    - F
+    - L
+    - Y
+    - B
+    - G
     - A
-    - P
-    - E
-    - R
-    - R
   - Size: 12
     Row:
-    - S
-    - G
-    - N
-    - P
+    - F
     - W
-    - E
-    - T
-    - P
-    - D
-    - I
+    - O
     - V
+    - D
     - N
-  - Size: 12
-    Row:
-    - G
-    - E
-    - A
-    - W
-    - U
-    - P
-    - L
     - Q
-    - N
-    - E
-    - A
-    - I
-  - Size: 12
-    Row:
-    - E
-    - O
-    - H
-    - Z
-    - H
-    - N
-    - F
-    - B
-    - F
-    - Q
-    - N
-    - G
-  - Size: 12
-    Row:
-    - P
-    - I
     - S
-    - N
-    - L
-    - B
-    - R
+    - A
+    - O
+    - H
     - I
-    - U
-    - L
-    - E
-    - E
   - Size: 12
     Row:
-    - J
-    - I
-    - I
+    - P
+    - Q
+    - S
+    - G
+    - S
     - O
-    - C
+    - S
+    - G
     - E
-    - L
-    - M
+    - Y
+    - E
+    - R
+  - Size: 12
+    Row:
+    - S
+    - U
+    - T
+    - S
+    - E
+    - O
+    - E
+    - V
+    - S
+    - F
     - C
-    - I
+    - Y
+  - Size: 12
+    Row:
+    - W
+    - O
+    - Q
+    - R
+    - A
+    - J
+    - A
+    - S
+    - Q
+    - K
+    - Z
+    - O
+  - Size: 12
+    Row:
     - N
     - B
+    - L
+    - K
+    - D
+    - P
+    - K
+    - C
+    - A
+    - R
+    - Y
+    - T
   SearchingWords:
-  - Word: BEGIN
-  - Word: PAPER
-  - Word: LIFE
-  - Word: RULE
+  - Word: AIR
+  - Word: TOY
+  - Word: BAG
+  - Word: FLY
+  - Word: SEA
+  - Word: EYE
+  - Word: SKY
+  - Word: CAR

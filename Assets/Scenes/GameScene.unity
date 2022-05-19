@@ -1140,6 +1140,7 @@ GameObject:
   - component: {fileID: 1756701543}
   - component: {fileID: 1756701542}
   - component: {fileID: 1756701541}
+  - component: {fileID: 1756701545}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -1223,6 +1224,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1756701545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756701540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921e76fa26bf39347acab6ea9f049b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentGameData: {fileID: 11400000, guid: 48e013318f178e2459d3b352d68db4bc, type: 2}
+  firstBoardExpandLevel: 10
+  secondBoardExpandLevel: 20
 --- !u!224 &1797228272 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1575577016, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
@@ -1293,10 +1309,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1055333736}
-    - target: {fileID: 7770522330857194145, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7770522330857194147, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
       propertyPath: m_Name
       value: UICanvas

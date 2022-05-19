@@ -19,7 +19,8 @@ public class GridSquare : MonoBehaviour
     private LetterData _normalLetterData;
     private LetterData _selectedLetterData;
     private LetterData _correctLetterData;
-    
+    private LetterData _planeLetterData;
+
     private MeshRenderer _bodyMesh;
     private Animator _animator;
     private Transform _thisTransform;
@@ -35,7 +36,7 @@ public class GridSquare : MonoBehaviour
     private bool _isInExtraWord;
     private bool _toBeDestroyed;
     
-    public LetterData SelectedLetterData => _selectedLetterData;
+    public LetterData PlaneLetterData => _planeLetterData;
 
     private void Start()
     {
@@ -110,12 +111,14 @@ public class GridSquare : MonoBehaviour
        (
        LetterData normalLetterData,
        LetterData selectedLetterData,
-       LetterData correctLetterData
+       LetterData correctLetterData,
+       LetterData planeLetterData
        )
     {
         _normalLetterData = normalLetterData;
         _selectedLetterData = selectedLetterData;
         _correctLetterData = correctLetterData;
+        _planeLetterData = planeLetterData;
 
         _displayedSprite.sprite = _normalLetterData.Sprite;
     }

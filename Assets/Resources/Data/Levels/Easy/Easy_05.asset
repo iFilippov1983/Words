@@ -14,127 +14,95 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeInSeconds: 120
   Columns: 6
-  Rows: 17
+  Rows: 12
   Board:
-  - Size: 17
+  - Size: 12
     Row:
-    - O
-    - L
-    - N
+    - Y
+    - S
+    - W
     - Z
     - T
-    - L
-    - C
-    - I
-    - J
-    - U
-    - B
-    - M
-    - K
-    - P
-    - S
-    - H
-    - P
-  - Size: 17
-    Row:
-    - L
     - A
-    - C
-    - P
-    - R
-    - M
-    - L
-    - V
-    - A
-    - K
-    - L
-    - B
-    - L
-    - A
-    - C
-    - K
-    - U
-  - Size: 17
-    Row:
-    - D
-    - O
-    - M
-    - N
-    - K
-    - G
+    - E
     - Y
-    - V
-    - U
-    - J
-    - U
+    - B
+    - A
+    - B
+    - R
+  - Size: 12
+    Row:
+    - F
+    - Z
+    - L
+    - K
+    - E
+    - E
+    - E
+    - Z
+    - H
+    - L
+    - M
+    - A
+  - Size: 12
+    Row:
+    - L
+    - E
+    - C
+    - M
+    - G
+    - L
+    - L
+    - N
+    - N
+    - D
+    - E
+    - D
+  - Size: 12
+    Row:
+    - F
     - T
+    - Z
+    - H
+    - N
     - X
-    - D
-    - P
-    - V
-    - R
-  - Size: 17
-    Row:
-    - F
-    - W
-    - Z
-    - D
-    - B
-    - O
-    - O
-    - O
-    - E
-    - T
-    - E
-    - D
-    - E
-    - I
-    - R
-    - Y
-    - P
-  - Size: 17
-    Row:
-    - R
-    - E
-    - R
-    - Y
-    - U
-    - B
-    - F
-    - S
     - F
     - H
-    - O
-    - R
+    - I
+    - Q
     - N
-    - A
-    - K
-    - G
+    - I
+  - Size: 12
+    Row:
+    - O
+    - I
+    - P
+    - P
+    - I
+    - Y
+    - E
+    - O
+    - J
     - L
-  - Size: 17
+    - U
+    - O
+  - Size: 12
     Row:
     - O
-    - V
-    - H
     - C
-    - N
-    - K
-    - E
+    - S
+    - Q
+    - J
+    - B
+    - D
+    - O
+    - C
     - T
-    - I
-    - H
-    - W
-    - K
-    - N
-    - E
-    - E
+    - O
     - R
-    - E
   SearchingWords:
-  - Word: PURPLE
-  - Word: BLACK
-  - Word: GREEN
-  - Word: PINK
-  - Word: RED
-  - Word: WHITE
-  - Word: BLUE
+  - Word: RADIO
+  - Word: BABY
+  - Word: MENU
+  - Word: DOCTOR
+  - Word: LINE

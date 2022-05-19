@@ -18,90 +18,90 @@ MonoBehaviour:
   Board:
   - Size: 12
     Row:
-    - N
-    - R
+    - Q
+    - K
+    - F
+    - A
+    - H
+    - O
+    - F
+    - H
+    - F
+    - I
+    - S
+    - H
+  - Size: 12
+    Row:
     - W
-    - Z
+    - N
     - T
+    - H
+    - F
     - A
-    - P
-    - A
-    - P
-    - E
     - R
+    - O
+    - G
+    - A
+    - R
+    - G
+  - Size: 12
+    Row:
+    - L
+    - U
+    - G
+    - Z
+    - X
+    - C
+    - U
+    - W
+    - A
+    - T
+    - E
     - R
   - Size: 12
     Row:
-    - S
-    - G
-    - N
-    - P
-    - W
-    - E
-    - T
-    - P
-    - D
     - I
+    - Q
     - V
-    - N
-  - Size: 12
-    Row:
-    - G
-    - E
-    - A
-    - W
-    - U
-    - P
-    - L
-    - Q
-    - N
-    - E
-    - A
-    - I
-  - Size: 12
-    Row:
-    - E
+    - T
     - O
-    - H
-    - Z
-    - H
-    - N
-    - F
-    - B
-    - F
-    - Q
-    - N
-    - G
-  - Size: 12
-    Row:
-    - P
     - I
-    - S
-    - N
-    - L
+    - I
     - B
+    - K
+    - X
     - R
-    - I
-    - U
-    - L
-    - E
-    - E
+    - S
   - Size: 12
     Row:
-    - J
-    - I
-    - I
     - O
-    - C
-    - E
+    - T
+    - H
+    - P
+    - P
+    - T
+    - T
+    - Z
+    - A
     - L
-    - M
-    - C
+    - U
+    - F
+  - Size: 12
+    Row:
+    - H
+    - K
+    - N
+    - T
+    - N
+    - F
+    - Y
+    - P
+    - G
+    - N
     - I
     - N
-    - B
   SearchingWords:
-  - Word: BEGIN
-  - Word: PAPER
-  - Word: LIFE
-  - Word: RULE
+  - Word: FISH
+  - Word: FRUIT
+  - Word: WATER
+  - Word: SUN

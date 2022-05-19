@@ -41,6 +41,17 @@ public class GameUtility : MonoBehaviour
         _dataProfile.UsedExtraWords.Clear();
     }
 
+    [Button]
+    [HideInPlayMode]
+    private void SetLevel(int number, string categoryName = "Easy")
+    {
+        var index = number - 1;
+        if (index >= 0)
+            DataSaver.SaveIntData(categoryName, number - 1);
+        else
+            Debug.LogError("Level number can't be less than 1");
+    }
+
     // Haptic types
     //
     // Selection : a light vibration on Android, and a light impact on iOS

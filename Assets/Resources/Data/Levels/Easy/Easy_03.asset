@@ -14,95 +14,89 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeInSeconds: 120
   Columns: 6
-  Rows: 12
+  Rows: 11
   Board:
-  - Size: 12
-    Row:
-    - Y
-    - S
-    - W
-    - Z
-    - T
-    - A
-    - E
-    - Y
-    - B
-    - A
-    - B
-    - R
-  - Size: 12
+  - Size: 11
     Row:
     - F
-    - Z
     - L
+    - M
+    - A
+    - J
+    - C
+    - T
+    - A
+    - I
+    - L
+    - B
+  - Size: 11
+    Row:
+    - H
+    - H
+    - N
     - K
-    - E
-    - E
-    - E
-    - Z
-    - H
-    - L
-    - M
-    - A
-  - Size: 12
-    Row:
-    - L
-    - E
-    - C
-    - M
-    - G
-    - L
-    - L
-    - N
-    - N
-    - D
-    - E
-    - D
-  - Size: 12
-    Row:
-    - F
-    - T
-    - Z
-    - H
-    - N
-    - X
-    - F
-    - H
-    - I
-    - Q
-    - N
-    - I
-  - Size: 12
-    Row:
-    - O
-    - I
-    - P
-    - P
-    - I
-    - Y
-    - E
-    - O
-    - J
-    - L
-    - U
-    - O
-  - Size: 12
-    Row:
-    - O
-    - C
-    - S
-    - Q
-    - J
-    - B
-    - D
-    - O
-    - C
-    - T
-    - O
     - R
+    - F
+    - P
+    - R
+    - Y
+    - P
+    - A
+  - Size: 11
+    Row:
+    - J
+    - C
+    - L
+    - Y
+    - P
+    - A
+    - K
+    - A
+    - A
+    - R
+    - C
+  - Size: 11
+    Row:
+    - Y
+    - L
+    - O
+    - M
+    - J
+    - L
+    - G
+    - G
+    - E
+    - T
+    - K
+  - Size: 11
+    Row:
+    - J
+    - E
+    - X
+    - S
+    - D
+    - L
+    - E
+    - B
+    - V
+    - O
+    - S
+  - Size: 11
+    Row:
+    - H
+    - P
+    - K
+    - X
+    - C
+    - F
+    - L
+    - E
+    - A
+    - F
+    - W
   SearchingWords:
-  - Word: RADIO
-  - Word: BABY
-  - Word: MENU
-  - Word: DOCTOR
-  - Word: LINE
+  - Word: BACK
+  - Word: TAIL
+  - Word: FALL
+  - Word: PAGE
+  - Word: LEAF
