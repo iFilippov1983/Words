@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SearchingWord : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem hitParticleSystem;
     public TextMeshProUGUI displayedText;
     public Image crossLine;
 
@@ -41,6 +43,11 @@ public class SearchingWord : MonoBehaviour
         {
             crossLine.gameObject.SetActive(true);
         }
+    }
+
+    public void PlayAnimation()
+    {
+        hitParticleSystem.Play();
     }
 
     //private void CorrectWord(string word, List<int> squareIndexes)
