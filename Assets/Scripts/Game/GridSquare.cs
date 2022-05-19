@@ -9,6 +9,7 @@ public class GridSquare : MonoBehaviour
 
     [SerializeField] private SpriteRenderer _displayedSprite;
     [SerializeField] private GameObject _bodyObject;
+    [SerializeField] private GameObject _bodyObjectParts;
     [SerializeField] private Material _bodyMatNormal;
     [SerializeField] private Material _bodyMatHighlighted;
     [SerializeField] private Material _bodyMatWrong;
@@ -22,6 +23,7 @@ public class GridSquare : MonoBehaviour
     private LetterData _planeLetterData;
 
     private MeshRenderer _bodyMesh;
+    private MeshRenderer[] _bodyPartsMeshes;
     private Animator _animator;
     private Transform _thisTransform;
     private Vector3 _thresholdPoint;
@@ -42,6 +44,7 @@ public class GridSquare : MonoBehaviour
     {
         _thresholdPoint = FindObjectOfType<ThresholdView>().transform.position;
         _bodyMesh = _bodyObject.GetComponent<MeshRenderer>();
+        _bodyPartsMeshes = _bodyObjectParts.GetComponentsInChildren<MeshRenderer>(true);
         _animator = GetComponent<Animator>();
         _thisTransform = gameObject.transform;
 
@@ -163,12 +166,16 @@ public class GridSquare : MonoBehaviour
         {
             _displayedSprite.enabled = false;
             _bodyObject.gameObject.SetActive(false);
+
+            //_bodyObjectParts.SetActive(true);
+            //await Task.Delay(1500);
+
             _destroyEffect.gameObject.SetActive(true);
             _destroyEffect.Play();
 
             while (_destroyEffect.isPlaying)
                 await Task.Yield();
-
+            
             Destroy(gameObject);
         }
 
