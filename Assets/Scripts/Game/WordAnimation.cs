@@ -51,6 +51,21 @@ namespace Game
             var endPositions = GetLettersEndPosition(searchingWord.transform.position,
                                                      letters.Count,
                                                      endLetterSize.x / 2f);
+            
+            var count = letters.Count;
+
+            LetterReachedSearchingWord += OnLetterReachedSearchingWord;
+
+            void OnLetterReachedSearchingWord(SearchingWord obj)
+            {
+                count--;
+
+                if (count > 0)
+                    return;
+
+                StartCoroutine(ScaleLettersToZero(letters, searchingWord));
+                LetterReachedSearchingWord -= OnLetterReachedSearchingWord;
+            }
 
             for (var i = 0; i < letters.Count; i++)
             {
@@ -64,6 +79,21 @@ namespace Game
             }
         }
 
+        private IEnumerator ScaleLettersToZero(List<GameObject> letters, SearchingWord searchingWord)
+        {
+            foreach (var letter in letters)
+            {
+               yield return  ScaleToZero(letter.transform, endScaleSpeed, scaleCurve);
+
+               GameEvents.WordGetTargetMethod(searchingWord.Word);
+
+               searchingWord.PlayAnimation();
+
+               Destroy(letter.gameObject);
+            }
+        }
+
+
         private IEnumerator Animate(Transform letter,
                                     Transform targetLetter,
                                     Vector3 endPosition,
@@ -74,23 +104,19 @@ namespace Game
             if (targetLetter == null)
             {
                 yield return MoveToPosition(letter, endPosition, firstLetterFlySpeed, timeCurve);
-                yield return endScalingDelayFirstWfs;
+                // yield return endScalingDelayFirstWfs;
             }
             else
             {
                 yield return MoveToTarget(letter, targetLetter);
                 yield return MoveToPosition(letter, endPosition, firstLetterFlySpeed * 6f);
-                yield return endScalingDelayWfs;
+                // yield return endScalingDelayWfs;
             }
 
-            yield return ScaleToZero(letter, endScaleSpeed, scaleCurve);
+            // yield return ScaleToZero(letter, endScaleSpeed, scaleCurve);
 
             LetterReachedSearchingWord?.Invoke(searchingWord);
-            GameEvents.WordGetTargetMethod(searchingWord.Word);
-
-            searchingWord.PlayAnimation();
-
-            Destroy(letter.gameObject);
+          
         }
 
         private IEnumerator MoveToTarget(Transform letter, Transform target)
