@@ -1,7 +1,6 @@
 using Game;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using System;
 using Lofelt.NiceVibrations;
 
