@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Easy_25
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 6
+  Rows: 19
+  Board:
+  - Size: 19
+    Row:
+    - Y
+    - A
+    - K
+    - V
+    - J
+    - D
+    - R
+    - O
+    - C
+    - E
+    - R
+    - S
+    - G
+    - E
+    - S
+    - R
+    - U
+    - N
+    - H
+  - Size: 19
+    Row:
+    - N
+    - C
+    - N
+    - G
+    - M
+    - X
+    - Q
+    - K
+    - S
+    - S
+    - M
+    - O
+    - K
+    - E
+    - F
+    - U
+    - R
+    - E
+    - T
+  - Size: 19
+    Row:
+    - W
+    - B
+    - L
+    - W
+    - K
+    - H
+    - Z
+    - Z
+    - D
+    - Y
+    - N
+    - Y
+    - O
+    - C
+    - N
+    - Y
+    - G
+    - N
+    - N
+  - Size: 19
+    Row:
+    - F
+    - Q
+    - A
+    - O
+    - Q
+    - K
+    - X
+    - D
+    - O
+    - B
+    - O
+    - Z
+    - E
+    - M
+    - E
+    - I
+    - E
+    - M
+    - O
+  - Size: 19
+    Row:
+    - O
+    - Z
+    - N
+    - J
+    - Z
+    - G
+    - R
+    - E
+    - T
+    - G
+    - E
+    - C
+    - A
+    - H
+    - Q
+    - J
+    - T
+    - E
+    - L
+  - Size: 19
+    Row:
+    - M
+    - U
+    - N
+    - K
+    - O
+    - T
+    - Q
+    - P
+    - Y
+    - C
+    - J
+    - N
+    - D
+    - L
+    - E
+    - S
+    - I
+    - N
+    - G
+  SearchingWords:
+  - Word: MONTH
+  - Word: NURSE
+  - Word: SMOKE
+  - Word: ENERGY
+  - Word: HANDLE
+  - Word: INCOME
+  - Word: NOBODY
+  - Word: RECORD
+  - Word: SINGLE
