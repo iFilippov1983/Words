@@ -1,15 +1,13 @@
-﻿using Lofelt.NiceVibrations;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Lofelt.NiceVibrations;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Game
 {
     public class WordAnimation : MonoBehaviour
     {
-        public static event Action<SearchingWord> LetterReachedSearchingWord;
         [SerializeField] private AnimationCurve timeCurve;
         [Space] [SerializeField] private float moveInterval;
         [SerializeField] private float endScalingDelay;
@@ -20,10 +18,9 @@ namespace Game
         [Space] [SerializeField] private float resizeSpeed;
         [SerializeField] private AnimationCurve resizeCurve;
         [SerializeField] private Vector3 endLetterSize;
-        
-        private WaitForSeconds moveIntervalWfs;
         private WaitForSeconds endScalingDelayFirstWfs;
         private WaitForSeconds endScalingDelayWfs;
+        private WaitForSeconds moveIntervalWfs;
 
         private void Start()
         {
@@ -37,6 +34,8 @@ namespace Game
             StopAllCoroutines();
         }
 
+        public static event Action<SearchingWord> LetterReachedSearchingWord;
+
         public void Play(List<GameObject> letters, SearchingWord searchingWord)
         {
             StartCoroutine(StartAnimation(letters, searchingWord));
@@ -48,26 +47,27 @@ namespace Game
 
             foreach (var letter in letters)
                 letter.SetActive(true);
-            
-            var endPositions = GetLettersEndPosition(
-                searchingWord.transform.position,
-                letters.Count,
-                endLetterSize.x / 2f);
+
+            var endPositions = GetLettersEndPosition(searchingWord.transform.position,
+                                                     letters.Count,
+                                                     endLetterSize.x / 2f);
 
             for (var i = 0; i < letters.Count; i++)
             {
                 var letter = letters[i];
-             
+
                 StartCoroutine(Animate(letter.transform, moveTarget, endPositions[i], searchingWord));
-           
+
                 moveTarget = letter.transform;
 
                 yield return moveIntervalWfs;
             }
         }
 
-
-        private IEnumerator Animate(Transform letter, Transform targetLetter, Vector3 endPosition, SearchingWord searchingWord)
+        private IEnumerator Animate(Transform letter,
+                                    Transform targetLetter,
+                                    Vector3 endPosition,
+                                    SearchingWord searchingWord)
         {
             StartCoroutine(Rescale(letter, endLetterSize, resizeSpeed, resizeCurve));
 
@@ -87,7 +87,7 @@ namespace Game
 
             LetterReachedSearchingWord?.Invoke(searchingWord);
             GameEvents.WordGetTargetMethod(searchingWord.Word);
-            
+
             searchingWord.PlayAnimation();
 
             Destroy(letter.gameObject);
@@ -123,10 +123,9 @@ namespace Game
 
             while (travelPercent <= 1f)
             {
-                target.position = Vector3.Lerp(
-                    startPosition,
-                    position,
-                    curve.Evaluate(travelPercent));
+                target.position = Vector3.Lerp(startPosition,
+                                               position,
+                                               curve.Evaluate(travelPercent));
 
                 travelPercent += speed * Time.deltaTime;
 
@@ -146,10 +145,9 @@ namespace Game
 
             while (travelPercent <= 1)
             {
-                target.position = Vector3.Lerp(
-                    lettersStartPosition,
-                    position,
-                    travelPercent);
+                target.position = Vector3.Lerp(lettersStartPosition,
+                                               position,
+                                               travelPercent);
 
                 travelPercent += speed * Time.deltaTime;
 
@@ -161,11 +159,12 @@ namespace Game
             HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
             Debug.Log("[Haptic] WordAnimation - Animate[MoveToPosition 2]");
         }
-        
+
         private static IEnumerator Rescale(Transform target, Vector3 targetScale, float speed, AnimationCurve curve)
         {
             var percent = 0f;
             var startScale = target.localScale;
+
             while (percent < 1f)
             {
                 percent += speed * Time.deltaTime;
@@ -194,10 +193,9 @@ namespace Game
             for (var i = 0; i < positions.Length; i++)
                 positions[i] = endPosition + Vector3.right * (i * letterSpacing);
 
-            var center = Vector3.Lerp(
-                positions[0],
-                positions[positions.Length - 1],
-                0.5f);
+            var center = Vector3.Lerp(positions[0],
+                                      positions[positions.Length - 1],
+                                      0.5f);
 
             var centerOffset = positions[0] - center;
 
