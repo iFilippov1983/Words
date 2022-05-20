@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class SearchingWord : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem hitParticleSystem;
+    [SerializeField] private List<ParticleSystem> hitParticleSystems;
     [SerializeField] private Animator animator;
     public TextMeshProUGUI displayedText;
     public Image crossLine;
@@ -50,7 +50,11 @@ public class SearchingWord : MonoBehaviour
     
     public void PlayAnimation()
     {
-        hitParticleSystem.Play();
+        foreach (var hitParticleSystem in hitParticleSystems)
+        {
+            hitParticleSystem.Play();
+        }
+
         animator.Play(hash);
     }
 
