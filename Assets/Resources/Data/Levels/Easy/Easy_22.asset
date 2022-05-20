@@ -1,0 +1,166 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Easy_22
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 6
+  Rows: 21
+  Board:
+  - Size: 21
+    Row:
+    - V
+    - X
+    - D
+    - H
+    - T
+    - H
+    - T
+    - F
+    - A
+    - R
+    - D
+    - O
+    - R
+    - N
+    - I
+    - R
+    - R
+    - T
+    - L
+    - E
+    - S
+  - Size: 21
+    Row:
+    - R
+    - G
+    - I
+    - A
+    - M
+    - L
+    - C
+    - J
+    - M
+    - X
+    - O
+    - S
+    - Y
+    - T
+    - C
+    - E
+    - P
+    - A
+    - E
+    - H
+    - S
+  - Size: 21
+    Row:
+    - A
+    - O
+    - Z
+    - Q
+    - D
+    - C
+    - D
+    - E
+    - P
+    - G
+    - H
+    - D
+    - G
+    - P
+    - Y
+    - Z
+    - W
+    - F
+    - I
+    - L
+    - O
+  - Size: 21
+    Row:
+    - B
+    - G
+    - N
+    - U
+    - C
+    - S
+    - N
+    - Y
+    - M
+    - T
+    - C
+    - E
+    - J
+    - B
+    - O
+    - Z
+    - S
+    - A
+    - M
+    - Y
+    - N
+  - Size: 21
+    Row:
+    - G
+    - O
+    - I
+    - W
+    - G
+    - H
+    - Y
+    - R
+    - J
+    - C
+    - E
+    - N
+    - Q
+    - B
+    - L
+    - E
+    - E
+    - R
+    - F
+    - M
+    - U
+  - Size: 21
+    Row:
+    - D
+    - M
+    - I
+    - X
+    - O
+    - T
+    - J
+    - A
+    - Q
+    - R
+    - E
+    - T
+    - R
+    - M
+    - V
+    - S
+    - H
+    - M
+    - U
+    - E
+    - S
+  SearchingWords:
+  - Word: LESSON
+  - Word: MUSEUM
+  - Word: HEART
+  - Word: PRINCE
+  - Word: FAMILY
+  - Word: FRESH
+  - Word: DRAFT
+  - Word: OBJECT
+  - Word: ENTER

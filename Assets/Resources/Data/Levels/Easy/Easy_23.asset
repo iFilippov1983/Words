@@ -1,0 +1,172 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Easy_23
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 6
+  Rows: 22
+  Board:
+  - Size: 22
+    Row:
+    - M
+    - K
+    - S
+    - K
+    - H
+    - W
+    - X
+    - C
+    - E
+    - S
+    - I
+    - V
+    - D
+    - A
+    - Y
+    - A
+    - L
+    - E
+    - T
+    - N
+    - I
+    - E
+  - Size: 22
+    Row:
+    - H
+    - X
+    - H
+    - K
+    - V
+    - F
+    - I
+    - J
+    - V
+    - A
+    - C
+    - V
+    - O
+    - V
+    - R
+    - H
+    - P
+    - N
+    - D
+    - A
+    - C
+    - L
+  - Size: 22
+    Row:
+    - T
+    - I
+    - S
+    - B
+    - E
+    - X
+    - J
+    - W
+    - V
+    - Y
+    - W
+    - K
+    - N
+    - E
+    - A
+    - S
+    - E
+    - K
+    - V
+    - P
+    - Y
+    - C
+  - Size: 22
+    Row:
+    - U
+    - K
+    - P
+    - A
+    - Q
+    - P
+    - O
+    - K
+    - B
+    - Y
+    - O
+    - N
+    - S
+    - Z
+    - X
+    - T
+    - C
+    - O
+    - U
+    - E
+    - U
+    - P
+  - Size: 22
+    Row:
+    - O
+    - Z
+    - B
+    - Y
+    - Y
+    - J
+    - X
+    - L
+    - Y
+    - S
+    - A
+    - E
+    - N
+    - D
+    - H
+    - U
+    - R
+    - X
+    - N
+    - T
+    - A
+    - D
+  - Size: 22
+    Row:
+    - H
+    - T
+    - J
+    - O
+    - M
+    - B
+    - P
+    - N
+    - S
+    - V
+    - A
+    - J
+    - F
+    - R
+    - B
+    - C
+    - B
+    - U
+    - D
+    - G
+    - E
+    - T
+  SearchingWords:
+  - Word: CICLE
+  - Word: UPDATE
+  - Word: BUDGET
+  - Word: NORTH
+  - Word: PAINT
+  - Word: DELAY
+  - Word: PHRASE
+  - Word: ADVISE
+  - Word: SEASON
