@@ -9,6 +9,7 @@ public class GridSquare : MonoBehaviour
 
     [SerializeField] private SpriteRenderer _displayedSprite;
     [SerializeField] private GameObject _bodyObject;
+    [SerializeField] private GameObject _bodyObjectParts;
     [SerializeField] private Material _bodyMatNormal;
     [SerializeField] private Material _bodyMatHighlighted;
     [SerializeField] private Material _bodyMatWrong;
@@ -22,13 +23,15 @@ public class GridSquare : MonoBehaviour
     private LetterData _planeLetterData;
 
     private MeshRenderer _bodyMesh;
+    private MeshRenderer[] _bodyPartsMeshes;
     private Animator _animator;
     private Transform _thisTransform;
     private Vector3 _thresholdPoint;
 
-    private int _showDelay = 1200;
+    private int _showDelay = 1000;
     private int _maxDelay = 1000;
     private int _index = -1;
+    private bool _isClickable;
     private bool _notVisible;
     private bool _isSelected;
     private bool _isClicked;
@@ -42,10 +45,12 @@ public class GridSquare : MonoBehaviour
     {
         _thresholdPoint = FindObjectOfType<ThresholdView>().transform.position;
         _bodyMesh = _bodyObject.GetComponent<MeshRenderer>();
+        _bodyPartsMeshes = _bodyObjectParts.GetComponentsInChildren<MeshRenderer>(true);
         _animator = GetComponent<Animator>();
         _thisTransform = gameObject.transform;
 
         _notVisible = true;
+        _isClickable = true;
         _isSelected = false;
         _isClicked = false;
         _isCorrect = false;
@@ -60,6 +65,7 @@ public class GridSquare : MonoBehaviour
         GameEvents.OnSelectSquare += OnSelectSquare;
         GameEvents.OnCorrectWord += CorrectWord;
         GameEvents.OnCorrectExtraWord += CorrectExtraWord;
+        GameEvents.OnMenuIsActive += SetClickability;
     }
 
     private void OnDisable()
@@ -69,11 +75,12 @@ public class GridSquare : MonoBehaviour
         GameEvents.OnSelectSquare -= OnSelectSquare;
         GameEvents.OnCorrectWord -= CorrectWord;
         GameEvents.OnCorrectExtraWord -= CorrectExtraWord;
+        GameEvents.OnMenuIsActive += SetClickability;
     }
 
     private void OnMouseDown()
     {
-        if (_notVisible) 
+        if (_notVisible || _isClickable == false) 
             return;
 
         GameEvents.EnableSquareSelectionMethod();
@@ -85,19 +92,17 @@ public class GridSquare : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (_notVisible) 
+        if (_notVisible || _isClickable == false) 
             return;
 
         CheckSquare();
     }
 
-    private void OnMouseExit()
-    {
-
-    }
-
     private void OnMouseUp()
     {
+        if (_notVisible || _isClickable == false)
+            return;
+
         GameEvents.ClearSelectionMethod();
         GameEvents.DisableSquareSelectionMethod();
     }
@@ -125,6 +130,7 @@ public class GridSquare : MonoBehaviour
 
     public void SetIndex(int index) => _index = index;
     public int GetIndex() => _index;
+    public void SetClickability(bool menuIsActive) => _isClickable = !menuIsActive;
 
     public void OnEnableSquareSelection()
     {
@@ -163,12 +169,16 @@ public class GridSquare : MonoBehaviour
         {
             _displayedSprite.enabled = false;
             _bodyObject.gameObject.SetActive(false);
+
+            //_bodyObjectParts.SetActive(true);
+            //await Task.Delay(1500);
+
             _destroyEffect.gameObject.SetActive(true);
             _destroyEffect.Play();
 
             while (_destroyEffect.isPlaying)
                 await Task.Yield();
-
+            
             Destroy(gameObject);
         }
 
@@ -243,6 +253,4 @@ public class GridSquare : MonoBehaviour
             _animator.SetBool(Literal.AnimBool_isHighlighted, true);
         } 
     }
-
-
 }

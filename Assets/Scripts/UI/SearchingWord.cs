@@ -8,15 +8,17 @@ using UnityEngine.UI;
 public class SearchingWord : MonoBehaviour
 {
     [SerializeField] private ParticleSystem hitParticleSystem;
+    [SerializeField] private Animator animator;
     public TextMeshProUGUI displayedText;
     public Image crossLine;
 
     private string _word;
+    private int hash;
     public string Word => _word;
 
     void Start()
     {
-        
+        hash = Animator.StringToHash("searching-word-hit");
     }
 
     private void OnEnable()
@@ -45,9 +47,11 @@ public class SearchingWord : MonoBehaviour
         }
     }
 
+    
     public void PlayAnimation()
     {
         hitParticleSystem.Play();
+        animator.Play(hash);
     }
 
     //private void CorrectWord(string word, List<int> squareIndexes)

@@ -50,7 +50,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -4846,7 +4846,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -9642,7 +9642,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -14491,6 +14491,7 @@ GameObject:
   - component: {fileID: 8043667580239801970}
   - component: {fileID: 5971648485663340755}
   - component: {fileID: 9148987362195029338}
+  - component: {fileID: 1262298233762118127}
   m_Layer: 5
   m_Name: SearchingWord
   m_TagString: Untagged
@@ -14572,8 +14573,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitParticleSystem: {fileID: 1235983926874618342}
+  animator: {fileID: 1262298233762118127}
   displayedText: {fileID: 4175566986554858086}
   crossLine: {fileID: 7564140161464282885}
+--- !u!95 &1262298233762118127
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4698490204360796768}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 52d42538d7c8cd24d845b5f4bb7a5365, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6646490460204893910
 GameObject:
   m_ObjectHideFlags: 0
