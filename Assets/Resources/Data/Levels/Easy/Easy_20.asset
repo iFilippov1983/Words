@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Easy_20
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 6
+  Rows: 19
+  Board:
+  - Size: 19
+    Row:
+    - D
+    - U
+    - F
+    - A
+    - P
+    - Q
+    - D
+    - N
+    - I
+    - L
+    - B
+    - P
+    - D
+    - F
+    - A
+    - U
+    - L
+    - T
+    - A
+  - Size: 19
+    Row:
+    - F
+    - S
+    - P
+    - Q
+    - H
+    - Z
+    - T
+    - G
+    - T
+    - N
+    - T
+    - T
+    - W
+    - S
+    - H
+    - L
+    - E
+    - M
+    - P
+  - Size: 19
+    Row:
+    - G
+    - L
+    - A
+    - X
+    - L
+    - C
+    - Y
+    - R
+    - A
+    - L
+    - A
+    - S
+    - W
+    - D
+    - D
+    - D
+    - I
+    - E
+    - P
+  - Size: 19
+    Row:
+    - T
+    - J
+    - H
+    - W
+    - A
+    - G
+    - V
+    - C
+    - I
+    - Z
+    - T
+    - P
+    - A
+    - R
+    - E
+    - N
+    - T
+    - T
+    - L
+  - Size: 19
+    Row:
+    - L
+    - I
+    - G
+    - V
+    - U
+    - R
+    - S
+    - K
+    - H
+    - C
+    - B
+    - E
+    - G
+    - Q
+    - A
+    - L
+    - C
+    - R
+    - A
+  - Size: 19
+    Row:
+    - H
+    - X
+    - P
+    - J
+    - V
+    - R
+    - F
+    - R
+    - I
+    - A
+    - E
+    - I
+    - E
+    - J
+    - S
+    - S
+    - L
+    - E
+    - V
+  SearchingWords:
+  - Word: APPLE
+  - Word: BLIND
+  - Word: CLASS
+  - Word: FAULT
+  - Word: BEACH
+  - Word: MIDDLE
+  - Word: PARENT
+  - Word: SALARY
+  - Word: TRAVEL
