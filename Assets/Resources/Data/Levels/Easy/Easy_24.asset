@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Easy_24
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 6
+  Rows: 19
+  Board:
+  - Size: 19
+    Row:
+    - S
+    - E
+    - P
+    - O
+    - E
+    - A
+    - J
+    - J
+    - Y
+    - H
+    - C
+    - T
+    - A
+    - M
+    - J
+    - T
+    - N
+    - E
+    - M
+  - Size: 19
+    Row:
+    - Z
+    - V
+    - I
+    - U
+    - J
+    - G
+    - J
+    - M
+    - V
+    - Z
+    - B
+    - E
+    - O
+    - J
+    - C
+    - F
+    - S
+    - G
+    - A
+  - Size: 19
+    Row:
+    - Y
+    - P
+    - E
+    - T
+    - C
+    - R
+    - E
+    - D
+    - R
+    - U
+    - M
+    - R
+    - X
+    - T
+    - U
+    - E
+    - A
+    - N
+    - N
+  - Size: 19
+    Row:
+    - T
+    - O
+    - J
+    - J
+    - T
+    - U
+    - I
+    - P
+    - L
+    - L
+    - E
+    - S
+    - Q
+    - F
+    - A
+    - P
+    - C
+    - O
+    - A
+  - Size: 19
+    Row:
+    - B
+    - C
+    - Z
+    - R
+    - E
+    - I
+    - U
+    - L
+    - A
+    - V
+    - Y
+    - X
+    - L
+    - Q
+    - E
+    - H
+    - N
+    - I
+    - G
+  - Size: 19
+    Row:
+    - F
+    - U
+    - Q
+    - K
+    - G
+    - L
+    - M
+    - R
+    - O
+    - Z
+    - T
+    - H
+    - T
+    - R
+    - A
+    - E
+    - O
+    - T
+    - E
+  SearchingWords:
+  - Word: AGENT
+  - Word: CHEAP
+  - Word: EARTH
+  - Word: MATCH
+  - Word: VALLEY
+  - Word: SECTOR
+  - Word: NOTION
+  - Word: MURDER
+  - Word: MANAGE
