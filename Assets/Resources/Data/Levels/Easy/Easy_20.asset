@@ -18,9 +18,9 @@ MonoBehaviour:
   Board:
   - Size: 19
     Row:
-    - D
-    - U
-    - F
+    - A
+    - K
+    - O
     - A
     - P
     - Q
@@ -29,8 +29,8 @@ MonoBehaviour:
     - I
     - L
     - B
-    - P
     - D
+    - P
     - F
     - A
     - U
@@ -39,9 +39,9 @@ MonoBehaviour:
     - A
   - Size: 19
     Row:
-    - F
-    - S
-    - P
+    - E
+    - U
+    - X
     - Q
     - H
     - Z
@@ -61,8 +61,8 @@ MonoBehaviour:
   - Size: 19
     Row:
     - G
-    - L
-    - A
+    - K
+    - I
     - X
     - L
     - C
@@ -81,9 +81,9 @@ MonoBehaviour:
     - P
   - Size: 19
     Row:
-    - T
-    - J
-    - H
+    - U
+    - A
+    - N
     - W
     - A
     - G
@@ -102,9 +102,9 @@ MonoBehaviour:
     - L
   - Size: 19
     Row:
-    - L
-    - I
-    - G
+    - Y
+    - D
+    - M
     - V
     - U
     - R
@@ -123,9 +123,9 @@ MonoBehaviour:
     - A
   - Size: 19
     Row:
-    - H
+    - F
     - X
-    - P
+    - K
     - J
     - V
     - R
@@ -144,11 +144,11 @@ MonoBehaviour:
     - V
   SearchingWords:
   - Word: APPLE
-  - Word: BLIND
-  - Word: CLASS
   - Word: FAULT
-  - Word: BEACH
   - Word: MIDDLE
-  - Word: PARENT
-  - Word: SALARY
   - Word: TRAVEL
+  - Word: CLASS
+  - Word: PARENT
+  - Word: BLIND
+  - Word: SALARY
+  - Word: BEACH

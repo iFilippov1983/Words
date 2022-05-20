@@ -14,13 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeInSeconds: 120
   Columns: 6
-  Rows: 19
+  Rows: 21
   Board:
-  - Size: 19
+  - Size: 21
     Row:
-    - G
-    - P
-    - M
+    - V
+    - X
+    - D
+    - H
+    - T
     - H
     - T
     - F
@@ -37,11 +39,13 @@ MonoBehaviour:
     - L
     - E
     - S
-  - Size: 19
+  - Size: 21
     Row:
-    - O
-    - T
-    - Z
+    - R
+    - G
+    - I
+    - A
+    - M
     - L
     - C
     - J
@@ -58,11 +62,13 @@ MonoBehaviour:
     - E
     - H
     - S
-  - Size: 19
+  - Size: 21
     Row:
-    - X
-    - R
-    - G
+    - A
+    - O
+    - Z
+    - Q
+    - D
     - C
     - D
     - E
@@ -79,11 +85,13 @@ MonoBehaviour:
     - I
     - L
     - O
-  - Size: 19
+  - Size: 21
     Row:
-    - Q
-    - D
-    - W
+    - B
+    - G
+    - N
+    - U
+    - C
     - S
     - N
     - Y
@@ -100,11 +108,13 @@ MonoBehaviour:
     - M
     - Y
     - N
-  - Size: 19
+  - Size: 21
     Row:
-    - H
-    - D
-    - L
+    - G
+    - O
+    - I
+    - W
+    - G
     - H
     - Y
     - R
@@ -121,11 +131,13 @@ MonoBehaviour:
     - F
     - M
     - U
-  - Size: 19
+  - Size: 21
     Row:
+    - D
+    - M
     - I
-    - K
-    - J
+    - X
+    - O
     - T
     - J
     - A
@@ -143,12 +155,12 @@ MonoBehaviour:
     - E
     - S
   SearchingWords:
-  - Word: HEART
-  - Word: FRESH
-  - Word: ENTER
-  - Word: DRAFT
-  - Word: PRINCE
-  - Word: OBJECT
-  - Word: MUSEUM
   - Word: LESSON
+  - Word: MUSEUM
+  - Word: HEART
+  - Word: PRINCE
   - Word: FAMILY
+  - Word: FRESH
+  - Word: DRAFT
+  - Word: OBJECT
+  - Word: ENTER

@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeInSeconds: 120
   Columns: 6
-  Rows: 19
+  Rows: 20
   Board:
-  - Size: 19
+  - Size: 20
     Row:
-    - S
-    - E
-    - P
+    - N
+    - X
+    - F
+    - M
     - O
     - E
     - A
@@ -37,11 +38,12 @@ MonoBehaviour:
     - N
     - E
     - M
-  - Size: 19
+  - Size: 20
     Row:
-    - Z
-    - V
-    - I
+    - H
+    - E
+    - R
+    - W
     - U
     - J
     - G
@@ -58,11 +60,12 @@ MonoBehaviour:
     - S
     - G
     - A
-  - Size: 19
+  - Size: 20
     Row:
-    - Y
-    - P
-    - E
+    - V
+    - O
+    - V
+    - M
     - T
     - C
     - R
@@ -79,11 +82,12 @@ MonoBehaviour:
     - A
     - N
     - N
-  - Size: 19
+  - Size: 20
     Row:
     - T
-    - O
-    - J
+    - Z
+    - V
+    - W
     - J
     - T
     - U
@@ -100,11 +104,12 @@ MonoBehaviour:
     - C
     - O
     - A
-  - Size: 19
+  - Size: 20
     Row:
-    - B
-    - C
-    - Z
+    - V
+    - K
+    - K
+    - M
     - R
     - E
     - I
@@ -121,11 +126,12 @@ MonoBehaviour:
     - N
     - I
     - G
-  - Size: 19
+  - Size: 20
     Row:
-    - F
-    - U
-    - Q
+    - H
+    - B
+    - J
+    - C
     - K
     - G
     - L
@@ -143,12 +149,12 @@ MonoBehaviour:
     - T
     - E
   SearchingWords:
+  - Word: MANAGE
   - Word: AGENT
+  - Word: NOTION
+  - Word: SECTOR
   - Word: CHEAP
   - Word: EARTH
   - Word: MATCH
-  - Word: VALLEY
-  - Word: SECTOR
-  - Word: NOTION
   - Word: MURDER
-  - Word: MANAGE
+  - Word: VALLEY

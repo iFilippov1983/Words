@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeInSeconds: 120
   Columns: 6
-  Rows: 19
+  Rows: 20
   Board:
-  - Size: 19
+  - Size: 20
     Row:
+    - H
+    - O
     - Y
-    - A
-    - K
+    - M
     - V
     - J
     - D
@@ -29,7 +30,7 @@ MonoBehaviour:
     - C
     - E
     - R
-    - S
+    - Z
     - G
     - E
     - S
@@ -37,11 +38,12 @@ MonoBehaviour:
     - U
     - N
     - H
-  - Size: 19
+  - Size: 20
     Row:
-    - N
-    - C
-    - N
+    - D
+    - U
+    - M
+    - W
     - G
     - M
     - X
@@ -58,11 +60,12 @@ MonoBehaviour:
     - R
     - E
     - T
-  - Size: 19
+  - Size: 20
     Row:
-    - W
-    - B
-    - L
+    - O
+    - P
+    - E
+    - U
     - W
     - K
     - H
@@ -79,11 +82,12 @@ MonoBehaviour:
     - G
     - N
     - N
-  - Size: 19
+  - Size: 20
     Row:
-    - F
+    - W
+    - X
     - Q
-    - A
+    - C
     - O
     - Q
     - K
@@ -100,11 +104,12 @@ MonoBehaviour:
     - E
     - M
     - O
-  - Size: 19
+  - Size: 20
     Row:
-    - O
-    - Z
-    - N
+    - B
+    - H
+    - X
+    - E
     - J
     - Z
     - G
@@ -121,11 +126,12 @@ MonoBehaviour:
     - T
     - E
     - L
-  - Size: 19
+  - Size: 20
     Row:
-    - M
-    - U
+    - Q
     - N
+    - O
+    - E
     - K
     - O
     - T
@@ -144,11 +150,11 @@ MonoBehaviour:
     - G
   SearchingWords:
   - Word: MONTH
-  - Word: NURSE
-  - Word: SMOKE
-  - Word: ENERGY
-  - Word: HANDLE
-  - Word: INCOME
-  - Word: NOBODY
-  - Word: RECORD
   - Word: SINGLE
+  - Word: NURSE
+  - Word: ENERGY
+  - Word: INCOME
+  - Word: HANDLE
+  - Word: RECORD
+  - Word: SMOKE
+  - Word: NOBODY

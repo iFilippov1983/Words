@@ -14,13 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeInSeconds: 120
   Columns: 6
-  Rows: 19
+  Rows: 21
   Board:
-  - Size: 19
+  - Size: 21
     Row:
-    - Z
-    - O
-    - Z
+    - U
+    - N
+    - S
+    - W
+    - C
     - M
     - Q
     - A
@@ -37,11 +39,13 @@ MonoBehaviour:
     - A
     - L
     - F
-  - Size: 19
+  - Size: 21
     Row:
-    - V
-    - A
-    - S
+    - Z
+    - N
+    - H
+    - H
+    - X
     - Z
     - P
     - R
@@ -58,11 +62,13 @@ MonoBehaviour:
     - S
     - H
     - S
-  - Size: 19
+  - Size: 21
     Row:
-    - Z
-    - S
-    - S
+    - D
+    - U
+    - A
+    - T
+    - U
     - Z
     - Y
     - Q
@@ -79,53 +85,59 @@ MonoBehaviour:
     - G
     - W
     - P
-  - Size: 19
+  - Size: 21
+    Row:
+    - O
+    - O
+    - L
+    - Y
+    - R
+    - S
+    - Y
+    - Z
+    - X
+    - W
+    - T
+    - E
+    - K
+    - G
+    - A
+    - L
+    - H
+    - N
+    - E
+    - T
+    - I
+  - Size: 21
+    Row:
+    - R
+    - R
+    - O
+    - T
+    - L
+    - E
+    - O
+    - V
+    - Z
+    - R
+    - I
+    - R
+    - T
+    - V
+    - M
+    - R
+    - L
+    - N
+    - I
+    - S
+    - R
+  - Size: 21
     Row:
     - J
-    - D
-    - X
-    - S
-    - Y
-    - Z
-    - X
-    - W
-    - T
-    - E
     - K
-    - G
-    - A
-    - L
-    - H
-    - N
-    - E
-    - T
-    - I
-  - Size: 19
-    Row:
-    - H
-    - A
-    - G
-    - E
-    - O
-    - V
-    - Z
     - R
-    - I
-    - R
-    - T
-    - V
-    - M
-    - R
-    - L
-    - N
-    - I
-    - S
-    - R
-  - Size: 19
-    Row:
-    - H
-    - O
-    - Z
+    - Q
+    - Y
     - X
     - R
     - G
@@ -144,11 +156,11 @@ MonoBehaviour:
     - I
   SearchingWords:
   - Word: FLASH
-  - Word: GLASS
-  - Word: LUNCH
-  - Word: NIGHT
-  - Word: WRITER
-  - Word: TENNIS
-  - Word: STREAM
   - Word: SPIRIT
+  - Word: NIGHT
+  - Word: TENNIS
+  - Word: LUNCH
   - Word: PLANET
+  - Word: STREAM
+  - Word: WRITER
+  - Word: GLASS

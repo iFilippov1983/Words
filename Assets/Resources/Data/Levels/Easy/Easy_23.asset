@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeInSeconds: 120
   Columns: 6
-  Rows: 19
+  Rows: 22
   Board:
-  - Size: 19
+  - Size: 22
     Row:
-    - G
-    - O
-    - N
+    - M
+    - K
+    - S
+    - K
+    - H
+    - W
     - X
     - C
     - E
@@ -37,11 +40,14 @@ MonoBehaviour:
     - N
     - I
     - E
-  - Size: 19
+  - Size: 22
     Row:
-    - B
-    - D
-    - L
+    - H
+    - X
+    - H
+    - K
+    - V
+    - F
     - I
     - J
     - V
@@ -58,11 +64,14 @@ MonoBehaviour:
     - A
     - C
     - L
-  - Size: 19
+  - Size: 22
     Row:
-    - G
+    - T
+    - I
+    - S
     - B
-    - L
+    - E
+    - X
     - J
     - W
     - V
@@ -79,11 +88,14 @@ MonoBehaviour:
     - P
     - Y
     - C
-  - Size: 19
+  - Size: 22
     Row:
-    - N
+    - U
+    - K
     - P
-    - O
+    - A
+    - Q
+    - P
     - O
     - K
     - B
@@ -100,11 +112,14 @@ MonoBehaviour:
     - E
     - U
     - P
-  - Size: 19
+  - Size: 22
     Row:
-    - T
-    - T
-    - M
+    - O
+    - Z
+    - B
+    - Y
+    - Y
+    - J
     - X
     - L
     - Y
@@ -121,11 +136,14 @@ MonoBehaviour:
     - T
     - A
     - D
-  - Size: 19
+  - Size: 22
     Row:
+    - H
+    - T
     - J
-    - E
-    - L
+    - O
+    - M
+    - B
     - P
     - N
     - S
@@ -143,12 +161,12 @@ MonoBehaviour:
     - E
     - T
   SearchingWords:
-  - Word: DELAY
-  - Word: CYCLE
-  - Word: PAINT
-  - Word: NORTH
-  - Word: ADVICE
-  - Word: BUDGET
-  - Word: PHRASE
-  - Word: SEASON
+  - Word: CICLE
   - Word: UPDATE
+  - Word: BUDGET
+  - Word: NORTH
+  - Word: PAINT
+  - Word: DELAY
+  - Word: PHRASE
+  - Word: ADVISE
+  - Word: SEASON
