@@ -39,6 +39,7 @@ public class GameOverPopup : MonoBehaviour
     private void ShowGameOverPopup()
     {
         gameOverPopup.SetActive(true);
+        GameEvents.MenuIsActiveMethod(true);
         _continueForAdsButton.interactable = false;
         _continueForCoinsButton.interactable = true;
     }
@@ -46,6 +47,7 @@ public class GameOverPopup : MonoBehaviour
     private void HideGameOverPopup()
     {
         gameOverPopup.SetActive(false);
+        GameEvents.MenuIsActiveMethod(false);
         _continueForAdsButton.interactable = false;
         _continueForCoinsButton.interactable = false;
     }

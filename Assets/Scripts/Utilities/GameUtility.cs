@@ -22,6 +22,11 @@ public class GameUtility : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    public void SetOverlayMenuActivityStatus(bool isActive)
+    {
+        GameEvents.MenuIsActiveMethod(isActive);
+    }
+
     public void CloseApplication()
     {
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);

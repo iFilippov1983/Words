@@ -57,7 +57,7 @@ public static class GameEvents
 
     public static void CorrectWordMethod(string word, List<int> squareIndexes)
     {
-        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.MediumImpact);
         Debug.Log("[Haptic] GameEvents - CorrectWordMethod");
 
         OnCorrectWord?.Invoke(word, squareIndexes);
@@ -69,7 +69,7 @@ public static class GameEvents
 
     public static void OnCorrectExtraWordMethod(List<int> squareIndexes)
     {
-        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.MediumImpact);
         Debug.Log("[Haptic] GameEvents - OnCorrectExtraWordMethod");
 
         OnCorrectExtraWord?.Invoke(squareIndexes);
@@ -118,6 +118,15 @@ public static class GameEvents
     public static void WordGetTargetMethod(string word)
     { 
         OnWordGetTarget?.Invoke(word);
+    }
+    //************
+
+    public delegate void MenuIsActive(bool menuIsActive);
+    public static event MenuIsActive OnMenuIsActive;
+
+    public static void MenuIsActiveMethod(bool menuIsActive)
+    { 
+        OnMenuIsActive?.Invoke(menuIsActive);
     }
     //************
 }

@@ -28,6 +28,7 @@ public class WinPopup : MonoBehaviour
     {
         await Task.Delay(2500);
         winPopup.SetActive(true);
+        GameEvents.MenuIsActiveMethod(true);
         _categoryCompleted = categoryCompleted;
     }
 
