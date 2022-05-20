@@ -1,8 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Game;
-using TMPro;
+using Lofelt.NiceVibrations;
 using UnityEngine;
 
 namespace Game
@@ -110,6 +109,9 @@ namespace Game
                 travelPercent += flySpeed * Time.deltaTime;
                 yield return null;
             }
+
+            HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+            Debug.Log("[Haptic] CoinSpawner - MoveCoin[arrived]");
 
             CoinArrived?.Invoke();
             Destroy(coin.gameObject);
