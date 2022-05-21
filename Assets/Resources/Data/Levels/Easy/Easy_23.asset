@@ -154,14 +154,14 @@ MonoBehaviour:
     - R
     - B
     - C
-    - B
-    - U
-    - D
-    - G
-    - E
     - T
+    - E
+    - G
+    - D
+    - U
+    - B
   SearchingWords:
-  - Word: CICLE
+  - Word: CYCLE
   - Word: UPDATE
   - Word: BUDGET
   - Word: NORTH
