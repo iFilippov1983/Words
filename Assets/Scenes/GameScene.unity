@@ -1275,6 +1275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 8289607901510550494, guid: 0f79a51caca62984e903d28bdeeba4cd, type: 3}
   distanceToCamera: 12
+  _maxLineLength: 2
   selectedPointOffset: {x: 0, y: 0, z: 1}
 --- !u!4 &2096405189
 Transform:

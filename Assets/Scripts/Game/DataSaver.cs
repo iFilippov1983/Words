@@ -10,7 +10,7 @@ public class DataSaver
 
     public static int LoadIntData(string name)
     {
-        int value = -1;
+        int value = 0;// -1?
         if (PlayerPrefs.HasKey(name))
         { 
             value = PlayerPrefs.GetInt(name);
@@ -53,24 +53,13 @@ public class DataSaver
             PlayerPrefs.SetString(key, listToSave[index]);
         }
 
-        Debug.Log("Data saver count index " + _countIndex);
+        Debug.Log("Data saver count index: " + _countIndex);
 
         PlayerPrefs.Save();
     }
 
     public static void ClearGameData(GameLevelData levelData)
     {
-
-        //foreach (var data in levelData.Data)
-        //{
-        //    PlayerPrefs.SetInt(data.CategoryName, -1);
-        //}
-
-        //foreach (var name in _listNames)
-        //{ 
-        //    ClearSavedStringListData(name);
-        //}
-
         PlayerPrefs.DeleteAll();
         _listNames.Clear();
 

@@ -7,7 +7,9 @@ namespace Game
     {
         [SerializeField] private GameObject linePrefab;
         [SerializeField] private float distanceToCamera;
+        [SerializeField] private float _maxLineLength = 2f;
         [SerializeField] private Vector3 selectedPointOffset;
+        private Vector3 _lastAnchorPosition;
         private readonly Stack<LineRenderer> despawnedLines = new Stack<LineRenderer>();
         private readonly Stack<LineRenderer> lines = new Stack<LineRenderer>();
        
@@ -31,14 +33,16 @@ namespace Game
 
         private void OnSelectSquare(string letter, Vector3 position, int index)
         {
+            _lastAnchorPosition = position + selectedPointOffset;
+
             // on first selection
             if (canUpdate == false)
-                AddLinePosition(position + selectedPointOffset);
+                AddLinePosition(_lastAnchorPosition);
 
             canUpdate = true;
 
-            lastLine.SetPosition(lastPointIndex, position + selectedPointOffset);
-            AddLinePosition(position + selectedPointOffset);
+            lastLine.SetPosition(lastPointIndex, _lastAnchorPosition);
+            AddLinePosition(_lastAnchorPosition);
         }
 
         private void Update()
@@ -53,10 +57,26 @@ namespace Game
 
                 var lineEndPosition = _camera.ScreenToWorldPoint(mousePosition);
                 lastLine.SetPosition(lastPointIndex, lineEndPosition);
+
+                lineEndPosition.z = 0f;
+                CheckLineLength(lineEndPosition);
             }
 
             if (Input.GetMouseButtonUp(0))
             {
+                canUpdate = false;
+                ResetLinePositionCount();
+            }
+        }
+
+        private void CheckLineLength(Vector3 endPosition)
+        { 
+            float length = Vector3.Distance(_lastAnchorPosition, endPosition);
+
+            if (length > _maxLineLength)
+            {
+                GameEvents.ClearSelectionMethod();
+                GameEvents.DisableSquareSelectionMethod();
                 canUpdate = false;
                 ResetLinePositionCount();
             }
