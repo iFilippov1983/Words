@@ -14,37 +14,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeInSeconds: 120
   Columns: 6
-  Rows: 19
+  Rows: 20
   Board:
-  - Size: 19
+  - Size: 20
     Row:
+    - C
+    - N
+    - I
+    - S
+    - N
+    - F
+    - N
+    - D
+    - N
+    - I
+    - L
+    - B
+    - P
+    - D
+    - F
     - A
-    - K
+    - U
+    - L
+    - T
+    - A
+  - Size: 20
+    Row:
+    - Q
+    - I
+    - R
     - O
-    - A
-    - P
-    - Q
-    - D
-    - N
-    - I
-    - L
-    - B
-    - D
-    - P
-    - F
-    - A
-    - U
-    - L
-    - T
-    - A
-  - Size: 19
-    Row:
-    - E
-    - U
-    - X
-    - Q
+    - Y
     - H
-    - Z
+    - C
     - T
     - G
     - T
@@ -52,91 +54,95 @@ MonoBehaviour:
     - T
     - T
     - W
-    - S
+    - C
     - H
     - L
     - E
     - M
     - P
-  - Size: 19
+  - Size: 20
     Row:
-    - G
-    - K
-    - I
-    - X
-    - L
-    - C
-    - Y
-    - R
-    - A
-    - L
-    - A
-    - S
-    - W
-    - D
-    - D
-    - D
-    - I
-    - E
-    - P
-  - Size: 19
-    Row:
-    - U
-    - A
-    - N
-    - W
-    - A
-    - G
-    - V
-    - C
-    - I
-    - Z
-    - T
-    - P
-    - A
-    - R
-    - E
-    - N
-    - T
-    - T
-    - L
-  - Size: 19
-    Row:
-    - Y
-    - D
+    - J
     - M
-    - V
-    - U
-    - R
-    - S
+    - I
+    - L
+    - Y
+    - X
+    - Q
+    - E
     - K
+    - S
+    - A
+    - L
+    - A
+    - R
+    - Y
+    - D
+    - D
+    - I
+    - E
+    - P
+  - Size: 20
+    Row:
+    - K
+    - T
+    - K
+    - B
+    - D
+    - B
+    - R
+    - P
+    - L
+    - R
+    - O
+    - J
+    - P
+    - A
+    - R
+    - E
+    - N
+    - T
+    - T
+    - L
+  - Size: 20
+    Row:
+    - U
+    - H
+    - R
+    - G
+    - O
+    - M
+    - Q
+    - S
+    - Y
+    - D
+    - S
+    - V
+    - Z
     - H
     - C
+    - C
+    - L
+    - A
+    - R
+    - A
+  - Size: 20
+    Row:
+    - H
+    - Y
+    - F
+    - K
+    - R
+    - W
+    - T
+    - I
+    - T
+    - P
+    - M
+    - N
     - B
     - E
-    - G
-    - Q
     - A
-    - L
-    - C
-    - R
-    - A
-  - Size: 19
-    Row:
-    - F
-    - X
-    - K
-    - J
-    - V
-    - R
-    - F
-    - R
-    - I
-    - A
-    - E
-    - I
-    - E
-    - J
     - S
     - S
     - L

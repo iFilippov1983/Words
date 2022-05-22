@@ -49,13 +49,13 @@ MonoBehaviour:
     - S
     - W
     - H
-    - M
-    - R
-    - O
-    - T
     - S
+    - T
+    - O
+    - R
+    - M
     - Z
-    - N
+    - P
     - E
     - T
   - Size: 19
@@ -66,12 +66,12 @@ MonoBehaviour:
     - V
     - O
     - G
+    - J
     - T
     - R
     - A
     - C
     - K
-    - E
     - N
     - E
     - I
@@ -96,8 +96,8 @@ MonoBehaviour:
     - Y
     - U
     - S
+    - W
     - M
-    - Q
     - P
     - H
   - Size: 19
