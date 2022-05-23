@@ -1062,7 +1062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGameData: {fileID: 11400000, guid: 48e013318f178e2459d3b352d68db4bc, type: 2}
   gridSquarePrefab: {fileID: 3771015850833405470, guid: 0aae2964703a83644a48ca2bb687966b, type: 3}
-  alphabetData: {fileID: 11400000, guid: 85ae267b5d14ae34fa39c51c94bb7341, type: 2}
+  alphabetData: {fileID: 11400000, guid: a0e288b6622ad70419809223978b0273, type: 2}
   squareOffsetX: 0.06
   squareOffsetY: 20
   topPosition: 4.55
@@ -1303,14 +1303,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1055333736}
-    - target: {fileID: 2544575538355173515, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800877541800823477, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5742109223706408650, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1423,10 +1415,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1055333736}
-    - target: {fileID: 8887100737812263953, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: m_text
-      value: "CONGRATULATION! \nYou've completed all levels!"
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
 --- !u!224 &7770522329497429779 stripped

@@ -23,7 +23,7 @@ public class GridSquare : MonoBehaviour
     private LetterData _planeLetterData;
 
     private MeshRenderer _bodyMesh;
-    private MeshRenderer[] _bodyPartsMeshes;
+    //private MeshRenderer[] _bodyPartsMeshes;
     private Animator _animator;
     private Transform _thisTransform;
     private Vector3 _thresholdPoint;
@@ -45,7 +45,7 @@ public class GridSquare : MonoBehaviour
     {
         _thresholdPoint = FindObjectOfType<ThresholdView>().transform.position;
         _bodyMesh = _bodyObject.GetComponent<MeshRenderer>();
-        _bodyPartsMeshes = _bodyObjectParts.GetComponentsInChildren<MeshRenderer>(true);
+        //_bodyPartsMeshes = _bodyObjectParts.GetComponentsInChildren<MeshRenderer>(true);
         _animator = GetComponent<Animator>();
         _thisTransform = gameObject.transform;
 
@@ -186,6 +186,8 @@ public class GridSquare : MonoBehaviour
         {
             _animator.SetBool(Literal.AnimBool_isHighlighted, false);
             ShowExtraWord();
+            _displayedSprite.sprite = _normalLetterData.Sprite;
+            _highlightedEffect.gameObject.SetActive(false);
             _isInExtraWord = false;
         }
 
