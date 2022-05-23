@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -870,6 +870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGameData: {fileID: 11400000, guid: 48e013318f178e2459d3b352d68db4bc, type: 2}
   gameLevelData: {fileID: 11400000, guid: 75deecb38375e8241956861d3ed15356, type: 2}
+  _levelNumberToCycleFrom: 10
   _dataProfile: {fileID: 11400000, guid: 9d61609ae2bf1f14bb00b16ee5eecf8f, type: 2}
   _dictionaries:
   - {fileID: 4900000, guid: fec027833ca15ca4689cf2f842154e72, type: 3}
@@ -1122,7 +1123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696610383}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.2, z: 0}
+  m_LocalPosition: {x: 0, y: 1.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1302,6 +1303,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1055333736}
+    - target: {fileID: 2544575538355173515, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800877541800823477, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5742109223706408650, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1414,6 +1423,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1055333736}
+    - target: {fileID: 8887100737812263953, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
+      propertyPath: m_text
+      value: "CONGRATULATION! \nYou've completed all levels!"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
 --- !u!224 &7770522329497429779 stripped

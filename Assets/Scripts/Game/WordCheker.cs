@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Game.WordComparison;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,13 +10,16 @@ public class WordCheker : MonoBehaviour
     public GameLevelData gameLevelData;
 
     private const string UsedWords = "UsedWords";
+    private const string CyclesCount = "CyclesCount";
     private string _word;
     private string _extraWord;
     private int _assignedPoints = 0;
     private int _completedWords = 0;
+    private int _gameCyclesCount = 0;
     private bool _currentLevelNotCompleted;
     private List<int> _correctSquareList = new List<int>();
 
+    [SerializeField] private int _levelNumberToCycleFrom = 10;
     [SerializeField] private DataProfile _dataProfile;
     [SerializeField] private List<TextAsset> _dictionaries;
     private WordFinder _wordFinder;
@@ -50,10 +54,24 @@ public class WordCheker : MonoBehaviour
 
     private void Init()
     {
+        //If there's NO category selection
+        _gameCyclesCount = DataSaver.LoadIntData(CyclesCount); 
+        //
+
         _dataProfile.SetUsedExtraWordsList(DataSaver.LoadSavedStringList(UsedWords));
         Debug.Log("Current used extra words list count: " + _dataProfile.UsedExtraWords.Count);
 
-        _dataProfile.CurrenLevelNumber = DataSaver.LoadIntData(currentGameData.selectedCategoryName) + 1;
+        //If there's category selection
+        //_dataProfile.CurrenLevelNumber = DataSaver.LoadIntData(currentGameData.selectedCategoryName) + 1; 
+        //
+
+        //If there's NO category selection
+        int number = 
+            DataSaver.LoadIntData(currentGameData.selectedCategoryName)
+            + gameLevelData.Data[0].BoardData.Count * _gameCyclesCount 
+            - (_levelNumberToCycleFrom - 1) * _gameCyclesCount + 1;
+        _dataProfile.CurrenLevelNumber = number;
+        //    
 
         TinySauce.OnGameStarted(_dataProfile.CurrenLevelNumber.ToString());
 
@@ -203,7 +221,19 @@ public class WordCheker : MonoBehaviour
 
                     GameEvents.BoardCompletedMethod(loadNextCategory);
                 }
-                //else 
+                else //If there's NO category selection
+                {
+                    _gameCyclesCount++;
+                    currentCategoryIndex = 0;
+                    currentBoardIndex = _levelNumberToCycleFrom - 1;
+                    loadNextCategory = false;
+                    categoryName = gameLevelData.Data[currentCategoryIndex].CategoryName;
+
+                    DataSaver.SaveIntData(categoryName, currentBoardIndex);
+                    DataSaver.SaveIntData(CyclesCount, _gameCyclesCount);
+                    GameEvents.BoardCompletedMethod(loadNextCategory);
+                }
+                //else //If there's category selection
                 //{
                 //    SceneManager.LoadScene(Literal.Scene_SelectCategory);
                 //}
@@ -217,10 +247,15 @@ public class WordCheker : MonoBehaviour
             {
                 GameEvents.UnlockNextCategoryMethod();
             }
-                
         }
     }
 
+    [Button]
+    private void CompleteLevel()
+    {
+        _completedWords = currentGameData.selectedBoardData.SearchingWords.Count;
+        CheckBoardCompleted();
+    }
     
     ////Use this code if selection direction change limitation is needed
     //public GameData _currentGameData;
