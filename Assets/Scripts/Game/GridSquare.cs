@@ -7,6 +7,7 @@ public class GridSquare : MonoBehaviour
 {
     public int SquareIndex { get; set; }
 
+    [SerializeField] private DataProfile _dataProfile;
     [SerializeField] private SpriteRenderer _displayedSprite;
     [SerializeField] private GameObject _bodyObject;
     [SerializeField] private GameObject _bodyObjectParts;
@@ -38,6 +39,7 @@ public class GridSquare : MonoBehaviour
     private bool _isCorrect;
     private bool _isInExtraWord;
     private bool _toBeDestroyed;
+    private bool _checkIsUnavailable;
     
     public LetterData PlaneLetterData => _planeLetterData;
 
@@ -56,6 +58,7 @@ public class GridSquare : MonoBehaviour
         _isCorrect = false;
         _isInExtraWord = false;
         _toBeDestroyed = false;
+        //_checkIsUnavailable = (_notVisible || _isClickable == false || _dataProfile.MousePositionIsFar);
     }
 
     private void OnEnable()
@@ -82,7 +85,7 @@ public class GridSquare : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (_notVisible || _isClickable == false) 
+        if (_notVisible || _isClickable == false || _dataProfile.MousePositionIsFar) 
             return;
 
         GameEvents.EnableSquareSelectionMethod();
@@ -94,7 +97,7 @@ public class GridSquare : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (_notVisible || _isClickable == false) 
+        if (_notVisible || _isClickable == false || _dataProfile.MousePositionIsFar) 
             return;
 
         CheckSquare();
@@ -102,7 +105,7 @@ public class GridSquare : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (_notVisible || _isClickable == false)
+        if (_notVisible || _isClickable == false || _dataProfile.MousePositionIsFar)
             return;
 
         GameEvents.ClearSelectionMethod();

@@ -106,6 +106,9 @@ public class WordCheker : MonoBehaviour
     {
         //Debug.Log($"Entered: {squareIndex} - List contains: {_correctSquareList.Contains(squareIndex)}");
 
+        if (_dataProfile.MousePositionIsFar)
+            return;
+
         if (_assignedPoints == 0)
         {
             _correctSquareList.Add(squareIndex);

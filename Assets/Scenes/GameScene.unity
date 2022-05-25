@@ -1274,9 +1274,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b736538d297352740b0dac070fb4856d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dataProfile: {fileID: 11400000, guid: 9d61609ae2bf1f14bb00b16ee5eecf8f, type: 2}
   linePrefab: {fileID: 8289607901510550494, guid: 0f79a51caca62984e903d28bdeeba4cd, type: 3}
   distanceToCamera: 12
-  _maxLineLength: 2
+  _maxLineLength: 1.9
   selectedPointOffset: {x: 0, y: 0, z: 1}
 --- !u!4 &2096405189
 Transform:

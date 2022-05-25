@@ -57,6 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac7c25c7e90f7842b9b0d07764c8742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dataProfile: {fileID: 11400000, guid: 9d61609ae2bf1f14bb00b16ee5eecf8f, type: 2}
   _displayedSprite: {fileID: 4202210548260335889}
   _bodyObject: {fileID: 653816814099702095}
   _bodyObjectParts: {fileID: 0}

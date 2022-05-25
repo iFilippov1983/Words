@@ -5,6 +5,7 @@ namespace Game
 {
     public class WordConnectionLine : MonoBehaviour
     {
+        [SerializeField] private DataProfile _dataProfile;
         [SerializeField] private GameObject linePrefab;
         [SerializeField] private float distanceToCamera;
         [SerializeField] private float _maxLineLength = 2f;
@@ -19,6 +20,7 @@ namespace Game
         private bool canUpdate;
         private LineRenderer lastLine => lines.Peek();
         private int lastPointIndex => lastLine.positionCount - 1;
+        private bool _canDrawLine => !_dataProfile.MousePositionIsFar;
 
         private void Start()
         {
@@ -36,16 +38,13 @@ namespace Game
 
         private void OnSelectSquare(string letter, Vector3 position, int index)
         {
-            Debug.Log($"Enter: {index}");
-
             bool desactivate = anchorsIndexes.Count >= 2 && anchorsIndexes[anchorsIndexes.Count - 2].Equals(index);
             if (desactivate)
                 DesactivatePreviousLine();
+            else if (anchorsIndexes.Contains(index))
+                return;
             else
-            {
                 anchorsIndexes.Add(index);
-                Debug.Log($"Last: {anchorsIndexes[anchorsIndexes.Count - 1]}");
-            }
                 
             _lastAnchorPosition = position + selectedPointOffset;
 
@@ -55,11 +54,13 @@ namespace Game
 
             canUpdate = true;
 
-            if(anchorsIndexes.Contains(index) == false)
+            if (_canDrawLine)
+            {
                 lastLine.SetPosition(lastPointIndex, _lastAnchorPosition);
 
-            if(desactivate == false)
-                AddLinePosition(_lastAnchorPosition);
+                if (desactivate == false)
+                    AddLinePosition(_lastAnchorPosition);
+            }
         }
 
         private void DesactivatePreviousLine()
@@ -68,11 +69,7 @@ namespace Game
             lastLine.gameObject.SetActive(false);
             despawnedLines.Push(lines.Pop());
 
-            bool removed = anchorsIndexes.Remove(anchorsIndexes[anchorsIndexes.Count - 1]);
-
-            Debug.Log($"Removed: {removed} - Last: {anchorsIndexes[anchorsIndexes.Count - 1]}");
-            //Debug.Log($"Despawned: {despawnedLines.Count}");
-            //Debug.Log("Active: " + lines.Count);
+            anchorsIndexes.Remove(anchorsIndexes[anchorsIndexes.Count - 1]);
         }
 
         private void Update()
@@ -82,14 +79,7 @@ namespace Game
 
             if (Input.GetMouseButton(0))
             {
-                var mousePosition = Input.mousePosition;
-                mousePosition.z = distanceToCamera;
-
-                var lineEndPosition = _camera.ScreenToWorldPoint(mousePosition);
-                lastLine.SetPosition(lastPointIndex, lineEndPosition);
-
-                lineEndPosition.z = 0f;
-                CheckLineLength(lineEndPosition);
+                DrawLine();
             }
 
             if (Input.GetMouseButtonUp(0))
@@ -99,17 +89,47 @@ namespace Game
             }
         }
 
-        private void CheckLineLength(Vector3 endPosition)
-        { 
-            float length = Vector3.Distance(_lastAnchorPosition, endPosition);
+        private void DrawLine()
+        {
+            var mousePosition = Input.mousePosition;
+            mousePosition.z = distanceToCamera;
 
+            var lineEndPosition = _camera.ScreenToWorldPoint(mousePosition);
+            lineEndPosition.z = 0f;
+
+            float length = Vector3.Distance(_lastAnchorPosition, lineEndPosition);
+            
             if (length > _maxLineLength)
             {
+                _dataProfile.MousePositionIsFar = true;
+                
                 GameEvents.ClearSelectionMethod();
                 GameEvents.DisableAllSquaresSelectionMethod();
                 canUpdate = false;
                 ResetLinePositionCount();
             }
+            else
+                _dataProfile.MousePositionIsFar = false;
+
+            if (lines.Count != 0)
+                lastLine.SetPosition(lastPointIndex, lineEndPosition);
+        }
+
+        private void CheckLineLength(ref Vector3 endPosition)
+        { 
+            float length = Vector3.Distance(_lastAnchorPosition, endPosition);
+
+            if (length > _maxLineLength)
+            {
+                _dataProfile.MousePositionIsFar = true;
+
+                GameEvents.ClearSelectionMethod();
+                GameEvents.DisableAllSquaresSelectionMethod();
+                canUpdate = false;
+                ResetLinePositionCount();
+            }
+            else
+                _dataProfile.MousePositionIsFar = false;
         }
 
         private void ResetLinePositionCount()
@@ -122,7 +142,9 @@ namespace Game
                 despawnedLines.Push(line);
             }
             
+            anchorsIndexes.Clear();
             lines.Clear();
+            _dataProfile.MousePositionIsFar = false;
         }
 
         private void AddLinePosition(Vector3 position)
