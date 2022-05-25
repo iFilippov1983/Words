@@ -53,7 +53,7 @@ public class DataSaver
             PlayerPrefs.SetString(key, listToSave[index]);
         }
 
-        Debug.Log("Data saver count index: " + _countIndex);
+        //Debug.Log("Data saver count index: " + _countIndex);
 
         PlayerPrefs.Save();
     }

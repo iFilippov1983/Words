@@ -7,6 +7,7 @@ using UnityEngine;
 public class DataProfile : ScriptableObject
 {
     public int CurrenLevelNumber;
+    public bool MousePositionIsFar = false;
 
     private List<string> _usedExtraWords = new List<string>();
 

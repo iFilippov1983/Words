@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6424a052ae08d4dae465049cc14cd3, type: 3}
   m_Name: DataProfile
   m_EditorClassIdentifier: 
+  CurrenLevelNumber: 1
+  MousePositionIsFar: 0
