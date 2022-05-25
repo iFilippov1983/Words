@@ -1062,7 +1062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGameData: {fileID: 11400000, guid: 48e013318f178e2459d3b352d68db4bc, type: 2}
   gridSquarePrefab: {fileID: 3771015850833405470, guid: 0aae2964703a83644a48ca2bb687966b, type: 3}
-  alphabetData: {fileID: 11400000, guid: f09826c37e1d9bf4597209cb565895b9, type: 2}
+  alphabetData: {fileID: 11400000, guid: 85ae267b5d14ae34fa39c51c94bb7341, type: 2}
   squareOffsetX: 0.06
   squareOffsetY: 20
   topPosition: 4.55

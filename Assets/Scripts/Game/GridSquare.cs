@@ -63,6 +63,7 @@ public class GridSquare : MonoBehaviour
         GameEvents.OnEnableSquareSelection += OnEnableSquareSelection;
         GameEvents.OnDisableSquareSelection += OnDisableSquareSelection;
         GameEvents.OnSelectSquare += OnSelectSquare;
+        GameEvents.OnUnselectSquare += OnUnselectSquare;
         GameEvents.OnCorrectWord += CorrectWord;
         GameEvents.OnCorrectExtraWord += CorrectExtraWord;
         GameEvents.OnMenuIsActive += SetClickability;
@@ -73,9 +74,10 @@ public class GridSquare : MonoBehaviour
         GameEvents.OnEnableSquareSelection -= OnEnableSquareSelection;
         GameEvents.OnDisableSquareSelection -= OnDisableSquareSelection;
         GameEvents.OnSelectSquare -= OnSelectSquare;
+        GameEvents.OnUnselectSquare -= OnUnselectSquare;
         GameEvents.OnCorrectWord -= CorrectWord;
         GameEvents.OnCorrectExtraWord -= CorrectExtraWord;
-        GameEvents.OnMenuIsActive += SetClickability;
+        GameEvents.OnMenuIsActive -= SetClickability;
     }
 
     private void OnMouseDown()
@@ -104,7 +106,7 @@ public class GridSquare : MonoBehaviour
             return;
 
         GameEvents.ClearSelectionMethod();
-        GameEvents.DisableSquareSelectionMethod();
+        GameEvents.DisableAllSquaresSelectionMethod();
     }
 
     private void FixedUpdate()
@@ -146,7 +148,12 @@ public class GridSquare : MonoBehaviour
             _highlightedEffect.Play();
 
             _isSelected = true;
-           GameEvents.CheckSquareMethod(_normalLetterData.Letter, transform.position, _index);
+
+            GameEvents.CheckSquareMethod(_normalLetterData.Letter, transform.position, _index);
+        }
+        else if (_isSelected)
+        {
+            GameEvents.CheckSquareMethod(_normalLetterData.Letter, transform.position, _index);
         }
     }
 
@@ -254,5 +261,18 @@ public class GridSquare : MonoBehaviour
             _bodyMesh.material = _bodyMatHighlighted;
             _animator.SetBool(Literal.AnimBool_isHighlighted, true);
         } 
+    }
+
+    private void OnUnselectSquare(string letter, Vector3 squarePosition, int squareIndex)
+    {
+        if (squareIndex.Equals(_index))
+        {
+            _displayedSprite.sprite = _normalLetterData.Sprite;
+            _bodyMesh.material = _bodyMatNormal;
+            _highlightedEffect.gameObject.SetActive(false);
+            _animator.SetBool(Literal.AnimBool_isHighlighted, false);
+
+            _isSelected = false;
+        }
     }
 }

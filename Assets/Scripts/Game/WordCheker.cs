@@ -59,7 +59,7 @@ public class WordCheker : MonoBehaviour
         //
 
         _dataProfile.SetUsedExtraWordsList(DataSaver.LoadSavedStringList(UsedWords));
-        Debug.Log("Current used extra words list count: " + _dataProfile.UsedExtraWords.Count);
+        //Debug.Log("Current used extra words list count: " + _dataProfile.UsedExtraWords.Count);
 
         //If there's category selection
         //_dataProfile.CurrenLevelNumber = DataSaver.LoadIntData(currentGameData.selectedCategoryName) + 1; 
@@ -84,13 +84,13 @@ public class WordCheker : MonoBehaviour
         {
             DataSaver.SaveStringDataFromList(UsedWords, _dataProfile.UsedExtraWords);
 
-            Debug.Log("Extra words list data SAVED");
+            //Debug.Log("Extra words list data SAVED");
         }
         else
         {
             DataSaver.ClearSavedStringListData(UsedWords);
 
-            Debug.Log("Extra words list data CLEARED");
+            //Debug.Log("Extra words list data CLEARED");
         }
 
         TinySauce.OnGameFinished(!_currentLevelNotCompleted, 0f, _dataProfile.CurrenLevelNumber.ToString());
@@ -104,13 +104,30 @@ public class WordCheker : MonoBehaviour
 
     private void SquareSelected(string letter, Vector3 squarePosition, int squareIndex)
     {
+        //Debug.Log($"Entered: {squareIndex} - List contains: {_correctSquareList.Contains(squareIndex)}");
+
         if (_assignedPoints == 0)
         {
             _correctSquareList.Add(squareIndex);
             _word += letter;
         }
-        else
+        else if (_correctSquareList.Count >= 2 && _correctSquareList[_correctSquareList.Count - 2].Equals(squareIndex)) //If this is previous letter
         {
+            GameEvents.UnselectSquareMethod(letter, squarePosition, _correctSquareList[_correctSquareList.Count - 1]); //Unselect last letter
+            _correctSquareList.RemoveAt(_correctSquareList.Count - 1);
+            _word = _word.Remove(_word.Length - 1, 1);
+            _assignedPoints--;
+
+            //Debug.Log($"Word: {_word} - Correct square list count: {_correctSquareList.Count} - Assigned points: {_assignedPoints}");
+            //foreach (var squareInd in _correctSquareList)
+            //    Debug.Log($"In list: {squareInd}");
+
+            return;
+        }
+        else if (_correctSquareList.Contains(squareIndex) == false)
+        {
+            //Debug.Log($"Selected: {squareIndex}");
+
             _correctSquareList.Add(squareIndex);
             GameEvents.SelectSquareMethod(squarePosition);
             _word += letter;
@@ -144,7 +161,7 @@ public class WordCheker : MonoBehaviour
             _dataProfile.UsedExtraWords.Add(_word);
 
             _extraWord = _word;
-            Debug.Log($"Extra word: {_extraWord} is ADDED to list");
+            //Debug.Log($"Extra word: {_extraWord} is ADDED to list");
         }
 
         //Debug.Log(foundExtraWord ? $"{_word} found" : $"{_word} not found");

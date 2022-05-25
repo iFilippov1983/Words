@@ -16,7 +16,7 @@ public static class GameEvents
     public delegate void DisableSquareSelection();
     public static event DisableSquareSelection OnDisableSquareSelection;
 
-    public static void DisableSquareSelectionMethod()
+    public static void DisableAllSquaresSelectionMethod()
     {
         OnDisableSquareSelection?.Invoke();
     }
@@ -28,6 +28,15 @@ public static class GameEvents
     public static void SelectSquareMethod(Vector3 position)
     {
         OnSelectSquare?.Invoke(position);
+    }
+    //************
+
+    public delegate void UnselectSquare(string letter, Vector3 squarePosition, int squareIndex);
+    public static event UnselectSquare OnUnselectSquare;
+
+    public static void UnselectSquareMethod(string letter, Vector3 squarePosition, int squareIndex)
+    { 
+        OnUnselectSquare?.Invoke(letter, squarePosition, squareIndex);
     }
     //************
 

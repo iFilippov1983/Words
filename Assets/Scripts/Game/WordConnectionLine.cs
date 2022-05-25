@@ -10,13 +10,16 @@ namespace Game
         [SerializeField] private float _maxLineLength = 2f;
         [SerializeField] private Vector3 selectedPointOffset;
         private Vector3 _lastAnchorPosition;
+        private int _lastSquareIndex;
         private readonly Stack<LineRenderer> despawnedLines = new Stack<LineRenderer>();
         private readonly Stack<LineRenderer> lines = new Stack<LineRenderer>();
+        private readonly List<int> anchorsIndexes = new List<int>();
        
         private Camera _camera;
         private bool canUpdate;
         private LineRenderer lastLine => lines.Peek();
         private int lastPointIndex => lastLine.positionCount - 1;
+
         private void Start()
         {
             _camera = Camera.main;
@@ -33,6 +36,17 @@ namespace Game
 
         private void OnSelectSquare(string letter, Vector3 position, int index)
         {
+            Debug.Log($"Enter: {index}");
+
+            bool desactivate = anchorsIndexes.Count >= 2 && anchorsIndexes[anchorsIndexes.Count - 2].Equals(index);
+            if (desactivate)
+                DesactivatePreviousLine();
+            else
+            {
+                anchorsIndexes.Add(index);
+                Debug.Log($"Last: {anchorsIndexes[anchorsIndexes.Count - 1]}");
+            }
+                
             _lastAnchorPosition = position + selectedPointOffset;
 
             // on first selection
@@ -41,8 +55,24 @@ namespace Game
 
             canUpdate = true;
 
-            lastLine.SetPosition(lastPointIndex, _lastAnchorPosition);
-            AddLinePosition(_lastAnchorPosition);
+            if(anchorsIndexes.Contains(index) == false)
+                lastLine.SetPosition(lastPointIndex, _lastAnchorPosition);
+
+            if(desactivate == false)
+                AddLinePosition(_lastAnchorPosition);
+        }
+
+        private void DesactivatePreviousLine()
+        {
+            lastLine.positionCount = 0;
+            lastLine.gameObject.SetActive(false);
+            despawnedLines.Push(lines.Pop());
+
+            bool removed = anchorsIndexes.Remove(anchorsIndexes[anchorsIndexes.Count - 1]);
+
+            Debug.Log($"Removed: {removed} - Last: {anchorsIndexes[anchorsIndexes.Count - 1]}");
+            //Debug.Log($"Despawned: {despawnedLines.Count}");
+            //Debug.Log("Active: " + lines.Count);
         }
 
         private void Update()
@@ -76,7 +106,7 @@ namespace Game
             if (length > _maxLineLength)
             {
                 GameEvents.ClearSelectionMethod();
-                GameEvents.DisableSquareSelectionMethod();
+                GameEvents.DisableAllSquaresSelectionMethod();
                 canUpdate = false;
                 ResetLinePositionCount();
             }
