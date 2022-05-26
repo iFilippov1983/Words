@@ -1,11 +1,13 @@
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 public class Timer : MonoBehaviour
 {
     public GameData currentGameData;
     public TextMeshProUGUI timerText;
     public float extraTime = 60f;
+    public float promptTime = 10f;
 
     private float _timeLeft;
     private float _minutes;
@@ -23,6 +25,8 @@ public class Timer : MonoBehaviour
 
         GameEvents.OnBoardComleted += StopTimer;
         GameEvents.OnUnlockNextCategory += StopTimer;
+        GameEvents.OnCorrectWord += ResetPromptTime;
+        GameEvents.OnCorrectExtraWord += ResetPromptTime;
         GameOverPopup.ContinueWhithExtraTime += RestartTimer;
     }
 
@@ -30,6 +34,8 @@ public class Timer : MonoBehaviour
     {
         GameEvents.OnBoardComleted -= StopTimer;
         GameEvents.OnUnlockNextCategory -= StopTimer;
+        GameEvents.OnCorrectWord -= ResetPromptTime;
+        GameEvents.OnCorrectExtraWord -= ResetPromptTime;
         GameOverPopup.ContinueWhithExtraTime -= RestartTimer;
     }
 
@@ -78,5 +84,15 @@ public class Timer : MonoBehaviour
     {
         GameEvents.GameOverMethod();
         _timeOut = true;
+    }
+
+    private void ResetPromptTime(string word, List<int> squareIndexes)
+    { 
+    
+    }
+
+    private void ResetPromptTime(List<int> squareIndexes)
+    { 
+    
     }
 }

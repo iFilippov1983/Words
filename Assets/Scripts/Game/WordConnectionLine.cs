@@ -134,6 +134,9 @@ namespace Game
 
         private void ResetLinePositionCount()
         {
+            foreach (var line in despawnedLines)
+                line.positionCount = 0;
+
             foreach (var line in lines)
             {
                 line.positionCount = 0;
@@ -141,7 +144,7 @@ namespace Game
                 
                 despawnedLines.Push(line);
             }
-            
+
             anchorsIndexes.Clear();
             lines.Clear();
             _dataProfile.MousePositionIsFar = false;

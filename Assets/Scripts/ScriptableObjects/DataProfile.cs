@@ -8,6 +8,7 @@ public class DataProfile : ScriptableObject
 {
     public int CurrenLevelNumber;
     public bool MousePositionIsFar = false;
+    public bool BoardCanPrompt = false;
 
     private List<string> _usedExtraWords = new List<string>();
 

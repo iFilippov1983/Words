@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEditor;
@@ -55,6 +53,9 @@ public class BoardDataDrawer : Editor
         GameDataInstance.TimeInSeconds = EditorGUILayout.FloatField("Max Game Time (seconds)", GameDataInstance.TimeInSeconds);
         GameDataInstance.Columns = EditorGUILayout.IntField("Columns", GameDataInstance.Columns);
         GameDataInstance.Rows = EditorGUILayout.IntField("Rows", GameDataInstance.Rows);
+        GameDataInstance.UsePrompts = EditorGUILayout.Toggle("Use Prompts", GameDataInstance.UsePrompts);
+        if(GameDataInstance.UsePrompts)
+            GameDataInstance.TimeInSeconds = EditorGUILayout.FloatField("Time To Prompt (seconds)", GameDataInstance.TimeToPrompt);
 
         bool somethingChanged =
             (GameDataInstance.Columns != columnsTemp || GameDataInstance.Rows != rowsTemp)

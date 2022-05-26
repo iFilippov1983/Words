@@ -1,5 +1,6 @@
 using Lofelt.NiceVibrations;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -45,6 +46,12 @@ public class GameUtility : MonoBehaviour
         DataSaver.ClearGameData(_levelData);
         _dataProfile.UsedExtraWords.Clear();
     }
+    
+    [Button]
+    private void ShowPrompt()
+    {
+        GameEvents.WordToPromptFoundMethod(new List<int>());
+    }
 
     [Button]
     [HideInPlayMode]
@@ -57,6 +64,7 @@ public class GameUtility : MonoBehaviour
             Debug.LogError("Level number can't be less than 1");
     }
 
+    
     // Haptic types
     //
     // Selection : a light vibration on Android, and a light impact on iOS
