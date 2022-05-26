@@ -138,4 +138,13 @@ public static class GameEvents
         OnMenuIsActive?.Invoke(menuIsActive);
     }
     //************
+
+    public delegate void WordToPromptFound(List<int> squareIndexes);
+    public static event WordToPromptFound OnWordToPromptFound;
+
+    public static void WordToPromptFoundMethod(List<int> squareIndexes)
+    { 
+        OnWordToPromptFound?.Invoke(squareIndexes);
+    }
+    //************
 }

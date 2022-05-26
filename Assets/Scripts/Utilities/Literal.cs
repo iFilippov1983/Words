@@ -8,4 +8,5 @@ public static class Literal
     public const string AnimBool_isVisible = "isVisible";
     public const string AnimBool_isHighlighted = "isHighlighted";
     public const string AnimBool_isWrong = "isWrong";
+    public const string AnimBool_showPrompt = "showPrompt";
 }
