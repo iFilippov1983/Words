@@ -24193,14 +24193,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac7c25c7e90f7842b9b0d07764c8742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dataProfile: {fileID: 11400000, guid: 9d61609ae2bf1f14bb00b16ee5eecf8f, type: 2}
   _displayedSprite: {fileID: 4202210548260335889}
   _bodyObject: {fileID: 6315424559587810941}
   _bodyObjectParts: {fileID: 0}
   _bodyMatNormal: {fileID: 2100000, guid: 141b800e9c87bd54b95a98b3031912a8, type: 2}
-  _bodyMatHighlighted: {fileID: 2100000, guid: d36054dfb60138f4dab52853d549c47e, type: 2}
-  _bodyMatWrong: {fileID: 2100000, guid: 13ddf6d2984cb434f8a4f3c8359a6ed9, type: 2}
-  _bodyMatExtra: {fileID: 2100000, guid: 13ddf6d2984cb434f8a4f3c8359a6ed9, type: 2}
-  _highlightedEffect: {fileID: 4538631040463112226}
+  _bodyMatHighlighted: {fileID: 2100000, guid: 141b800e9c87bd54b95a98b3031912a8, type: 2}
+  _bodyMatWrong: {fileID: 2100000, guid: 141b800e9c87bd54b95a98b3031912a8, type: 2}
+  _bodyMatExtra: {fileID: 2100000, guid: 141b800e9c87bd54b95a98b3031912a8, type: 2}
+  _highlightedEffect: {fileID: 4621525724776559997}
   _destroyEffect: {fileID: 8950578304472763661}
 --- !u!65 &2638639604887004130
 BoxCollider:
@@ -24784,6 +24785,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 9.578
       objectReference: {fileID: 0}
+    - target: {fileID: 1431299638364941541, guid: 4ea8bebce39bb8a42958002abbfbcdcc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7854980043105915322, guid: 4ea8bebce39bb8a42958002abbfbcdcc, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -24906,9 +24911,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ea8bebce39bb8a42958002abbfbcdcc, type: 3}
---- !u!198 &4538631040463112226 stripped
+--- !u!198 &4621525724776559997 stripped
 ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7854980043105915327, guid: 4ea8bebce39bb8a42958002abbfbcdcc, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1431299638364941536, guid: 4ea8bebce39bb8a42958002abbfbcdcc, type: 3}
   m_PrefabInstance: {fileID: 6052286327242742173}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &6696630002088281287 stripped
