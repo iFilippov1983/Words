@@ -20,15 +20,25 @@ public class Prompter : MonoBehaviour
     private Vector3 _rayStartPosition;
     private List<int> _correcSquaresIndexes = new List<int>();
     private List<int> _checkedSquaresIndexes = new List<int>();
+    private List<int> _checkedFirstIndexes = new List<int>();
     private List<Ray> _raysList = new List<Ray>();
     private List<GridSquare> _squaresList = new List<GridSquare>();
+    private List<GridSquare> _unvisibleSquares = new List<GridSquare>();
+    private List<GridSquare> _visibleSquares = new List<GridSquare>();
 
     private void Start()
     {
         _assignedPoints = 0;
         _usePrompts = _currentGameData.selectedBoardData.UsePrompts;
 
-        MakeSquaresList();
+        MakeAllSquaresList();
+        SortSquaresLists(_word, _correcSquaresIndexes);
+        GameEvents.OnCorrectWord += SortSquaresLists;
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.OnCorrectWord -= SortSquaresLists;
     }
 
     private void Update()
@@ -36,7 +46,7 @@ public class Prompter : MonoBehaviour
 
     }
 
-    private async void MakeSquaresList()
+    private async void MakeAllSquaresList()
     {
         var squaresArray = FindObjectsOfType<GridSquare>();
         int squaresAmount = _currentGameData.selectedBoardData.Columns * _currentGameData.selectedBoardData.Rows;
@@ -47,56 +57,27 @@ public class Prompter : MonoBehaviour
         }
 
         for (int i = 0; i < squaresArray.Length; i++)
-        {
-            if(squaresArray[i].NotVisible == false)
-                _squaresList.Add(squaresArray[i]);
-        }
+            _squaresList.Add(squaresArray[i]);
 
-        Debug.Log($"Squares amont: {squaresAmount}, List count: {_squaresList.Count}");
+        //Debug.Log($"Squares amont: {squaresAmount}, List count: {_squaresList.Count}");
     }
 
-    private void SquareSelected(string letter, Vector3 squarePosition, int squareIndex)
+    private async void SortSquaresLists(string word, List<int> squareIndexes)
     {
-        if (_assignedPoints == 0)
-        {
-            _rayStartPosition = squarePosition;
-            _correcSquaresIndexes.Add(squareIndex);
-            _word += letter;
+        await Task.Delay(3000);
 
-            
-        }
-        else if (_assignedPoints == 1)
+        _visibleSquares.Clear();
+        _unvisibleSquares.Clear();
+        foreach (var square in _squaresList)
         {
-            _correcSquaresIndexes.Add(squareIndex);
-            GameEvents.SelectSquareMethod(squarePosition);
-            _word += letter;
-            CheckWord();
-        }
-        else
-        {
-
-            _correcSquaresIndexes.Add(squareIndex);
-            GameEvents.SelectSquareMethod(squarePosition);
-            _word += letter;
-            CheckWord();
-
+            if (square == null) continue;
+            if (square.NotVisible) _unvisibleSquares.Add(square);
+            else _visibleSquares.Add(square);
         }
 
-        _assignedPoints++;
+        //Debug.Log($"Visible list count: {_visibleSquares.Count}, Unvisible: {_unvisibleSuares.Count}");
     }
 
-    private void CheckWord()
-    {
-        foreach (var searchingWord in _currentGameData.selectedBoardData.SearchingWords)
-        {
-            if (_word.Equals(searchingWord.Word))
-            {
-                GameEvents.WordToPromptFoundMethod(_correcSquaresIndexes);
-                _word = string.Empty;
-                _correcSquaresIndexes.Clear();
-            }
-        }
-    }
 
     private void SetRays(Vector3 squarePosition)
     {
@@ -104,7 +85,7 @@ public class Prompter : MonoBehaviour
 
         _rayUp = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(0f, 1f));
         _raysList.Add(_rayUp);
-
+        
         _rayDown = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(0f, -1f));
         _raysList.Add(_rayDown);
 
@@ -127,10 +108,84 @@ public class Prompter : MonoBehaviour
         _raysList.Add(_rayDiagRightDown);
     }
 
+    private void CheckWord()
+    {
+        foreach (var searchingWord in _currentGameData.selectedBoardData.SearchingWords)
+        {
+            if (_word.Equals(searchingWord.Word))
+            {
+                GameEvents.WordToPromptFoundMethod(_correcSquaresIndexes);
+                _word = string.Empty;
+                _correcSquaresIndexes.Clear();
+            }
+        }
+    }
+
     private void ClearSelection()
     {
         _assignedPoints = 0;
         _correcSquaresIndexes.Clear();
         _word = string.Empty;
     }
+
+    #region Legacy
+    //private void SquareSelected(string letter, Vector3 squarePosition, int squareIndex)
+    //{
+    //    if (_assignedPoints == 0)
+    //    {
+    //        _rayStartPosition = squarePosition;
+    //        _correcSquaresIndexes.Add(squareIndex);
+    //        _word += letter;
+
+
+    //    }
+    //    else if (_assignedPoints == 1)
+    //    {
+    //        _correcSquaresIndexes.Add(squareIndex);
+    //        GameEvents.SelectSquareMethod(squarePosition);
+    //        _word += letter;
+    //        CheckWord();
+    //    }
+    //    else
+    //    {
+
+    //        _correcSquaresIndexes.Add(squareIndex);
+    //        GameEvents.SelectSquareMethod(squarePosition);
+    //        _word += letter;
+    //        CheckWord();
+
+    //    }
+
+    //    _assignedPoints++;
+    //}
+
+    //private void SetRays(Vector3 squarePosition)
+    //{
+    //    _raysList.Clear();
+
+    //    _rayUp = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(0f, 1f));
+    //    _raysList.Add(_rayUp);
+
+    //    _rayDown = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(0f, -1f));
+    //    _raysList.Add(_rayDown);
+
+    //    _rayLeft = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(-1f, 0f));
+    //    _raysList.Add(_rayLeft);
+
+    //    _rayRight = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(1f, 0f));
+    //    _raysList.Add(_rayRight);
+
+    //    _rayDiagLeftUp = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(-1f, 1f));
+    //    _raysList.Add(_rayDiagLeftUp);
+
+    //    _rayDiagLeftDown = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(-1f, -1f));
+    //    _raysList.Add(_rayDiagLeftDown);
+
+    //    _rayDiagRightUp = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(1f, 1f));
+    //    _raysList.Add(_rayDiagRightUp);
+
+    //    _rayDiagRightDown = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(1f, -1f));
+    //    _raysList.Add(_rayDiagRightDown);
+    //}
+    #endregion
 }

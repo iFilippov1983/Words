@@ -8,7 +8,7 @@ public static class GameEvents
     public static event EnableSquareSelection OnEnableSquareSelection;
 
     public static void EnableSquareSelectionMethod()
-    { 
+    {
         OnEnableSquareSelection?.Invoke();
     }
     //************
@@ -35,7 +35,7 @@ public static class GameEvents
     public static event UnselectSquare OnUnselectSquare;
 
     public static void UnselectSquareMethod(string letter, Vector3 squarePosition, int squareIndex)
-    { 
+    {
         OnUnselectSquare?.Invoke(letter, squarePosition, squareIndex);
     }
     //************
@@ -107,7 +107,7 @@ public static class GameEvents
     public static event LoadLevel OnLoadLevel;
 
     public static void LoadNextLevelMethod()
-    { 
+    {
         OnLoadLevel?.Invoke();
     }
     //************
@@ -125,7 +125,7 @@ public static class GameEvents
     public static event WordGetTarget OnWordGetTarget;
 
     public static void WordGetTargetMethod(string word)
-    { 
+    {
         OnWordGetTarget?.Invoke(word);
     }
     //************
@@ -134,11 +134,19 @@ public static class GameEvents
     public static event MenuIsActive OnMenuIsActive;
 
     public static void MenuIsActiveMethod(bool menuIsActive)
-    { 
+    {
         OnMenuIsActive?.Invoke(menuIsActive);
     }
     //************
 
+    public delegate void TimeToPrompt();
+    public static event TimeToPrompt OnTimeToPrompt;
+
+    public static void TimeToPromptMethod()
+    { 
+        OnTimeToPrompt?.Invoke();
+    }
+    //************
     public delegate void WordToPromptFound(List<int> squareIndexes);
     public static event WordToPromptFound OnWordToPromptFound;
 

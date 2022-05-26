@@ -276,7 +276,8 @@ public class WordCheker : MonoBehaviour
         _completedWords = currentGameData.selectedBoardData.SearchingWords.Count;
         CheckBoardCompleted();
     }
-    
+
+    #region Legacy
     ////Use this code if selection direction change limitation is needed
     //public GameData _currentGameData;
 
@@ -480,4 +481,5 @@ public class WordCheker : MonoBehaviour
     //    _correcSquareList.Clear();
     //    _word = string.Empty;
     //}
+    #endregion
 }

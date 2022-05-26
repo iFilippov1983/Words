@@ -5,7 +5,8 @@ using static AlphabetData;
 
 public class GridSquare : MonoBehaviour
 {
-    public int SquareIndex { get; set; }
+    public string SquareLetter { get; private set; }
+    //public int SquareIndex { get; set; }
 
     [SerializeField] private DataProfile _dataProfile;
     [SerializeField] private SpriteRenderer _displayedSprite;
@@ -31,6 +32,7 @@ public class GridSquare : MonoBehaviour
     private int _showDelay = 1000;
     private int _maxDelay = 1000;
     private int _index = -1;
+
     private bool _isClickable;
     private bool _notVisible;
     private bool _isSelected;
@@ -133,6 +135,7 @@ public class GridSquare : MonoBehaviour
         _planeLetterData = planeLetterData;
 
         _displayedSprite.sprite = _normalLetterData.Sprite;
+        SquareLetter = _normalLetterData.Letter;
     }
 
     public void SetIndex(int index) => _index = index;
@@ -224,6 +227,7 @@ public class GridSquare : MonoBehaviour
             _displayedSprite.sprite = _correctLetterData.Sprite;
             _bodyMesh.material = _bodyMatHighlighted;
             _toBeDestroyed = true;
+            _isClickable = false;
         }
     }
 

@@ -7,7 +7,7 @@ public class Timer : MonoBehaviour
     public GameData currentGameData;
     public TextMeshProUGUI timerText;
     public float extraTime = 60f;
-    public float promptTime = 10f;
+    
 
     private float _timeLeft;
     private float _minutes;
@@ -15,6 +15,8 @@ public class Timer : MonoBehaviour
     private float _oneSecondDown;
     private bool _timeOut;
     private bool _stopTimer;
+    private float _timeToPrompt;
+    private float _promptTimer;
 
     void Start()
     {
@@ -22,11 +24,12 @@ public class Timer : MonoBehaviour
         _timeOut = false;
         _timeLeft = currentGameData.selectedBoardData.TimeInSeconds;
         _oneSecondDown = _timeLeft - 1f;
+        _timeToPrompt = currentGameData.selectedBoardData.TimeToPrompt;
 
         GameEvents.OnBoardComleted += StopTimer;
         GameEvents.OnUnlockNextCategory += StopTimer;
-        GameEvents.OnCorrectWord += ResetPromptTime;
-        GameEvents.OnCorrectExtraWord += ResetPromptTime;
+        GameEvents.OnCorrectWord += ResetPromptTimer;
+        GameEvents.OnCorrectExtraWord += ResetPromptTimer;
         GameOverPopup.ContinueWhithExtraTime += RestartTimer;
     }
 
@@ -34,8 +37,8 @@ public class Timer : MonoBehaviour
     {
         GameEvents.OnBoardComleted -= StopTimer;
         GameEvents.OnUnlockNextCategory -= StopTimer;
-        GameEvents.OnCorrectWord -= ResetPromptTime;
-        GameEvents.OnCorrectExtraWord -= ResetPromptTime;
+        GameEvents.OnCorrectWord -= ResetPromptTimer;
+        GameEvents.OnCorrectExtraWord -= ResetPromptTimer;
         GameOverPopup.ContinueWhithExtraTime -= RestartTimer;
     }
 
@@ -52,13 +55,8 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-        if(_stopTimer == false)
-            _timeLeft -= Time.deltaTime;
-
-        if (_timeLeft <= _oneSecondDown)
-        {
-            _oneSecondDown = _timeLeft - 1f;
-        }
+        SetTimer();
+        SetPromptTimer();  
     }
 
     private void OnGUI()
@@ -80,19 +78,36 @@ public class Timer : MonoBehaviour
         }
     }
 
+    private void SetTimer()
+    {
+        if (_stopTimer == false)
+            _timeLeft -= Time.deltaTime;
+
+        if (_timeLeft <= _oneSecondDown)
+        {
+            _oneSecondDown = _timeLeft - 1f;
+        }
+    }
+
+    private void SetPromptTimer()
+    {
+        if (_timeToPrompt != 0)
+        {
+            _promptTimer -= Time.deltaTime;
+            if (_promptTimer <= 0)
+            {
+                GameEvents.TimeToPromptMethod();
+                _promptTimer = _timeToPrompt;
+            }
+        }
+    }
+
     private void ActivateGameOverGUI()
     {
         GameEvents.GameOverMethod();
         _timeOut = true;
     }
 
-    private void ResetPromptTime(string word, List<int> squareIndexes)
-    { 
-    
-    }
-
-    private void ResetPromptTime(List<int> squareIndexes)
-    { 
-    
-    }
+    private void ResetPromptTimer(string word, List<int> squareIndexes) => _promptTimer = _timeToPrompt;
+    private void ResetPromptTimer(List<int> squareIndexes) => _promptTimer = _timeToPrompt;
 }
