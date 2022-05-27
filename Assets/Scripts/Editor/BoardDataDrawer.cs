@@ -55,7 +55,7 @@ public class BoardDataDrawer : Editor
         GameDataInstance.Rows = EditorGUILayout.IntField("Rows", GameDataInstance.Rows);
         GameDataInstance.UsePrompts = EditorGUILayout.Toggle("Use Prompts", GameDataInstance.UsePrompts);
         if(GameDataInstance.UsePrompts)
-            GameDataInstance.TimeInSeconds = EditorGUILayout.FloatField("Time To Prompt (seconds)", GameDataInstance.TimeToPrompt);
+            GameDataInstance.TimeToPrompt = EditorGUILayout.FloatField("Time To Prompt (seconds)", GameDataInstance.TimeToPrompt);
 
         bool somethingChanged =
             (GameDataInstance.Columns != columnsTemp || GameDataInstance.Rows != rowsTemp)

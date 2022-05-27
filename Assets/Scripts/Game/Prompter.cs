@@ -1,6 +1,4 @@
-using Game.WordComparison;
 using Sirenix.OdinInspector;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -12,16 +10,14 @@ public class Prompter : MonoBehaviour
 
     private string _word;
     private bool _usePrompts;
+    private float _rayLength = 1.5f;
 
     private Ray _rayUp, _rayDown;
     private Ray _rayLeft, _rayRight;
     private Ray _rayDiagLeftUp, _rayDiagLeftDown;
     private Ray _rayDiagRightUp, _rayDiagRightDown;
-    private Ray _currenRay = new Ray();
-    private Vector3 _rayOriginPosition;
 
     private List<int> _checkedSquaresIndexes = new List<int>();
-    private List<Ray> _raysList = new List<Ray>();
     private List<GridSquare> _squaresList = new List<GridSquare>();
     private List<GridSquare> _unvisibleSquares = new List<GridSquare>();
     private List<GridSquare> _visibleSquares = new List<GridSquare>();
@@ -66,6 +62,8 @@ public class Prompter : MonoBehaviour
     {
         await Task.Delay(3000);
 
+        if (!this.gameObject) return;
+
         _visibleSquares.Clear();
         _unvisibleSquares.Clear();
         foreach (var square in _squaresList)
@@ -76,7 +74,6 @@ public class Prompter : MonoBehaviour
         }
 
         _searchingWords = UpdateSearchingWordsList(_searchingWordsParent);
-        //Debug.Log($"Visible list count: {_visibleSquares.Count}, Unvisible: {_unvisibleSquares.Count}");
     }
 
     [Button]
@@ -87,6 +84,7 @@ public class Prompter : MonoBehaviour
 
         foreach (var word in _searchingWords)
         {
+            //Debug.Log($"Trying to find: {word.Word}");
             bool wordFound = TryFindWord(word);
             if (wordFound)
             {
@@ -112,63 +110,106 @@ public class Prompter : MonoBehaviour
 
     private bool SearchStartingFrom(GridSquare square, string word)
     {
+        if (word.StartsWith(square.Letter) == false)
+        {
+            return false;
+        }
+
+        //Debug.Log($"First letter: {square.Letter}");
+
         ClearData();
 
         _word += square.Letter;
         _checkedSquaresIndexes.Add(square.Index);
-        _raysList = SetRaysFrom(square.BodyPosition);
-        foreach (var ray in _raysList)
+         var raysList = SetRaysFrom(square.BodyPosition);
+        foreach (var ray in raysList)
         {
-            CheckAllSequencesToFind(word, ray);
+            bool found = RecursivelyFind(word, ray);
+            if (found) return true;
+
+            _word = string.Empty;
+            _word += square.Letter;
+            _checkedSquaresIndexes.Clear();
+            _checkedSquaresIndexes.Add(square.Index);
         }
 
         return false;
     }
 
-    private void CheckAllSequencesToFind(string word, Ray ray)
+    private bool RecursivelyFind(string word, Ray rayToCheck)
     {
-        var hits = Physics.RaycastAll(ray, 2f, LayerMask.NameToLayer(Literal.LayerMask_SquareBody));
-        if (hits.Length != 0)
+        var hasHit = Physics.Raycast(rayToCheck, out RaycastHit hit, _rayLength);
+        if (hasHit)
         {
-            for (int i = 0; i < hits.Length; i++)
+            var isSquareBody = hit.collider.gameObject.layer.Equals(LayerMask.NameToLayer(Literal.LayerMask_SquareBody));
+            if (isSquareBody)
             {
-                var square = hits[i].collider.GetComponentInParent<GridSquare>();
-                if (_checkedSquaresIndexes.Contains(square.Index))
-                    continue;
+                var square = hit.collider.gameObject.GetComponentInParent<GridSquare>();
 
+                if (_checkedSquaresIndexes.Contains(square.Index) || square.NotVisible)
+                {
+                    return false;
+                }
+                else
+                {
+                    _checkedSquaresIndexes.Add(square.Index);
+                    _word += square.Letter;
+
+                    if (word.Equals(_word))
+                    {
+                        //Debug.Log($"Found: {_word}");
+                        return true;
+                    }
+                    if (word.StartsWith(_word))
+                    {
+                        //Debug.Log($"Word starts with: {_word}");
+                        var raysList = SetRaysFrom(square.BodyPosition);
+                        foreach (var ray in raysList)
+                        {
+                            bool found = RecursivelyFind(word, ray);
+                            if (found) return true;
+                        }
+                    }
+                    else
+                    {
+                        _word = _word.Remove(_word.Length - 1);
+                        _checkedSquaresIndexes.Remove(square.Index);
+                        return false;
+                    } 
+                }
             }
-            
-            
+            else return false;
         }
-        else return;
+        
+        return false;
     }
 
     private List<Ray> SetRaysFrom(Vector3 origin)
     {
         var raysList = new List<Ray>();
 
-        _rayUp = new Ray(new Vector2(origin.x, origin.y), new Vector2(0f, 1f));
+        _rayUp = new Ray(origin, new Vector2(0f, 1f));
         raysList.Add(_rayUp);
 
-        _rayDown = new Ray(new Vector2(origin.x, origin.y), new Vector2(0f, -1f));
+        _rayDown = new Ray(origin, new Vector2(0f, -1f));
         raysList.Add(_rayDown);
 
-        _rayLeft = new Ray(new Vector2(origin.x, origin.y), new Vector2(-1f, 0f));
+        _rayLeft = new Ray(origin, new Vector2(-1f, 0f));
         raysList.Add(_rayLeft);
 
-        _rayRight = new Ray(new Vector2(origin.x, origin.y), new Vector2(1f, 0f));
+        _rayRight = new Ray(origin, new Vector2(1f, 0f));
         raysList.Add(_rayRight);
 
-        _rayDiagLeftUp = new Ray(new Vector2(origin.x, origin.y), new Vector2(-1f, 1f));
+        _rayDiagLeftUp = new Ray(origin, new Vector2(-1f, 1f));
         raysList.Add(_rayDiagLeftUp);
 
-        _rayDiagLeftDown = new Ray(new Vector2(origin.x, origin.y), new Vector2(-1f, -1f));
+        _rayDiagLeftDown = new Ray(origin, new Vector2(-1f, -1f));
         raysList.Add(_rayDiagLeftDown);
 
-        _rayDiagRightUp = new Ray(new Vector2(origin.x, origin.y), new Vector2(1f, 1f));
+        _rayDiagRightUp = new Ray(origin, new Vector2(1f, 1f));
         raysList.Add(_rayDiagRightUp);
 
-        _rayDiagRightDown = new Ray(new Vector2(origin.x, origin.y), new Vector2(1f, -1f));
+        _rayDiagRightDown = new Ray(origin, new Vector2(1f, -1f));
         raysList.Add(_rayDiagRightDown);
 
         return raysList;
@@ -178,7 +219,6 @@ public class Prompter : MonoBehaviour
     {
         _word = string.Empty;
         _checkedSquaresIndexes.Clear();
-        _raysList.Clear();
     }
 
     private List<SearchingWord> UpdateSearchingWordsList(SearchingWordsList parent)
@@ -192,65 +232,4 @@ public class Prompter : MonoBehaviour
 
         return list;
     }
-
-    #region Legacy
-    //private void SquareSelected(string letter, Vector3 squarePosition, int squareIndex)
-    //{
-    //    if (_assignedPoints == 0)
-    //    {
-    //        _rayStartPosition = squarePosition;
-    //        _correcSquaresIndexes.Add(squareIndex);
-    //        _word += letter;
-
-
-    //    }
-    //    else if (_assignedPoints == 1)
-    //    {
-    //        _correcSquaresIndexes.Add(squareIndex);
-    //        GameEvents.SelectSquareMethod(squarePosition);
-    //        _word += letter;
-    //        CheckWord();
-    //    }
-    //    else
-    //    {
-
-    //        _correcSquaresIndexes.Add(squareIndex);
-    //        GameEvents.SelectSquareMethod(squarePosition);
-    //        _word += letter;
-    //        CheckWord();
-
-    //    }
-
-    //    _assignedPoints++;
-    //}
-
-    //private void SetRays(Vector3 squarePosition)
-    //{
-    //    _raysList.Clear();
-
-    //    _rayUp = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(0f, 1f));
-    //    _raysList.Add(_rayUp);
-
-    //    _rayDown = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(0f, -1f));
-    //    _raysList.Add(_rayDown);
-
-    //    _rayLeft = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(-1f, 0f));
-    //    _raysList.Add(_rayLeft);
-
-    //    _rayRight = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(1f, 0f));
-    //    _raysList.Add(_rayRight);
-
-    //    _rayDiagLeftUp = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(-1f, 1f));
-    //    _raysList.Add(_rayDiagLeftUp);
-
-    //    _rayDiagLeftDown = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(-1f, -1f));
-    //    _raysList.Add(_rayDiagLeftDown);
-
-    //    _rayDiagRightUp = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(1f, 1f));
-    //    _raysList.Add(_rayDiagRightUp);
-
-    //    _rayDiagRightDown = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(1f, -1f));
-    //    _raysList.Add(_rayDiagRightDown);
-    //}
-    #endregion
 }

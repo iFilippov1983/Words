@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -24,7 +25,6 @@ public class GridSquare : MonoBehaviour
     private MeshRenderer _bodyMesh;
     private Animator _animator;
     private Transform _thisTransform;
-    private Vector3 _bodyPosition;
     private Vector3 _thresholdPoint;
 
     private int _showDelay = 1000;
@@ -41,10 +41,11 @@ public class GridSquare : MonoBehaviour
     private bool _toBeDestroyed;
     private bool _checkIsUnavailable;
 
+    [ShowInInspector]
     public string Letter => _letter;
     public int Index => _index;
     public bool NotVisible => _notVisible;
-    public Vector3 BodyPosition => _bodyPosition;
+    public Vector3 BodyPosition => _bodyObject.transform.position;
     public LetterData PlaneLetterData => _planeLetterData;
 
     private void Start()
@@ -53,7 +54,6 @@ public class GridSquare : MonoBehaviour
         _bodyMesh = _bodyObject.GetComponent<MeshRenderer>();
         _animator = GetComponent<Animator>();
         _thisTransform = gameObject.transform;
-        _bodyPosition = _bodyObject.transform.position;
 
         _notVisible = true;
         _isClickable = true;
@@ -264,6 +264,7 @@ public class GridSquare : MonoBehaviour
 
     private async void ShowPrompt(List<int> squareIndexes)
     {
+        squareIndexes.Contains(_index);
         if (squareIndexes.Contains(_index) || _isInCorrectWord)
         {
             _animator.SetBool(Literal.AnimBool_showPrompt, true);

@@ -25,6 +25,7 @@ public class Timer : MonoBehaviour
         _timeLeft = currentGameData.selectedBoardData.TimeInSeconds;
         _oneSecondDown = _timeLeft - 1f;
         _timeToPrompt = currentGameData.selectedBoardData.TimeToPrompt;
+        _promptTimer = _timeToPrompt;
 
         GameEvents.OnBoardComleted += StopTimer;
         GameEvents.OnUnlockNextCategory += StopTimer;

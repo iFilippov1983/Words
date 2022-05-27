@@ -9,7 +9,7 @@ namespace Game
         public GameObject Create(GridSquare gridSquare)
         {
             var letter = Instantiate(flyingLetterPrefab, gridSquare.transform.position, Quaternion.identity, transform);
-            var letterSprite = gridSquare.PlaneLetterData.Sprite;
+            var letterSprite = gridSquare?.PlaneLetterData.Sprite;
 
             letter.GetComponent<SpriteRenderer>().sprite = letterSprite;
 

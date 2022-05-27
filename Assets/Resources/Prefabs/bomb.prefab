@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4088956534602388223}
   - component: {fileID: 2259139071935522357}
   - component: {fileID: 6082806878350450755}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,6 +233,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4947459262149591779, guid: 344f5acdd660dac4aba29bbd7d3ba5df, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947459262264630585, guid: 344f5acdd660dac4aba29bbd7d3ba5df, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
