@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Game;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +9,7 @@ public class SearchingWord : MonoBehaviour
     [SerializeField] private Animator animator;
     public TextMeshProUGUI displayedText;
     public Image crossLine;
+    public bool isFound;
 
     private string _word;
     private int hash;
@@ -23,6 +22,8 @@ public class SearchingWord : MonoBehaviour
 
     private void OnEnable()
     {
+        isFound = false;
+
         GameEvents.OnWordGetTarget += WordGetTarget;
         //GameEvents.OnCorrectWord += CorrectWord;
     }
@@ -55,6 +56,7 @@ public class SearchingWord : MonoBehaviour
             hitParticleSystem.Play();
         }
 
+        isFound = true;
         animator.Play(hash);
     }
 

@@ -1,4 +1,5 @@
 using Game.WordComparison;
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,9 +8,9 @@ using UnityEngine;
 public class Prompter : MonoBehaviour
 {
     [SerializeField] private GameData _currentGameData;
+    [SerializeField] private SearchingWordsList _searchingWordsParent;
 
     private string _word;
-    private int _assignedPoints = 0;
     private bool _usePrompts;
 
     private Ray _rayUp, _rayDown;
@@ -17,37 +18,36 @@ public class Prompter : MonoBehaviour
     private Ray _rayDiagLeftUp, _rayDiagLeftDown;
     private Ray _rayDiagRightUp, _rayDiagRightDown;
     private Ray _currenRay = new Ray();
-    private Vector3 _rayStartPosition;
-    private List<int> _correcSquaresIndexes = new List<int>();
+    private Vector3 _rayOriginPosition;
+
     private List<int> _checkedSquaresIndexes = new List<int>();
-    private List<int> _checkedFirstIndexes = new List<int>();
     private List<Ray> _raysList = new List<Ray>();
     private List<GridSquare> _squaresList = new List<GridSquare>();
     private List<GridSquare> _unvisibleSquares = new List<GridSquare>();
     private List<GridSquare> _visibleSquares = new List<GridSquare>();
+    private List<SearchingWord> _searchingWords = new List<SearchingWord>();
 
-    private void Start()
+    private async void Start()
     {
-        _assignedPoints = 0;
         _usePrompts = _currentGameData.selectedBoardData.UsePrompts;
+        _searchingWords = UpdateSearchingWordsList(_searchingWordsParent);
+        _squaresList = await MakeAllSquaresList();
 
-        MakeAllSquaresList();
-        SortSquaresLists(_word, _correcSquaresIndexes);
+        SortSquaresLists(_word, _checkedSquaresIndexes);
+
         GameEvents.OnCorrectWord += SortSquaresLists;
+        GameEvents.OnTimeToPrompt += MakePrompt;
     }
 
     private void OnDestroy()
     {
         GameEvents.OnCorrectWord -= SortSquaresLists;
+        GameEvents.OnTimeToPrompt += MakePrompt;
     }
 
-    private void Update()
+    private async Task<List<GridSquare>> MakeAllSquaresList()
     {
-
-    }
-
-    private async void MakeAllSquaresList()
-    {
+        var list = new List<GridSquare>();
         var squaresArray = FindObjectsOfType<GridSquare>();
         int squaresAmount = _currentGameData.selectedBoardData.Columns * _currentGameData.selectedBoardData.Rows;
         while (squaresArray.Length < squaresAmount)
@@ -57,9 +57,9 @@ public class Prompter : MonoBehaviour
         }
 
         for (int i = 0; i < squaresArray.Length; i++)
-            _squaresList.Add(squaresArray[i]);
+            list.Add(squaresArray[i]);
 
-        //Debug.Log($"Squares amont: {squaresAmount}, List count: {_squaresList.Count}");
+        return list;
     }
 
     private async void SortSquaresLists(string word, List<int> squareIndexes)
@@ -75,57 +75,122 @@ public class Prompter : MonoBehaviour
             else _visibleSquares.Add(square);
         }
 
-        //Debug.Log($"Visible list count: {_visibleSquares.Count}, Unvisible: {_unvisibleSuares.Count}");
+        _searchingWords = UpdateSearchingWordsList(_searchingWordsParent);
+        //Debug.Log($"Visible list count: {_visibleSquares.Count}, Unvisible: {_unvisibleSquares.Count}");
     }
 
-
-    private void SetRays(Vector3 squarePosition)
+    [Button]
+    private void MakePrompt()
     {
-        _raysList.Clear();
+        if (_usePrompts == false)
+            return;
 
-        _rayUp = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(0f, 1f));
-        _raysList.Add(_rayUp);
-        
-        _rayDown = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(0f, -1f));
-        _raysList.Add(_rayDown);
-
-        _rayLeft = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(-1f, 0f));
-        _raysList.Add(_rayLeft);
-
-        _rayRight = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(1f, 0f));
-        _raysList.Add(_rayRight);
-
-        _rayDiagLeftUp = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(-1f, 1f));
-        _raysList.Add(_rayDiagLeftUp);
-
-        _rayDiagLeftDown = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(-1f, -1f));
-        _raysList.Add(_rayDiagLeftDown);
-
-        _rayDiagRightUp = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(1f, 1f));
-        _raysList.Add(_rayDiagRightUp);
-
-        _rayDiagRightDown = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(1f, -1f));
-        _raysList.Add(_rayDiagRightDown);
-    }
-
-    private void CheckWord()
-    {
-        foreach (var searchingWord in _currentGameData.selectedBoardData.SearchingWords)
+        foreach (var word in _searchingWords)
         {
-            if (_word.Equals(searchingWord.Word))
+            bool wordFound = TryFindWord(word);
+            if (wordFound)
             {
-                GameEvents.WordToPromptFoundMethod(_correcSquaresIndexes);
-                _word = string.Empty;
-                _correcSquaresIndexes.Clear();
+                GameEvents.WordToPromptFoundMethod(_checkedSquaresIndexes);
+                ClearData();
+                return;
             }
         }
+
+        ClearData();
     }
 
-    private void ClearSelection()
+    private bool TryFindWord(SearchingWord searchingWord)
     {
-        _assignedPoints = 0;
-        _correcSquaresIndexes.Clear();
+        foreach (var visibleSquare in _visibleSquares)
+        {
+            bool found = SearchStartingFrom(visibleSquare, searchingWord.Word);
+            if(found) return true;
+        }
+
+        return false;
+    }
+
+    private bool SearchStartingFrom(GridSquare square, string word)
+    {
+        ClearData();
+
+        _word += square.Letter;
+        _checkedSquaresIndexes.Add(square.Index);
+        _raysList = SetRaysFrom(square.BodyPosition);
+        foreach (var ray in _raysList)
+        {
+            CheckAllSequencesToFind(word, ray);
+        }
+
+        return false;
+    }
+
+    private void CheckAllSequencesToFind(string word, Ray ray)
+    {
+        var hits = Physics.RaycastAll(ray, 2f, LayerMask.NameToLayer(Literal.LayerMask_SquareBody));
+        if (hits.Length != 0)
+        {
+            for (int i = 0; i < hits.Length; i++)
+            {
+                var square = hits[i].collider.GetComponentInParent<GridSquare>();
+                if (_checkedSquaresIndexes.Contains(square.Index))
+                    continue;
+
+            }
+            
+            
+        }
+        else return;
+    }
+
+    private List<Ray> SetRaysFrom(Vector3 origin)
+    {
+        var raysList = new List<Ray>();
+
+        _rayUp = new Ray(new Vector2(origin.x, origin.y), new Vector2(0f, 1f));
+        raysList.Add(_rayUp);
+
+        _rayDown = new Ray(new Vector2(origin.x, origin.y), new Vector2(0f, -1f));
+        raysList.Add(_rayDown);
+
+        _rayLeft = new Ray(new Vector2(origin.x, origin.y), new Vector2(-1f, 0f));
+        raysList.Add(_rayLeft);
+
+        _rayRight = new Ray(new Vector2(origin.x, origin.y), new Vector2(1f, 0f));
+        raysList.Add(_rayRight);
+
+        _rayDiagLeftUp = new Ray(new Vector2(origin.x, origin.y), new Vector2(-1f, 1f));
+        raysList.Add(_rayDiagLeftUp);
+
+        _rayDiagLeftDown = new Ray(new Vector2(origin.x, origin.y), new Vector2(-1f, -1f));
+        raysList.Add(_rayDiagLeftDown);
+
+        _rayDiagRightUp = new Ray(new Vector2(origin.x, origin.y), new Vector2(1f, 1f));
+        raysList.Add(_rayDiagRightUp);
+
+        _rayDiagRightDown = new Ray(new Vector2(origin.x, origin.y), new Vector2(1f, -1f));
+        raysList.Add(_rayDiagRightDown);
+
+        return raysList;
+    }
+
+    private void ClearData()
+    {
         _word = string.Empty;
+        _checkedSquaresIndexes.Clear();
+        _raysList.Clear();
+    }
+
+    private List<SearchingWord> UpdateSearchingWordsList(SearchingWordsList parent)
+    { 
+        var list = new List<SearchingWord>();
+        foreach (var word in parent.SearchingWords)
+        { 
+            if(word.isFound == false)
+                list.Add(word);
+        }
+
+        return list;
     }
 
     #region Legacy

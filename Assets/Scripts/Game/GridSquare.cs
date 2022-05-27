@@ -5,9 +5,6 @@ using static AlphabetData;
 
 public class GridSquare : MonoBehaviour
 {
-    public string SquareLetter { get; private set; }
-    //public int SquareIndex { get; set; }
-
     [SerializeField] private DataProfile _dataProfile;
     [SerializeField] private SpriteRenderer _displayedSprite;
     [SerializeField] private GameObject _bodyObject;
@@ -27,11 +24,13 @@ public class GridSquare : MonoBehaviour
     private MeshRenderer _bodyMesh;
     private Animator _animator;
     private Transform _thisTransform;
+    private Vector3 _bodyPosition;
     private Vector3 _thresholdPoint;
 
     private int _showDelay = 1000;
     private int _maxDelay = 1000;
     private int _index = -1;
+    private string _letter;
 
     private bool _isClickable;
     private bool _notVisible;
@@ -42,7 +41,10 @@ public class GridSquare : MonoBehaviour
     private bool _toBeDestroyed;
     private bool _checkIsUnavailable;
 
+    public string Letter => _letter;
+    public int Index => _index;
     public bool NotVisible => _notVisible;
+    public Vector3 BodyPosition => _bodyPosition;
     public LetterData PlaneLetterData => _planeLetterData;
 
     private void Start()
@@ -51,6 +53,7 @@ public class GridSquare : MonoBehaviour
         _bodyMesh = _bodyObject.GetComponent<MeshRenderer>();
         _animator = GetComponent<Animator>();
         _thisTransform = gameObject.transform;
+        _bodyPosition = _bodyObject.transform.position;
 
         _notVisible = true;
         _isClickable = true;
@@ -135,7 +138,7 @@ public class GridSquare : MonoBehaviour
         _planeLetterData = planeLetterData;
 
         _displayedSprite.sprite = _normalLetterData.Sprite;
-        SquareLetter = _normalLetterData.Letter;
+        _letter = _normalLetterData.Letter;
     }
 
     public void SetIndex(int index) => _index = index;

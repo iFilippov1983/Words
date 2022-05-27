@@ -154,9 +154,6 @@ public class WordCheker : MonoBehaviour
 
         bool foundExtraWord = _wordFinder.FindWord(_word);
         bool alreadyUsedWord = _dataProfile.UsedExtraWords.Contains(_word);
-        
-        //Debug.Log($"extra: {foundExtraWord}");
-        //Debug.Log($"in List: {alreadyUsedWord}");
 
         if (foundExtraWord && !alreadyUsedWord)
         {
@@ -164,10 +161,7 @@ public class WordCheker : MonoBehaviour
             _dataProfile.UsedExtraWords.Add(_word);
 
             _extraWord = _word;
-            //Debug.Log($"Extra word: {_extraWord} is ADDED to list");
         }
-
-        //Debug.Log(foundExtraWord ? $"{_word} found" : $"{_word} not found");
     }
 
     private void ClearSelection()

@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SerchingWordsList : MonoBehaviour
+public class SearchingWordsList : MonoBehaviour
 {
     
     public GameData currentGameData;
@@ -19,6 +17,8 @@ public class SerchingWordsList : MonoBehaviour
     private List<GameObject> _words = new List<GameObject>();
     private RectTransform _prefabSquareRect;
     private RectTransform _parentRect;
+
+    public List<SearchingWord> SearchingWords => MakeSearchingWordsList();
 
     private void Start()
     {
@@ -186,5 +186,14 @@ public class SerchingWordsList : MonoBehaviour
         startPosition.y -= shiftByY;
 
         return startPosition;
+    }
+
+    private List<SearchingWord> MakeSearchingWordsList()
+    { 
+        var list = new List<SearchingWord>();
+        foreach (var word in _words)
+            list.Add(word.GetComponent<SearchingWord>());
+
+        return list;
     }
 }
