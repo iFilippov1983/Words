@@ -14,13 +14,13 @@ public class Timer : MonoBehaviour
     private float _seconds;
     private float _oneSecondDown;
     private bool _timeOut;
-    private bool _stopTimer;
+    private bool _stopTimers;
     private float _timeToPrompt;
     private float _promptTimer;
 
     void Start()
     {
-        _stopTimer = false;
+        _stopTimers = false;
         _timeOut = false;
         _timeLeft = currentGameData.selectedBoardData.TimeInSeconds;
         _oneSecondDown = _timeLeft - 1f;
@@ -31,7 +31,7 @@ public class Timer : MonoBehaviour
         GameEvents.OnUnlockNextCategory += StopTimer;
         GameEvents.OnCorrectWord += ResetPromptTimer;
         GameEvents.OnCorrectExtraWord += ResetPromptTimer;
-        GameOverPopup.ContinueWhithExtraTime += RestartTimer;
+        GameOverPopup.ContinueWhithExtraTime += RestartTimers;
     }
 
     private void OnDisable()
@@ -40,18 +40,19 @@ public class Timer : MonoBehaviour
         GameEvents.OnUnlockNextCategory -= StopTimer;
         GameEvents.OnCorrectWord -= ResetPromptTimer;
         GameEvents.OnCorrectExtraWord -= ResetPromptTimer;
-        GameOverPopup.ContinueWhithExtraTime -= RestartTimer;
+        GameOverPopup.ContinueWhithExtraTime -= RestartTimers;
     }
 
-    public void StopTimer(bool categoryCompleted) => _stopTimer = true;
-    public void StopTimer() => _stopTimer = true;
+    public void StopTimer(bool categoryCompleted) => _stopTimers = true;
+    public void StopTimer() => _stopTimers = true;
 
-    public void RestartTimer()
+    public void RestartTimers()
     {
-        _stopTimer = false;
+        _stopTimers = false;
         _timeOut = false;
         _timeLeft = extraTime;
         _oneSecondDown = _timeLeft - 1f;
+        ResetPromptTimer();
     }
 
     private void Update()
@@ -73,7 +74,7 @@ public class Timer : MonoBehaviour
             }
             else
             {
-                _stopTimer = true;
+                _stopTimers = true;
                 ActivateGameOverGUI();
             }
         }
@@ -81,7 +82,7 @@ public class Timer : MonoBehaviour
 
     private void SetTimer()
     {
-        if (_stopTimer == false)
+        if (_stopTimers == false)
             _timeLeft -= Time.deltaTime;
 
         if (_timeLeft <= _oneSecondDown)
@@ -92,15 +93,15 @@ public class Timer : MonoBehaviour
 
     private void SetPromptTimer()
     {
-        if (_timeToPrompt != 0)
-        {
+        if (_timeToPrompt != 0 && _stopTimers == false)
             _promptTimer -= Time.deltaTime;
-            if (_promptTimer <= 0)
-            {
-                GameEvents.TimeToPromptMethod();
-                _promptTimer = _timeToPrompt;
-            }
+
+        if (_promptTimer <= 0)
+        {
+            GameEvents.TimeToPromptMethod();
+            _promptTimer = _timeToPrompt;
         }
+
     }
 
     private void ActivateGameOverGUI()
@@ -109,6 +110,7 @@ public class Timer : MonoBehaviour
         _timeOut = true;
     }
 
-    private void ResetPromptTimer(string word, List<int> squareIndexes) => _promptTimer = _timeToPrompt;
-    private void ResetPromptTimer(List<int> squareIndexes) => _promptTimer = _timeToPrompt;
+    private void ResetPromptTimer(string word, List<int> squareIndexes) => ResetPromptTimer();
+    private void ResetPromptTimer(List<int> squareIndexes) => ResetPromptTimer();
+    private void ResetPromptTimer() => _promptTimer = _timeToPrompt;
 }

@@ -101,8 +101,11 @@ public class Prompter : MonoBehaviour
     {
         foreach (var visibleSquare in _visibleSquares)
         {
-            bool found = SearchStartingFrom(visibleSquare, searchingWord.Word);
-            if(found) return true;
+            if (visibleSquare != null)
+            {
+                bool found = SearchStartingFrom(visibleSquare, searchingWord.Word);
+                if (found) return true;
+            }
         }
 
         return false;

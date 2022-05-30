@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -13,7 +11,7 @@ namespace Game
        
         public static event Action<int> CoinsAmountChanged;
         public static event Action<int> TryChangeCoinsAmount;
-        public static event Action CoinsAmountChangeImpossible;
+        public static event Action<string> CoinsAmountChangeImpossible;
 
         [SerializeField] private TMP_Text coinsText;
         [SerializeField] private CoinSpawner coinSpawner;
@@ -66,10 +64,10 @@ namespace Game
         private void ChangeCoinsAmount(int amount)
         {
             var newAmount = Coins + amount;
-            if (newAmount < 0)
+            if (newAmount <= 0)
             {
                 _canBuy = false;
-                CoinsAmountChangeImpossible?.Invoke();
+                CoinsAmountChangeImpossible?.Invoke(Literal.AnimName_NoCoins);
             }
             else
             {

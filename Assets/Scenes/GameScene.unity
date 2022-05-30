@@ -1158,7 +1158,7 @@ PrefabInstance:
       objectReference: {fileID: 1055333736}
     - target: {fileID: 7770522330857194147, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
       propertyPath: m_Name
-      value: UICanvas
+      value: CanvasGameUI
       objectReference: {fileID: 0}
     - target: {fileID: 7770522330857194150, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
       propertyPath: m_Camera
@@ -1248,10 +1248,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8176362037571203259, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1055333736}
     - target: {fileID: 8619405554254919976, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 

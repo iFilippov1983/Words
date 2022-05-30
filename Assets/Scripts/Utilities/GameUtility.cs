@@ -15,7 +15,7 @@ public class GameUtility : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
-    public void LoadScene(string sceneName)
+    public static void LoadScene(string sceneName)
     {
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
         Debug.Log("[Haptic] GameUtility - LoadScene");

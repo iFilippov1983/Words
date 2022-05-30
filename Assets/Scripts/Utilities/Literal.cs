@@ -9,6 +9,8 @@ public static class Literal
     public const string AnimBool_isHighlighted = "isHighlighted";
     public const string AnimBool_isWrong = "isWrong";
     public const string AnimBool_showPrompt = "showPrompt";
+    public const string AnimName_NoCoins = "Message_pulse_NoCoins";
+    public const string AnimName_NoLifes = "Message_pulse_NoLifes";
 
     public const string LayerMask_SquareBody = "SquareBody";
 }
