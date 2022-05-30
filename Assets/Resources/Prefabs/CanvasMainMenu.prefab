@@ -124,8 +124,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f08f52c8df26b4db57856d562695c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buyLifesPopup: {fileID: 0}
-  buyLifesButton: {fileID: 0}
+  _buyLifesPopup: {fileID: 2449081842423881144}
+  _buyLifesButtonObject: {fileID: 5949077701743743792}
+  _messageText: {fileID: 4362348077211337849}
+  _timerText: {fileID: 3062013378976308112}
+  _lifesText: {fileID: 7847561188046331437}
+  _lifesBuyCost: 100
 --- !u!1 &389787760389765673
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,6 +542,7 @@ GameObject:
   - component: {fileID: 7820603305344205749}
   - component: {fileID: 4483475225560099102}
   - component: {fileID: 4362348077211337849}
+  - component: {fileID: 3052203079354434939}
   m_Layer: 5
   m_Name: QuestionText (TMP)
   m_TagString: Untagged
@@ -661,6 +666,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!111 &3052203079354434939
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3398308784738694211}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: e883400451da55945aa52cae87749431, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: e883400451da55945aa52cae87749431, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &3461356617930416538
 GameObject:
   m_ObjectHideFlags: 0
@@ -1879,7 +1900,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9149001351799981831}
-  - component: {fileID: 7938048242971621559}
   - component: {fileID: 9149001351799981832}
   - component: {fileID: 9149001351799981833}
   - component: {fileID: 9149001351799981834}
@@ -1917,20 +1937,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &7938048242971621559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9149001351799981835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89f08f52c8df26b4db57856d562695c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buyLifesPopup: {fileID: 0}
-  buyLifesButton: {fileID: 0}
 --- !u!223 &9149001351799981832
 Canvas:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class LifesManager : MonoBehaviour
     public static Action<int> TryChangeLifesAmount;
     public static Action<string> LifesAmountChangeImpossible;
 
+    [SerializeField] private BuyLifesPopup _buyLifesPopup;
     [SerializeField] private Text _lifesText;
     [SerializeField] private TextMeshProUGUI _timerTMP;
     [SerializeField] private int _defaultLifesAmount;
@@ -26,6 +27,7 @@ public class LifesManager : MonoBehaviour
         SetLifes(Mathf.Max(0, loadedLifes));
 
         TryChangeLifesAmount += ChangeLifesAmount;
+        BuyLifesPopup.ContinueWhithExtraLifes += SetLifes;
     }
 
     private void OnDestroy()
@@ -33,6 +35,7 @@ public class LifesManager : MonoBehaviour
         DataSaver.SaveIntData(LifesKey, Lifes);
 
         TryChangeLifesAmount -= ChangeLifesAmount;
+        BuyLifesPopup.ContinueWhithExtraLifes -= SetLifes;
     }
 
     private void SetLifes(int lifes)
@@ -51,7 +54,7 @@ public class LifesManager : MonoBehaviour
     private void ChangeLifesAmount(int amount)
     { 
         var newAmount = Lifes + amount;
-        if (newAmount <= 0)
+        if (newAmount < 0)
         {
             _haveLifes = false;
             LifesAmountChangeImpossible?.Invoke(Literal.AnimName_NoLifes);
@@ -65,7 +68,7 @@ public class LifesManager : MonoBehaviour
     }
 
     public static bool TryChangeLifesAmountMethod(int amount)
-    { 
+    {
         TryChangeLifesAmount.Invoke(amount);
         return _haveLifes;
     }
