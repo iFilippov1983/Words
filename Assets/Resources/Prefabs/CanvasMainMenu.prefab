@@ -124,12 +124,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f08f52c8df26b4db57856d562695c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buyLifesPopup: {fileID: 0}
-  _buyLifesPopupObject: {fileID: 0}
-  _buyLifesButtonObject: {fileID: 0}
-  _timerText: {fileID: 0}
-  _lifesText: {fileID: 0}
-  lifesBuyCost: 0
+  _buyLifesPopup: {fileID: 2449081842423881144}
+  _buyLifesButtonObject: {fileID: 5949077701743743792}
+  _messageText: {fileID: 4362348077211337849}
+  _timerText: {fileID: 3062013378976308112}
+  _lifesText: {fileID: 7847561188046331437}
+  _lifesBuyCost: 100
+  _lifesBuyAmount: 5
 --- !u!1 &389787760389765673
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,19 +215,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4447927156640649807}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2449081842423881144}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &423858331345742677
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +607,7 @@ GameObject:
   - component: {fileID: 7820603305344205749}
   - component: {fileID: 4483475225560099102}
   - component: {fileID: 4362348077211337849}
+  - component: {fileID: 2798704951112709379}
   m_Layer: 5
   m_Name: QuestionText (TMP)
   m_TagString: Untagged
@@ -741,6 +731,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!111 &2798704951112709379
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3398308784738694211}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 52c40064950c7d64a80599402b456de4, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 52c40064950c7d64a80599402b456de4, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &3461356617930416538
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,7 +2040,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9149001351799981831}
-  - component: {fileID: 7938048242971621559}
   - component: {fileID: 9149001351799981832}
   - component: {fileID: 9149001351799981833}
   - component: {fileID: 9149001351799981834}
@@ -2072,24 +2077,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &7938048242971621559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9149001351799981835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89f08f52c8df26b4db57856d562695c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _buyLifesPopup: {fileID: 0}
-  _buyLifesPopupObject: {fileID: 0}
-  _buyLifesButtonObject: {fileID: 0}
-  _timerText: {fileID: 0}
-  _lifesText: {fileID: 0}
-  lifesBuyCost: 0
 --- !u!223 &9149001351799981832
 Canvas:
   m_ObjectHideFlags: 0
@@ -2160,6 +2147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9149001351849223829}
+  - component: {fileID: 600520286594931898}
   - component: {fileID: 9149001351849223826}
   - component: {fileID: 9149001351849223827}
   - component: {fileID: 9149001351849223828}
@@ -2190,6 +2178,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -600}
   m_SizeDelta: {x: 600, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &600520286594931898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9149001351849223830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afba8482af1da22448e8a63fcfc81dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buyLifesPopup: {fileID: 2449081842423881144}
+  _lifesManager: {fileID: 0}
 --- !u!222 &9149001351849223826
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2271,19 +2273,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9149001351849223827}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameUtility, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: GameScene
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &9149001352113464218
 GameObject:
   m_ObjectHideFlags: 0
@@ -2882,8 +2872,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16, y: 0}
-  m_SizeDelta: {x: 350, y: 50}
+  m_AnchoredPosition: {x: 91.1, y: 0.82}
+  m_SizeDelta: {x: 224.43, y: 58.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9149001352735829977
 CanvasRenderer:
@@ -2947,7 +2937,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -3695,8 +3685,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 245, y: 0}
-  m_SizeDelta: {x: 300, y: 90}
+  m_AnchoredPosition: {x: 198.22, y: 0.41}
+  m_SizeDelta: {x: 217.93, y: 89.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6374451598719768905
 CanvasRenderer:
@@ -3760,7 +3750,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0

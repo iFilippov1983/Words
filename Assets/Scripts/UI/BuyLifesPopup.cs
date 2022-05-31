@@ -30,7 +30,7 @@ public class BuyLifesPopup : MonoBehaviour
         _buyLifesButton = _buyLifesButtonObject.GetComponent<Button>();
         _buyLifesButton.onClick.AddListener(TryBuyLifes);
 
-        _buyLifesPopup.SetActive(false);
+        ShowPopup(false);
 
         CurrencyManager.CoinsAmountChangeImpossible += ShowMessage;
     }
@@ -57,13 +57,13 @@ public class BuyLifesPopup : MonoBehaviour
         Debug.Log("[Haptic] BuyLifesPopup - ShowMessage");
 
         _messageText.text = NoCoinsMessageText;
-        var animation = _messageText.GetComponent<Animation>();
-        animation.Play(animationName);
+        var animation = _messageText.GetComponentInChildren<Animation>();
+        animation.Play();
         while (animation.isPlaying)
             await System.Threading.Tasks.Task.Yield();
 
         _messageText.text = DefaultMessageText;
     }
 
-
+    public void ShowPopup(bool show) => _buyLifesPopup.SetActive(show);
 }

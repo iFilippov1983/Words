@@ -308,10 +308,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buyLifesPopup: {fileID: 1406583058}
+  _showPopupButton: {fileID: 1318896822}
   _lifesText: {fileID: 189924925}
   _timerTMP: {fileID: 1852160129}
   _defaultLifesAmount: 5
-  _lifesCost: 1
+  _restorationTime: 900
 --- !u!1 &1280489650
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,6 +419,17 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_ConstantMin: 0
     m_ConstantMax: 0
+--- !u!114 &1318896822 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5689114186087506222, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+  m_PrefabInstance: {fileID: 9149001352488127743}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1388327297 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9149001352735829978, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
@@ -574,6 +586,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 600520286594931898, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: _lifesManager
+      value: 
+      objectReference: {fileID: 1111014881}
     - target: {fileID: 9149001351799981831, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -666,10 +682,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasMainMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 9149001351849223828, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2102204705}
     - target: {fileID: 9149001352587975429, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

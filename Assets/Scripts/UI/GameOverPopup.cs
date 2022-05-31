@@ -10,13 +10,15 @@ public class GameOverPopup : MonoBehaviour
     public GameObject continueGameForCoins;
     public GameObject continueGameAfterAdsButton;
     public GameObject restartButton;
+    public GameObject exitButton;
     public GameObject messageField;
-    public int continueCost = 30;
+    public int continueCoinsCost = 30;
     public int lifesLostCost = 1;
 
     private Button _continueForAdsButton;
     private Button _continueForCoinsButton;
     private Button _restartButton;
+    private Button _exitButton;
 
     public static Action ContinueWhithExtraTime;
 
@@ -29,6 +31,9 @@ public class GameOverPopup : MonoBehaviour
 
         _restartButton = restartButton.GetComponent<Button>();
         _restartButton.onClick.AddListener(TryRestart);
+
+        _exitButton = exitButton.GetComponent<Button>();
+        _exitButton.onClick.AddListener(Exit);
 
         gameOverPopup.SetActive(false);
 
@@ -60,7 +65,7 @@ public class GameOverPopup : MonoBehaviour
 
     private void TryBuySeconds()
     {
-        var cost = -continueCost;
+        var cost = -continueCoinsCost;
         var succes = CurrencyManager.TryChangeCoinsAmountMethod(cost);
         if (succes)
         {
@@ -71,7 +76,16 @@ public class GameOverPopup : MonoBehaviour
 
     private void TryRestart()
     {
-        GameUtility.LoadScene(Literal.Scene_GameScene);
+        int cost = -lifesLostCost;
+        bool succes = LifesManager.TryChangeLifesAmountMethod(cost);
+        if (succes)
+        {
+            GameUtility.LoadScene(Literal.Scene_GameScene);
+            HideGameOverPopup();
+            return;
+        }
+
+        ShowMessage(Literal.AnimName_NoLifes);
     }
 
     private async void ShowMessage(string animationName)
@@ -83,5 +97,12 @@ public class GameOverPopup : MonoBehaviour
         animation.Play(animationName);
         while(animation.isPlaying)
             await System.Threading.Tasks.Task.Yield();
+    }
+
+    private void Exit()
+    {
+        int cost = -lifesLostCost;
+        _ = LifesManager.TryChangeLifesAmountMethod(cost);
+        GameUtility.LoadScene(Literal.Scene_MainMenu);
     }
 }

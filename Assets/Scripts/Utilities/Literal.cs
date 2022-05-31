@@ -11,6 +11,7 @@ public static class Literal
     public const string AnimBool_showPrompt = "showPrompt";
     public const string AnimName_NoCoins = "Message_pulse_NoCoins";
     public const string AnimName_NoLifes = "Message_pulse_NoLifes";
+    public const string AnimName_NoCoinsForLifes = "Message_pulse_NoCoinsForLifes";
 
     public const string LayerMask_SquareBody = "SquareBody";
 }

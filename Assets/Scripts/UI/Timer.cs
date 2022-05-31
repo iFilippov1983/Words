@@ -8,7 +8,6 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timerText;
     public float extraTime = 60f;
     
-
     private float _timeLeft;
     private float _minutes;
     private float _seconds;

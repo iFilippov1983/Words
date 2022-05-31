@@ -8,12 +8,23 @@ public class DataSaver
     private static List<string> _stringList;
     private static int _countIndex = -1;
 
-    public static int LoadIntData(string name)
+    public static int LoadIntData(string dataName)
     {
         int value = 0;// -1?
-        if (PlayerPrefs.HasKey(name))
+        if (PlayerPrefs.HasKey(dataName))
         { 
-            value = PlayerPrefs.GetInt(name);
+            value = PlayerPrefs.GetInt(dataName);
+        }
+
+        return value;
+    }
+
+    public static float LoadFloatData(string dataName)
+    { 
+        float value = 0f;
+        if (PlayerPrefs.HasKey(dataName))
+        { 
+            value = PlayerPrefs.GetFloat(dataName);
         }
 
         return value;
@@ -22,6 +33,12 @@ public class DataSaver
     public static void SaveIntData(string dataName, int dataIntValue)
     {
         PlayerPrefs.SetInt(dataName, dataIntValue);
+        PlayerPrefs.Save();
+    }
+
+    public static void SaveFloatData(string dataName, float dataValue)
+    {
+        PlayerPrefs.SetFloat(dataName, dataValue);
         PlayerPrefs.Save();
     }
 
