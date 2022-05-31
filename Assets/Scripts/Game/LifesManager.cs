@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class LifesManager : MonoBehaviour
 {
-    public const string LifesKey = "lifes";
-    public const string TimeKey = "time";
+    public const string LifesKey = "Lifes";
+    public const string TimeKey = "Time";
+    public const string DateTimeKey = "LastSavedTime";
     private const string LifesFull = "FULL";
     private const int ExitCost = -1;
 
@@ -33,19 +34,17 @@ public class LifesManager : MonoBehaviour
 
     private void Start()
     {
-        _timeLeft = DataSaver.LoadFloatData(TimeKey);
-        var loadedLifes = DataSaver.LoadIntData(LifesKey);
-        SetLifes(Mathf.Max(0, loadedLifes));
+        LoadData();
 
         _showPopupButton.onClick.AddListener(ShowBuyLifesPopup);
+
         TryChangeLifesAmount += ChangeLifesAmount;
         BuyLifesPopup.ContinueWhithExtraLifes += SetLifes;
     }
 
     private void OnDestroy()
     {
-        DataSaver.SaveIntData(LifesKey, Lifes);
-        DataSaver.SaveFloatData(TimeKey, _timeLeft);
+        SaveData();
 
         TryChangeLifesAmount -= ChangeLifesAmount;
         BuyLifesPopup.ContinueWhithExtraLifes -= SetLifes;
@@ -61,9 +60,9 @@ public class LifesManager : MonoBehaviour
     }
 #endif
 
-    private void Update()
+    private void FixedUpdate()
     {
-        SetTimer();
+        UpdateTimer();
     }
 
     private void OnGUI()
@@ -74,8 +73,11 @@ public class LifesManager : MonoBehaviour
             {
                 _minutes = Mathf.Floor(_timeLeft / 60);
                 _seconds = Mathf.RoundToInt(_timeLeft % 60);
+                if(_seconds == 60) _seconds = 59;
 
                 _timerTMP.text = _minutes.ToString("00") + ":" + _seconds.ToString("00");
+                if(_buyLifesPopup != null)
+                    _buyLifesPopup.TimerText.text = _minutes.ToString("00") + ":" + _seconds.ToString("00");
             }
             else
             {
@@ -84,16 +86,10 @@ public class LifesManager : MonoBehaviour
         }
     }
 
-    private void SetTimer()
+    private void UpdateTimer()
     { 
         if(!_lifesFull)
             _timeLeft -= Time.deltaTime;
-    }
-
-    private void StopTimer()
-    {
-        _timeLeft = _restorationTime;
-        _lifesFull = true;
     }
 
     private void SetLifes(int lifes)
@@ -119,6 +115,12 @@ public class LifesManager : MonoBehaviour
         }
     }
 
+    private void StopTimer()
+    {
+        _timeLeft = _restorationTime;
+        _lifesFull = true;
+    }
+
     private void ShowBuyLifesPopup()
     {
         if (_lifesFull)
@@ -130,6 +132,8 @@ public class LifesManager : MonoBehaviour
     private void UpdateText()
     { 
         _lifesText.text = Lifes.ToString();
+        if (_buyLifesPopup != null)
+            _buyLifesPopup.LifesText.text = Lifes.ToString();
     }
 
     [Button]
@@ -154,5 +158,46 @@ public class LifesManager : MonoBehaviour
     {
         TryChangeLifesAmount.Invoke(amount);
         return _haveLifes;
+    }
+
+    private void SetStartLifes()
+    {
+        var startLifes = DataSaver.HasKey(LifesKey)
+            ? DataSaver.LoadIntData(LifesKey)
+            : _defaultLifesAmount;
+        SetLifes(Mathf.Max(0, startLifes));
+    }
+
+    private void SetTime()
+    {
+        _timeLeft = DataSaver.LoadFloatData(TimeKey);
+
+        DateTime lastSavedTime = DataSaver.LoadDateTime(DateTimeKey, DateTime.UtcNow);
+        TimeSpan timePassed = DateTime.UtcNow - lastSavedTime;
+        float secondsPassed = (float)timePassed.TotalSeconds;
+        float secondsInWeek = 7f * 24f * 60f * 60f;
+        secondsPassed = Mathf.Clamp(secondsPassed, 0f, secondsInWeek);
+
+        if (secondsPassed >= _timeLeft)
+        {
+            SetLifes(_defaultLifesAmount);
+        }
+        else
+        { 
+            _timeLeft -= secondsPassed;
+        }
+    }
+
+    private void SaveData()
+    {
+        DataSaver.SaveIntData(LifesKey, Lifes);
+        DataSaver.SaveFloatData(TimeKey, _timeLeft);
+        DataSaver.SaveDateTime(DateTimeKey, DateTime.UtcNow);
+    }
+
+    private void LoadData()
+    {
+        SetTime();
+        SetStartLifes();
     }
 }

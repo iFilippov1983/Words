@@ -1,44 +1,48 @@
 using Game;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
-public class DataSaver
+public static class DataSaver
 {
     private static List<string> _listNames = new List<string>();
     private static List<string> _stringList;
     private static int _countIndex = -1;
 
-    public static int LoadIntData(string dataName)
+    public static bool HasKey(string key) => PlayerPrefs.HasKey(key);
+
+    public static int LoadIntData(string key)
     {
         int value = 0;// -1?
-        if (PlayerPrefs.HasKey(dataName))
+        if (PlayerPrefs.HasKey(key))
         { 
-            value = PlayerPrefs.GetInt(dataName);
+            value = PlayerPrefs.GetInt(key);
         }
 
         return value;
     }
 
-    public static float LoadFloatData(string dataName)
+    public static float LoadFloatData(string key)
     { 
         float value = 0f;
-        if (PlayerPrefs.HasKey(dataName))
+        if (PlayerPrefs.HasKey(key))
         { 
-            value = PlayerPrefs.GetFloat(dataName);
+            value = PlayerPrefs.GetFloat(key);
         }
 
         return value;
     }
 
-    public static void SaveIntData(string dataName, int dataIntValue)
+    public static void SaveIntData(string key, int dataIntValue)
     {
-        PlayerPrefs.SetInt(dataName, dataIntValue);
+        PlayerPrefs.SetInt(key, dataIntValue);
         PlayerPrefs.Save();
     }
 
-    public static void SaveFloatData(string dataName, float dataValue)
+    public static void SaveFloatData(string key, float dataValue)
     {
-        PlayerPrefs.SetFloat(dataName, dataValue);
+        PlayerPrefs.SetFloat(key, dataValue);
         PlayerPrefs.Save();
     }
 
@@ -105,5 +109,24 @@ public class DataSaver
         _stringList.Clear();
 
         PlayerPrefs.Save();
+    }
+
+    public static void SaveDateTime(string key, DateTime value)
+    {
+        string convertedToString = value.ToString("u", CultureInfo.InvariantCulture);
+        PlayerPrefs.SetString(key, convertedToString);
+        PlayerPrefs.Save();
+    }
+
+    public static DateTime LoadDateTime(string key, DateTime defaultValue)
+    {
+        if (PlayerPrefs.HasKey(key))
+        { 
+            string stored = PlayerPrefs.GetString(key);
+            DateTime result = DateTime.ParseExact(stored, "u", CultureInfo.InvariantCulture);
+            return result;
+        }
+        else
+            return defaultValue;
     }
 }
