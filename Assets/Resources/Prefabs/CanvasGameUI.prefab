@@ -1823,7 +1823,7 @@ RectTransform:
   m_GameObject: {fileID: 2227567788798753558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.82343, y: 0.82343, z: 0.82343}
   m_Children: []
   m_Father: {fileID: 1134901198199555418}
   m_RootOrder: 1
@@ -1854,7 +1854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.9339623, g: 0.2775454, b: 0.37621927, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1979,7 +1979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.2509804, b: 0.36078432, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3438,8 +3438,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: ARE YOU SURE?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dd5fe92165d2c894f8c24a8c5adcdd72, type: 2}
+  m_sharedMaterial: {fileID: 1180072795380844779, guid: dd5fe92165d2c894f8c24a8c5adcdd72, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3807,9 +3807,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 26a32e627fb084948ad18b8af0f356b7, type: 3}
+    m_Font: {fileID: 12800000, guid: d7f78a562b623824e90505ff70f3d873, type: 3}
     m_FontSize: 110
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 110
@@ -3878,7 +3878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3886,9 +3886,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 26a32e627fb084948ad18b8af0f356b7, type: 3}
+    m_Font: {fileID: 12800000, guid: d7f78a562b623824e90505ff70f3d873, type: 3}
     m_FontSize: 110
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 110
@@ -5454,7 +5454,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &7770522330857194144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6489,7 +6489,7 @@ RectTransform:
   m_GameObject: {fileID: 8983439305391205529}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.82343, y: 0.82343, z: 0.82343}
   m_Children: []
   m_Father: {fileID: 1134901198199555418}
   m_RootOrder: 0
