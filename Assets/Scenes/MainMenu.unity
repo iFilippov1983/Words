@@ -217,6 +217,53 @@ Transform:
   m_Father: {fileID: 2102204704}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &970936400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 970936401}
+  - component: {fileID: 970936402}
+  m_Layer: 0
+  m_Name: CurrencyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &970936401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970936400}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2102204704}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &970936402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970936400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7799b727966dd41448e543dbb5b24158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinsText: {fileID: 1388327297}
+  coinSpawner: {fileID: 1280489652}
+  coinsForLevelComplete: 0
+  _coinCost: 0
 --- !u!1 &1111014879
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,10 +307,139 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd0f741942df68488b84f1176986406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _buyLifesPopup: {fileID: 1406583058}
   _lifesText: {fileID: 189924925}
   _timerTMP: {fileID: 1852160129}
   _defaultLifesAmount: 5
   _lifesCost: 1
+--- !u!1 &1280489650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1280489651}
+  - component: {fileID: 1280489652}
+  m_Layer: 0
+  m_Name: CoinsSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1280489651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280489650}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2102204704}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1280489652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280489650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d99be2a6869cb3e4388434f6ee36bd81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 5646211165640957445, guid: 05c0245064c39354cabf67ba8c8272f2, type: 3}
+  uiParent: {fileID: 9149001352488127745}
+  target: {fileID: 9149001352488127744}
+  spawnInterval: 0
+  distanceToCamera: 0
+  flySpeed: 0
+  timeCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  xCurve:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
+  yCurve:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
+  zCurve:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 0
+--- !u!114 &1388327297 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9149001352735829978, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+  m_PrefabInstance: {fileID: 9149001352488127743}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1406583058 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8861975112910505083, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+  m_PrefabInstance: {fileID: 9149001352488127743}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f08f52c8df26b4db57856d562695c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1852160129 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3946155131077089156, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
@@ -372,6 +548,8 @@ Transform:
   - {fileID: 1995591102}
   - {fileID: 486303927}
   - {fileID: 1111014880}
+  - {fileID: 970936401}
+  - {fileID: 1280489651}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -498,3 +676,13 @@ PrefabInstance:
       objectReference: {fileID: 2102204705}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+--- !u!224 &9149001352488127744 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9149001352113464217, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+  m_PrefabInstance: {fileID: 9149001352488127743}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &9149001352488127745 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9149001351799981831, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+  m_PrefabInstance: {fileID: 9149001352488127743}
+  m_PrefabAsset: {fileID: 0}

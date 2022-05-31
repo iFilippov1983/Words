@@ -64,7 +64,7 @@ namespace Game
         private void ChangeCoinsAmount(int amount)
         {
             var newAmount = Coins + amount;
-            if (newAmount <= 0)
+            if (newAmount < 0)
             {
                 _canBuy = false;
                 CoinsAmountChangeImpossible?.Invoke(Literal.AnimName_NoCoins);
