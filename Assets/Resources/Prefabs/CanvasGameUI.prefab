@@ -2632,7 +2632,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: e8ca082695a7ba641a08943b2c27597c, type: 2}
   m_Animations: []
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!1 &3818387550983245516
@@ -5454,7 +5454,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &7770522330857194144
 MonoBehaviour:
   m_ObjectHideFlags: 0
