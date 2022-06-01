@@ -8,6 +8,7 @@ public class WinPopup : MonoBehaviour
     public GameObject winPopup;
     public GameObject messageField;
     public ParticleSystem winParticle;
+    [ReadOnly]
     public bool _categoryCompleted;
 
     void Start()
@@ -29,8 +30,14 @@ public class WinPopup : MonoBehaviour
     {
         await Task.Delay(2500);
         winPopup.SetActive(true);
+
         GameEvents.MenuIsActiveMethod(true);
         winParticle.Play();
+
+        var animation = winPopup.GetComponent<Animation>();
+        if(animation)
+            animation.Play();
+
         _categoryCompleted = categoryCompleted;
     }
 

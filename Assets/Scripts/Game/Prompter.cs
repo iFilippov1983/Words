@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -60,9 +61,11 @@ public class Prompter : MonoBehaviour
 
     private async void SortSquaresLists(string word, List<int> squareIndexes)
     {
-        await Task.Delay(3000);
+        CancellationToken token = new CancellationToken();
+        token.ThrowIfCancellationRequested();
+        await Task.Delay(3000, token);
 
-        if (!this.gameObject) return;
+        if (token.IsCancellationRequested) return;
 
         _visibleSquares.Clear();
         _unvisibleSquares.Clear();
