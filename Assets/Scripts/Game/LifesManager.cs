@@ -39,7 +39,7 @@ public class LifesManager : MonoBehaviour
         _showPopupButton.onClick.AddListener(ShowBuyLifesPopup);
 
         TryChangeLifesAmount += ChangeLifesAmount;
-        BuyLifesPopup.ContinueWhithExtraLifes += SetLifes;
+        BuyLifesPopup.ContinueWhithExtraLifes += ChangeLifesAmount;
     }
 
     private void OnDestroy()
@@ -47,7 +47,7 @@ public class LifesManager : MonoBehaviour
         SaveData();
 
         TryChangeLifesAmount -= ChangeLifesAmount;
-        BuyLifesPopup.ContinueWhithExtraLifes -= SetLifes;
+        BuyLifesPopup.ContinueWhithExtraLifes -= ChangeLifesAmount;
     }
 
 #if UNITY_IOS

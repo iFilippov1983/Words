@@ -192,7 +192,8 @@ public class SearchingWordsList : MonoBehaviour
     { 
         var list = new List<SearchingWord>();
         foreach (var word in _words)
-            list.Add(word.GetComponent<SearchingWord>());
+            if (word)
+                list.Add(word.GetComponent<SearchingWord>());
 
         return list;
     }
