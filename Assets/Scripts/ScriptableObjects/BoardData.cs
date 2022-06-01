@@ -44,6 +44,7 @@ public class BoardData : ScriptableObject
     public float TimeInSeconds;
     public int Columns = 0;
     public int Rows = 0;
+    public bool HideSearchingWords = false;
     public bool UsePrompts = false;
     public float TimeToPrompt = 0;
 

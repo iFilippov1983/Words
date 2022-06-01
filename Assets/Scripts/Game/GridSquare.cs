@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using static AlphabetData;
@@ -268,7 +269,12 @@ public class GridSquare : MonoBehaviour
         if (squareIndexes.Contains(_index) || _isInCorrectWord)
         {
             _animator.SetBool(Literal.AnimBool_showPrompt, true);
-            await Task.Delay(2000);
+
+            CancellationToken token = new CancellationToken();
+            token.ThrowIfCancellationRequested();
+            await Task.Delay(2000, token);
+            if (token.IsCancellationRequested) return;
+
             _animator.SetBool(Literal.AnimBool_showPrompt, false);
         }
     }

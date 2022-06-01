@@ -48,6 +48,7 @@ public class GameUtility : MonoBehaviour
     }
     
     [Button]
+    [HideInEditorMode]
     private void ShowPrompt()
     {
         GameEvents.WordToPromptFoundMethod(new List<int>());

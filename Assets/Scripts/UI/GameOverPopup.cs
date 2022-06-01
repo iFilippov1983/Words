@@ -53,6 +53,10 @@ public class GameOverPopup : MonoBehaviour
         GameEvents.MenuIsActiveMethod(true);
         _continueForAdsButton.interactable = false;
         _continueForCoinsButton.interactable = true;
+
+        var animation = gameOverPopup.GetComponent<Animation>();
+        if (animation)
+            animation.Play();
     }
 
     private void HideGameOverPopup()

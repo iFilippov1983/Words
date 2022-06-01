@@ -15,6 +15,8 @@ MonoBehaviour:
   TimeInSeconds: 120
   Columns: 6
   Rows: 17
+  UsePrompts: 1
+  TimeToPrompt: 15
   Board:
   - Size: 17
     Row:
