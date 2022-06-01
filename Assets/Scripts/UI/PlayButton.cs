@@ -1,3 +1,4 @@
+using Lofelt.NiceVibrations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,5 +24,9 @@ public class PlayButton : MonoBehaviour
         { 
             _buyLifesPopup.gameObject.SetActive(true);
         }
+
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+        SoundManager.PalaySound(Sound.ButtonClicked);
+        Debug.Log("[Haptic + sound] PlayButton - OnClick");
     }
 }

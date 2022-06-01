@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buyLifesPopup: {fileID: 2449081842423881144}
   _buyLifesButtonObject: {fileID: 5949077701743743792}
+  _backButtonObject: {fileID: 9179340598903076757}
   _messageText: {fileID: 4362348077211337849}
   _timerText: {fileID: 3062013378976308112}
   _lifesText: {fileID: 7847561188046331437}
@@ -3987,19 +3988,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5373247388059658704}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2449081842423881144}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: MainMenu
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &9204479135027452641
 GameObject:
   m_ObjectHideFlags: 0

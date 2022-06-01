@@ -1211,18 +1211,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 936644359539788419}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: MainMenu
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameUtility, Assembly-CSharp
         m_MethodName: SetOverlayMenuActivityStatus
@@ -1920,7 +1908,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dca89ae01cd9e444b753658b1f4e242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _popupObject: {fileID: 936644359539788419}
   _yesButton: {fileID: 13436825005221466}
+  _backButton: {fileID: 8619405554254919976}
 --- !u!1 &2441730693641881533
 GameObject:
   m_ObjectHideFlags: 0

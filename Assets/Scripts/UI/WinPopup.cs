@@ -29,7 +29,11 @@ public class WinPopup : MonoBehaviour
     private async void ShowWinPoppup(bool categoryCompleted)
     {
         await Task.Delay(2500);
+
         winPopup.SetActive(true);
+
+        SoundManager.PalaySound(Sound.Win);
+        Debug.Log("[Sound] WinPopup - ShowWinPoppup");
 
         GameEvents.MenuIsActiveMethod(true);
         winParticle.Play();

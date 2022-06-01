@@ -253,6 +253,9 @@ public class GridSquare : MonoBehaviour
 
     private async void ShowWrongWord()
     {
+        SoundManager.PalaySound(Sound.Word_Wrong);
+        Debug.Log("[Sound] GridSquare - ShowWrongWord");
+
         _bodyMesh.material = _bodyMatWrong;
         _animator.SetBool(Literal.AnimBool_isWrong, true);
         await Task.Delay(_showDelay);
@@ -300,5 +303,11 @@ public class GridSquare : MonoBehaviour
 
             _isSelected = false;
         }
+    }
+
+    private void PlayPromptSound()
+    {
+        SoundManager.PalaySound(Sound.Prompt);
+        Debug.Log("[Sound] GridSquare - PlayPromptSound");
     }
 }

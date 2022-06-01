@@ -111,7 +111,8 @@ namespace Game
             }
 
             HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
-            Debug.Log("[Haptic] CoinSpawner - MoveCoin[arrived]");
+            SoundManager.PalaySound(Sound.Coin);
+            Debug.Log("[Haptic + Sound] CoinSpawner - MoveCoin[arrived]");
 
             CoinArrived?.Invoke();
             Destroy(coin.gameObject);

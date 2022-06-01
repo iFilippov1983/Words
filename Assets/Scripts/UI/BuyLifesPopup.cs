@@ -12,6 +12,7 @@ public class BuyLifesPopup : MonoBehaviour
 
     [SerializeField] private GameObject _buyLifesPopup;
     [SerializeField] private GameObject _buyLifesButtonObject;
+    [SerializeField] private GameObject _backButtonObject;
     [SerializeField] private TextMeshProUGUI _messageText;
     [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private Text _lifesText;
@@ -19,6 +20,7 @@ public class BuyLifesPopup : MonoBehaviour
     [SerializeField] private int _lifesBuyAmount = 5;
 
     private Button _buyLifesButton;
+    private Button _backButton;
 
     public static Action<int> ContinueWhithExtraLifes;
 
@@ -29,6 +31,9 @@ public class BuyLifesPopup : MonoBehaviour
     {
         _buyLifesButton = _buyLifesButtonObject.GetComponent<Button>();
         _buyLifesButton.onClick.AddListener(TryBuyLifes);
+        
+        _backButton = _backButtonObject.GetComponent<Button>();
+        _backButton.onClick.AddListener(HidePopup);
 
         ShowPopup(false);
 
@@ -42,6 +47,10 @@ public class BuyLifesPopup : MonoBehaviour
 
     private void TryBuyLifes()
     {
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+        SoundManager.PalaySound(Sound.ButtonClicked);
+        Debug.Log("[Haptic + sound] BuyLifesPopup - TryBuyLifes");
+
         int cost = -_lifesBuyCost;
         bool succes = CurrencyManager.TryChangeCoinsAmountMethod(cost);
         if (succes)
@@ -49,6 +58,15 @@ public class BuyLifesPopup : MonoBehaviour
             ContinueWhithExtraLifes?.Invoke(_lifesBuyAmount);
             _buyLifesPopup.SetActive(false);
         }
+    }
+
+    private void HidePopup()
+    {
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+        SoundManager.PalaySound(Sound.ButtonClicked);
+        Debug.Log("[Haptic + sound] BuyLifesPopup - HidePopup");
+
+        _buyLifesPopup.SetActive(false);
     }
 
     private async void ShowMessage(string animationName)

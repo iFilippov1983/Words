@@ -46,7 +46,8 @@ public static class GameEvents
     public static void CheckSquareMethod(string letter, Vector3 squarePosition, int squareIndex)
     {
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
-        Debug.Log("[Haptic] GameEvents - CheckSquareMethod");
+        SoundManager.PalaySound(Sound.Selected);
+        Debug.Log("[Haptic + Sound] GameEvents - CheckSquareMethod");
 
         OnCheckSquare?.Invoke(letter, squarePosition, squareIndex);
     }
@@ -67,7 +68,8 @@ public static class GameEvents
     public static void CorrectWordMethod(string word, List<int> squareIndexes)
     {
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.MediumImpact);
-        Debug.Log("[Haptic] GameEvents - CorrectWordMethod");
+        SoundManager.PalaySound(Sound.Word_Blow);
+        Debug.Log("[Haptic + Sound] GameEvents - CorrectWordMethod");
 
         OnCorrectWord?.Invoke(word, squareIndexes);
     }
@@ -79,7 +81,8 @@ public static class GameEvents
     public static void OnCorrectExtraWordMethod(List<int> squareIndexes)
     {
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.MediumImpact);
-        Debug.Log("[Haptic] GameEvents - OnCorrectExtraWordMethod");
+        SoundManager.PalaySound(Sound.Coin);
+        Debug.Log("[Haptic + Sound] GameEvents - OnCorrectExtraWordMethod");
 
         OnCorrectExtraWord?.Invoke(squareIndexes);
     }
@@ -117,6 +120,9 @@ public static class GameEvents
 
     public static void GameOverMethod()
     {
+        SoundManager.PalaySound(Sound.Loose);
+        Debug.Log("[Sound] GameEvents - GameOverMethod");
+
         OnGameOver?.Invoke();
     }
     //************

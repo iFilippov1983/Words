@@ -50,6 +50,10 @@ public class GameOverPopup : MonoBehaviour
     private void ShowGameOverPopup()
     {
         gameOverPopup.SetActive(true);
+
+        SoundManager.PalaySound(Sound.Loose);
+        Debug.Log("[Sound] GameOverPopup - ShowGameOverPopup");
+
         GameEvents.MenuIsActiveMethod(true);
         _continueForAdsButton.interactable = false;
         _continueForCoinsButton.interactable = true;

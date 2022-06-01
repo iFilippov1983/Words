@@ -21,6 +21,7 @@ namespace Game
         private WaitForSeconds endScalingDelayFirstWfs;
         private WaitForSeconds endScalingDelayWfs;
         private WaitForSeconds moveIntervalWfs;
+        private static SearchingWord _searchingWord;
 
         private void Start()
         {
@@ -38,7 +39,8 @@ namespace Game
 
         public void Play(List<GameObject> letters, SearchingWord searchingWord)
         {
-            StartCoroutine(StartAnimation(letters, searchingWord));
+            _searchingWord = searchingWord;
+            StartCoroutine(StartAnimation(letters, _searchingWord));
         }
 
         private IEnumerator StartAnimation(List<GameObject> letters, SearchingWord searchingWord)
@@ -87,7 +89,7 @@ namespace Game
 
                GameEvents.WordGetTargetMethod(searchingWord.Word);
 
-               searchingWord.PlayAnimation();
+               //searchingWord.PlayAnimation();
 
                Destroy(letter.gameObject);
             }
@@ -160,8 +162,10 @@ namespace Game
 
             target.position = position;
 
+            _searchingWord.PlayAnimation();
             HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
-            Debug.Log("[Haptic] WordAnimation - Animate[MoveToPosition]");
+            SoundManager.PalaySound(Sound.Word_InCell);
+            Debug.Log("[Haptic + Sound] WordAnimation - Animate[MoveToPosition]");
         }
 
         private static IEnumerator MoveToPosition(Transform target, Vector3 position, float speed)
@@ -182,8 +186,10 @@ namespace Game
 
             target.position = position;
 
+            _searchingWord.PlayAnimation();
             HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
-            Debug.Log("[Haptic] WordAnimation - Animate[MoveToPosition 2]");
+            SoundManager.PalaySound(Sound.Word_InCell);
+            Debug.Log("[Haptic + Sound] WordAnimation - Animate[MoveToPosition 2]");
         }
 
         private static IEnumerator Rescale(Transform target, Vector3 targetScale, float speed, AnimationCurve curve)
