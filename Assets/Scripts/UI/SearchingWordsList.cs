@@ -18,6 +18,8 @@ public class SearchingWordsList : MonoBehaviour
     private RectTransform _prefabSquareRect;
     private RectTransform _parentRect;
 
+    private bool _hideWords;
+
     public List<SearchingWord> SearchingWords => MakeSearchingWordsList();
 
     private void Start()
@@ -25,6 +27,7 @@ public class SearchingWordsList : MonoBehaviour
         _prefabSquareRect = searchingWordPrefab.GetComponent<RectTransform>();
         _parentRect = this.GetComponent<RectTransform>();
         _wordsNumber = currentGameData.selectedBoardData.SearchingWords.Count;
+        _hideWords = currentGameData.selectedBoardData.HideSearchingWords;
 
         if (_wordsNumber < _columns)
             _rows = 1;
@@ -83,7 +86,11 @@ public class SearchingWordsList : MonoBehaviour
             rectTransform.localPosition = Vector3.zero;
 
             var wordToSet = currentGameData.selectedBoardData.SearchingWords[index].Word;
-            _words[index].GetComponent<SearchingWord>().SetWord(wordToSet);
+            var searchingWord = _words[index].GetComponent<SearchingWord>();
+            searchingWord.SetWord(wordToSet);
+            
+            if (_hideWords)
+                searchingWord.DisplayDots();    
         }
     }
 

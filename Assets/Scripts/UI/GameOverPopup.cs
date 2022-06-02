@@ -73,6 +73,10 @@ public class GameOverPopup : MonoBehaviour
 
     private void TryBuySeconds()
     {
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+        SoundManager.PalaySound(Sound.ButtonClicked);
+        Debug.Log("[Haptic + Sound] GameOverPopup - TryBuySeconds");
+
         var cost = -continueCoinsCost;
         var succes = CurrencyManager.TryChangeCoinsAmountMethod(cost);
         if (succes)
@@ -84,6 +88,10 @@ public class GameOverPopup : MonoBehaviour
 
     private void TryRestart()
     {
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+        SoundManager.PalaySound(Sound.ButtonClicked);
+        Debug.Log("[Haptic + Sound] GameOverPopup - TryRestart");
+
         int cost = -lifesLostCost;
         bool succes = LifesManager.TryChangeLifesAmountMethod(cost);
         if (succes)
@@ -109,6 +117,10 @@ public class GameOverPopup : MonoBehaviour
 
     private void Exit()
     {
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+        SoundManager.PalaySound(Sound.ButtonClicked);
+        Debug.Log("[Haptic + Sound] GameOverPopup - Exit");
+
         int cost = -lifesLostCost;
         _ = LifesManager.TryChangeLifesAmountMethod(cost);
         GameUtility.LoadScene(Literal.Scene_MainMenu);

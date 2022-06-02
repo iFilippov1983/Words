@@ -14575,8 +14575,11 @@ MonoBehaviour:
   hitParticleSystems:
   - {fileID: 1473021769039791268}
   animator: {fileID: 1262298233762118127}
+  _dotPrefab: {fileID: 8034133576513771064, guid: 312a76f12cbc18a4980e5ca449aa6d9c, type: 3}
+  _dotsEndSize: {x: 0.6, y: 0.6, z: 0.6}
   displayedText: {fileID: 4175566986554858086}
   crossLine: {fileID: 7564140161464282885}
+  isFound: 0
 --- !u!95 &1262298233762118127
 Animator:
   serializedVersion: 3

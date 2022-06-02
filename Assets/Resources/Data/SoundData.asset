@@ -17,7 +17,7 @@ MonoBehaviour:
   WordInCellClip: {fileID: 8300000, guid: 8ad24fce641f7ee4e846d9d440bd2d7d, type: 3}
   WordBlowClip: {fileID: 8300000, guid: 28d132a8d5c90fa4c861a367a831c97d, type: 3}
   WordWrongClip: {fileID: 8300000, guid: 18583af7958823e46860ebc4f12df6cc, type: 3}
-  CoinClip: {fileID: 8300000, guid: 4912be87676193445b5d9061719e5f2a, type: 3}
+  CoinClip: {fileID: 8300000, guid: 67d2ed3bf636aa54694e7d83a75a4fae, type: 3}
   WinClip: {fileID: 8300000, guid: fea847acc3a6a5743a8335c6b8c2e3cb, type: 3}
   LooseClip: {fileID: 8300000, guid: aa5af6070f950244289631554f2dc6d4, type: 3}
-  PromptClip: {fileID: 8300000, guid: c52fd849b0545b749aa0a0eb2354b62e, type: 3}
+  PromptClip: {fileID: 8300000, guid: 2b5f9b35f0c55f549bbcf42f654f6a41, type: 3}

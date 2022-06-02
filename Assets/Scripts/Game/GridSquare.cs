@@ -278,7 +278,8 @@ public class GridSquare : MonoBehaviour
             await Task.Delay(2000, token);
             if (token.IsCancellationRequested) return;
 
-            _animator.SetBool(Literal.AnimBool_showPrompt, false);
+            if(_animator)
+                _animator.SetBool(Literal.AnimBool_showPrompt, false);
         }
     }
 

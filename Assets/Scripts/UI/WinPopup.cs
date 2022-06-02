@@ -1,19 +1,31 @@
 using Lofelt.NiceVibrations;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class WinPopup : MonoBehaviour
 {
     public GameObject winPopup;
+    public GameObject nextButtonObject;
+    public GameObject exitButtonObject;
     public GameObject messageField;
     public ParticleSystem winParticle;
     [ReadOnly]
     public bool _categoryCompleted;
 
+    private Button _nextButton;
+    private Button _exitButton;
+
     void Start()
     {
         winPopup.SetActive(false);
+        _nextButton = nextButtonObject.GetComponent<Button>();
+        _nextButton.onClick.AddListener(LoadNextLevel);
+
+        _exitButton = exitButtonObject.GetComponent<Button>();
+        _exitButton.onClick.AddListener(Exit);
     }
 
     private void OnEnable()
@@ -28,7 +40,10 @@ public class WinPopup : MonoBehaviour
 
     private async void ShowWinPoppup(bool categoryCompleted)
     {
-        await Task.Delay(2500);
+        CancellationToken token = new CancellationToken();
+        token.ThrowIfCancellationRequested();
+        await Task.Delay(2500, token);
+        if (token.IsCancellationRequested) return;
 
         winPopup.SetActive(true);
 
@@ -45,10 +60,11 @@ public class WinPopup : MonoBehaviour
         _categoryCompleted = categoryCompleted;
     }
 
-    public async void LoadNextLevel()
+    private async void LoadNextLevel()
     {
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
-        Debug.Log("[Haptic] WinPopup - LoadNextLevel");
+        SoundManager.PalaySound(Sound.ButtonClicked);
+        Debug.Log("[Haptic + Sound] WinPopup - LoadNextLevel");
 
         if (_categoryCompleted)
         {
@@ -57,7 +73,20 @@ public class WinPopup : MonoBehaviour
             //SceneManager.LoadScene(Literal.Scene_SelectCategory);// Comment previous two lines of code and comment this line out if category selection avalable
         }
         else
+        {
+            winPopup.SetActive(false);
             GameEvents.LoadNextLevelMethod();
+        }
+            
+    }
+
+    private void Exit()
+    {
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+        SoundManager.PalaySound(Sound.ButtonClicked);
+        Debug.Log("[Haptic + Sound] WinPopup - Exit");
+
+        GameUtility.LoadScene(Literal.Scene_MainMenu);
     }
 
     private async Task ShowMessage()
