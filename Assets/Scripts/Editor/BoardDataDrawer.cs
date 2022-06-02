@@ -50,7 +50,7 @@ public class BoardDataDrawer : Editor
         GameDataInstance.TimeInSeconds = EditorGUILayout.FloatField("Max Game Time (seconds)", GameDataInstance.TimeInSeconds);
         GameDataInstance.Columns = EditorGUILayout.IntField("Columns", GameDataInstance.Columns);
         GameDataInstance.Rows = EditorGUILayout.IntField("Rows", GameDataInstance.Rows);
-        GameDataInstance.HideSearchingWords = EditorGUILayout.Toggle("Hide Searching Words", GameDataInstance.HideSearchingWords);
+        GameDataInstance.UseDotsMode = EditorGUILayout.Toggle("Use Dots Mode", GameDataInstance.UseDotsMode);
         GameDataInstance.UsePrompts = EditorGUILayout.Toggle("Use Prompts", GameDataInstance.UsePrompts);
         if(GameDataInstance.UsePrompts)
             GameDataInstance.TimeToPrompt = EditorGUILayout.FloatField("Time To Prompt (seconds)", GameDataInstance.TimeToPrompt);

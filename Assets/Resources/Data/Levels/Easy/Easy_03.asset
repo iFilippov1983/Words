@@ -15,6 +15,7 @@ MonoBehaviour:
   TimeInSeconds: 120
   Columns: 6
   Rows: 11
+  UseDotsMode: 1
   UsePrompts: 1
   TimeToPrompt: 15
   Board:
@@ -98,7 +99,12 @@ MonoBehaviour:
     - W
   SearchingWords:
   - Word: BACK
+    isFound: 0
   - Word: TAIL
+    isFound: 0
   - Word: FALL
+    isFound: 0
   - Word: PAGE
+    isFound: 0
   - Word: LEAF
+    isFound: 0

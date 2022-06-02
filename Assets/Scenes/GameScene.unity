@@ -844,6 +844,7 @@ MonoBehaviour:
   currentGameData: {fileID: 11400000, guid: 48e013318f178e2459d3b352d68db4bc, type: 2}
   gameLevelData: {fileID: 11400000, guid: 75deecb38375e8241956861d3ed15356, type: 2}
   _levelNumberToCycleFrom: 10
+  _searchingWordsList: {fileID: 7770522329497429781}
   _dataProfile: {fileID: 11400000, guid: 9d61609ae2bf1f14bb00b16ee5eecf8f, type: 2}
   _dictionaries:
   - {fileID: 4900000, guid: fec027833ca15ca4689cf2f842154e72, type: 3}
@@ -999,6 +1000,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentGameData: {fileID: 11400000, guid: 48e013318f178e2459d3b352d68db4bc, type: 2}
   _searchingWordsParent: {fileID: 7770522329497429781}
+  _dictionaries:
+  - {fileID: 4900000, guid: fec027833ca15ca4689cf2f842154e72, type: 3}
+  - {fileID: 4900000, guid: 0eb2a86855daab94e8adb1c3106f2007, type: 3}
+  - {fileID: 4900000, guid: 6d0b00adb6016814488e623cefc8410c, type: 3}
+  - {fileID: 4900000, guid: 7c7bb11a0c0e1f94d8971f63b26a6c7f, type: 3}
+  - {fileID: 4900000, guid: 8ac1be7c83c9d8e4fa44d76f1454f1aa, type: 3}
+  - {fileID: 4900000, guid: bffd0bc31f104dd4bae9fb5c9843196b, type: 3}
+  - {fileID: 4900000, guid: e77cfc4d12e7c024d8b1a47a3a1a5786, type: 3}
+  - {fileID: 4900000, guid: 1614eb664dff963439738849367d2b32, type: 3}
+  _dataProfile: {fileID: 11400000, guid: 9d61609ae2bf1f14bb00b16ee5eecf8f, type: 2}
 --- !u!1 &1696610383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,6 +1365,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 225668350827707023, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4efaceba86bbd9b4e96c1ef1e7894059, type: 3}
+    - target: {fileID: 1323075921063036598, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323075921063036598, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 7.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062456104133734845, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062456104133734845, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -112
+      objectReference: {fileID: 0}
+    - target: {fileID: 7457368971461414323, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
+      propertyPath: m_Name
+      value: AmountText (TMP)
+      objectReference: {fileID: 0}
     - target: {fileID: 7770522330031551739, guid: 6e0c1d6de4ba0854aa75c59b40a26597, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 

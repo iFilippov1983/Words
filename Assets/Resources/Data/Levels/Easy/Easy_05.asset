@@ -15,6 +15,7 @@ MonoBehaviour:
   TimeInSeconds: 120
   Columns: 6
   Rows: 12
+  UseDotsMode: 1
   UsePrompts: 1
   TimeToPrompt: 15
   Board:
@@ -104,7 +105,12 @@ MonoBehaviour:
     - R
   SearchingWords:
   - Word: RADIO
+    isFound: 0
   - Word: BABY
+    isFound: 0
   - Word: MENU
+    isFound: 0
   - Word: DOCTOR
+    isFound: 0
   - Word: LINE
+    isFound: 0
