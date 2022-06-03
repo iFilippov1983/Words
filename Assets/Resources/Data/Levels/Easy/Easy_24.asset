@@ -15,6 +15,9 @@ MonoBehaviour:
   TimeInSeconds: 120
   Columns: 6
   Rows: 20
+  UseDotsMode: 1
+  UsePrompts: 1
+  TimeToPrompt: 15
   Board:
   - Size: 20
     Row:
@@ -150,11 +153,20 @@ MonoBehaviour:
     - E
   SearchingWords:
   - Word: MANAGE
+    isFound: 0
   - Word: AGENT
+    isFound: 0
   - Word: NOTION
+    isFound: 0
   - Word: SECTOR
+    isFound: 0
   - Word: CHEAP
+    isFound: 0
   - Word: EARTH
+    isFound: 0
   - Word: MATCH
+    isFound: 0
   - Word: MURDER
+    isFound: 0
   - Word: VALLEY
+    isFound: 0

@@ -44,7 +44,7 @@ public class GameUtility : MonoBehaviour
     private void ResetProgress()
     {
         DataSaver.ClearGameData(_levelData);
-        _dataProfile.UsedExtraWords.Clear();
+        _dataProfile.UsedWords.Clear();
     }
     
     [Button]

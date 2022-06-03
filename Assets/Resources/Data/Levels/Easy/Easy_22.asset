@@ -15,6 +15,9 @@ MonoBehaviour:
   TimeInSeconds: 120
   Columns: 6
   Rows: 21
+  UseDotsMode: 1
+  UsePrompts: 1
+  TimeToPrompt: 15
   Board:
   - Size: 21
     Row:
@@ -156,11 +159,20 @@ MonoBehaviour:
     - S
   SearchingWords:
   - Word: LESSON
+    isFound: 0
   - Word: MUSEUM
+    isFound: 0
   - Word: HEART
+    isFound: 0
   - Word: PRINCE
+    isFound: 0
   - Word: FAMILY
+    isFound: 0
   - Word: FRESH
+    isFound: 0
   - Word: DRAFT
+    isFound: 0
   - Word: OBJECT
+    isFound: 0
   - Word: ENTER
+    isFound: 0

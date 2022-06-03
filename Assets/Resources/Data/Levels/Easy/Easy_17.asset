@@ -15,6 +15,9 @@ MonoBehaviour:
   TimeInSeconds: 120
   Columns: 6
   Rows: 19
+  UseDotsMode: 1
+  UsePrompts: 1
+  TimeToPrompt: 15
   Board:
   - Size: 19
     Row:
@@ -144,10 +147,18 @@ MonoBehaviour:
     - R
   SearchingWords:
   - Word: SPACE
+    isFound: 0
   - Word: SUGAR
+    isFound: 0
   - Word: UNITY
+    isFound: 0
   - Word: VALUE
+    isFound: 0
   - Word: ANIMAL
+    isFound: 0
   - Word: EFFECT
+    isFound: 0
   - Word: FOREST
+    isFound: 0
   - Word: ISLAND
+    isFound: 0

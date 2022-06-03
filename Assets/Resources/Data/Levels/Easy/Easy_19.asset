@@ -15,6 +15,9 @@ MonoBehaviour:
   TimeInSeconds: 120
   Columns: 6
   Rows: 19
+  UseDotsMode: 1
+  UsePrompts: 1
+  TimeToPrompt: 15
   Board:
   - Size: 19
     Row:
@@ -144,11 +147,20 @@ MonoBehaviour:
     - U
   SearchingWords:
   - Word: MAGIC
+    isFound: 0
   - Word: SISTER
+    isFound: 0
   - Word: NOISE
+    isFound: 0
   - Word: FUTURE
+    isFound: 0
   - Word: FIELD
+    isFound: 0
   - Word: INDEX
+    isFound: 0
   - Word: LEVEL
+    isFound: 0
   - Word: PRISON
+    isFound: 0
   - Word: MODEL
+    isFound: 0

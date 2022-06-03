@@ -15,7 +15,7 @@ MonoBehaviour:
   TimeInSeconds: 120
   Columns: 6
   Rows: 11
-  UseDotsMode: 0
+  UseDotsMode: 1
   UsePrompts: 1
   TimeToPrompt: 15
   Board:

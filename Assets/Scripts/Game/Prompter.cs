@@ -16,7 +16,7 @@ public class Prompter : MonoBehaviour
     private string _word;
     private bool _usePrompts;
     private bool _useDotsMod;
-    private float _rayLength = 1.5f;
+    private float _rayLength = 1.2f;
 
     private Ray _rayUp, _rayDown;
     private Ray _rayLeft, _rayRight;
@@ -93,19 +93,23 @@ public class Prompter : MonoBehaviour
         if (_usePrompts == false)
             return;
 
+        bool wordFound = false;
         foreach (var word in _searchingWords)
         {
             if (word.isFound) return;
 
-            bool wordFound = TryFindWord(word);
+            wordFound = TryFindWord(word);
             if (wordFound)
             {
                 GameEvents.WordToPromptFoundMethod(_checkedSquaresIndexes);
                 ClearData();
                 return;
             }
+        }
 
-            if (_useDotsMod)
+        if (_useDotsMod)
+        {
+            foreach (var word in _searchingWords)
             {
                 wordFound = TryFindAdditionalWord(word.Word);
                 if (wordFound)
@@ -114,6 +118,7 @@ public class Prompter : MonoBehaviour
                     ClearData();
                     return;
                 }
+                
             }
         }
 
@@ -138,8 +143,6 @@ public class Prompter : MonoBehaviour
     {
         bool found = false;
         var wordsToTry = _wordFinder.GetWordsListWhithLength(aWord.Length);
-
-
 
         foreach (var visibleSquare in _visibleSquares)
         {
@@ -217,12 +220,10 @@ public class Prompter : MonoBehaviour
                             if (found) return true;
                         }
                     }
-                    else
-                    {
-                        _word = _word.Remove(_word.Length - 1);
-                        _checkedSquaresIndexes.Remove(square.Index);
-                        return false;
-                    } 
+
+                    _word = _word.Remove(_word.Length - 1);
+                    _checkedSquaresIndexes.Remove(square.Index);
+                    return false;
                 }
             }
             else return false;

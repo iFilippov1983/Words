@@ -75,7 +75,7 @@ public class WordCheker : MonoBehaviour
             DataSaver.LoadIntData(currentGameData.selectedCategoryName)
             + gameLevelData.Data[0].BoardData.Count * _gameCyclesCount 
             - (_levelNumberToCycleFrom - 1) * _gameCyclesCount + 1;
-        _dataProfile.CurrenLevelNumber = number;
+        _dataProfile.CurrentLevelNumber = number;
         //    
 
         foreach (var sw in currentGameData.selectedBoardData.SearchingWords)
@@ -87,16 +87,18 @@ public class WordCheker : MonoBehaviour
             _searchingWords = _searchingWordsList.SearchingWords;
             await Task.Yield();
         }
-        
 
-        TinySauce.OnGameStarted(_dataProfile.CurrenLevelNumber.ToString());
+        TinySauce.OnGameStarted(_dataProfile.CurrentLevelNumber.ToString());
     }
 
     private void Cleanup()
     {
         if (_currentLevelNotCompleted)
         {
-            DataSaver.SaveStringDataFromList(UsedWords, _dataProfile.UsedExtraWords);
+            if(_dotsMode)
+                _dataProfile.UsedWords.Clear();
+
+            DataSaver.SaveStringDataFromList(UsedWords, _dataProfile.UsedWords);
 
             //Debug.Log("Extra words list data SAVED");
         }
@@ -107,9 +109,9 @@ public class WordCheker : MonoBehaviour
             //Debug.Log("Extra words list data CLEARED");
         }
 
-        TinySauce.OnGameFinished(!_currentLevelNotCompleted, 0f, _dataProfile.CurrenLevelNumber.ToString());
+        _dataProfile.UsedWords.Clear();
 
-        _dataProfile.UsedExtraWords.Clear();
+        TinySauce.OnGameFinished(!_currentLevelNotCompleted, 0f, _dataProfile.CurrentLevelNumber.ToString());
     }
 
     private void LoadNextGameLevel() => SceneManager.LoadScene(Literal.Scene_GameScene);
@@ -118,8 +120,6 @@ public class WordCheker : MonoBehaviour
 
     private void SquareSelected(string letter, Vector3 squarePosition, int squareIndex)
     {
-        //Debug.Log($"Entered: {squareIndex} - List contains: {_correctSquareList.Contains(squareIndex)}");
-
         if (_dataProfile.MousePositionIsFar)
             return;
 
@@ -135,16 +135,10 @@ public class WordCheker : MonoBehaviour
             _word = _word.Remove(_word.Length - 1, 1);
             _assignedPoints--;
 
-            //Debug.Log($"Word: {_word} - Correct square list count: {_correctSquareList.Count} - Assigned points: {_assignedPoints}");
-            //foreach (var squareInd in _correctSquareList)
-            //    Debug.Log($"In list: {squareInd}");
-
             return;
         }
         else if (_correctSquareList.Contains(squareIndex) == false)
         {
-            //Debug.Log($"Selected: {squareIndex}");
-
             _correctSquareList.Add(squareIndex);
             GameEvents.SelectSquareMethod(squarePosition);
             _word += letter;
@@ -155,32 +149,18 @@ public class WordCheker : MonoBehaviour
 
     private void CheckWord()
     {
-        //if(_searchingWords.Count == 0)
-        //    _searchingWords = _searchingWordsList.SearchingWords;
-        BoardData.BDSearchingWord bdSearchingWord = new BoardData.BDSearchingWord();
         foreach (var searchingWord in currentGameData.selectedBoardData.SearchingWords)
         {
-            bdSearchingWord = searchingWord;
             bool caseOne = 
                 _word.Equals(searchingWord.Word) 
                 && searchingWord.isFound == false;
+
             if (caseOne)
             {
+                Debug.Log("Case 1");
                 searchingWord.isFound = true;
                 GameEvents.CorrectWordMethod(_word, _correctSquareList);
-                _completedWords++;
-                CheckBoardCompleted();
-                return;
-            }
-
-            bool caseTwo =
-                _word.Length.Equals(searchingWord.Word.Length)
-                && searchingWord.isFound == false
-                && _dotsMode;
-            if (caseTwo)
-            {
-                ModifySearchingWords(_searchingWords, searchingWord);
-                GameEvents.CorrectWordMethod(_word, _correctSquareList);
+                _dataProfile.UsedWords.Add(_word);
                 _completedWords++;
                 CheckBoardCompleted();
                 return;
@@ -188,12 +168,34 @@ public class WordCheker : MonoBehaviour
         }
 
         bool foundExtraWord = _wordFinder.FindWord(_word);
-        bool alreadyUsedWord = _dataProfile.UsedExtraWords.Contains(_word);
+        bool alreadyUsedWord = _dataProfile.UsedWords.Contains(_word);
 
-        if (foundExtraWord && !alreadyUsedWord && !bdSearchingWord.isFound)
+        foreach (var searchingWord in currentGameData.selectedBoardData.SearchingWords)
+        {
+            bool caseTwo =
+                foundExtraWord
+                && !alreadyUsedWord
+                && _word.Length.Equals(searchingWord.Word.Length)
+                && searchingWord.isFound == false
+                && _dotsMode;
+
+            if (caseTwo)
+            {
+                Debug.Log("Case 2");
+                ModifySearchingWords(_searchingWords, searchingWord);
+                searchingWord.isFound = true;
+                GameEvents.CorrectWordMethod(_word, _correctSquareList);
+                _dataProfile.UsedWords.Add(_word);
+                _completedWords++;
+                CheckBoardCompleted();
+                return;
+            }
+        }
+
+        if (foundExtraWord && !alreadyUsedWord)
         {
             GameEvents.OnCorrectExtraWordMethod(_correctSquareList);
-            _dataProfile.UsedExtraWords.Add(_word);
+            _dataProfile.UsedWords.Add(_word);
 
             _extraWord = _word;
         }

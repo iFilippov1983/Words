@@ -6,13 +6,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DataProfile", menuName = "Data/DataProfile")]
 public class DataProfile : ScriptableObject
 {
-    public int CurrenLevelNumber;
+    public int CurrentLevelNumber;
     public bool MousePositionIsFar = false;
     public bool BoardCanPrompt = false;
 
     private List<string> _usedExtraWords = new List<string>();
 
-    public List<string> UsedExtraWords => _usedExtraWords;
+    public List<string> UsedWords => _usedExtraWords;
 
     public void SetUsedExtraWordsList(List<string> list) => _usedExtraWords = list;
 }

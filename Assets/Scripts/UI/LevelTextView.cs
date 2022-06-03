@@ -8,7 +8,7 @@ public class LevelTextView : MonoBehaviour
 
     void Start()
     {
-        levelText.text = dataProfile.CurrenLevelNumber.ToString();
+        levelText.text = dataProfile.CurrentLevelNumber.ToString();
     }
 
 }

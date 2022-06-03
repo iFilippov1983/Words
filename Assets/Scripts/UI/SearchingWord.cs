@@ -14,8 +14,8 @@ public class SearchingWord : MonoBehaviour
 
     public TextMeshProUGUI displayedText;
     public Image crossLine;
+    [ReadOnly]
     public bool isFound;
-
     [ShowInInspector, ReadOnly]
     private string _word;
     private int hash;

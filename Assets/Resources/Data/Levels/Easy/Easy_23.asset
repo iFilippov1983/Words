@@ -15,6 +15,9 @@ MonoBehaviour:
   TimeInSeconds: 120
   Columns: 6
   Rows: 22
+  UseDotsMode: 1
+  UsePrompts: 1
+  TimeToPrompt: 15
   Board:
   - Size: 22
     Row:
@@ -162,11 +165,20 @@ MonoBehaviour:
     - B
   SearchingWords:
   - Word: CYCLE
+    isFound: 0
   - Word: UPDATE
+    isFound: 0
   - Word: BUDGET
+    isFound: 0
   - Word: NORTH
+    isFound: 0
   - Word: PAINT
+    isFound: 0
   - Word: DELAY
+    isFound: 0
   - Word: PHRASE
+    isFound: 0
   - Word: ADVISE
+    isFound: 0
   - Word: SEASON
+    isFound: 0
