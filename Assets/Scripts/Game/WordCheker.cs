@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Game.WordComparison;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -55,8 +56,10 @@ public class WordCheker : MonoBehaviour
         _wordFinder = new WordFinder(_dictionaries, ' ');
     }
 
-    private void Init()
+    private async void Init()
     {
+        _currentLevelNotCompleted = true;
+
         //If there's NO category selection
         _gameCyclesCount = DataSaver.LoadIntData(CyclesCount); 
         //
@@ -78,7 +81,13 @@ public class WordCheker : MonoBehaviour
         foreach (var sw in currentGameData.selectedBoardData.SearchingWords)
             sw.isFound = false;
 
-        _currentLevelNotCompleted = true;
+        _searchingWords = _searchingWordsList.SearchingWords;
+        while (_searchingWords.Count < currentGameData.selectedBoardData.SearchingWords.Count)
+        {
+            _searchingWords = _searchingWordsList.SearchingWords;
+            await Task.Yield();
+        }
+        
 
         TinySauce.OnGameStarted(_dataProfile.CurrenLevelNumber.ToString());
     }
@@ -146,11 +155,12 @@ public class WordCheker : MonoBehaviour
 
     private void CheckWord()
     {
-        if(_searchingWords.Count == 0)
-            _searchingWords = _searchingWordsList.SearchingWords;
-
+        //if(_searchingWords.Count == 0)
+        //    _searchingWords = _searchingWordsList.SearchingWords;
+        BoardData.BDSearchingWord bdSearchingWord = new BoardData.BDSearchingWord();
         foreach (var searchingWord in currentGameData.selectedBoardData.SearchingWords)
         {
+            bdSearchingWord = searchingWord;
             bool caseOne = 
                 _word.Equals(searchingWord.Word) 
                 && searchingWord.isFound == false;
@@ -180,7 +190,7 @@ public class WordCheker : MonoBehaviour
         bool foundExtraWord = _wordFinder.FindWord(_word);
         bool alreadyUsedWord = _dataProfile.UsedExtraWords.Contains(_word);
 
-        if (foundExtraWord && !alreadyUsedWord)
+        if (foundExtraWord && !alreadyUsedWord && !bdSearchingWord.isFound)
         {
             GameEvents.OnCorrectExtraWordMethod(_correctSquareList);
             _dataProfile.UsedExtraWords.Add(_word);
@@ -288,15 +298,15 @@ public class WordCheker : MonoBehaviour
         }
     }
 
-    private void ModifySearchingWords(List<SearchingWord> wordsList, BoardData.BDSearchingWord searchingWord)
+    private void ModifySearchingWords(List<SearchingWord> wordsList, BoardData.BDSearchingWord bdSearchingWord)
     {
         foreach (SearchingWord word in wordsList)
         {
-            if (word.Word.Equals(searchingWord.Word))
+            if (word.Word.Equals(bdSearchingWord.Word))
             {
                 word.SetWord(_word);
                 word.isFound = true;
-                searchingWord.isFound = true;
+                bdSearchingWord.isFound = true;
             }
         }
 

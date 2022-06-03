@@ -101,6 +101,6 @@ MonoBehaviour:
   - Word: HOUSE
     isFound: 0
   - Word: CAT
-    isFound: 1
+    isFound: 0
   - Word: GAME
-    isFound: 1
+    isFound: 0

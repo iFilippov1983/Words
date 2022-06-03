@@ -105,10 +105,10 @@ MonoBehaviour:
     - B
   SearchingWords:
   - Word: BEGIN
-    isFound: 1
+    isFound: 0
   - Word: PAPER
     isFound: 0
   - Word: LIFE
-    isFound: 1
+    isFound: 0
   - Word: RULE
     isFound: 0

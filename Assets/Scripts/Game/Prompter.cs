@@ -95,13 +95,25 @@ public class Prompter : MonoBehaviour
 
         foreach (var word in _searchingWords)
         {
-            //Debug.Log($"Trying to find: {word.Word}");
+            if (word.isFound) return;
+
             bool wordFound = TryFindWord(word);
             if (wordFound)
             {
                 GameEvents.WordToPromptFoundMethod(_checkedSquaresIndexes);
                 ClearData();
                 return;
+            }
+
+            if (_useDotsMod)
+            {
+                wordFound = TryFindAdditionalWord(word.Word);
+                if (wordFound)
+                {
+                    GameEvents.WordToPromptFoundMethod(_checkedSquaresIndexes);
+                    ClearData();
+                    return;
+                }
             }
         }
 
@@ -117,22 +129,29 @@ public class Prompter : MonoBehaviour
             {
                 found = SearchStartingFrom(visibleSquare, searchingWord.Word);
                 if (found) return true;
+            }
+        }
+        return found;
+    }
 
-                if (_useDotsMod)
+    private bool TryFindAdditionalWord(string aWord)
+    {
+        bool found = false;
+        var wordsToTry = _wordFinder.GetWordsListWhithLength(aWord.Length);
+
+
+
+        foreach (var visibleSquare in _visibleSquares)
+        {
+            if (visibleSquare != null)
+            {
+                foreach (var word in wordsToTry)
                 {
-                    var wordsToTry = _wordFinder.GetWordsListWhithLength(searchingWord.Word.Length);
-                    foreach (var word in wordsToTry)
-                    {
-                        found = SearchStartingFrom(visibleSquare, word);
-                        if (found) return true;
-                    }
+                    found = SearchStartingFrom(visibleSquare, word.ToUpper());
+                    if (found) return true;
                 }
             }
         }
-
-        
-        
-
         return found;
     }
 
@@ -185,12 +204,12 @@ public class Prompter : MonoBehaviour
 
                     if (word.Equals(_word))
                     {
-                        //Debug.Log($"Found: {_word}");
+                        Debug.Log($"Found: {_word}");
                         return true;
                     }
                     if (word.StartsWith(_word))
                     {
-                        //Debug.Log($"Word starts with: {_word}");
+                        Debug.Log($"Word starts with: {_word}");
                         var raysList = SetRaysFrom(square.BodyPosition);
                         foreach (var ray in raysList)
                         {
