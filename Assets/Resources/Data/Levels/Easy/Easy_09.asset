@@ -15,6 +15,7 @@ MonoBehaviour:
   TimeInSeconds: 120
   Columns: 6
   Rows: 15
+  UseDotsMode: 0
   UsePrompts: 1
   TimeToPrompt: 15
   Board:
@@ -122,9 +123,16 @@ MonoBehaviour:
     - L
   SearchingWords:
   - Word: HOME
+    isFound: 0
   - Word: LINK
+    isFound: 0
   - Word: MILK
+    isFound: 0
   - Word: LOVE
+    isFound: 0
   - Word: PLAN
+    isFound: 0
   - Word: SHOP
+    isFound: 0
   - Word: USER
+    isFound: 0

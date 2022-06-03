@@ -15,6 +15,7 @@ MonoBehaviour:
   TimeInSeconds: 120
   Columns: 6
   Rows: 12
+  UseDotsMode: 0
   UsePrompts: 1
   TimeToPrompt: 15
   Board:
@@ -104,6 +105,10 @@ MonoBehaviour:
     - N
   SearchingWords:
   - Word: FISH
+    isFound: 0
   - Word: FRUIT
+    isFound: 0
   - Word: WATER
+    isFound: 0
   - Word: SUN
+    isFound: 0

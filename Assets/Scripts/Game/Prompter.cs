@@ -1,3 +1,4 @@
+using Game.WordComparison;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Threading;
@@ -8,9 +9,13 @@ public class Prompter : MonoBehaviour
 {
     [SerializeField] private GameData _currentGameData;
     [SerializeField] private SearchingWordsList _searchingWordsParent;
+    [SerializeField] private List<TextAsset> _dictionaries;
+    [SerializeField] private DataProfile _dataProfile;
+    private WordFinder _wordFinder;
 
     private string _word;
     private bool _usePrompts;
+    private bool _useDotsMod;
     private float _rayLength = 1.5f;
 
     private Ray _rayUp, _rayDown;
@@ -23,11 +28,14 @@ public class Prompter : MonoBehaviour
     private List<GridSquare> _unvisibleSquares = new List<GridSquare>();
     private List<GridSquare> _visibleSquares = new List<GridSquare>();
     private List<SearchingWord> _searchingWords = new List<SearchingWord>();
+    
 
     private async void Start()
     {
         _usePrompts = _currentGameData.selectedBoardData.UsePrompts;
+        _useDotsMod = _currentGameData.selectedBoardData.UseDotsMode;
         _searchingWords = UpdateSearchingWordsList(_searchingWordsParent);
+        _wordFinder = new WordFinder(_dictionaries, ' ');
         _squaresList = await MakeAllSquaresList();
 
         SortSquaresLists(_word, _checkedSquaresIndexes);
@@ -102,16 +110,30 @@ public class Prompter : MonoBehaviour
 
     private bool TryFindWord(SearchingWord searchingWord)
     {
+        bool found = false;
         foreach (var visibleSquare in _visibleSquares)
         {
             if (visibleSquare != null)
             {
-                bool found = SearchStartingFrom(visibleSquare, searchingWord.Word);
+                found = SearchStartingFrom(visibleSquare, searchingWord.Word);
                 if (found) return true;
+
+                if (_useDotsMod)
+                {
+                    var wordsToTry = _wordFinder.GetWordsListWhithLength(searchingWord.Word.Length);
+                    foreach (var word in wordsToTry)
+                    {
+                        found = SearchStartingFrom(visibleSquare, word);
+                        if (found) return true;
+                    }
+                }
             }
         }
 
-        return false;
+        
+        
+
+        return found;
     }
 
     private bool SearchStartingFrom(GridSquare square, string word)

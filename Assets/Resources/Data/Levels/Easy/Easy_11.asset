@@ -15,6 +15,9 @@ MonoBehaviour:
   TimeInSeconds: 120
   Columns: 6
   Rows: 15
+  UseDotsMode: 0
+  UsePrompts: 0
+  TimeToPrompt: 15
   Board:
   - Size: 15
     Row:
@@ -120,9 +123,16 @@ MonoBehaviour:
     - N
   SearchingWords:
   - Word: EXIT
+    isFound: 0
   - Word: FARM
+    isFound: 0
   - Word: FACT
+    isFound: 0
   - Word: DREAM
+    isFound: 0
   - Word: ENEMY
+    isFound: 0
   - Word: PRICE
+    isFound: 0
   - Word: ROUND
+    isFound: 0

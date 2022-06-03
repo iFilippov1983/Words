@@ -27,7 +27,7 @@ public class SearchingWordsList : MonoBehaviour
         _prefabSquareRect = searchingWordPrefab.GetComponent<RectTransform>();
         _parentRect = this.GetComponent<RectTransform>();
         _wordsNumber = currentGameData.selectedBoardData.SearchingWords.Count;
-        _hideWords = currentGameData.selectedBoardData.HideSearchingWords;
+        _hideWords = currentGameData.selectedBoardData.UseDotsMode;
 
         if (_wordsNumber < _columns)
             _rows = 1;

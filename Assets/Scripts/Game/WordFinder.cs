@@ -34,5 +34,19 @@ namespace Game.WordComparison
             
             return isWordFound;
         }
+
+        public List<string> GetWordsListWhithLength(int length)
+        { 
+            var list = new List<string>();
+            foreach (var word in words)
+            {
+                foreach (var w in word)
+                {
+                    if (w.Length.Equals(length))
+                        list.Add(w);
+                }
+            }
+            return list;
+        }
     }
 }

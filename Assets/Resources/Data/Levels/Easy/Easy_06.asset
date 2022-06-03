@@ -15,6 +15,7 @@ MonoBehaviour:
   TimeInSeconds: 120
   Columns: 6
   Rows: 12
+  UseDotsMode: 0
   UsePrompts: 1
   TimeToPrompt: 15
   Board:
@@ -104,10 +105,18 @@ MonoBehaviour:
     - T
   SearchingWords:
   - Word: AIR
+    isFound: 0
   - Word: TOY
+    isFound: 0
   - Word: BAG
+    isFound: 0
   - Word: FLY
+    isFound: 0
   - Word: SEA
+    isFound: 0
   - Word: EYE
+    isFound: 0
   - Word: SKY
+    isFound: 0
   - Word: CAR
+    isFound: 0

@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class SearchingWord : MonoBehaviour
     public Image crossLine;
     public bool isFound;
 
+    [ShowInInspector, ReadOnly]
     private string _word;
     private int hash;
     public string Word => _word;
@@ -67,7 +69,6 @@ public class SearchingWord : MonoBehaviour
         }
     }
 
-    
     public void PlayAnimation()
     {
         foreach (var hitParticleSystem in hitParticleSystems)
@@ -105,7 +106,6 @@ public class SearchingWord : MonoBehaviour
         {
             positions[i] = selfPosition + Vector3.right * (i * letterSpacing);
         }
-            
 
         var center = Vector3.Lerp(positions[0],
                                   positions[positions.Length - 1],

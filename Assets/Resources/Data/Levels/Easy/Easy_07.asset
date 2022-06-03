@@ -15,6 +15,7 @@ MonoBehaviour:
   TimeInSeconds: 120
   Columns: 6
   Rows: 17
+  UseDotsMode: 0
   UsePrompts: 1
   TimeToPrompt: 15
   Board:
@@ -134,9 +135,16 @@ MonoBehaviour:
     - E
   SearchingWords:
   - Word: PURPLE
+    isFound: 0
   - Word: BLACK
+    isFound: 0
   - Word: GREEN
+    isFound: 0
   - Word: PINK
+    isFound: 0
   - Word: RED
+    isFound: 0
   - Word: WHITE
+    isFound: 0
   - Word: BLUE
+    isFound: 0

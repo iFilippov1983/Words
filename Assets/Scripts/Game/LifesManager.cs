@@ -13,10 +13,6 @@ public class LifesManager : MonoBehaviour
     private const string LifesFull = "FULL";
     private const int ExitCost = -1;
 
-    public static Action<int> LifesAmountChanged;
-    public static Action<int> TryChangeLifesAmount;
-    public static Action<string> LifesAmountChangeImpossible;
-
     [SerializeField] private BuyLifesPopup _buyLifesPopup;
     [SerializeField] private Button _showPopupButton;
     [SerializeField] private Text _lifesText;
@@ -31,6 +27,10 @@ public class LifesManager : MonoBehaviour
     private float _seconds;
 
     public int Lifes { get; private set; }
+
+    public static Action<int> LifesAmountChanged;
+    public static Action<int> TryChangeLifesAmount;
+    public static Action<string> LifesAmountChangeImpossible;
 
     private void Start()
     {
@@ -168,6 +168,12 @@ public class LifesManager : MonoBehaviour
         SetLifes(Mathf.Max(0, startLifes));
     }
 
+    private void LoadData()
+    {
+        SetTime();
+        SetStartLifes();
+    }
+
     private void SetTime()
     {
         _timeLeft = DataSaver.LoadFloatData(TimeKey);
@@ -195,9 +201,5 @@ public class LifesManager : MonoBehaviour
         DataSaver.SaveDateTime(DateTimeKey, DateTime.UtcNow);
     }
 
-    private void LoadData()
-    {
-        SetTime();
-        SetStartLifes();
-    }
+    
 }

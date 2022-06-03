@@ -8,9 +8,10 @@ using System;
 public class BoardData : ScriptableObject
 {
     [Serializable]
-    public class SearchingWord
+    public class BDSearchingWord
     { 
         public string Word;
+        public bool isFound;
     }
 
     [Serializable]
@@ -44,12 +45,12 @@ public class BoardData : ScriptableObject
     public float TimeInSeconds;
     public int Columns = 0;
     public int Rows = 0;
-    public bool HideSearchingWords = false;
+    public bool UseDotsMode = false;
     public bool UsePrompts = false;
     public float TimeToPrompt = 0;
 
     public BoardRow[] Board;
-    public List<SearchingWord> SearchingWords = new List<SearchingWord>();
+    public List<BDSearchingWord> SearchingWords = new List<BDSearchingWord>();
 
     public void ClearWithEmptyString()
     {
