@@ -36,14 +36,14 @@ namespace Game.WordComparison
         }
 
         public List<string> GetWordsListWhithLength(int length)
-        { 
+        {
             var list = new List<string>();
-            foreach (var word in words)
+            foreach (var dic in words)
             {
-                foreach (var w in word)
+                if (dic[0].Length.Equals(length))
                 {
-                    if (w.Length.Equals(length))
-                        list.Add(w);
+                    list = dic;
+                    return list;
                 }
             }
             return list;
