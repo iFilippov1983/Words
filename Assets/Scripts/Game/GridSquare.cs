@@ -26,6 +26,7 @@ public class GridSquare : MonoBehaviour
     private MeshRenderer _bodyMesh;
     private Animator _animator;
     private Transform _thisTransform;
+    private Transform _bodyTransform;
     private Vector3 _thresholdPoint;
 
     private int _showDelay = 1000;
@@ -46,7 +47,7 @@ public class GridSquare : MonoBehaviour
     public string Letter => _letter;
     public int Index => _index;
     public bool NotVisible => _notVisible;
-    public Vector3 BodyPosition => _bodyObject.transform.position;
+    public Vector3 BodyPosition => _bodyTransform.position;
     public LetterData PlaneLetterData => _planeLetterData;
 
     private void Start()
@@ -55,6 +56,7 @@ public class GridSquare : MonoBehaviour
         _bodyMesh = _bodyObject.GetComponent<MeshRenderer>();
         _animator = GetComponent<Animator>();
         _thisTransform = gameObject.transform;
+        _bodyTransform = _bodyObject.transform;
 
         _notVisible = true;
         _isClickable = true;
@@ -80,6 +82,8 @@ public class GridSquare : MonoBehaviour
 
     private void OnDisable()
     {
+        CancelInvoke();
+
         GameEvents.OnEnableSquareSelection -= OnEnableSquareSelection;
         GameEvents.OnDisableSquareSelection -= OnDisableSquareSelection;
         GameEvents.OnSelectSquare -= OnSelectSquare;

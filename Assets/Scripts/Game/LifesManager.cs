@@ -19,6 +19,7 @@ public class LifesManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _timerTMP;
     [SerializeField] private int _defaultLifesAmount = 5;
     [SerializeField] private float _restorationTime = 900;
+
     private static bool _haveLifes;
     private bool _lifesFull;
 
@@ -55,7 +56,8 @@ public class LifesManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name.Equals(Literal.Scene_GameScene))
         {
-            TryChangeLifesAmountMethod(ExitCost);
+            int amount = -ExitCost;
+            TryChangeLifesAmountMethod(amount);
         }
     }
 #endif
@@ -125,7 +127,6 @@ public class LifesManager : MonoBehaviour
     {
         if (_lifesFull)
             return;
-
         _buyLifesPopup.ShowPopup(true);
     }
 
@@ -154,24 +155,12 @@ public class LifesManager : MonoBehaviour
         }
     }
 
-    public static bool TryChangeLifesAmountMethod(int amount)
-    {
-        TryChangeLifesAmount.Invoke(amount);
-        return _haveLifes;
-    }
-
     private void SetStartLifes()
     {
         var startLifes = DataSaver.HasKey(LifesKey)
             ? DataSaver.LoadIntData(LifesKey)
             : _defaultLifesAmount;
         SetLifes(Mathf.Max(0, startLifes));
-    }
-
-    private void LoadData()
-    {
-        SetTime();
-        SetStartLifes();
     }
 
     private void SetTime()
@@ -189,9 +178,15 @@ public class LifesManager : MonoBehaviour
             SetLifes(_defaultLifesAmount);
         }
         else
-        { 
+        {
             _timeLeft -= secondsPassed;
         }
+    }
+
+    private void LoadData()
+    {
+        SetTime();
+        SetStartLifes();
     }
 
     private void SaveData()
@@ -201,5 +196,9 @@ public class LifesManager : MonoBehaviour
         DataSaver.SaveDateTime(DateTimeKey, DateTime.UtcNow);
     }
 
-    
+    public static bool TryChangeLifesAmountMethod(int amount)
+    {
+        TryChangeLifesAmount?.Invoke(amount);
+        return _haveLifes;
+    }
 }

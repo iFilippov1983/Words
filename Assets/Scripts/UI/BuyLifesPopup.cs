@@ -66,7 +66,7 @@ public class BuyLifesPopup : MonoBehaviour
         SoundManager.PalaySound(Sound.ButtonClicked);
         Debug.Log("[Haptic + sound] BuyLifesPopup - HidePopup");
 
-        _buyLifesPopup.SetActive(false);
+        ShowPopup(false);
     }
 
     private async void ShowMessage(string animationName)

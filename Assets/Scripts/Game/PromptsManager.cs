@@ -1,6 +1,9 @@
+using Sirenix.OdinInspector;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,19 +11,18 @@ using UnityEngine.UI;
 public class PromptsManager : MonoBehaviour
 {
     private const string PromptsKey = "Prompts";
+    private const int PromptUseCost = 1;
 
     [SerializeField] private Prompter _prompter;
     [Space][SerializeField] private BuyPromptsPopup _buyPromptPopup;
-    [SerializeField] private Button _buyPromptsButton;
-    [SerializeField] private Button _usePromptButton;
-    [SerializeField] private Text _promptsAmountText;
+    [SerializeField] private Button _useOrBuyPromptButton;
+    [SerializeField] private TextMeshProUGUI _promptsAmountText;
     [SerializeField] private int _defaultPromptsAmount = 3;
-    private static bool _havePrompts;
 
-    private bool _canUse;
+    private bool _havePrompts;
     private bool _canBuy;
-    private bool _inGame;
     private bool _inMainMenu;
+
     public int Prompts { get; private set; }
 
     public static Action<int> PromptsAmountChanged;
@@ -30,37 +32,120 @@ public class PromptsManager : MonoBehaviour
     void Start()
     {
         LoadData();
-
-        _inGame = (_usePromptButton != null 
-            && SceneManager.GetActiveScene().name.Equals(Literal.Scene_GameScene));
-        if(_inGame)
-            _usePromptButton.onClick.AddListener(ChangePromptsAmount);
-
-        _inMainMenu = (_buyPromptPopup != null && _buyPromptsButton
-            && SceneManager.GetActiveScene().name.Equals(Literal.Scene_MainMenu));
-        if (_inMainMenu)
-        { 
-        
-        }
+        Init();
     }
 
     private void OnDestroy()
     {
         SaveData();
+        Cleanup();
     }
 
-    private void ChangePromptsAmount()
-    { 
-    
+    private void Init()
+    {
+        PauseUseButtonClickability(new int[0]);
+
+        _inMainMenu = (_useOrBuyPromptButton != null
+            && SceneManager.GetActiveScene().name.Equals(Literal.Scene_MainMenu));
+
+        _useOrBuyPromptButton.onClick.AddListener(ShowBuyPromptsPopup);
+        _useOrBuyPromptButton.onClick.AddListener(UsePrompt);
+
+        TryChangePromptsAmount += ChangePromptsAmount;
+        GameEvents.OnCorrectWord += PauseUseButtonClickability;
+        GameEvents.OnWordToPromptFound += PauseUseButtonClickability;
+        BuyPromptsPopup.ContinueWhithExtraPrompts += ChangePromptsAmount;
     }
 
-    private void SaveData()
+    private void Cleanup()
+    {
+        CancelInvoke();
+        TryChangePromptsAmount -= ChangePromptsAmount;
+        GameEvents.OnCorrectWord -= PauseUseButtonClickability;
+        GameEvents.OnWordToPromptFound -= PauseUseButtonClickability;
+        BuyPromptsPopup.ContinueWhithExtraPrompts += ChangePromptsAmount;
+    }
+
+    private void ShowBuyPromptsPopup()
+    {
+        if (_canBuy == false)
+            return;
+        _buyPromptPopup.ShowBuyPromptsPopup();
+    }
+
+    private void UsePrompt()
+    {
+        Debug.Log($"Use, CanBuy: {_canBuy}");
+        if (_inMainMenu || _canBuy)
+            return;
+
+        int amount = -PromptUseCost;
+        bool success = TryChangePromptAmountMethod(amount);
+        if (success)
+        {
+            Prompter.MakeManualPrompt();
+            Timer.ResetPromptTimerMethod();
+        }
+    }
+
+    [Button]
+    private void ChangePromptsAmount(int amount)
     { 
-    
+        var newAmount = Prompts = Prompts + amount;
+        if (newAmount < 0)
+        {
+            _havePrompts = false;
+            PromptsAmountChangeImpossible?.Invoke(Literal.AnimName_NoPrompts);
+        }
+        else
+        {
+            _havePrompts = true;
+            SetPrompts(newAmount);
+            PromptsAmountChanged?.Invoke(amount);
+        }
+    }
+
+    private void SetPrompts(int prompts)
+    {
+        Prompts = prompts;
+        _promptsAmountText.text = Prompts.ToString();
+        _canBuy = Prompts > 0
+            ? false : true;
     }
 
     private void LoadData()
-    { 
-    
+    {
+        var startPrompts = DataSaver.HasKey(PromptsKey)
+            ? DataSaver.LoadIntData(PromptsKey)
+            : _defaultPromptsAmount;
+        SetPrompts(Mathf.Max(0, startPrompts));
     }
+
+    private void SaveData()
+    {
+        DataSaver.SaveIntData(PromptsKey, Prompts);
+    }
+
+    private bool TryChangePromptAmountMethod(int amount)
+    { 
+        TryChangePromptsAmount?.Invoke(amount);
+        return _havePrompts;
+    }
+
+    private async void PauseUseButtonClickability(string word, IEnumerable<int> obj)
+    {
+        _useOrBuyPromptButton.interactable = false;
+        CancellationToken token = new CancellationToken();
+        token.ThrowIfCancellationRequested();
+        await Task.Delay(3000, token);
+
+        if (token.IsCancellationRequested) return;
+
+        _useOrBuyPromptButton.interactable = true;
+    }
+
+    private void PauseUseButtonClickability(IEnumerable<int> obj)
+    {
+        PauseUseButtonClickability(string.Empty, obj);
+    } 
 }

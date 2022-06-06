@@ -1,5 +1,6 @@
 using Game.WordComparison;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,9 +14,10 @@ public class Prompter : MonoBehaviour
     [SerializeField] private DataProfile _dataProfile;
     private WordFinder _wordFinder;
 
-    private string _word;
-    private bool _usePrompts;
+    private static bool _usePrompts;
     private bool _useDotsMod;
+
+    private string _word;
     private float _rayLength = 1.2f;
 
     private Ray _rayUp, _rayDown;
@@ -28,7 +30,8 @@ public class Prompter : MonoBehaviour
     private List<GridSquare> _unvisibleSquares = new List<GridSquare>();
     private List<GridSquare> _visibleSquares = new List<GridSquare>();
     private List<SearchingWord> _searchingWords = new List<SearchingWord>();
-    
+
+    private static Action OnManualPrompt;
 
     private async void Start()
     {
@@ -40,14 +43,17 @@ public class Prompter : MonoBehaviour
 
         SortSquaresLists(_word, _checkedSquaresIndexes);
 
+        OnManualPrompt += MakePrompt;
         GameEvents.OnCorrectWord += SortSquaresLists;
         GameEvents.OnTimeToPrompt += MakePrompt;
     }
 
     private void OnDestroy()
     {
+        CancelInvoke();
+        OnManualPrompt -= MakePrompt;
         GameEvents.OnCorrectWord -= SortSquaresLists;
-        GameEvents.OnTimeToPrompt += MakePrompt;
+        GameEvents.OnTimeToPrompt -= MakePrompt;
     }
 
     private async Task<List<GridSquare>> MakeAllSquaresList()
@@ -279,5 +285,19 @@ public class Prompter : MonoBehaviour
         }
 
         return list;
+    }
+
+    public static void MakeManualPrompt()
+    {
+        bool promptsModeOn = _usePrompts;
+
+        _usePrompts = promptsModeOn == true
+            ? true : true;
+        Debug.Log($"Can use prompts: {_usePrompts}");
+        OnManualPrompt?.Invoke();
+
+        _usePrompts = promptsModeOn == true
+            ? true : false;
+        Debug.Log($"Can use prompts: {_usePrompts}");
     }
 }

@@ -194,6 +194,7 @@ public class WordCheker : MonoBehaviour
 
         if (foundExtraWord && !alreadyUsedWord)
         {
+            Debug.Log("Case 3");
             GameEvents.OnCorrectExtraWordMethod(_correctSquareList);
             _dataProfile.UsedWords.Add(_word);
 

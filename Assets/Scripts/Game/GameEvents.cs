@@ -153,6 +153,7 @@ public static class GameEvents
         OnTimeToPrompt?.Invoke();
     }
     //************
+
     public delegate void WordToPromptFound(List<int> squareIndexes);
     public static event WordToPromptFound OnWordToPromptFound;
 

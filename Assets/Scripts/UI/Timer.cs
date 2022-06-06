@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using System;
 
 public class Timer : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Timer : MonoBehaviour
     private float _timeToPrompt;
     private float _promptTimer;
 
+    private static Action OnResetPromptTimer;
+
     void Start()
     {
         _stopTimers = false;
@@ -26,6 +29,7 @@ public class Timer : MonoBehaviour
         _timeToPrompt = currentGameData.selectedBoardData.TimeToPrompt;
         _promptTimer = _timeToPrompt;
 
+        OnResetPromptTimer += ResetPromptTimer;
         GameEvents.OnBoardComleted += StopTimer;
         GameEvents.OnUnlockNextCategory += StopTimer;
         GameEvents.OnCorrectWord += ResetPromptTimer;
@@ -35,6 +39,7 @@ public class Timer : MonoBehaviour
 
     private void OnDisable()
     {
+        OnResetPromptTimer -= ResetPromptTimer;
         GameEvents.OnBoardComleted -= StopTimer;
         GameEvents.OnUnlockNextCategory -= StopTimer;
         GameEvents.OnCorrectWord -= ResetPromptTimer;
@@ -113,4 +118,6 @@ public class Timer : MonoBehaviour
     private void ResetPromptTimer(string word, List<int> squareIndexes) => ResetPromptTimer();
     private void ResetPromptTimer(List<int> squareIndexes) => ResetPromptTimer();
     private void ResetPromptTimer() => _promptTimer = _timeToPrompt;
+
+    public static void ResetPromptTimerMethod() => OnResetPromptTimer?.Invoke();
 }

@@ -275,6 +275,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundData: {fileID: 11400000, guid: e0eb3a1fdad6f3e47b555d45db09d09d, type: 2}
+--- !u!1 &438574977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 438574978}
+  - component: {fileID: 438574979}
+  m_Layer: 0
+  m_Name: PromptsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &438574978
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438574977}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2102204704}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &438574979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438574977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01452ca66f117b4499b5d9f05a1d3482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prompter: {fileID: 0}
+  _buyPromptPopup: {fileID: 0}
+  _useOrBuyPromptButton: {fileID: 0}
+  _promptsAmountText: {fileID: 0}
+  _defaultPromptsAmount: 3
 --- !u!1 &486303924
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,6 +741,7 @@ Transform:
   - {fileID: 970936401}
   - {fileID: 1280489651}
   - {fileID: 428302357}
+  - {fileID: 438574978}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -721,6 +770,10 @@ PrefabInstance:
       propertyPath: _lifesManager
       value: 
       objectReference: {fileID: 1111014881}
+    - target: {fileID: 2449081842423881144, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9149001351799981831, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
       propertyPath: m_Pivot.x
       value: 0
