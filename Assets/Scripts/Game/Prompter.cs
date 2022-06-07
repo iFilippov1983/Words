@@ -18,6 +18,7 @@ public class Prompter : MonoBehaviour
     private bool _useDotsMod;
 
     private string _word;
+    private int _counter = 0;
     private float _rayLength = 1.2f;
 
     private Ray _rayUp, _rayDown;
@@ -41,19 +42,19 @@ public class Prompter : MonoBehaviour
         _wordFinder = new WordFinder(_dictionaries, ' ');
         _squaresList = await MakeAllSquaresList();
 
-        SortSquaresLists(_word, _checkedSquaresIndexes);
-
         OnManualPrompt += MakePrompt;
-        GameEvents.OnCorrectWord += SortSquaresLists;
+        GameEvents.OnBoardConfigurationChanged += SortSquaresLists;
         GameEvents.OnTimeToPrompt += MakePrompt;
+        BoardResetManager.OnBoardIsReset += ResetLists;
     }
 
     private void OnDestroy()
     {
         CancelInvoke();
         OnManualPrompt -= MakePrompt;
-        GameEvents.OnCorrectWord -= SortSquaresLists;
+        GameEvents.OnBoardConfigurationChanged += SortSquaresLists;
         GameEvents.OnTimeToPrompt -= MakePrompt;
+        BoardResetManager.OnBoardIsReset -= ResetLists;
     }
 
     private async Task<List<GridSquare>> MakeAllSquaresList()
@@ -73,14 +74,8 @@ public class Prompter : MonoBehaviour
         return list;
     }
 
-    private async void SortSquaresLists(string word, List<int> squareIndexes)
+    private void SortSquaresLists()
     {
-        CancellationToken token = new CancellationToken();
-        token.ThrowIfCancellationRequested();
-        await Task.Delay(3000, token);
-
-        if (token.IsCancellationRequested) return;
-
         _visibleSquares.Clear();
         _unvisibleSquares.Clear();
         foreach (var square in _squaresList)
@@ -93,8 +88,15 @@ public class Prompter : MonoBehaviour
         _searchingWords = UpdateSearchingWordsList(_searchingWordsParent);
     }
 
+    private async void ResetLists()
+    {
+        _squaresList = await MakeAllSquaresList();
+        SortSquaresLists();
+        Debug.Log($"[Prompter] Searching words list count: {_searchingWords.Count}");
+    }
+
     [Button]
-    private void MakePrompt()
+    private async void MakePrompt()
     {
         if (_usePrompts == false)
             return;
@@ -104,7 +106,7 @@ public class Prompter : MonoBehaviour
         {
             if (word.isFound) return;
 
-            wordFound = TryFindWord(word);
+            wordFound = await TryFindWord(word);
             if (wordFound)
             {
                 GameEvents.WordToPromptFoundMethod(_checkedSquaresIndexes);
@@ -117,7 +119,7 @@ public class Prompter : MonoBehaviour
         {
             foreach (var word in _searchingWords)
             {
-                wordFound = TryFindAdditionalWord(word.Word);
+                wordFound = await TryFindAdditionalWord(word.Word);
                 if (wordFound)
                 {
                     GameEvents.WordToPromptFoundMethod(_checkedSquaresIndexes);
@@ -131,32 +133,34 @@ public class Prompter : MonoBehaviour
         ClearData();
     }
 
-    private bool TryFindWord(SearchingWord searchingWord)
+    private async Task<bool> TryFindWord(SearchingWord searchingWord)
     {
         bool found = false;
         foreach (var visibleSquare in _visibleSquares)
         {
+            _counter = 0;
             if (visibleSquare != null)
             {
-                found = SearchStartingFrom(visibleSquare, searchingWord.Word);
+                found = await SearchStartingFrom(visibleSquare, searchingWord.Word);
                 if (found) return true;
             }
         }
         return found;
     }
 
-    private bool TryFindAdditionalWord(string aWord)
+    private async Task<bool> TryFindAdditionalWord(string aWord)
     {
         bool found = false;
         var wordsToTry = _wordFinder.GetWordsListWhithLength(aWord.Length);
 
         foreach (var visibleSquare in _visibleSquares)
         {
+            _counter = 0;
             if (visibleSquare != null)
             {
                 foreach (var word in wordsToTry)
                 {
-                    found = SearchStartingFrom(visibleSquare, word.ToUpper());
+                    found = await SearchStartingFrom(visibleSquare, word.ToUpper());
                     if (found) return true;
                 }
             }
@@ -164,7 +168,7 @@ public class Prompter : MonoBehaviour
         return found;
     }
 
-    private bool SearchStartingFrom(GridSquare square, string word)
+    private async Task<bool> SearchStartingFrom(GridSquare square, string word)
     {
         if (word.StartsWith(square.Letter) == false)
         {
@@ -180,7 +184,7 @@ public class Prompter : MonoBehaviour
          var raysList = SetRaysFrom(square.BodyPosition);
         foreach (var ray in raysList)
         {
-            bool found = RecursivelyFind(word, ray);
+            bool found = await RecursivelyFind(word, ray);
             if (found) return true;
 
             _word = string.Empty;
@@ -192,8 +196,12 @@ public class Prompter : MonoBehaviour
         return false;
     }
 
-    private bool RecursivelyFind(string word, Ray rayToCheck)
+    private async Task<bool> RecursivelyFind(string word, Ray rayToCheck)
     {
+        _counter++;
+        if(_counter >= 10)
+            await Task.Yield();
+
         var hasHit = Physics.Raycast(rayToCheck, out RaycastHit hit, _rayLength);
         if (hasHit)
         {
@@ -222,7 +230,7 @@ public class Prompter : MonoBehaviour
                         var raysList = SetRaysFrom(square.BodyPosition);
                         foreach (var ray in raysList)
                         {
-                            bool found = RecursivelyFind(word, ray);
+                            bool found = await RecursivelyFind(word, ray);
                             if (found) return true;
                         }
                     }
@@ -290,14 +298,11 @@ public class Prompter : MonoBehaviour
     public static void MakeManualPrompt()
     {
         bool promptsModeOn = _usePrompts;
-
-        _usePrompts = promptsModeOn == true
-            ? true : true;
-        Debug.Log($"Can use prompts: {_usePrompts}");
+        Debug.Log($"Can use before: {_usePrompts}");
+        _usePrompts = true;
         OnManualPrompt?.Invoke();
-
         _usePrompts = promptsModeOn == true
             ? true : false;
-        Debug.Log($"Can use prompts: {_usePrompts}");
+        Debug.Log($"Can use after: {_usePrompts}");
     }
 }

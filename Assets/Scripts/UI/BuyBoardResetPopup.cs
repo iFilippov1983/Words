@@ -1,34 +1,34 @@
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using System;
 using Game;
 using Lofelt.NiceVibrations;
+using System;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class BuyPromptsPopup : MonoBehaviour
+public class BuyBoardResetPopup : MonoBehaviour
 {
-    [SerializeField] private GameObject _buyPromptsPopup;
-    [SerializeField] private GameObject _buyPromptsButtonObject;
+    [SerializeField] private GameObject _buyBoardResetPopup;
+    [SerializeField] private GameObject _buyBoardResetButtonObject;
     [SerializeField] private GameObject _backButtonObject;
     [SerializeField] private Text _buyButtonText;
     [SerializeField] private TextMeshProUGUI _messageText;
-    [SerializeField] private int _promptsBuyCost = 20;
-    [SerializeField] private int _promptsBuyAmount = 1;
+    [SerializeField] private int _resetBuyCost = 30;
+    [SerializeField] private int _resetBuyAmount = 1;
 
-    private Button _buyPrompstButton;
+    private Button _buyResetButton;
     private Button _backButton;
 
-    public static Action<int> ContinueWhithExtraPrompts;
- 
+    public static Action<int> ContinueWhithExtraResets;
+
     void Start()
     {
-        _buyPrompstButton = _buyPromptsButtonObject.GetComponent<Button>();
-        _buyPrompstButton.onClick.AddListener(TryBuyPrompts);
+        _buyResetButton = _buyBoardResetButtonObject.GetComponent<Button>();
+        _buyResetButton.onClick.AddListener(TryBuyResets);
 
         _backButton = _backButtonObject.GetComponent<Button>();
         _backButton.onClick.AddListener(HidePopup);
 
-        _buyButtonText.text = _promptsBuyCost.ToString();
+        _buyButtonText.text = _resetBuyCost.ToString();
         CurrencyManager.CoinsAmountChangeImpossible += ShowMessage;
     }
 
@@ -37,30 +37,30 @@ public class BuyPromptsPopup : MonoBehaviour
         CurrencyManager.CoinsAmountChangeImpossible -= ShowMessage;
     }
 
-    private void TryBuyPrompts()
+    private void TryBuyResets()
     {
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
         SoundManager.PalaySound(Sound.ButtonClicked);
-        Debug.Log("[Haptic + sound] BuyPromptsPopup - TryBuyPrompts");
+        Debug.Log("[Haptic + sound] BuyBoardResetPopup - TryBuyResets");
 
-        int cost = -_promptsBuyCost;
+        int cost = -_resetBuyCost;
         bool succes = CurrencyManager.TryChangeCoinsAmountMethod(cost);
         if (succes)
         {
-            ContinueWhithExtraPrompts?.Invoke(_promptsBuyAmount);
+            ContinueWhithExtraResets?.Invoke(_resetBuyAmount);
         }
     }
 
     private async void ShowMessage(string animationName)
     {
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.MediumImpact);
-        Debug.Log("[Haptic] BuyPromptsPopup - ShowMessage");
+        Debug.Log("[Haptic] BuyBoardResetPopup - ShowMessage");
 
         _messageText.gameObject.SetActive(true);
 
         var animation = _messageText.GetComponent<Animation>();
         animation.Play();
-        while(animation.isPlaying)
+        while (animation.isPlaying)
             await System.Threading.Tasks.Task.Yield();
 
         _messageText.gameObject.SetActive(false);
@@ -70,20 +70,19 @@ public class BuyPromptsPopup : MonoBehaviour
     {
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
         SoundManager.PalaySound(Sound.ButtonClicked);
-        Debug.Log("[Haptic + sound] BuyPromptsPopup - HidePopup");
+        Debug.Log("[Haptic + sound] BuyBoardResetPopup - HidePopup");
 
-        _buyPromptsPopup.SetActive(false);
+        _buyBoardResetPopup.SetActive(false);
         GameEvents.MenuIsActiveMethod(false);
     }
 
-    public void ShowBuyPromptsPopup()
+    public void ShowBuyBoardResetPopup()
     {
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
         SoundManager.PalaySound(Sound.ButtonClicked);
-        Debug.Log("[Haptic + sound] BuyPromptsPopup - ShowBuyPromptsPopup");
+        Debug.Log("[Haptic + sound] BuyBoardResetPopup - ShowBuyPromptsPopup");
 
-        _buyPromptsPopup.SetActive(true);
+        _buyBoardResetPopup.SetActive(true);
         GameEvents.MenuIsActiveMethod(true);
     }
-    
 }

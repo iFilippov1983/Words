@@ -291,7 +291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &438574978
 Transform:
   m_ObjectHideFlags: 0
@@ -322,6 +322,7 @@ MonoBehaviour:
   _buyPromptPopup: {fileID: 0}
   _useOrBuyPromptButton: {fileID: 0}
   _promptsAmountText: {fileID: 0}
+  _plusImage: {fileID: 0}
   _defaultPromptsAmount: 3
 --- !u!1 &486303924
 GameObject:
@@ -770,10 +771,6 @@ PrefabInstance:
       propertyPath: _lifesManager
       value: 
       objectReference: {fileID: 1111014881}
-    - target: {fileID: 2449081842423881144, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9149001351799981831, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
       propertyPath: m_Pivot.x
       value: 0

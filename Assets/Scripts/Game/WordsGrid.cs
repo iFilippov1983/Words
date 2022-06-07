@@ -1,4 +1,7 @@
+using Lofelt.NiceVibrations;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class WordsGrid : MonoBehaviour
@@ -188,5 +191,31 @@ public class WordsGrid : MonoBehaviour
         float height = _camera.orthographicSize * 2;
         float width = (1.7f * height) * Screen.width / Screen.height;
         return width / 2;
+    }
+
+    [Button]
+    public async Task ResetBoard()
+    {
+        HapticPatterns.PlayPreset(HapticPatterns.PresetType.MediumImpact);
+        SoundManager.PalaySound(Sound.Word_Blow);
+        Debug.Log("[Haptic + Sound] WordsGrid - ResetBoard");
+
+        var tasks = new List<Task>();
+        for (int i = 0; i < _squareList.Count; i++)
+        {
+            if (_squareList[i] != null)
+            {
+                var gs = _squareList[i].GetComponent<GridSquare>();
+                tasks.Add(gs.ManualDestroy());
+            }
+        }
+        await Task.WhenAll(tasks);
+
+        _squareList.Clear();
+        tasks.Clear();
+
+        //SetSelfPosition();
+        SpawnGridSquares();
+        SetSquaresPosition();
     }
 }

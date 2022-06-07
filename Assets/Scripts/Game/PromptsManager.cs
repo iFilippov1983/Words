@@ -17,6 +17,7 @@ public class PromptsManager : MonoBehaviour
     [Space][SerializeField] private BuyPromptsPopup _buyPromptPopup;
     [SerializeField] private Button _useOrBuyPromptButton;
     [SerializeField] private TextMeshProUGUI _promptsAmountText;
+    [SerializeField] private Image _plusImage;
     [SerializeField] private int _defaultPromptsAmount = 3;
 
     private bool _havePrompts;
@@ -43,8 +44,6 @@ public class PromptsManager : MonoBehaviour
 
     private void Init()
     {
-        PauseUseButtonClickability(new int[0]);
-
         _inMainMenu = (_useOrBuyPromptButton != null
             && SceneManager.GetActiveScene().name.Equals(Literal.Scene_MainMenu));
 
@@ -52,8 +51,10 @@ public class PromptsManager : MonoBehaviour
         _useOrBuyPromptButton.onClick.AddListener(UsePrompt);
 
         TryChangePromptsAmount += ChangePromptsAmount;
-        GameEvents.OnCorrectWord += PauseUseButtonClickability;
+        GameEvents.OnCorrectWord += DisableUseButtonClickability;
+        GameEvents.OnBoardConfigurationChanged += EnableUseButtonClickability;
         GameEvents.OnWordToPromptFound += PauseUseButtonClickability;
+        BoardResetManager.OnDisactivateMenuInteraction += DisableUseButtonClickability;
         BuyPromptsPopup.ContinueWhithExtraPrompts += ChangePromptsAmount;
     }
 
@@ -61,9 +62,11 @@ public class PromptsManager : MonoBehaviour
     {
         CancelInvoke();
         TryChangePromptsAmount -= ChangePromptsAmount;
-        GameEvents.OnCorrectWord -= PauseUseButtonClickability;
+        GameEvents.OnCorrectWord -= DisableUseButtonClickability;
+        GameEvents.OnBoardConfigurationChanged -= EnableUseButtonClickability;
         GameEvents.OnWordToPromptFound -= PauseUseButtonClickability;
-        BuyPromptsPopup.ContinueWhithExtraPrompts += ChangePromptsAmount;
+        BoardResetManager.OnDisactivateMenuInteraction -= DisableUseButtonClickability;
+        BuyPromptsPopup.ContinueWhithExtraPrompts -= ChangePromptsAmount;
     }
 
     private void ShowBuyPromptsPopup()
@@ -75,7 +78,6 @@ public class PromptsManager : MonoBehaviour
 
     private void UsePrompt()
     {
-        Debug.Log($"Use, CanBuy: {_canBuy}");
         if (_inMainMenu || _canBuy)
             return;
 
@@ -91,7 +93,7 @@ public class PromptsManager : MonoBehaviour
     [Button]
     private void ChangePromptsAmount(int amount)
     { 
-        var newAmount = Prompts = Prompts + amount;
+        var newAmount = Prompts + amount;
         if (newAmount < 0)
         {
             _havePrompts = false;
@@ -132,7 +134,7 @@ public class PromptsManager : MonoBehaviour
         return _havePrompts;
     }
 
-    private async void PauseUseButtonClickability(string word, IEnumerable<int> obj)
+    private async void PauseUseButtonClickability(IEnumerable<int> obj)
     {
         _useOrBuyPromptButton.interactable = false;
         CancellationToken token = new CancellationToken();
@@ -144,8 +146,10 @@ public class PromptsManager : MonoBehaviour
         _useOrBuyPromptButton.interactable = true;
     }
 
-    private void PauseUseButtonClickability(IEnumerable<int> obj)
-    {
-        PauseUseButtonClickability(string.Empty, obj);
-    } 
+    private void DisableUseButtonClickability()
+        => DisableUseButtonClickability(string.Empty, new int[0]);
+    private void DisableUseButtonClickability(string word, IEnumerable<int> obj) 
+        => _useOrBuyPromptButton.interactable = false;
+    private void EnableUseButtonClickability() 
+        => _useOrBuyPromptButton.interactable = true;
 }

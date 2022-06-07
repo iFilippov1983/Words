@@ -805,7 +805,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MORE RESTARTS?
+  m_text: MORE BOARD RESETS?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dd5fe92165d2c894f8c24a8c5adcdd72, type: 2}
   m_sharedMaterial: {fileID: 1180072795380844779, guid: dd5fe92165d2c894f8c24a8c5adcdd72, type: 2}
@@ -2963,7 +2963,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 20
+  m_Text: 30
 --- !u!1 &2544575538355173515
 GameObject:
   m_ObjectHideFlags: 0
@@ -3928,6 +3928,7 @@ MonoBehaviour:
   _buyPromptsPopup: {fileID: 3343410743991660361}
   _buyPromptsButtonObject: {fileID: 2782035950326224720}
   _backButtonObject: {fileID: 2737160508975881975}
+  _buyButtonText: {fileID: 3751701871717629980}
   _messageText: {fileID: 716555743807007480}
   _promptsBuyCost: 20
   _promptsBuyAmount: 1
@@ -7302,8 +7303,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5089323975168552100}
+  - component: {fileID: 7800202358168758762}
   m_Layer: 5
-  m_Name: BuyRestartPopup
+  m_Name: BuyBoardResetPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7329,6 +7331,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7800202358168758762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6928835733958098376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea79ab93e7d554409c38e1b28512215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buyBoardResetPopup: {fileID: 5160755933110362539}
+  _buyBoardResetButtonObject: {fileID: 4110028424691351906}
+  _backButtonObject: {fileID: 5648550519260635317}
+  _buyButtonText: {fileID: 136437856243750660}
+  _messageText: {fileID: 8268445931381225666}
+  _resetBuyCost: 30
+  _resetBuyAmount: 1
 --- !u!1 &7028635821024352287
 GameObject:
   m_ObjectHideFlags: 0
@@ -8972,7 +8993,7 @@ GameObject:
   - component: {fileID: 8518415812579391850}
   - component: {fileID: 9006497667728174326}
   m_Layer: 5
-  m_Name: RestartButton
+  m_Name: BoardResetButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

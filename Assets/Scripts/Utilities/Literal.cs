@@ -12,6 +12,7 @@ public static class Literal
     public const string AnimName_NoCoins = "Message_pulse_NoCoins";
     public const string AnimName_NoLifes = "Message_pulse_NoLifes";
     public const string AnimName_NoPrompts = "Message_pulse_NoPrompts";
+    public const string AnimName_NoBoardResets = "Message_pulse_NoBoardResets";
     public const string AnimName_NoCoinsForLifes = "Message_pulse_NoCoinsForLifes";
 
     public const string LayerMask_SquareBody = "SquareBody";

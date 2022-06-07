@@ -162,4 +162,12 @@ public static class GameEvents
         OnWordToPromptFound?.Invoke(squareIndexes);
     }
     //************
+
+    public delegate void BoardConfigurationChanged();
+    public static event BoardConfigurationChanged OnBoardConfigurationChanged;
+
+    public static void BoardConfigurationChangedMethod()
+    { 
+        OnBoardConfigurationChanged?.Invoke();
+    }
 }

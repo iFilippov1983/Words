@@ -146,17 +146,33 @@ public class GridSquare : MonoBehaviour
         _letter = _normalLetterData.Letter;
     }
 
+    public async Task ManualDestroy()
+    {
+        if (_notVisible == false)
+        {
+            _displayedSprite.enabled = false;
+            _bodyObject.gameObject.SetActive(false);
+
+            _destroyEffect.gameObject.SetActive(true);
+            _destroyEffect.Play();
+
+            while (_destroyEffect.isPlaying)
+                await Task.Yield();
+        }
+        Destroy(gameObject);
+    }
+
     public void SetIndex(int index) => _index = index;
     public int GetIndex() => _index;
-    public void SetClickability(bool menuIsActive) => _isClickable = !menuIsActive;
+    private void SetClickability(bool menuIsActive) => _isClickable = !menuIsActive;
 
-    public void OnEnableSquareSelection()
+    private void OnEnableSquareSelection()
     {
         _isClicked = true;
         _isSelected = false;
     }
 
-    public void CheckSquare()
+    private void CheckSquare()
     {
         if (_isSelected == false && _isClicked)
         {
@@ -219,6 +235,7 @@ public class GridSquare : MonoBehaviour
     {
         if (_thisTransform.position.y < _thresholdPoint.y && _notVisible)
         {
+            GameEvents.BoardConfigurationChangedMethod();
             _animator.SetBool(Literal.AnimBool_isVisible, true);
             _notVisible = false;
             var delay = Random.Range(0, _maxDelay);

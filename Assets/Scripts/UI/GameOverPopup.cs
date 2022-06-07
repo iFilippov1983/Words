@@ -43,6 +43,8 @@ public class GameOverPopup : MonoBehaviour
 
     private void OnDestroy()
     {
+        CancelInvoke();
+
         GameEvents.OnGameOver -= ShowGameOverPopup;
         CurrencyManager.CoinsAmountChangeImpossible -= ShowMessage;
     }

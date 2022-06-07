@@ -34,6 +34,7 @@ public class Timer : MonoBehaviour
         GameEvents.OnUnlockNextCategory += StopTimer;
         GameEvents.OnCorrectWord += ResetPromptTimer;
         GameEvents.OnCorrectExtraWord += ResetPromptTimer;
+        BoardResetManager.OnBoardIsReset += ResetPromptTimer;
         GameOverPopup.ContinueWhithExtraTime += RestartTimers;
     }
 
@@ -44,6 +45,7 @@ public class Timer : MonoBehaviour
         GameEvents.OnUnlockNextCategory -= StopTimer;
         GameEvents.OnCorrectWord -= ResetPromptTimer;
         GameEvents.OnCorrectExtraWord -= ResetPromptTimer;
+        BoardResetManager.OnBoardIsReset -= ResetPromptTimer;
         GameOverPopup.ContinueWhithExtraTime -= RestartTimers;
     }
 

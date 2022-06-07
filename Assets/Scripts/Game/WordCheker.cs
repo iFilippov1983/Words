@@ -99,14 +99,10 @@ public class WordCheker : MonoBehaviour
                 _dataProfile.UsedWords.Clear();
 
             DataSaver.SaveStringDataFromList(UsedWords, _dataProfile.UsedWords);
-
-            //Debug.Log("Extra words list data SAVED");
         }
         else
         {
             DataSaver.ClearSavedStringListData(UsedWords);
-
-            //Debug.Log("Extra words list data CLEARED");
         }
 
         _dataProfile.UsedWords.Clear();
@@ -209,13 +205,6 @@ public class WordCheker : MonoBehaviour
         _assignedPoints = 0;
         _correctSquareList.Clear();
 
-        //if (_word.Equals(_extraWord) == false && string.IsNullOrEmpty(_extraWord) == false)
-        //{
-        //    _dataProfile.UsedExtraWords.Remove(_extraWord);
-
-        //    Debug.Log($"Extra word: {_extraWord} is REMOVED from list");
-        //}
-            
         _word = string.Empty;
         _extraWord = string.Empty;
     }
