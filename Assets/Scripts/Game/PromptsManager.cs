@@ -18,6 +18,7 @@ public class PromptsManager : MonoBehaviour
     [SerializeField] private Button _useOrBuyPromptButton;
     [SerializeField] private TextMeshProUGUI _promptsAmountText;
     [SerializeField] private Image _plusImage;
+    [SerializeField] private Animation _buisyAnimation;
     [SerializeField] private int _defaultPromptsAmount = 3;
 
     private bool _havePrompts;
@@ -53,7 +54,7 @@ public class PromptsManager : MonoBehaviour
         TryChangePromptsAmount += ChangePromptsAmount;
         GameEvents.OnCorrectWord += DisableUseButtonClickability;
         GameEvents.OnBoardConfigurationChanged += EnableUseButtonClickability;
-        GameEvents.OnWordToPromptFound += PauseUseButtonClickability;
+        //GameEvents.OnWordToPromptFound += PauseUseButtonClickability;
         BoardResetManager.OnDisactivateMenuInteraction += DisableUseButtonClickability;
         BuyPromptsPopup.ContinueWhithExtraPrompts += ChangePromptsAmount;
     }
@@ -64,7 +65,7 @@ public class PromptsManager : MonoBehaviour
         TryChangePromptsAmount -= ChangePromptsAmount;
         GameEvents.OnCorrectWord -= DisableUseButtonClickability;
         GameEvents.OnBoardConfigurationChanged -= EnableUseButtonClickability;
-        GameEvents.OnWordToPromptFound -= PauseUseButtonClickability;
+        //GameEvents.OnWordToPromptFound -= PauseUseButtonClickability;
         BoardResetManager.OnDisactivateMenuInteraction -= DisableUseButtonClickability;
         BuyPromptsPopup.ContinueWhithExtraPrompts -= ChangePromptsAmount;
     }
@@ -76,7 +77,7 @@ public class PromptsManager : MonoBehaviour
         _buyPromptPopup.ShowBuyPromptsPopup();
     }
 
-    private void UsePrompt()
+    private async void UsePrompt()
     {
         if (_inMainMenu || _canBuy)
             return;
@@ -85,8 +86,12 @@ public class PromptsManager : MonoBehaviour
         bool success = TryChangePromptAmountMethod(amount);
         if (success)
         {
-            Prompter.MakeManualPrompt();
+            DisableUseButtonClickability();
+            //_buisyAnimation.Play();
+            await Prompter.MakeManualPrompt();
             Timer.ResetPromptTimerMethod();
+            //_buisyAnimation.Stop();
+            EnableUseButtonClickability();
         }
     }
 

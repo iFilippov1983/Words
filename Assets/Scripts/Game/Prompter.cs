@@ -32,7 +32,7 @@ public class Prompter : MonoBehaviour
     private List<GridSquare> _visibleSquares = new List<GridSquare>();
     private List<SearchingWord> _searchingWords = new List<SearchingWord>();
 
-    private static Action OnManualPrompt;
+    private static Func<Task> OnManualPrompt;
 
     private async void Start()
     {
@@ -96,7 +96,7 @@ public class Prompter : MonoBehaviour
     }
 
     [Button]
-    private async void MakePrompt()
+    private async Task MakePrompt()
     {
         if (_usePrompts == false)
             return;
@@ -104,7 +104,9 @@ public class Prompter : MonoBehaviour
         bool wordFound = false;
         foreach (var word in _searchingWords)
         {
-            if (word.isFound) return;
+            if (word.isFound) continue;
+
+            Debug.Log($"TryFindWord: {word.Word}");
 
             wordFound = await TryFindWord(word);
             if (wordFound)
@@ -119,6 +121,10 @@ public class Prompter : MonoBehaviour
         {
             foreach (var word in _searchingWords)
             {
+                if (word.isFound) continue;
+
+                Debug.Log($"TryFindAdditionalWord: {word.Word}");
+
                 wordFound = await TryFindAdditionalWord(word.Word);
                 if (wordFound)
                 {
@@ -126,7 +132,6 @@ public class Prompter : MonoBehaviour
                     ClearData();
                     return;
                 }
-                
             }
         }
 
@@ -175,8 +180,6 @@ public class Prompter : MonoBehaviour
             return false;
         }
 
-        //Debug.Log($"First letter: {square.Letter}");
-
         ClearData();
 
         _word += square.Letter;
@@ -199,8 +202,13 @@ public class Prompter : MonoBehaviour
     private async Task<bool> RecursivelyFind(string word, Ray rayToCheck)
     {
         _counter++;
-        if(_counter >= 10)
+        if (_counter >= 100)
+        {
+            Debug.Log($"Yeld - counter: {_counter}");
             await Task.Yield();
+            _counter = 0;
+        }
+            
 
         var hasHit = Physics.Raycast(rayToCheck, out RaycastHit hit, _rayLength);
         if (hasHit)
@@ -295,14 +303,12 @@ public class Prompter : MonoBehaviour
         return list;
     }
 
-    public static void MakeManualPrompt()
+    public static async Task MakeManualPrompt()
     {
         bool promptsModeOn = _usePrompts;
-        Debug.Log($"Can use before: {_usePrompts}");
         _usePrompts = true;
-        OnManualPrompt?.Invoke();
+        await OnManualPrompt?.Invoke();
         _usePrompts = promptsModeOn == true
             ? true : false;
-        Debug.Log($"Can use after: {_usePrompts}");
     }
 }

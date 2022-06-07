@@ -1,5 +1,6 @@
 using Lofelt.NiceVibrations;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public static class GameEvents
@@ -145,7 +146,7 @@ public static class GameEvents
     }
     //************
 
-    public delegate void TimeToPrompt();
+    public delegate Task TimeToPrompt();
     public static event TimeToPrompt OnTimeToPrompt;
 
     public static void TimeToPromptMethod()

@@ -187,6 +187,7 @@ MonoBehaviour:
   _useOrBuyPromptButton: {fileID: 7770522329497429784}
   _promptsAmountText: {fileID: 7770522329497429783}
   _plusImage: {fileID: 1648356502}
+  _buisyAnimation: {fileID: 0}
   _defaultPromptsAmount: 3
 --- !u!1 &412304605
 GameObject:
