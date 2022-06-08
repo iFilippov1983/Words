@@ -43,8 +43,8 @@ public class Prompter : MonoBehaviour
         _squaresList = await MakeAllSquaresList();
 
         OnManualPrompt += MakePrompt;
-        GameEvents.OnBoardConfigurationChanged += SortSquaresLists;
         GameEvents.OnTimeToPrompt += MakePrompt;
+        GameEvents.OnBoardConfigurationChanged += SortSquaresLists;
         BoardResetManager.OnBoardIsReset += ResetLists;
     }
 
@@ -52,8 +52,8 @@ public class Prompter : MonoBehaviour
     {
         CancelInvoke();
         OnManualPrompt -= MakePrompt;
-        GameEvents.OnBoardConfigurationChanged += SortSquaresLists;
         GameEvents.OnTimeToPrompt -= MakePrompt;
+        GameEvents.OnBoardConfigurationChanged += SortSquaresLists;
         BoardResetManager.OnBoardIsReset -= ResetLists;
     }
 
@@ -92,7 +92,6 @@ public class Prompter : MonoBehaviour
     {
         _squaresList = await MakeAllSquaresList();
         SortSquaresLists();
-        Debug.Log($"[Prompter] Searching words list count: {_searchingWords.Count}");
     }
 
     [Button]
@@ -104,16 +103,17 @@ public class Prompter : MonoBehaviour
         bool wordFound = false;
         foreach (var word in _searchingWords)
         {
-            if (word.isFound) continue;
-
-            Debug.Log($"TryFindWord: {word.Word}");
-
-            wordFound = await TryFindWord(word);
-            if (wordFound)
+            if (word.isFound == false)
             {
-                GameEvents.WordToPromptFoundMethod(_checkedSquaresIndexes);
-                ClearData();
-                return;
+                Debug.Log($"TryFindWord: {word.Word}");
+
+                wordFound = await TryFindWord(word);
+                if (wordFound)
+                {
+                    GameEvents.WordToPromptFoundMethod(_checkedSquaresIndexes);
+                    ClearData();
+                    return;
+                }
             }
         }
 
@@ -121,16 +121,17 @@ public class Prompter : MonoBehaviour
         {
             foreach (var word in _searchingWords)
             {
-                if (word.isFound) continue;
-
-                Debug.Log($"TryFindAdditionalWord: {word.Word}");
-
-                wordFound = await TryFindAdditionalWord(word.Word);
-                if (wordFound)
+                if (word.isFound == false)
                 {
-                    GameEvents.WordToPromptFoundMethod(_checkedSquaresIndexes);
-                    ClearData();
-                    return;
+                    Debug.Log($"TryFindAdditionalWord: {word.Word}");
+
+                    wordFound = await TryFindAdditionalWord(word.Word);
+                    if (wordFound)
+                    {
+                        GameEvents.WordToPromptFoundMethod(_checkedSquaresIndexes);
+                        ClearData();
+                        return;
+                    }
                 }
             }
         }
@@ -202,7 +203,7 @@ public class Prompter : MonoBehaviour
     private async Task<bool> RecursivelyFind(string word, Ray rayToCheck)
     {
         _counter++;
-        if (_counter >= 500)
+        if (_counter >= 1000)
         {
             Debug.Log($"Yeld - counter: {_counter}");
             await Task.Yield();
@@ -234,7 +235,7 @@ public class Prompter : MonoBehaviour
                     }
                     if (word.StartsWith(_word))
                     {
-                        Debug.Log($"Word starts with: {_word}");
+                        //Debug.Log($"Word starts with: {_word}");
                         var raysList = SetRaysFrom(square.BodyPosition);
                         foreach (var ray in raysList)
                         {
