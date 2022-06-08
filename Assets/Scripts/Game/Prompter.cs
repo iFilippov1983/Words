@@ -19,7 +19,7 @@ public class Prompter : MonoBehaviour
 
     private string _word;
     private int _counter = 0;
-    private float _rayLength = 1.2f;
+    private float _rayLength = 1.5f;
 
     private Ray _rayUp, _rayDown;
     private Ray _rayLeft, _rayRight;
@@ -202,7 +202,7 @@ public class Prompter : MonoBehaviour
     private async Task<bool> RecursivelyFind(string word, Ray rayToCheck)
     {
         _counter++;
-        if (_counter >= 100)
+        if (_counter >= 500)
         {
             Debug.Log($"Yeld - counter: {_counter}");
             await Task.Yield();

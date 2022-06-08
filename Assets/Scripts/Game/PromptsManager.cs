@@ -118,6 +118,9 @@ public class PromptsManager : MonoBehaviour
         _promptsAmountText.text = Prompts.ToString();
         _canBuy = Prompts > 0
             ? false : true;
+
+        if(!_inMainMenu)
+            _plusImage.gameObject.SetActive(_canBuy);
     }
 
     private void LoadData()

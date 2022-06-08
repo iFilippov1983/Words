@@ -4,8 +4,9 @@ using TMPro;
 using System;
 using Game;
 using Lofelt.NiceVibrations;
+using System.Threading.Tasks;
 
-public class BuyPromptsPopup : MonoBehaviour
+public class BuyPromptsPopup : MonoBehaviour, IAnimatableObjectParent
 {
     [SerializeField] private GameObject _buyPromptsPopup;
     [SerializeField] private GameObject _buyPromptsButtonObject;
@@ -18,9 +19,13 @@ public class BuyPromptsPopup : MonoBehaviour
     private Button _buyPrompstButton;
     private Button _backButton;
 
+    private bool _animationFinished;
+
     public static Action<int> ContinueWhithExtraPrompts;
- 
-    void Start()
+    public event Action OnAnimationInitialize;
+    public event Action OnAnimationFinish;
+
+    private void Start()
     {
         _buyPrompstButton = _buyPromptsButtonObject.GetComponent<Button>();
         _buyPrompstButton.onClick.AddListener(TryBuyPrompts);
@@ -29,15 +34,18 @@ public class BuyPromptsPopup : MonoBehaviour
         _backButton.onClick.AddListener(HidePopup);
 
         _buyButtonText.text = _promptsBuyCost.ToString();
+
+        OnAnimationFinish += OnAnimationFinishMethod;
         CurrencyManager.CoinsAmountChangeImpossible += ShowMessage;
     }
 
     private void OnDestroy()
     {
+        OnAnimationFinish -= OnAnimationFinishMethod;
         CurrencyManager.CoinsAmountChangeImpossible -= ShowMessage;
     }
 
-    private void TryBuyPrompts()
+    private async void TryBuyPrompts()
     {
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
         SoundManager.PalaySound(Sound.ButtonClicked);
@@ -47,7 +55,9 @@ public class BuyPromptsPopup : MonoBehaviour
         bool succes = CurrencyManager.TryChangeCoinsAmountMethod(cost);
         if (succes)
         {
-            ContinueWhithExtraPrompts?.Invoke(_promptsBuyAmount);
+            OnAnimationInitialize?.Invoke();
+
+            await DesactivateButtonInteraction();
         }
     }
 
@@ -61,7 +71,7 @@ public class BuyPromptsPopup : MonoBehaviour
         var animation = _messageText.GetComponent<Animation>();
         animation.Play();
         while(animation.isPlaying)
-            await System.Threading.Tasks.Task.Yield();
+            await Task.Yield();
 
         _messageText.gameObject.SetActive(false);
     }
@@ -85,5 +95,24 @@ public class BuyPromptsPopup : MonoBehaviour
         _buyPromptsPopup.SetActive(true);
         GameEvents.MenuIsActiveMethod(true);
     }
-    
+
+    private void OnAnimationFinishMethod()
+    {
+        ContinueWhithExtraPrompts?.Invoke(_promptsBuyAmount);
+        _animationFinished = true;
+    }
+
+    private async Task DesactivateButtonInteraction()
+    {
+        _buyPrompstButton.interactable = false;
+        while (!_animationFinished)
+            await Task.Yield();
+        _buyPrompstButton.interactable = true;
+        _animationFinished = false;
+    }
+
+    public void AnimationFinishCallback()
+    {
+        OnAnimationFinish?.Invoke();
+    }
 }

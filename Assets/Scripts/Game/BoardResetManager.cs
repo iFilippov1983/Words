@@ -115,6 +115,9 @@ public class BoardResetManager : MonoBehaviour
         _resetsAmountText.text = BoardResets.ToString();
         _canBuy = BoardResets > 0
             ? false : true;
+
+        if (!_inMainMenu)
+            _plusImage.gameObject.SetActive(_canBuy);
     }
 
     private void LoadData()

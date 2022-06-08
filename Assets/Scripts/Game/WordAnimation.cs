@@ -9,6 +9,7 @@ namespace Game
     public class WordAnimation : MonoBehaviour
     {
         [SerializeField] private AnimationCurve timeCurve;
+        [SerializeField] private AnimationCurve trajectoryCurve;
         [Space] [SerializeField] private float moveInterval;
         [SerializeField] private float endScalingDelay;
         [Space] [SerializeField] private float firstLetterFlySpeed;
@@ -22,6 +23,7 @@ namespace Game
         private WaitForSeconds endScalingDelayWfs;
         private WaitForSeconds moveIntervalWfs;
         private static SearchingWord _searchingWord;
+        private static bool _isWordAnimated;
 
         private void Start()
         {
@@ -36,11 +38,19 @@ namespace Game
         }
 
         public static event Action<SearchingWord> LetterReachedSearchingWord;
+        public static event Action<GameObject> LetterReachedTarget;
 
         public void Play(List<GameObject> letters, SearchingWord searchingWord)
         {
+            _isWordAnimated = true;
             _searchingWord = searchingWord;
             StartCoroutine(StartAnimation(letters, _searchingWord));
+        }
+
+        public void Play(GameObject objectToAnimate, GameObject target, Action animationFinishCallBack)
+        {
+            _isWordAnimated = false;
+            StartCoroutine(StartAnimation(objectToAnimate, target, animationFinishCallBack));
         }
 
         private IEnumerator StartAnimation(List<GameObject> letters, SearchingWord searchingWord)
@@ -81,6 +91,26 @@ namespace Game
             }
         }
 
+        private IEnumerator StartAnimation(GameObject letter, GameObject target, Action animationFinishCallBack)
+        {
+            letter.SetActive(true);
+
+            var endPosition = target.transform.position;
+
+            LetterReachedTarget += OnLetterReachedTarget;
+
+            void OnLetterReachedTarget(GameObject target)
+            {
+                StartCoroutine(ScaleLetterToZero(letter, target));
+                animationFinishCallBack?.Invoke();
+                LetterReachedTarget -= OnLetterReachedTarget;
+            }
+
+            StartCoroutine(Animate(letter.transform, endPosition, target));
+
+            yield return null;
+        }
+
         private IEnumerator ScaleLettersToZero(List<GameObject> letters, SearchingWord searchingWord)
         {
             foreach (var letter in letters)
@@ -88,13 +118,16 @@ namespace Game
                yield return  ScaleToZero(letter.transform, endScaleSpeed, scaleCurve);
 
                GameEvents.WordGetTargetMethod(searchingWord.Word);
-
-               //searchingWord.PlayAnimation();
-
                Destroy(letter.gameObject);
             }
         }
 
+        private IEnumerator ScaleLetterToZero(GameObject letter, GameObject target)
+        {
+            yield return ScaleToZero(letter.transform, endScaleSpeed, scaleCurve);
+
+            Destroy(letter.gameObject);
+        }
 
         private IEnumerator Animate(Transform letter,
                                     Transform targetLetter,
@@ -121,6 +154,17 @@ namespace Game
           
         }
 
+        private IEnumerator Animate(Transform letter,
+                                    Vector3 endPosition,
+                                    GameObject targetObject)
+        {
+            StartCoroutine(Rescale(letter, endLetterSize, resizeSpeed, resizeCurve));
+
+            yield return MoveToPosition(letter, endPosition, firstLetterFlySpeed, timeCurve, trajectoryCurve);
+
+            LetterReachedTarget?.Invoke(targetObject);
+        }
+
         private IEnumerator MoveToTarget(Transform letter, Transform target)
         {
             var lastTargetPos = target.position;
@@ -144,25 +188,39 @@ namespace Game
             }
         }
 
-        private static IEnumerator MoveToPosition(Transform target, Vector3 position, float speed, AnimationCurve curve)
+        private static IEnumerator MoveToPosition
+            (
+            Transform transformToMove, 
+            Vector3 endPosition, 
+            float speed, 
+            AnimationCurve timeCurve,
+            AnimationCurve trajectoryCurve = null)
         {
-            var startPosition = target.position;
+            var startPosition = transformToMove.position;
             var travelPercent = 0f;
 
             while (travelPercent <= 1f)
             {
-                target.position = Vector3.Lerp(startPosition,
-                                               position,
-                                               curve.Evaluate(travelPercent));
+                Vector3 posVector = Vector3.Lerp(startPosition,
+                                               endPosition,
+                                               timeCurve.Evaluate(travelPercent));
+                if (trajectoryCurve != null)
+                {
+                    posVector.x += trajectoryCurve.Evaluate(travelPercent);
+                }
+                    
+
+                transformToMove.position = posVector;
 
                 travelPercent += speed * Time.deltaTime;
 
                 yield return null;
             }
 
-            target.position = position;
+            transformToMove.position = endPosition;
 
-            _searchingWord.PlayAnimation();
+            if(_isWordAnimated)
+                _searchingWord.PlayAnimation();
             HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
             SoundManager.PalaySound(Sound.Word_InCell);
             Debug.Log("[Haptic + Sound] WordAnimation - Animate[MoveToPosition]");
@@ -186,7 +244,8 @@ namespace Game
 
             target.position = position;
 
-            _searchingWord.PlayAnimation();
+            if(_isWordAnimated)
+                _searchingWord.PlayAnimation();
             HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
             SoundManager.PalaySound(Sound.Word_InCell);
             Debug.Log("[Haptic + Sound] WordAnimation - Animate[MoveToPosition 2]");

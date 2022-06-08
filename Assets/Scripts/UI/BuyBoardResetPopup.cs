@@ -1,11 +1,12 @@
 using Game;
 using Lofelt.NiceVibrations;
 using System;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuyBoardResetPopup : MonoBehaviour
+public class BuyBoardResetPopup : MonoBehaviour, IAnimatableObjectParent
 {
     [SerializeField] private GameObject _buyBoardResetPopup;
     [SerializeField] private GameObject _buyBoardResetButtonObject;
@@ -18,7 +19,11 @@ public class BuyBoardResetPopup : MonoBehaviour
     private Button _buyResetButton;
     private Button _backButton;
 
+    private bool _animationFinished;
+
     public static Action<int> ContinueWhithExtraResets;
+    public event Action OnAnimationInitialize;
+    public event Action OnAnimationFinish;
 
     void Start()
     {
@@ -29,15 +34,18 @@ public class BuyBoardResetPopup : MonoBehaviour
         _backButton.onClick.AddListener(HidePopup);
 
         _buyButtonText.text = _resetBuyCost.ToString();
+
+        OnAnimationFinish += OnAnimationFinishedMethod;
         CurrencyManager.CoinsAmountChangeImpossible += ShowMessage;
     }
 
     private void OnDestroy()
     {
+        OnAnimationFinish -= OnAnimationFinishedMethod;
         CurrencyManager.CoinsAmountChangeImpossible -= ShowMessage;
     }
 
-    private void TryBuyResets()
+    private async void TryBuyResets()
     {
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
         SoundManager.PalaySound(Sound.ButtonClicked);
@@ -47,7 +55,9 @@ public class BuyBoardResetPopup : MonoBehaviour
         bool succes = CurrencyManager.TryChangeCoinsAmountMethod(cost);
         if (succes)
         {
-            ContinueWhithExtraResets?.Invoke(_resetBuyAmount);
+            OnAnimationInitialize?.Invoke();
+
+            await DesactivateButtonInteraction();
         }
     }
 
@@ -61,7 +71,7 @@ public class BuyBoardResetPopup : MonoBehaviour
         var animation = _messageText.GetComponent<Animation>();
         animation.Play();
         while (animation.isPlaying)
-            await System.Threading.Tasks.Task.Yield();
+            await Task.Yield();
 
         _messageText.gameObject.SetActive(false);
     }
@@ -84,5 +94,25 @@ public class BuyBoardResetPopup : MonoBehaviour
 
         _buyBoardResetPopup.SetActive(true);
         GameEvents.MenuIsActiveMethod(true);
+    }
+
+    private void OnAnimationFinishedMethod()
+    {
+        ContinueWhithExtraResets?.Invoke(_resetBuyAmount);
+        _animationFinished = true;
+    }
+
+    private async Task DesactivateButtonInteraction()
+    {
+        _buyResetButton.interactable = false;
+        while(!_animationFinished)
+            await Task.Yield();
+        _buyResetButton.interactable |= true;
+        _animationFinished = false;
+    }
+
+    public void AnimationFinishCallback()
+    {
+        OnAnimationFinish?.Invoke();
     }
 }

@@ -250,6 +250,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flyingLetterPrefab: {fileID: 3991070488075891891, guid: 42e6c8bb51f1c9948a75081a0988d8c6, type: 3}
+  letterTrailPrefab: {fileID: 0}
+  trailSpawnOffset: {x: 0, y: 0, z: 0.5}
 --- !u!114 &412304609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,6 +285,12 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  trajectoryCurve:
+    serializedVersion: 2
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
