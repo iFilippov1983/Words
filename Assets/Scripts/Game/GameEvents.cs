@@ -149,9 +149,9 @@ public static class GameEvents
     public delegate Task TimeToPrompt();
     public static event TimeToPrompt OnTimeToPrompt;
 
-    public static void TimeToPromptMethod()
+    public static async void TimeToPromptMethod()
     { 
-        OnTimeToPrompt?.Invoke();
+        await OnTimeToPrompt?.Invoke();
     }
     //************
 
@@ -171,4 +171,14 @@ public static class GameEvents
     { 
         OnBoardConfigurationChanged?.Invoke();
     }
+    //************
+
+    public delegate void NoWordsAvailable();
+    public static event NoWordsAvailable OnNoWordsAvailable;
+
+    public static void NoWordsAvailableMethod()
+    { 
+        OnNoWordsAvailable?.Invoke();
+    }
+    //************
 }

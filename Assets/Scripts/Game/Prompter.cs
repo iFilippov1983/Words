@@ -136,6 +136,9 @@ public class Prompter : MonoBehaviour
             }
         }
 
+        if (!wordFound)
+            GameEvents.NoWordsAvailableMethod();
+
         ClearData();
     }
 
@@ -203,7 +206,7 @@ public class Prompter : MonoBehaviour
     private async Task<bool> RecursivelyFind(string word, Ray rayToCheck)
     {
         _counter++;
-        if (_counter >= 1000)
+        if (_counter >= 10000)
         {
             Debug.Log($"Yeld - counter: {_counter}");
             await Task.Yield();

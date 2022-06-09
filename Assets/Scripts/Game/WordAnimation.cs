@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Lofelt.NiceVibrations;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Game
 {
     public class WordAnimation : MonoBehaviour
     {
         [SerializeField] private AnimationCurve timeCurve;
-        [SerializeField] private AnimationCurve trajectoryCurve;
+        [SerializeField] private AnimationCurve[] trajectoryCurves;
         [Space] [SerializeField] private float moveInterval;
         [SerializeField] private float endScalingDelay;
         [Space] [SerializeField] private float firstLetterFlySpeed;
@@ -159,8 +160,15 @@ namespace Game
                                     GameObject targetObject)
         {
             StartCoroutine(Rescale(letter, endLetterSize, resizeSpeed, resizeCurve));
-
-            yield return MoveToPosition(letter, endPosition, firstLetterFlySpeed, timeCurve, trajectoryCurve);
+            
+            yield return MoveToPosition
+                (
+                letter, 
+                endPosition, 
+                firstLetterFlySpeed, //first and the only
+                timeCurve, 
+                trajectoryCurves[Random.Range(0, trajectoryCurves.Length)]
+                );
 
             LetterReachedTarget?.Invoke(targetObject);
         }

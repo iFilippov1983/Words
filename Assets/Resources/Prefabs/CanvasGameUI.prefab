@@ -3712,7 +3712,7 @@ GameObject:
   - component: {fileID: 2299178165052558314}
   - component: {fileID: 7804282067818452875}
   m_Layer: 5
-  m_Name: GameOverPanel
+  m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4758,35 +4758,99 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  trajectoryCurve:
-    serializedVersion: 2
+  trajectoryCurves:
+  - serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1.9121727
-      outSlope: 1.9121727
+      inSlope: 1.1523031
+      outSlope: 1.1523031
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.22458203
+      outWeight: 0.25917432
     - serializedVersion: 3
-      time: 0.4355339
-      value: 2.0033658
-      inSlope: 0.09540401
-      outSlope: 0.09540401
+      time: 0.42605913
+      value: 0.99522746
+      inSlope: 0.073838405
+      outSlope: 0.073838405
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4837636
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0.9125446
+      outSlope: 0.9125446
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.25954774
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -1.3403294
+      outSlope: -1.3403294
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.054502953
+    - serializedVersion: 3
+      time: 0.5092175
+      value: -1.0012386
+      inSlope: 0.45048052
+      outSlope: 0.45048052
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.99997634
-      value: 0.0020505735
-      inSlope: 2.0621781
-      outSlope: 2.0621781
+      time: 1.0004272
+      value: 0.003376007
+      inSlope: -1.193452
+      outSlope: -1.193452
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.5005321
+      inWeight: 0.20798574
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.48602515
+      outSlope: 0.48602515
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.31970355
+    - serializedVersion: 3
+      time: 0.4592775
+      value: 1.3500859
+      inSlope: 0.073838405
+      outSlope: 0.073838405
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4837636
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 2.2584429
+      outSlope: 2.2584429
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.20259763
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -8925,35 +8989,99 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  trajectoryCurve:
-    serializedVersion: 2
+  trajectoryCurves:
+  - serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1.9121727
-      outSlope: 1.9121727
+      inSlope: 1.1523031
+      outSlope: 1.1523031
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.22458203
+      outWeight: 0.25917432
     - serializedVersion: 3
-      time: 0.4355339
-      value: 2.0033658
-      inSlope: 0.09540401
-      outSlope: 0.09540401
+      time: 0.42605913
+      value: 0.99522746
+      inSlope: 0.073838405
+      outSlope: 0.073838405
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4837636
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0.9125446
+      outSlope: 0.9125446
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.25954774
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -1.3403294
+      outSlope: -1.3403294
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.054502953
+    - serializedVersion: 3
+      time: 0.5092175
+      value: -1.0012386
+      inSlope: 0.45048052
+      outSlope: 0.45048052
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.99997634
-      value: 0.0020505735
-      inSlope: 2.0621781
-      outSlope: 2.0621781
+      time: 1.0004272
+      value: 0.003376007
+      inSlope: -1.193452
+      outSlope: -1.193452
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.5005321
+      inWeight: 0.20798574
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.48602515
+      outSlope: 0.48602515
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.31970355
+    - serializedVersion: 3
+      time: 0.4592775
+      value: 1.3500859
+      inSlope: 0.073838405
+      outSlope: 0.073838405
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4837636
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 2.2584429
+      outSlope: 2.2584429
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.20259763
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -9716,6 +9844,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f976dcd2dbfca8e4fb6707d63db91a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _noWordsPopup: {fileID: 9158775653986993800}
+  _resetBoardButtonObject: {fileID: 249812098612739449}
+  _restatButtonObject: {fileID: 1072307458961435607}
+  _backButtonObject: {fileID: 8451902093062371854}
+  _exitButtonObject: {fileID: 1399537093328965440}
+  _messageFieldObject: {fileID: 5784301017465774330}
+  _resetBoardCost: 1
+  _lifesLostCost: 1
 --- !u!1 &7575327642282113857
 GameObject:
   m_ObjectHideFlags: 0
@@ -10840,10 +10976,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverPopup: {fileID: 82053804939834724}
-  continueGameForCoins: {fileID: 9026408068782400288}
-  continueGameAfterAdsButton: {fileID: 4269061965797916540}
-  restartButton: {fileID: 3818387550983245516}
-  exitButton: {fileID: 3656064096188661688}
+  continueForCoinsButtonObject: {fileID: 9026408068782400288}
+  continueForAdsButtonObject: {fileID: 4269061965797916540}
+  restartButtonObject: {fileID: 3818387550983245516}
+  exitButtonObject: {fileID: 3656064096188661688}
   messageField: {fileID: 8888791115762083982}
   continueCoinsCost: 30
   lifesLostCost: 1

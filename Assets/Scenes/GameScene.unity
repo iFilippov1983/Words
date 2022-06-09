@@ -288,12 +288,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  trajectoryCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  trajectoryCurves: []
   moveInterval: 0.05
   endScalingDelay: 0.8
   firstLetterFlySpeed: 0.9

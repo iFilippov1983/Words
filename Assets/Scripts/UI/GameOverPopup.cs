@@ -7,10 +7,10 @@ using Lofelt.NiceVibrations;
 public class GameOverPopup : MonoBehaviour
 {
     public GameObject gameOverPopup;
-    public GameObject continueGameForCoins;
-    public GameObject continueGameAfterAdsButton;
-    public GameObject restartButton;
-    public GameObject exitButton;
+    public GameObject continueForCoinsButtonObject;
+    public GameObject continueForAdsButtonObject;
+    public GameObject restartButtonObject;
+    public GameObject exitButtonObject;
     public GameObject messageField;
     public int continueCoinsCost = 30;
     public int lifesLostCost = 1;
@@ -24,15 +24,15 @@ public class GameOverPopup : MonoBehaviour
 
     private void Start()
     {
-        _continueForAdsButton = continueGameAfterAdsButton.GetComponent<Button>();
+        _continueForAdsButton = continueForAdsButtonObject.GetComponent<Button>();
 
-        _continueForCoinsButton = continueGameForCoins.GetComponent<Button>();
+        _continueForCoinsButton = continueForCoinsButtonObject.GetComponent<Button>();
         _continueForCoinsButton.onClick.AddListener(TryBuySeconds);
 
-        _restartButton = restartButton.GetComponent<Button>();
+        _restartButton = restartButtonObject.GetComponent<Button>();
         _restartButton.onClick.AddListener(TryRestart);
 
-        _exitButton = exitButton.GetComponent<Button>();
+        _exitButton = exitButtonObject.GetComponent<Button>();
         _exitButton.onClick.AddListener(Exit);
 
         gameOverPopup.SetActive(false);
@@ -95,11 +95,10 @@ public class GameOverPopup : MonoBehaviour
         Debug.Log("[Haptic + Sound] GameOverPopup - TryRestart");
 
         int cost = -lifesLostCost;
-        bool succes = LifesManager.TryChangeLifesAmountMethod(cost);
-        if (succes)
+        bool success = LifesManager.TryChangeLifesAmountMethod(cost);
+        if (success)
         {
             GameUtility.LoadScene(Literal.Scene_GameScene);
-            HideGameOverPopup();
             return;
         }
 

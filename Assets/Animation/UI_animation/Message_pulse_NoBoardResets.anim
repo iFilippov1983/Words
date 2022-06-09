@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Message_pulse_NoResets
+  m_Name: Message_pulse_NoBoardResets
   serializedVersion: 6
   m_Legacy: 1
   m_Compressed: 0

@@ -20,7 +20,7 @@ public class BoardResetManager : MonoBehaviour
     [SerializeField] private Image _plusImage;
     [SerializeField] private int _defaultResetsAmount = 3;
 
-    private bool _haveResets;
+    private static bool _haveResets;
     private bool _canBuy;
     private bool _inMainMenu;
 
@@ -58,6 +58,7 @@ public class BoardResetManager : MonoBehaviour
         GameEvents.OnBoardConfigurationChanged += EnableUseButtonClickability;
         GameEvents.OnWordToPromptFound += PauseUseButtonClickability;
         BuyBoardResetPopup.ContinueWhithExtraResets += ChangeBoardResetsAmount;
+        NoWordsAvailablePopup.ContinueWhithBoardReset += UseBoardReset;
     }
 
     private void Cleanup()
@@ -69,6 +70,7 @@ public class BoardResetManager : MonoBehaviour
         GameEvents.OnBoardConfigurationChanged -= EnableUseButtonClickability;
         GameEvents.OnWordToPromptFound -= PauseUseButtonClickability;
         BuyBoardResetPopup.ContinueWhithExtraResets -= ChangeBoardResetsAmount;
+        NoWordsAvailablePopup.ContinueWhithBoardReset -= UseBoardReset;
     }
 
     private void ShowBuyResetsPopup()
@@ -133,7 +135,7 @@ public class BoardResetManager : MonoBehaviour
         DataSaver.SaveIntData(BoardResetKey, BoardResets);
     }
 
-    private bool TryChangeBoardResetsAmountMethod(int amount)
+    public static bool TryChangeBoardResetsAmountMethod(int amount)
     {
         TryChangeBoardResetsAmount?.Invoke(amount);
         return _haveResets;
@@ -152,9 +154,9 @@ public class BoardResetManager : MonoBehaviour
     }
 
     private void DisableUseButtonClickability()
-        => DisableUseButtonClickability(string.Empty, new int[0]);
-    private void DisableUseButtonClickability(string word, IEnumerable<int> obj)
         => _useOrBuyResetButton.interactable = false;
+    private void DisableUseButtonClickability(string word, IEnumerable<int> obj)
+        => DisableUseButtonClickability();
     private void EnableUseButtonClickability()
         => _useOrBuyResetButton.interactable = true;
 }
