@@ -1,4 +1,5 @@
 using Lofelt.NiceVibrations;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -53,6 +54,7 @@ public class NoWordsAvailablePopup : MonoBehaviour
         LifesManager.LifesAmountChangeImpossible -= ShowMessage;
     }
 
+    [Button]
     private void ShowNoWordsPopup()
     {
         _noWordsPopup.SetActive(true);

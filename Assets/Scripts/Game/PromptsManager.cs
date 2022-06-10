@@ -21,7 +21,7 @@ public class PromptsManager : MonoBehaviour
     [SerializeField] private Animation _buisyAnimation;
     [SerializeField] private int _defaultPromptsAmount = 3;
 
-    private bool _havePrompts;
+    private static bool _havePrompts;
     private bool _canBuy;
     private bool _inMainMenu;
 
@@ -33,6 +33,7 @@ public class PromptsManager : MonoBehaviour
 
     void Start()
     {
+        _inMainMenu = SceneManager.GetActiveScene().name.Equals(Literal.Scene_MainMenu);
         LoadData();
         Init();
     }
@@ -45,18 +46,16 @@ public class PromptsManager : MonoBehaviour
 
     private void Init()
     {
-        _inMainMenu = (_useOrBuyPromptButton != null
-            && SceneManager.GetActiveScene().name.Equals(Literal.Scene_MainMenu));
-
-        _useOrBuyPromptButton.onClick.AddListener(ShowBuyPromptsPopup);
-        _useOrBuyPromptButton.onClick.AddListener(UsePrompt);
-
         TryChangePromptsAmount += ChangePromptsAmount;
+        if (_inMainMenu) return;
         GameEvents.OnCorrectWord += DisableUseButtonClickability;
         GameEvents.OnBoardConfigurationChanged += EnableUseButtonClickability;
         //GameEvents.OnWordToPromptFound += PauseUseButtonClickability;
         BoardResetManager.OnDisactivateMenuInteraction += DisableUseButtonClickability;
         BuyPromptsPopup.ContinueWhithExtraPrompts += ChangePromptsAmount;
+
+        _useOrBuyPromptButton.onClick.AddListener(ShowBuyPromptsPopup);
+        _useOrBuyPromptButton.onClick.AddListener(UsePrompt);
     }
 
     private void Cleanup()
@@ -115,12 +114,15 @@ public class PromptsManager : MonoBehaviour
     private void SetPrompts(int prompts)
     {
         Prompts = prompts;
-        _promptsAmountText.text = Prompts.ToString();
         _canBuy = Prompts > 0
             ? false : true;
 
-        if(!_inMainMenu)
+        if (!_inMainMenu)
+        {
+            _promptsAmountText.text = Prompts.ToString();
             _plusImage.gameObject.SetActive(_canBuy);
+        }
+            
     }
 
     private void LoadData()
@@ -136,7 +138,7 @@ public class PromptsManager : MonoBehaviour
         DataSaver.SaveIntData(PromptsKey, Prompts);
     }
 
-    private bool TryChangePromptAmountMethod(int amount)
+    public static bool TryChangePromptAmountMethod(int amount)
     { 
         TryChangePromptsAmount?.Invoke(amount);
         return _havePrompts;

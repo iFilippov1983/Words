@@ -33,6 +33,7 @@ public class BoardResetManager : MonoBehaviour
 
     void Start()
     {
+        _inMainMenu = SceneManager.GetActiveScene().name.Equals(Literal.Scene_MainMenu);
         LoadData();
         Init();
     }
@@ -45,20 +46,17 @@ public class BoardResetManager : MonoBehaviour
 
     private void Init()
     {
-        _inMainMenu = (_useOrBuyResetButton != null
-            && SceneManager.GetActiveScene().name.Equals(Literal.Scene_MainMenu));
-
-        _useOrBuyResetButton.onClick.AddListener(ShowBuyResetsPopup);
-        _useOrBuyResetButton.onClick.AddListener(UseBoardReset);
-
-
-        OnDisactivateMenuInteraction += DisableUseButtonClickability;
         TryChangeBoardResetsAmount += ChangeBoardResetsAmount;
+        if (_inMainMenu) return;
+        OnDisactivateMenuInteraction += DisableUseButtonClickability;
         GameEvents.OnCorrectWord += DisableUseButtonClickability;
         GameEvents.OnBoardConfigurationChanged += EnableUseButtonClickability;
         GameEvents.OnWordToPromptFound += PauseUseButtonClickability;
         BuyBoardResetPopup.ContinueWhithExtraResets += ChangeBoardResetsAmount;
         NoWordsAvailablePopup.ContinueWhithBoardReset += UseBoardReset;
+
+        _useOrBuyResetButton.onClick.AddListener(ShowBuyResetsPopup);
+        _useOrBuyResetButton.onClick.AddListener(UseBoardReset);
     }
 
     private void Cleanup()
@@ -114,12 +112,15 @@ public class BoardResetManager : MonoBehaviour
     private void SetBoardResets(int boardResets)
     { 
         BoardResets = boardResets;
-        _resetsAmountText.text = BoardResets.ToString();
         _canBuy = BoardResets > 0
             ? false : true;
 
         if (!_inMainMenu)
+        {
+            _resetsAmountText.text = BoardResets.ToString();
             _plusImage.gameObject.SetActive(_canBuy);
+        }
+            
     }
 
     private void LoadData()

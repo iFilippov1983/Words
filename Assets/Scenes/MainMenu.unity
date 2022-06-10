@@ -123,6 +123,55 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &104794479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 104794480}
+  - component: {fileID: 104794481}
+  m_Layer: 0
+  m_Name: BoardResetManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &104794480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104794479}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2102204704}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &104794481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104794479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db2ae2c6f974e14d870aee68b17c93a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _grid: {fileID: 0}
+  _buyBoardResetPopup: {fileID: 0}
+  _useOrBuyResetButton: {fileID: 0}
+  _resetsAmountText: {fileID: 0}
+  _plusImage: {fileID: 0}
+  _defaultResetsAmount: 3
 --- !u!114 &189924925 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1720188462784202818, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
@@ -291,7 +340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &438574978
 Transform:
   m_ObjectHideFlags: 0
@@ -452,9 +501,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsText: {fileID: 1388327297}
+  coinsTextAlt: {fileID: 2007177364}
   coinSpawner: {fileID: 1280489652}
   coinsForLevelComplete: 0
   _coinCost: 0
+--- !u!1 &1046814843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1046814844}
+  - component: {fileID: 1046814845}
+  m_Layer: 0
+  m_Name: IAPCore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1046814844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046814843}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2102204704}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1046814845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046814843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872b5d9dbf15acd459ba88b9b295fbc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currencyManager: {fileID: 970936402}
+  _lifesManager: {fileID: 1111014881}
+  _promptsManager: {fileID: 438574979}
+  _boardResetManager: {fileID: 104794481}
 --- !u!1 &1111014879
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,6 +806,17 @@ Transform:
   m_Father: {fileID: 2102204704}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2007177364 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4092497768526501685, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+  m_PrefabInstance: {fileID: 9149001352488127743}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2102204703
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,6 +852,8 @@ Transform:
   - {fileID: 1280489651}
   - {fileID: 428302357}
   - {fileID: 438574978}
+  - {fileID: 104794480}
+  - {fileID: 1046814844}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -772,6 +882,170 @@ PrefabInstance:
       propertyPath: _lifesManager
       value: 
       objectReference: {fileID: 1111014881}
+    - target: {fileID: 1185745918270158104, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185745918270158104, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185745918270158104, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1046814845}
+    - target: {fileID: 1185745918270158104, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1046814845}
+    - target: {fileID: 1185745918270158104, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185745918270158104, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPurchaseFailed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185745918270158104, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: IAPCore, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185745918270158104, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911752499182051600, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206304486378582546, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206304486378582546, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206304486378582546, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1046814845}
+    - target: {fileID: 2206304486378582546, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1046814845}
+    - target: {fileID: 2206304486378582546, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206304486378582546, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPurchaseFailed
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206304486378582546, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: IAPCore, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206304486378582546, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965678143712520098, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965678143712520098, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965678143712520098, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1046814845}
+    - target: {fileID: 2965678143712520098, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1046814845}
+    - target: {fileID: 2965678143712520098, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965678143712520098, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPurchaseFailed
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965678143712520098, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: IAPCore, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965678143712520098, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413222744963231610, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413222744963231610, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413222744963231610, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1046814845}
+    - target: {fileID: 5413222744963231610, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1046814845}
+    - target: {fileID: 5413222744963231610, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413222744963231610, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPurchaseFailed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413222744963231610, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: IAPCore, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413222744963231610, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423463862828993244, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423463862828993244, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423463862828993244, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1046814845}
+    - target: {fileID: 6423463862828993244, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1046814845}
+    - target: {fileID: 6423463862828993244, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423463862828993244, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPurchaseFailed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423463862828993244, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: IAPCore, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423463862828993244, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 9149001351799981831, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
       propertyPath: m_Pivot.x
       value: 0

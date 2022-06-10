@@ -14,6 +14,7 @@ namespace Game
         public static event Action<string> CoinsAmountChangeImpossible;
 
         [SerializeField] private TMP_Text coinsText;
+        [SerializeField] private TextMeshProUGUI coinsTextAlt;
         [SerializeField] private CoinSpawner coinSpawner;
         [Space] [SerializeField] private int coinsForLevelComplete;
         [SerializeField] private int _coinCost;
@@ -57,6 +58,8 @@ namespace Game
         private void UpdateText()
         {
             coinsText.text = Coins.ToString();
+            if (coinsTextAlt != null)
+                coinsTextAlt.text = Coins.ToString();
         }
 
         [Button]
