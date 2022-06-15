@@ -54,8 +54,8 @@ MonoBehaviour:
     - D
     - E
     - L
-    - V
-    - O
+    - A
+    - Y
     - F
     - I
     - E
@@ -73,8 +73,8 @@ MonoBehaviour:
     - X
     - T
     - W
-    - W
-    - J
+    - R
+    - E
     - D
     - I
     - D
@@ -148,10 +148,6 @@ MonoBehaviour:
   SearchingWords:
   - Word: MAGIC
     isFound: 0
-  - Word: SISTER
-    isFound: 0
-  - Word: NOISE
-    isFound: 0
   - Word: FUTURE
     isFound: 0
   - Word: FIELD
@@ -159,8 +155,4 @@ MonoBehaviour:
   - Word: INDEX
     isFound: 0
   - Word: LEVEL
-    isFound: 0
-  - Word: PRISON
-    isFound: 0
-  - Word: MODEL
     isFound: 0

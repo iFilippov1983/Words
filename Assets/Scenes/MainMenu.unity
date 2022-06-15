@@ -324,6 +324,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundData: {fileID: 11400000, guid: e0eb3a1fdad6f3e47b555d45db09d09d, type: 2}
+  _effectFactor: 0
+  _defaultEffectValue: 0
 --- !u!1 &438574977
 GameObject:
   m_ObjectHideFlags: 0

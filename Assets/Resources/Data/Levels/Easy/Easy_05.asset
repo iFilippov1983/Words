@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
   m_Name: Easy_05
   m_EditorClassIdentifier: 
-  TimeInSeconds: 120
+  TimeInSeconds: 150
   Columns: 6
   Rows: 12
   UseDotsMode: 1
@@ -28,11 +28,11 @@ MonoBehaviour:
     - T
     - A
     - E
-    - Y
     - B
     - A
     - B
-    - R
+    - Y
+    - P
   - Size: 12
     Row:
     - F
@@ -56,7 +56,7 @@ MonoBehaviour:
     - G
     - L
     - L
-    - N
+    - K
     - N
     - D
     - E
@@ -69,10 +69,10 @@ MonoBehaviour:
     - H
     - N
     - X
-    - F
     - H
+    - F
     - I
-    - Q
+    - E
     - N
     - I
   - Size: 12
@@ -104,13 +104,11 @@ MonoBehaviour:
     - O
     - R
   SearchingWords:
-  - Word: RADIO
+  - Word: PAD
     isFound: 0
   - Word: BABY
     isFound: 0
   - Word: MENU
     isFound: 0
-  - Word: DOCTOR
-    isFound: 0
-  - Word: LINE
+  - Word: FOOD
     isFound: 0

@@ -1061,6 +1061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsText: {fileID: 7770522329497429780}
+  coinsTextAlt: {fileID: 0}
   coinSpawner: {fileID: 432324967}
   coinsForLevelComplete: 10
   _coinCost: 1
@@ -1469,6 +1470,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundData: {fileID: 11400000, guid: e0eb3a1fdad6f3e47b555d45db09d09d, type: 2}
+  _effectFactor: 0.1
+  _defaultEffectValue: 1
 --- !u!1 &2096405187
 GameObject:
   m_ObjectHideFlags: 0

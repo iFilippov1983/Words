@@ -66,9 +66,9 @@ MonoBehaviour:
     - J
     - O
     - B
+    - B
+    - A
     - R
-    - S
-    - J
     - G
     - A
     - T
@@ -88,8 +88,8 @@ MonoBehaviour:
     - H
     - F
     - X
-    - N
-    - Q
+    - T
+    - O
     - P
     - I
     - C
@@ -136,17 +136,11 @@ MonoBehaviour:
   SearchingWords:
   - Word: JOB
     isFound: 1
-  - Word: LUCK
-    isFound: 0
   - Word: GATE
     isFound: 1
   - Word: FILE
     isFound: 1
-  - Word: CRAFT
-    isFound: 1
   - Word: LIMIT
     isFound: 1
-  - Word: MUSIC
-    isFound: 0
   - Word: PARTY
     isFound: 1

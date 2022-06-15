@@ -46,13 +46,13 @@ MonoBehaviour:
     - D
     - U
     - M
-    - W
-    - G
-    - M
-    - X
-    - Q
-    - K
-    - S
+    - T
+    - T
+    - O
+    - R
+    - R
+    - A
+    - P
     - S
     - M
     - O
@@ -90,11 +90,11 @@ MonoBehaviour:
     - W
     - X
     - Q
+    - R
+    - E
+    - K
     - C
     - O
-    - Q
-    - K
-    - X
     - D
     - O
     - B
@@ -116,9 +116,9 @@ MonoBehaviour:
     - J
     - Z
     - G
-    - R
-    - E
     - T
+    - P
+    - Y
     - G
     - E
     - C
@@ -136,12 +136,12 @@ MonoBehaviour:
     - O
     - E
     - K
-    - O
+    - R
+    - E
     - T
-    - Q
+    - I
     - P
-    - Y
-    - C
+    - U
     - J
     - N
     - D
@@ -158,13 +158,9 @@ MonoBehaviour:
     isFound: 0
   - Word: NURSE
     isFound: 0
-  - Word: ENERGY
-    isFound: 0
   - Word: INCOME
     isFound: 0
   - Word: HANDLE
-    isFound: 0
-  - Word: RECORD
     isFound: 0
   - Word: SMOKE
     isFound: 0

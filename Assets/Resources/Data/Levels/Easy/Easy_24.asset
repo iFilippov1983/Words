@@ -49,16 +49,16 @@ MonoBehaviour:
     - W
     - U
     - J
-    - G
-    - J
-    - M
+    - R
+    - E
     - V
-    - Z
+    - A
+    - E
     - B
     - E
     - O
     - C
-    - O
+    - T
     - C
     - A
     - G
@@ -80,8 +80,8 @@ MonoBehaviour:
     - U
     - X
     - R
-    - T
-    - E
+    - O
+    - A
     - S
     - N
     - N
@@ -100,9 +100,9 @@ MonoBehaviour:
     - L
     - E
     - S
-    - Q
+    - I
     - F
-    - A
+    - E
     - P
     - C
     - O
@@ -123,25 +123,25 @@ MonoBehaviour:
     - Y
     - X
     - L
-    - Q
-    - E
+    - P
+    - I
     - H
-    - N
+    - M
     - I
     - G
   - Size: 20
     Row:
     - H
-    - B
-    - J
-    - C
-    - K
+    - E
     - G
-    - L
-    - M
-    - R
+    - N
     - O
-    - Z
+    - P
+    - S
+    - R
+    - E
+    - N
+    - O
     - T
     - H
     - T
@@ -156,17 +156,13 @@ MonoBehaviour:
     isFound: 0
   - Word: AGENT
     isFound: 0
-  - Word: NOTION
+  - Word: MOTION
     isFound: 0
-  - Word: SECTOR
+  - Word: ACTOR
     isFound: 0
-  - Word: CHEAP
+  - Word: LIFE
     isFound: 0
   - Word: EARTH
     isFound: 0
   - Word: MATCH
-    isFound: 0
-  - Word: MURDER
-    isFound: 0
-  - Word: VALLEY
     isFound: 0

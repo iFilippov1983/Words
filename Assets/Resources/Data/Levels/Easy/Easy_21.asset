@@ -103,7 +103,7 @@ MonoBehaviour:
     - T
     - E
     - K
-    - G
+    - C
     - A
     - L
     - H
@@ -162,17 +162,11 @@ MonoBehaviour:
     isFound: 0
   - Word: SPIRIT
     isFound: 0
-  - Word: NIGHT
+  - Word: CALM
     isFound: 0
   - Word: TENNIS
     isFound: 0
   - Word: LUNCH
     isFound: 0
-  - Word: PLANET
-    isFound: 0
-  - Word: STREAM
-    isFound: 0
-  - Word: WRITER
-    isFound: 0
-  - Word: GLASS
+  - Word: WRITE
     isFound: 0

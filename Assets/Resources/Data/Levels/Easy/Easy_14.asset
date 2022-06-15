@@ -105,7 +105,7 @@ MonoBehaviour:
     - T
     - I
     - C
-    - T
+    - K
     - U
     - K
     - U
@@ -139,12 +139,6 @@ MonoBehaviour:
   - Word: KICK
     isFound: 0
   - Word: BURN
-    isFound: 0
-  - Word: LOOK
-    isFound: 0
-  - Word: PLAY
-    isFound: 0
-  - Word: WIND
     isFound: 0
   - Word: ZONE
     isFound: 0

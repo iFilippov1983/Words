@@ -39,9 +39,9 @@ MonoBehaviour:
     - A
     - L
     - E
-    - T
-    - N
+    - D
     - I
+    - N
     - E
   - Size: 22
     Row:
@@ -60,10 +60,10 @@ MonoBehaviour:
     - O
     - V
     - R
-    - H
+    - T
     - P
     - N
-    - D
+    - R
     - A
     - C
     - L
@@ -84,7 +84,7 @@ MonoBehaviour:
     - N
     - E
     - A
-    - S
+    - C
     - E
     - K
     - V
@@ -107,7 +107,7 @@ MonoBehaviour:
     - N
     - S
     - Z
-    - X
+    - Z
     - V
     - C
     - R
@@ -131,7 +131,7 @@ MonoBehaviour:
     - E
     - N
     - D
-    - J
+    - T
     - U
     - H
     - T
@@ -157,28 +157,24 @@ MonoBehaviour:
     - R
     - B
     - C
-    - T
-    - E
-    - G
-    - D
-    - U
     - B
+    - U
+    - D
+    - G
+    - E
+    - T
   SearchingWords:
   - Word: CYCLE
     isFound: 0
-  - Word: UPDATE
+  - Word: DATE
     isFound: 0
   - Word: BUDGET
     isFound: 0
   - Word: NORTH
     isFound: 0
-  - Word: PAINT
+  - Word: PAIN
     isFound: 0
   - Word: DELAY
     isFound: 0
-  - Word: PHRASE
-    isFound: 0
-  - Word: ADVISE
-    isFound: 0
-  - Word: SEASON
+  - Word: TRACE
     isFound: 0

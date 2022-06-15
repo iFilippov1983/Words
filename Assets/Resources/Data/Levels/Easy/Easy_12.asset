@@ -90,7 +90,7 @@ MonoBehaviour:
     - L
     - L
     - C
-    - Y
+    - V
     - U
     - W
     - L
@@ -110,7 +110,7 @@ MonoBehaviour:
     - K
     - I
     - T
-    - V
+    - Y
     - Y
     - O
     - E
@@ -140,13 +140,7 @@ MonoBehaviour:
     isFound: 0
   - Word: CITY
     isFound: 0
-  - Word: BALL
-    isFound: 0
-  - Word: FLOW
-    isFound: 0
   - Word: POWER
-    isFound: 0
-  - Word: QUEEN
     isFound: 0
   - Word: SHELL
     isFound: 0

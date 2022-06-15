@@ -47,10 +47,10 @@ MonoBehaviour:
     - W
     - F
     - W
-    - B
     - G
     - I
     - F
+    - T
     - T
     - P
   - Size: 15
@@ -122,17 +122,13 @@ MonoBehaviour:
     - C
     - E
   SearchingWords:
-  - Word: WAVE
-    isFound: 0
   - Word: ZERO
-    isFound: 0
-  - Word: HOPE
     isFound: 0
   - Word: GIFT
     isFound: 0
   - Word: FOOD
     isFound: 0
-  - Word: GRACE
+  - Word: RACE
     isFound: 0
-  - Word: RESPECT
+  - Word: REST
     isFound: 0

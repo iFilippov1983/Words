@@ -146,19 +146,13 @@ MonoBehaviour:
     - I
     - C
   SearchingWords:
-  - Word: TRACK
+  - Word: KILL
     isFound: 0
-  - Word: STORM
-    isFound: 0
-  - Word: SKILL
-    isFound: 0
-  - Word: ROYAL
+  - Word: CLAY
     isFound: 0
   - Word: PHOTO
     isFound: 0
   - Word: MOVIE
-    isFound: 0
-  - Word: SCREEN
     isFound: 0
   - Word: TICKET
     isFound: 0

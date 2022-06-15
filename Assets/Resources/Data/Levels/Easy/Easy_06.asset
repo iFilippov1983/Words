@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
   m_Name: Easy_06
   m_EditorClassIdentifier: 
-  TimeInSeconds: 120
+  TimeInSeconds: 150
   Columns: 6
   Rows: 12
   UseDotsMode: 1
@@ -52,8 +52,8 @@ MonoBehaviour:
     - P
     - Q
     - S
-    - G
     - S
+    - G
     - O
     - S
     - G
@@ -108,15 +108,9 @@ MonoBehaviour:
     isFound: 0
   - Word: TOY
     isFound: 0
-  - Word: BAG
-    isFound: 0
   - Word: FLY
     isFound: 0
   - Word: SEA
-    isFound: 0
-  - Word: EYE
-    isFound: 0
-  - Word: SKY
     isFound: 0
   - Word: CAR
     isFound: 0

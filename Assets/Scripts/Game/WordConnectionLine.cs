@@ -1,3 +1,4 @@
+using Lofelt.NiceVibrations;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,12 +41,26 @@ namespace Game
         {
             bool desactivate = anchorsIndexes.Count >= 2 && anchorsIndexes[anchorsIndexes.Count - 2].Equals(index);
             if (desactivate)
+            {
+                HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+                SoundManager.PalaySound(Sound.Selected, true, false);
+                Debug.Log("[Haptic + Sound] WordConnectionLine - OnSelectSquare");
+
                 DesactivatePreviousLine();
+            }
             else if (anchorsIndexes.Contains(index))
+            {
                 return;
+            }
             else
+            {
+                HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+                SoundManager.PalaySound(Sound.Selected, true, true);
+                Debug.Log("[Haptic + Sound] WordConnectionLine - OnSelectSquare");
+
                 anchorsIndexes.Add(index);
-                
+            }
+
             _lastAnchorPosition = position + selectedPointOffset;
 
             // on first selection

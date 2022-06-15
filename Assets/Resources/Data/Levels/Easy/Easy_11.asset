@@ -99,7 +99,7 @@ MonoBehaviour:
     - A
     - X
     - F
-    - M
+    - B
     - N
     - Y
     - M
@@ -117,20 +117,14 @@ MonoBehaviour:
     - E
     - A
     - R
-    - B
+    - M
     - S
     - E
     - N
   SearchingWords:
-  - Word: EXIT
-    isFound: 0
   - Word: FARM
     isFound: 0
-  - Word: FACT
-    isFound: 0
   - Word: DREAM
-    isFound: 0
-  - Word: ENEMY
     isFound: 0
   - Word: PRICE
     isFound: 0

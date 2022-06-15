@@ -58,7 +58,7 @@ MonoBehaviour:
     - T
     - W
     - C
-    - H
+    - T
     - L
     - E
     - M
@@ -121,7 +121,7 @@ MonoBehaviour:
     - D
     - S
     - V
-    - Z
+    - E
     - H
     - C
     - C
@@ -148,7 +148,7 @@ MonoBehaviour:
     - A
     - S
     - S
-    - L
+    - N
     - E
     - V
   SearchingWords:
@@ -156,17 +156,11 @@ MonoBehaviour:
     isFound: 0
   - Word: FAULT
     isFound: 0
-  - Word: MIDDLE
+  - Word: MELT
     isFound: 0
-  - Word: TRAVEL
+  - Word: RAVEN
     isFound: 0
   - Word: CLASS
     isFound: 0
-  - Word: PARENT
-    isFound: 0
-  - Word: BLIND
-    isFound: 0
-  - Word: SALARY
-    isFound: 0
-  - Word: BEACH
+  - Word: RENT
     isFound: 0

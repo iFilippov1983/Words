@@ -146,19 +146,13 @@ MonoBehaviour:
     - W
     - W
   SearchingWords:
-  - Word: BIRD
+  - Word: SPY
     isFound: 0
-  - Word: HORSE
-    isFound: 0
-  - Word: LAUGH
+  - Word: FARM
     isFound: 0
   - Word: METAL
     isFound: 0
   - Word: NOVEL
     isFound: 0
-  - Word: RESULT
-    isFound: 0
-  - Word: SILVER
-    isFound: 0
-  - Word: WINDOW
+  - Word: WIND
     isFound: 0

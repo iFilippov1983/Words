@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
   m_Name: Easy_04
   m_EditorClassIdentifier: 
-  TimeInSeconds: 120
+  TimeInSeconds: 150
   Columns: 6
   Rows: 12
   UseDotsMode: 1
@@ -74,7 +74,7 @@ MonoBehaviour:
     - F
     - Q
     - N
-    - G
+    - N
   - Size: 12
     Row:
     - P
@@ -104,11 +104,9 @@ MonoBehaviour:
     - N
     - B
   SearchingWords:
-  - Word: BEGIN
+  - Word: NINE
     isFound: 0
-  - Word: PAPER
+  - Word: VAN
     isFound: 0
   - Word: LIFE
-    isFound: 0
-  - Word: RULE
     isFound: 0

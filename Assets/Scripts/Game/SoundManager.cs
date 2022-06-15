@@ -6,11 +6,14 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private SoundData _soundData;
+    [Range(0f, 1f)]
+    [SerializeField] private float _effectFactor;
+    [SerializeField] private float _defaultEffectValue;
 
     private AudioSource _audioSource;
     private Dictionary<Sound, AudioClip> _clips;
 
-    private static Action<Sound> PlaySoundAction;
+    private static Action<Sound, bool, bool> PlaySoundAction;
 
     private void Start()
     {
@@ -25,8 +28,18 @@ public class SoundManager : MonoBehaviour
         PlaySoundAction -= Play;
     }
 
-    private void Play(Sound sound)
+    private void Play(Sound sound, bool useEffect = false, bool increaseEffect = false)
     {
+        if (useEffect)
+        {
+            var factor = increaseEffect ? _effectFactor : _effectFactor * -1f;
+            _audioSource.pitch += factor;
+        }
+        else
+        {
+            _audioSource.pitch = _defaultEffectValue;
+        }
+
         _audioSource.clip = _clips[sound];
         _audioSource.Play();
     }
@@ -48,9 +61,9 @@ public class SoundManager : MonoBehaviour
         return dic;
     }
 
-    public static void PalaySound(Sound sound)
+    public static void PalaySound(Sound sound, bool useEffect = false, bool increaseEffect = false)
     {
-        PlaySoundAction?.Invoke(sound);
+        PlaySoundAction?.Invoke(sound, useEffect, increaseEffect);
     }
 }
 

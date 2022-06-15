@@ -150,15 +150,9 @@ MonoBehaviour:
     isFound: 0
   - Word: SUGAR
     isFound: 0
-  - Word: UNITY
-    isFound: 0
-  - Word: VALUE
-    isFound: 0
-  - Word: ANIMAL
-    isFound: 0
   - Word: EFFECT
     isFound: 0
-  - Word: FOREST
+  - Word: REST
     isFound: 0
-  - Word: ISLAND
+  - Word: LAND
     isFound: 0

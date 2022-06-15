@@ -37,8 +37,8 @@ MonoBehaviour:
     - N
     - I
     - R
-    - R
     - T
+    - R
     - L
     - E
     - S
@@ -57,9 +57,9 @@ MonoBehaviour:
     - O
     - S
     - Y
-    - T
     - C
-    - E
+    - I
+    - V
     - P
     - A
     - E
@@ -80,13 +80,13 @@ MonoBehaviour:
     - H
     - D
     - G
-    - P
-    - Y
-    - Z
+    - E
+    - L
+    - I
     - W
     - F
-    - I
-    - L
+    - A
+    - M
     - O
   - Size: 21
     Row:
@@ -107,9 +107,9 @@ MonoBehaviour:
     - O
     - Z
     - S
-    - A
-    - M
     - Y
+    - L
+    - I
     - N
   - Size: 21
     Row:
@@ -151,8 +151,8 @@ MonoBehaviour:
     - R
     - M
     - V
-    - S
     - H
+    - S
     - M
     - U
     - E
@@ -164,15 +164,9 @@ MonoBehaviour:
     isFound: 0
   - Word: HEART
     isFound: 0
-  - Word: PRINCE
+  - Word: CIVIL
     isFound: 0
   - Word: FAMILY
     isFound: 0
   - Word: FRESH
-    isFound: 0
-  - Word: DRAFT
-    isFound: 0
-  - Word: OBJECT
-    isFound: 0
-  - Word: ENTER
     isFound: 0

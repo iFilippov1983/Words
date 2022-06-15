@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
   m_Name: Easy_08
   m_EditorClassIdentifier: 
-  TimeInSeconds: 120
+  TimeInSeconds: 150
   Columns: 6
   Rows: 14
   UseDotsMode: 1
@@ -116,17 +116,11 @@ MonoBehaviour:
     - I
     - C
   SearchingWords:
-  - Word: AXE
-    isFound: 0
   - Word: BOX
     isFound: 0
   - Word: FAST
     isFound: 0
-  - Word: GOLD
+  - Word: LOG
     isFound: 0
-  - Word: LOGIC
-    isFound: 0
-  - Word: BUILD
-    isFound: 0
-  - Word: IMAGE
+  - Word: MAGE
     isFound: 0

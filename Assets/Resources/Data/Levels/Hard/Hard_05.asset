@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Hard_05
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 6
+  Rows: 12
+  UseDotsMode: 1
+  UsePrompts: 1
+  TimeToPrompt: 15
+  Board:
+  - Size: 12
+    Row:
+    - Y
+    - S
+    - W
+    - Z
+    - T
+    - A
+    - E
+    - Y
+    - B
+    - A
+    - B
+    - R
+  - Size: 12
+    Row:
+    - F
+    - Z
+    - L
+    - K
+    - E
+    - E
+    - E
+    - Z
+    - H
+    - L
+    - M
+    - A
+  - Size: 12
+    Row:
+    - L
+    - E
+    - C
+    - M
+    - G
+    - L
+    - L
+    - N
+    - N
+    - D
+    - E
+    - D
+  - Size: 12
+    Row:
+    - F
+    - T
+    - Z
+    - H
+    - N
+    - X
+    - F
+    - H
+    - I
+    - Q
+    - N
+    - I
+  - Size: 12
+    Row:
+    - O
+    - I
+    - P
+    - P
+    - I
+    - Y
+    - E
+    - O
+    - J
+    - L
+    - U
+    - O
+  - Size: 12
+    Row:
+    - O
+    - C
+    - S
+    - Q
+    - J
+    - B
+    - D
+    - O
+    - C
+    - T
+    - O
+    - R
+  SearchingWords:
+  - Word: RADIO
+    isFound: 0
+  - Word: BABY
+    isFound: 0
+  - Word: MENU
+    isFound: 0
+  - Word: DOCTOR
+    isFound: 0
+  - Word: LINE
+    isFound: 0

@@ -68,13 +68,13 @@ MonoBehaviour:
     - I
     - P
     - N
-    - A
-    - F
     - E
-    - F
-    - P
+    - T
     - A
+    - F
     - M
+    - A
+    - P
     - S
     - U
     - N
@@ -144,15 +144,9 @@ MonoBehaviour:
     isFound: 0
   - Word: TEAM
     isFound: 0
-  - Word: DANCE
-    isFound: 0
-  - Word: COACH
-    isFound: 0
-  - Word: DRAMA
-    isFound: 0
   - Word: FOCUS
     isFound: 0
-  - Word: DOLLAR
+  - Word: DOLL
     isFound: 0
   - Word: PERSON
     isFound: 0
