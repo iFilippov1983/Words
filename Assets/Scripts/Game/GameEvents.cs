@@ -46,10 +46,6 @@ public static class GameEvents
 
     public static void CheckSquareMethod(string letter, Vector3 squarePosition, int squareIndex)
     {
-        //HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
-        //SoundManager.PalaySound(Sound.Selected);
-        //Debug.Log("[Haptic + Sound] GameEvents - CheckSquareMethod");
-
         OnCheckSquare?.Invoke(letter, squarePosition, squareIndex);
     }
     //************

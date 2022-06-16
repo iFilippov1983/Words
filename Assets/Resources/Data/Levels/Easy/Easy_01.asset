@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
   m_Name: Easy_01
   m_EditorClassIdentifier: 
-  TimeInSeconds: 150
+  TimeInSeconds: 120
   Columns: 6
   Rows: 11
   UseDotsMode: 1
@@ -21,86 +21,86 @@ MonoBehaviour:
   Board:
   - Size: 11
     Row:
-    - E
-    - D
-    - H
-    - U
-    - G
     - H
     - A
-    - I
-    - K
-    - U
-    - T
-  - Size: 11
-    Row:
-    - O
-    - O
-    - K
-    - B
-    - C
-    - O
-    - V
-    - G
-    - A
-    - M
-    - E
-  - Size: 11
-    Row:
-    - G
-    - O
-    - F
     - H
+    - A
     - N
-    - U
-    - B
-    - L
-    - H
-    - E
-    - T
-  - Size: 11
-    Row:
-    - K
-    - M
-    - F
-    - S
-    - S
-    - S
-    - C
-    - J
-    - Q
-    - M
-    - R
-  - Size: 11
-    Row:
-    - B
-    - Z
-    - C
-    - E
-    - E
-    - E
-    - S
-    - A
-    - Z
     - D
-    - Y
-  - Size: 11
-    Row:
-    - R
-    - G
     - S
-    - N
-    - F
-    - B
-    - V
-    - G
     - T
-    - H
+    - O
     - P
+    - M
+  - Size: 11
+    Row:
+    - O
+    - O
+    - K
+    - B
+    - O
+    - O
+    - K
+    - G
+    - A
+    - M
+    - E
+  - Size: 11
+    Row:
+    - G
+    - U
+    - F
+    - H
+    - N
+    - W
+    - B
+    - E
+    - S
+    - E
+    - N
+  - Size: 11
+    Row:
+    - K
+    - M
+    - F
+    - S
+    - S
+    - N
+    - U
+    - M
+    - O
+    - M
+    - C
+  - Size: 11
+    Row:
+    - B
+    - U
+    - C
+    - U
+    - E
+    - E
+    - S
+    - A
+    - Y
+    - D
+    - A
+  - Size: 11
+    Row:
+    - R
+    - G
+    - S
+    - N
+    - E
+    - W
+    - V
+    - D
+    - T
+    - H
+    - T
   SearchingWords:
-  - Word: HOUSE
+  - Word: BUS
     isFound: 0
-  - Word: TRY
+  - Word: CAT
     isFound: 0
   - Word: GAME
     isFound: 0

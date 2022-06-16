@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
   m_Name: Easy_06
   m_EditorClassIdentifier: 
-  TimeInSeconds: 150
+  TimeInSeconds: 120
   Columns: 6
   Rows: 12
   UseDotsMode: 1
@@ -21,31 +21,31 @@ MonoBehaviour:
   Board:
   - Size: 12
     Row:
-    - U
-    - A
-    - B
-    - C
-    - P
+    - W
+    - E
+    - S
+    - D
+    - O
     - G
     - F
     - L
     - Y
     - B
-    - G
+    - O
     - A
   - Size: 12
     Row:
     - F
-    - W
+    - L
     - O
-    - V
+    - W
     - D
     - N
-    - Q
-    - S
+    - A
+    - T
     - A
     - O
-    - H
+    - C
     - I
   - Size: 12
     Row:
@@ -63,7 +63,7 @@ MonoBehaviour:
     - R
   - Size: 12
     Row:
-    - S
+    - O
     - U
     - T
     - S
@@ -73,7 +73,7 @@ MonoBehaviour:
     - V
     - S
     - F
-    - C
+    - S
     - Y
   - Size: 12
     Row:
@@ -81,36 +81,38 @@ MonoBehaviour:
     - O
     - Q
     - R
-    - A
-    - J
+    - U
+    - N
     - A
     - S
     - Q
-    - K
-    - Z
+    - A
+    - U
     - O
   - Size: 12
     Row:
     - N
-    - B
+    - S
     - L
-    - K
+    - Y
     - D
     - P
-    - K
+    - R
     - C
     - A
     - R
-    - Y
+    - N
     - T
   SearchingWords:
   - Word: AIR
-    isFound: 0
+    isFound: 1
   - Word: TOY
-    isFound: 0
+    isFound: 1
   - Word: FLY
-    isFound: 0
+    isFound: 1
   - Word: SEA
-    isFound: 0
-  - Word: CAR
-    isFound: 0
+    isFound: 1
+  - Word: EAR
+    isFound: 1
+  - Word: EYE
+    isFound: 1

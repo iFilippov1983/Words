@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
   m_Name: Easy_03
   m_EditorClassIdentifier: 
-  TimeInSeconds: 150
+  TimeInSeconds: 120
   Columns: 6
   Rows: 11
   UseDotsMode: 1
@@ -23,9 +23,9 @@ MonoBehaviour:
     Row:
     - F
     - L
-    - M
+    - Y
     - A
-    - J
+    - L
     - C
     - T
     - A
@@ -41,8 +41,8 @@ MonoBehaviour:
     - R
     - F
     - S
-    - R
-    - Y
+    - G
+    - I
     - P
     - A
   - Size: 11
@@ -54,19 +54,19 @@ MonoBehaviour:
     - P
     - A
     - K
-    - A
+    - C
     - A
     - R
     - C
   - Size: 11
     Row:
     - Y
+    - A
     - L
-    - O
-    - L
+    - I
     - J
     - L
-    - O
+    - I
     - G
     - E
     - T
@@ -74,35 +74,35 @@ MonoBehaviour:
   - Size: 11
     Row:
     - J
-    - E
-    - X
-    - S
-    - D
     - L
-    - E
-    - B
-    - V
-    - O
+    - X
+    - I
+    - M
+    - L
+    - N
+    - T
     - S
+    - O
+    - L
   - Size: 11
     Row:
     - H
     - P
     - K
-    - X
+    - K
     - C
-    - F
+    - U
     - L
-    - E
-    - A
-    - F
+    - S
+    - N
+    - O
     - W
   SearchingWords:
-  - Word: BACK
+  - Word: CAR
     isFound: 0
   - Word: TAIL
     isFound: 0
   - Word: FALL
     isFound: 0
-  - Word: LEAF
+  - Word: SNOW
     isFound: 0

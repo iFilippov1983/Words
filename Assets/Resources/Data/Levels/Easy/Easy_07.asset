@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
   m_Name: Easy_07
   m_EditorClassIdentifier: 
-  TimeInSeconds: 150
+  TimeInSeconds: 120
   Columns: 6
   Rows: 17
   UseDotsMode: 1
@@ -28,13 +28,13 @@ MonoBehaviour:
     - T
     - L
     - C
-    - I
-    - J
-    - U
+    - Y
+    - E
     - B
-    - M
-    - K
+    - B
+    - A
     - P
+    - U
     - S
     - H
     - P
@@ -45,11 +45,11 @@ MonoBehaviour:
     - C
     - P
     - R
-    - M
-    - L
-    - V
-    - A
-    - K
+    - R
+    - E
+    - E
+    - N
+    - I
     - L
     - B
     - L
@@ -65,16 +65,16 @@ MonoBehaviour:
     - N
     - K
     - G
-    - Y
-    - V
+    - E
+    - B
     - U
-    - J
+    - C
     - U
     - T
     - X
     - D
     - P
-    - V
+    - E
     - R
   - Size: 17
     Row:
@@ -84,14 +84,14 @@ MonoBehaviour:
     - D
     - B
     - O
-    - O
+    - D
     - O
     - E
     - T
     - E
     - D
-    - E
-    - I
+    - R
+    - A
     - R
     - E
     - P
@@ -109,9 +109,9 @@ MonoBehaviour:
     - H
     - O
     - R
+    - S
+    - I
     - N
-    - A
-    - K
     - G
     - L
   - Size: 17
@@ -125,7 +125,7 @@ MonoBehaviour:
     - E
     - T
     - I
-    - H
+    - S
     - W
     - K
     - N
@@ -134,11 +134,15 @@ MonoBehaviour:
     - R
     - E
   SearchingWords:
-  - Word: PURE
-    isFound: 0
-  - Word: LACK
-    isFound: 0
-  - Word: PINK
-    isFound: 0
   - Word: RED
-    isFound: 0
+    isFound: 1
+  - Word: SIN
+    isFound: 1
+  - Word: PURE
+    isFound: 1
+  - Word: LACK
+    isFound: 1
+  - Word: RARE
+    isFound: 1
+  - Word: PUSH
+    isFound: 1

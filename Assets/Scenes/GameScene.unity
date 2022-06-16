@@ -1063,7 +1063,7 @@ MonoBehaviour:
   coinsText: {fileID: 7770522329497429780}
   coinsTextAlt: {fileID: 0}
   coinSpawner: {fileID: 432324967}
-  coinsForLevelComplete: 10
+  coinsForLevelComplete: 50
   _coinCost: 1
 --- !u!4 &1333455948
 Transform:

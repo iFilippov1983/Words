@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
   m_Name: Easy_08
   m_EditorClassIdentifier: 
-  TimeInSeconds: 150
+  TimeInSeconds: 120
   Columns: 6
   Rows: 14
   UseDotsMode: 1
@@ -21,106 +21,112 @@ MonoBehaviour:
   Board:
   - Size: 14
     Row:
+    - H
+    - A
+    - R
+    - E
+    - N
+    - N
+    - U
+    - G
+    - Y
+    - B
+    - U
+    - B
+    - I
+    - M
+  - Size: 14
+    Row:
+    - E
+    - N
     - T
-    - J
-    - F
-    - K
+    - A
+    - G
+    - O
+    - S
+    - R
+    - A
+    - R
+    - G
+    - O
+    - N
+    - A
+  - Size: 14
+    Row:
+    - A
+    - U
+    - E
+    - R
+    - E
     - W
+    - E
+    - A
+    - L
+    - E
+    - S
+    - X
+    - D
+    - G
+  - Size: 14
+    Row:
+    - T
+    - S
+    - A
     - C
-    - H
-    - N
-    - F
+    - Y
     - A
-    - S
-    - T
+    - R
     - B
-    - I
+    - Z
+    - A
+    - O
+    - U
+    - N
+    - E
   - Size: 14
     Row:
-    - R
-    - Z
+    - I
+    - P
+    - I
+    - E
+    - E
+    - N
+    - A
+    - L
+    - P
     - K
-    - S
-    - H
-    - B
-    - R
-    - G
-    - Q
-    - P
-    - M
-    - U
-    - J
-    - M
-  - Size: 14
-    Row:
-    - H
-    - B
-    - P
-    - M
-    - O
-    - M
-    - P
-    - O
-    - E
-    - Z
-    - I
-    - B
-    - B
-    - A
-  - Size: 14
-    Row:
-    - Z
-    - T
-    - G
-    - G
-    - W
-    - E
-    - R
-    - L
-    - T
-    - L
-    - O
     - F
-    - O
-    - G
-  - Size: 14
-    Row:
-    - L
-    - B
-    - R
-    - I
-    - U
-    - P
-    - V
-    - D
-    - D
-    - N
-    - L
-    - I
-    - X
-    - E
-  - Size: 14
-    Row:
-    - Z
-    - B
-    - E
-    - H
     - A
-    - X
-    - E
+    - S
     - T
-    - N
+  - Size: 14
+    Row:
+    - X
+    - O
+    - S
+    - M
+    - A
+    - G
+    - X
+    - I
+    - M
     - L
     - O
     - G
     - I
     - C
   SearchingWords:
+  - Word: LOG
+    isFound: 0
   - Word: BOX
+    isFound: 0
+  - Word: LAY
+    isFound: 0
+  - Word: MIX
+    isFound: 0
+  - Word: MAGE
     isFound: 0
   - Word: FAST
     isFound: 0
-  - Word: LOG
-    isFound: 0
-  - Word: MAGE
+  - Word: PLAN
     isFound: 0

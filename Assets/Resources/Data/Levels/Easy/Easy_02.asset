@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
   m_Name: Easy_02
   m_EditorClassIdentifier: 
-  TimeInSeconds: 150
+  TimeInSeconds: 120
   Columns: 6
   Rows: 12
   UseDotsMode: 1
@@ -23,10 +23,10 @@ MonoBehaviour:
     Row:
     - Q
     - K
-    - F
+    - T
     - A
     - H
-    - O
+    - C
     - F
     - H
     - F
@@ -39,14 +39,14 @@ MonoBehaviour:
     - N
     - T
     - H
-    - F
-    - A
+    - I
+    - S
     - R
     - O
     - G
+    - O
     - A
-    - R
-    - G
+    - L
   - Size: 12
     Row:
     - L
@@ -54,13 +54,13 @@ MonoBehaviour:
     - G
     - Z
     - X
-    - C
+    - A
     - U
     - W
     - A
     - T
-    - E
-    - R
+    - N
+    - S
   - Size: 12
     Row:
     - I
@@ -68,47 +68,47 @@ MonoBehaviour:
     - V
     - T
     - O
-    - I
+    - L
     - I
     - B
-    - K
+    - O
     - X
-    - R
-    - S
+    - I
+    - U
   - Size: 12
     Row:
     - O
+    - W
     - T
-    - H
     - P
     - P
     - T
     - T
-    - Z
+    - S
     - A
-    - L
+    - G
     - U
-    - F
+    - R
   - Size: 12
     Row:
     - H
     - K
     - N
     - T
-    - N
     - F
+    - L
     - Y
     - P
-    - G
-    - N
     - I
     - N
+    - R
+    - F
   SearchingWords:
+  - Word: BOX
+    isFound: 1
+  - Word: PIN
+    isFound: 1
+  - Word: SURF
+    isFound: 1
   - Word: FISH
-    isFound: 0
-  - Word: FRUIT
-    isFound: 0
-  - Word: WATER
-    isFound: 0
-  - Word: SUN
-    isFound: 0
+    isFound: 1

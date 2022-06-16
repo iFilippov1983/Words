@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
   m_Name: Easy_09
   m_EditorClassIdentifier: 
-  TimeInSeconds: 150
+  TimeInSeconds: 120
   Columns: 6
   Rows: 15
   UseDotsMode: 1
@@ -21,112 +21,116 @@ MonoBehaviour:
   Board:
   - Size: 15
     Row:
-    - Q
-    - I
-    - Q
-    - T
     - J
+    - V
+    - G
+    - A
+    - V
+    - S
+    - F
+    - E
     - U
     - S
     - E
     - R
-    - M
-    - N
-    - A
-    - L
-    - P
-    - L
-  - Size: 15
-    Row:
-    - O
-    - C
-    - F
-    - J
-    - H
-    - P
-    - W
-    - K
-    - I
-    - K
-    - I
-    - K
-    - U
-    - W
-    - I
-  - Size: 15
-    Row:
-    - C
-    - J
-    - H
-    - C
-    - N
-    - G
     - D
-    - C
-    - X
+    - U
+    - L
+  - Size: 15
+    Row:
+    - U
+    - T
+    - B
+    - T
+    - T
+    - S
+    - O
+    - R
+    - F
     - L
     - O
     - V
     - E
+    - S
+    - I
+  - Size: 15
+    Row:
+    - R
+    - W
+    - H
     - G
+    - B
+    - O
+    - R
+    - E
+    - P
+    - E
+    - R
+    - O
+    - T
+    - K
     - N
   - Size: 15
     Row:
-    - M
-    - T
-    - M
-    - H
-    - Z
-    - K
-    - G
-    - Q
-    - R
-    - O
-    - H
-    - G
-    - D
-    - B
-    - K
-  - Size: 15
-    Row:
-    - W
-    - T
-    - H
-    - U
-    - T
-    - I
-    - U
-    - Y
-    - G
-    - M
-    - E
-    - P
-    - E
-    - M
-    - K
-  - Size: 15
-    Row:
-    - Z
-    - L
-    - G
-    - P
-    - J
     - A
+    - J
+    - U
+    - H
+    - B
+    - T
+    - F
+    - H
     - P
-    - R
+    - I
+    - Z
+    - M
+    - C
+    - O
     - K
+  - Size: 15
+    Row:
+    - E
+    - V
     - S
+    - T
+    - R
+    - E
+    - M
+    - O
+    - H
     - H
     - O
     - P
+    - A
+    - M
+    - K
+  - Size: 15
+    Row:
+    - Y
+    - J
+    - I
+    - Q
+    - P
+    - T
+    - H
+    - R
+    - E
+    - S
+    - E
+    - R
+    - F
     - I
     - L
   SearchingWords:
   - Word: LINK
     isFound: 0
+  - Word: MILK
+    isFound: 0
   - Word: LOVE
     isFound: 0
-  - Word: PLAN
-    isFound: 0
   - Word: SHOP
+    isFound: 0
+  - Word: HOME
+    isFound: 0
+  - Word: USER
     isFound: 0

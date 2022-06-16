@@ -29,11 +29,7 @@ namespace Game
             
             coinSpawner.CoinArrived += OnCoinArrived;
             TryChangeCoinsAmount += ChangeCoinsAmount;
-        }
-
-        private void OnCoinArrived()
-        {
-            ChangeCoinsAmount(_coinCost);
+            GameEvents.OnBoardComleted += AddCoinsForLevelComplete;
         }
 
         private void OnDestroy()
@@ -42,6 +38,12 @@ namespace Game
 
             coinSpawner.CoinArrived -= OnCoinArrived;
             TryChangeCoinsAmount -= ChangeCoinsAmount;
+            GameEvents.OnBoardComleted -= AddCoinsForLevelComplete;
+        }
+
+        private void OnCoinArrived()
+        {
+            ChangeCoinsAmount(_coinCost);
         }
 
         public void SetCoins(int coins)
@@ -50,7 +52,7 @@ namespace Game
             UpdateText();
         }
         
-        public void AddCoinsForLevelComplete()
+        public void AddCoinsForLevelComplete(bool categoryCompleted)
         {
             ChangeCoinsAmount(coinsForLevelComplete);
         }

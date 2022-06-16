@@ -10,8 +10,8 @@ public class WordCheker : MonoBehaviour
     public GameData currentGameData;
     public GameLevelData gameLevelData;
 
-    private const string UsedWords = "UsedWords";
-    private const string CyclesCount = "CyclesCount";
+    private const string UsedWordsKey = "UsedWords";
+    private const string CyclesCountKey = "CyclesCount";
     private string _word;
     private string _extraWord;
     private int _assignedPoints = 0;
@@ -31,7 +31,6 @@ public class WordCheker : MonoBehaviour
     private void OnEnable()
     {
         Init();
-
         GameEvents.OnCheckSquare += SquareSelected;
         GameEvents.OnClearSelection += ClearSelection;
         GameEvents.OnLoadLevel += LoadNextGameLevel;
@@ -44,7 +43,6 @@ public class WordCheker : MonoBehaviour
         GameEvents.OnClearSelection -= ClearSelection;
         GameEvents.OnLoadLevel -= LoadNextGameLevel;
         GameEvents.OnGameOver -= OnGameOver;
-
         Cleanup();
     }
 
@@ -61,9 +59,9 @@ public class WordCheker : MonoBehaviour
         _currentLevelNotCompleted = true;
 
         //If there's NO category selection
-        _gameCyclesCount = DataSaver.LoadIntData(CyclesCount); 
+        _gameCyclesCount = DataSaver.LoadIntData(CyclesCountKey); 
         //
-        _dataProfile.SetUsedExtraWordsList(DataSaver.LoadSavedStringList(UsedWords));
+        _dataProfile.SetUsedExtraWordsList(DataSaver.LoadSavedStringList(UsedWordsKey));
         //Debug.Log("Current used extra words list count: " + _dataProfile.UsedExtraWords.Count);
 
         //If there's category selection
@@ -98,11 +96,11 @@ public class WordCheker : MonoBehaviour
             if(_dotsMode)
                 _dataProfile.UsedWords.Clear();
 
-            DataSaver.SaveStringDataFromList(UsedWords, _dataProfile.UsedWords);
+            DataSaver.SaveStringDataFromList(UsedWordsKey, _dataProfile.UsedWords);
         }
         else
         {
-            DataSaver.ClearSavedStringListData(UsedWords);
+            DataSaver.ClearSavedStringListData(UsedWordsKey);
         }
 
         _dataProfile.UsedWords.Clear();
@@ -270,7 +268,7 @@ public class WordCheker : MonoBehaviour
                     categoryName = gameLevelData.Data[currentCategoryIndex].CategoryName;
 
                     DataSaver.SaveIntData(categoryName, currentBoardIndex);
-                    DataSaver.SaveIntData(CyclesCount, _gameCyclesCount);
+                    DataSaver.SaveIntData(CyclesCountKey, _gameCyclesCount);
                     GameEvents.BoardCompletedMethod(loadNextCategory);
                 }
                 //else //If there's category selection

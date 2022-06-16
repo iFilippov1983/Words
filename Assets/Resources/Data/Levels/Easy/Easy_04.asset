@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
   m_Name: Easy_04
   m_EditorClassIdentifier: 
-  TimeInSeconds: 150
+  TimeInSeconds: 120
   Columns: 6
   Rows: 12
   UseDotsMode: 1
@@ -32,31 +32,31 @@ MonoBehaviour:
     - P
     - E
     - R
-    - R
+    - O
   - Size: 12
     Row:
     - S
     - G
     - N
     - P
+    - O
     - W
-    - E
     - T
-    - P
-    - D
+    - E
+    - N
     - I
     - V
     - N
   - Size: 12
     Row:
-    - G
     - E
+    - V
     - A
     - W
-    - U
     - P
+    - A
     - L
-    - Q
+    - O
     - N
     - E
     - A
@@ -70,9 +70,9 @@ MonoBehaviour:
     - H
     - N
     - F
-    - B
-    - F
-    - Q
+    - I
+    - N
+    - E
     - N
     - N
   - Size: 12
@@ -83,30 +83,34 @@ MonoBehaviour:
     - N
     - L
     - B
-    - R
-    - I
-    - U
+    - B
     - L
-    - E
+    - U
+    - R
+    - N
     - E
   - Size: 12
     Row:
     - J
     - I
     - I
+    - C
     - O
-    - C
-    - E
-    - L
-    - M
-    - C
-    - I
     - N
-    - B
+    - E
+    - M
+    - X
+    - Y
+    - N
+    - O
   SearchingWords:
-  - Word: NINE
-    isFound: 0
   - Word: VAN
     isFound: 0
-  - Word: LIFE
+  - Word: ONE
+    isFound: 0
+  - Word: TEN
+    isFound: 0
+  - Word: NINE
+    isFound: 0
+  - Word: BLUR
     isFound: 0
