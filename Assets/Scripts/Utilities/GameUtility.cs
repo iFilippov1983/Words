@@ -13,7 +13,6 @@ public class GameUtility : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
-        TinySauce.OnGameStarted(_dataProfile.CurrentLevelNumber.ToString());
     }
 
     public static void LoadScene(string sceneName)

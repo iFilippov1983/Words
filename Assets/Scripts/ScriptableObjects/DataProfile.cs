@@ -9,6 +9,7 @@ public class DataProfile : ScriptableObject
     public int CurrentLevelNumber;
     public bool MousePositionIsFar = false;
     public bool BoardCanPrompt = false;
+    public bool isUpdated = false;
 
     private List<string> _usedExtraWords = new List<string>();
 

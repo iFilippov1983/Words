@@ -76,8 +76,7 @@ public class WinPopup : MonoBehaviour
         {
             winPopup.SetActive(false);
             GameEvents.LoadNextLevelMethod();
-        }
-            
+        }  
     }
 
     private void Exit()

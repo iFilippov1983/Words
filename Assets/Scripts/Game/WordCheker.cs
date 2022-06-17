@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Game.WordComparison;
@@ -40,6 +39,7 @@ public class WordCheker : MonoBehaviour
             await Task.Yield();
 
         Init();
+        TinySauce.OnGameStarted(_dataProfile.CurrentLevelNumber.ToString());
     }
 
     private void OnDisable()
@@ -73,22 +73,18 @@ public class WordCheker : MonoBehaviour
         //
 
         //If there's NO category selection
-        int number = 
-            DataSaver.LoadIntData(currentGameData.selectedCategoryName)
-            + gameLevelData.Data[0].BoardData.Count * _gameCyclesCount 
-            - (_levelNumberToCycleFrom - 1) * _gameCyclesCount + 1;
+        int number = DataSaver.LoadIntData(currentGameData.selectedCategoryName)
+        + gameLevelData.Data[0].BoardData.Count * _gameCyclesCount
+        - (_levelNumberToCycleFrom - 1) * _gameCyclesCount + 1;
+
         _dataProfile.CurrentLevelNumber = number;
+        _dataProfile.isUpdated = true;
         //    
 
         foreach (var sw in currentGameData.selectedBoardData.SearchingWords)
             sw.isFound = false;
 
         _searchingWords = _searchingWordsList.SearchingWords;
-        //while (_searchingWords.Count < currentGameData.selectedBoardData.SearchingWords.Count)
-        //{
-        //    _searchingWords = _searchingWordsList.SearchingWords;
-        //    await Task.Yield();
-        //}
     }
 
     private void Cleanup()
@@ -259,6 +255,7 @@ public class WordCheker : MonoBehaviour
                         DataSaver.SaveIntData(categoryName, currentBoardIndex);
                     }
 
+                    _dataProfile.isUpdated = false;
                     GameEvents.BoardCompletedMethod(loadNextCategory);
                 }
                 else //If there's NO category selection
@@ -271,6 +268,7 @@ public class WordCheker : MonoBehaviour
 
                     DataSaver.SaveIntData(categoryName, currentBoardIndex);
                     DataSaver.SaveIntData(CyclesCountKey, _gameCyclesCount);
+                    _dataProfile.isUpdated = false;
                     GameEvents.BoardCompletedMethod(loadNextCategory);
                 }
                 //else //If there's category selection
@@ -280,6 +278,7 @@ public class WordCheker : MonoBehaviour
             }
             else
             {
+                _dataProfile.isUpdated = false;
                 GameEvents.BoardCompletedMethod(loadNextCategory);
             }
 

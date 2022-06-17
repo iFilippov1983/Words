@@ -83,7 +83,7 @@ public static class DataSaver
     {
         PlayerPrefs.DeleteAll();
         _listNames.Clear();
-
+       
         //Ulock first level
         PlayerPrefs.SetInt(levelData.Data[0].CategoryName, 0);
         

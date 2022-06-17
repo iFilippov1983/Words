@@ -57,8 +57,6 @@ public class LineDrawer : MonoBehaviour
     {
         if(_startPoint == null && _lineNotDrawed)
             _startPoint = transform.position;
-
-        Debug.Log("Set start");
     }
 
     //private void Update()

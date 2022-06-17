@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class SearchingWordsList : MonoBehaviour
 {
-    
     public GameData currentGameData;
     public GameObject searchingWordPrefab;
     public float offset = 0.0f;
