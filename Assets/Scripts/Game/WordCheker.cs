@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Game.WordComparison;
@@ -28,13 +29,17 @@ public class WordCheker : MonoBehaviour
     private List<SearchingWord> _searchingWords = new List<SearchingWord>();
     private WordFinder _wordFinder;
 
-    private void OnEnable()
+    private async void OnEnable()
     {
-        Init();
         GameEvents.OnCheckSquare += SquareSelected;
         GameEvents.OnClearSelection += ClearSelection;
         GameEvents.OnLoadLevel += LoadNextGameLevel;
         GameEvents.OnGameOver += OnGameOver;
+
+        while (_searchingWordsList.ListDone == false)
+            await Task.Yield();
+
+        Init();
     }
 
     private void OnDisable()
@@ -54,7 +59,7 @@ public class WordCheker : MonoBehaviour
         _wordFinder = new WordFinder(_dictionaries, ' ');
     }
 
-    private async void Init()
+    private void Init()
     {
         _currentLevelNotCompleted = true;
 
@@ -62,7 +67,6 @@ public class WordCheker : MonoBehaviour
         _gameCyclesCount = DataSaver.LoadIntData(CyclesCountKey); 
         //
         _dataProfile.SetUsedExtraWordsList(DataSaver.LoadSavedStringList(UsedWordsKey));
-        //Debug.Log("Current used extra words list count: " + _dataProfile.UsedExtraWords.Count);
 
         //If there's category selection
         //_dataProfile.CurrenLevelNumber = DataSaver.LoadIntData(currentGameData.selectedCategoryName) + 1; 
@@ -80,13 +84,11 @@ public class WordCheker : MonoBehaviour
             sw.isFound = false;
 
         _searchingWords = _searchingWordsList.SearchingWords;
-        while (_searchingWords.Count < currentGameData.selectedBoardData.SearchingWords.Count)
-        {
-            _searchingWords = _searchingWordsList.SearchingWords;
-            await Task.Yield();
-        }
-
-        TinySauce.OnGameStarted(_dataProfile.CurrentLevelNumber.ToString());
+        //while (_searchingWords.Count < currentGameData.selectedBoardData.SearchingWords.Count)
+        //{
+        //    _searchingWords = _searchingWordsList.SearchingWords;
+        //    await Task.Yield();
+        //}
     }
 
     private void Cleanup()

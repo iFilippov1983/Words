@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Game
@@ -64,8 +65,9 @@ namespace Game
 
                 return;
             }
-            
+
             wordAnimation.Play(new List<GameObject>(letters), GetSearchingWord(correctWord));
+
             correctWord = string.Empty;
             _squareIndexes.Clear();
         }

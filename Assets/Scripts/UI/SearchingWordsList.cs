@@ -15,12 +15,14 @@ public class SearchingWordsList : MonoBehaviour
     private int _wordsNumber;
 
     private List<GameObject> _words = new List<GameObject>();
+    private List<SearchingWord> _searchingWords = new List<SearchingWord>();
     private RectTransform _prefabSquareRect;
     private RectTransform _parentRect;
 
     private bool _hideWords;
+    public bool ListDone { get; private set; }
 
-    public List<SearchingWord> SearchingWords => MakeSearchingWordsList();
+    public List<SearchingWord> SearchingWords => _searchingWords;
 
     private void Start()
     {
@@ -36,6 +38,9 @@ public class SearchingWordsList : MonoBehaviour
 
         CreateWordObjects();
         SetWordsPosition();
+
+        ListDone = false;
+        _searchingWords = MakeSearchingWordsList();
     }
 
     private void CalculateColumnsAndRowsNumber()
@@ -74,7 +79,8 @@ public class SearchingWordsList : MonoBehaviour
 
     private void CreateWordObjects()
     {
-        var squareScale = GetSquareScale(new Vector3(1f, 1f, 0.1f));//??
+        var defaultScale = new Vector3(1f, 1f, 0.1f);
+        var squareScale = GetSquareScale(defaultScale);
 
         for (int index = 0; index < _wordsNumber; index++)
         {
@@ -201,7 +207,7 @@ public class SearchingWordsList : MonoBehaviour
         foreach (var word in _words)
             if (word)
                 list.Add(word.GetComponent<SearchingWord>());
-
+        ListDone = true;
         return list;
     }
 }
