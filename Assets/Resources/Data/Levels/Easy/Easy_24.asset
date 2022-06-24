@@ -152,17 +152,17 @@ MonoBehaviour:
     - T
     - E
   SearchingWords:
-  - Word: MANAGE
-    isFound: 0
-  - Word: AGENT
-    isFound: 0
-  - Word: MOTION
-    isFound: 0
-  - Word: ACTOR
-    isFound: 0
   - Word: LIFE
-    isFound: 0
+    isFound: 1
+  - Word: AGENT
+    isFound: 1
+  - Word: MOTION
+    isFound: 1
+  - Word: ACTOR
+    isFound: 1
   - Word: EARTH
-    isFound: 0
+    isFound: 1
   - Word: MATCH
-    isFound: 0
+    isFound: 1
+  - Word: MANAGE
+    isFound: 1
