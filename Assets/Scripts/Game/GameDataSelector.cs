@@ -4,6 +4,7 @@ public class GameDataSelector : MonoBehaviour
 {
     public GameData currentGameData;
     public GameLevelData levelData;
+    public DataProfile dataProfile;
 
     void Awake()
     {
@@ -29,13 +30,13 @@ public class GameDataSelector : MonoBehaviour
         //        }
         //    }
         //}
-
+        Debug.Log($"Selector: {currentGameData.selectedGameMode}");
         foreach (var data in levelData.Data)
         {
             if (data.GameMode.Equals(currentGameData.selectedGameMode))
             {
-                int boardIndex = DataSaver.LoadIntData(currentGameData.selectedGameMode.ToString());
-
+                //int boardIndex = DataSaver.LoadIntData(currentGameData.selectedGameMode.ToString());
+                int boardIndex = DataSaver.LoadIntData(dataProfile.ProgressKey);
 
                 if (boardIndex < data.BoardData.Count)
                 {

@@ -13,11 +13,11 @@ public class GameModePopup : MonoBehaviour
 
     void Start()
     {
-        _wordsModeButton.ChooseModeButton.onClick.AddListener(() => SetGameMode(GameModeType.WordsMode));
+        _wordsModeButton.ChooseModeButton.onClick.AddListener(() => SetGameMode(_wordsModeButton, _dotsModeButton));
         _wordsModeButton.DescriptionButton.onClick.AddListener(() => ShowDescription(_wordsModeButton, true));
         _wordsModeButton.CloseDescriptionButton.onClick.AddListener(() => ShowDescription(_wordsModeButton, false));
 
-        _dotsModeButton.ChooseModeButton.onClick.AddListener(() => SetGameMode(GameModeType.DotsMode));
+        _dotsModeButton.ChooseModeButton.onClick.AddListener(() => SetGameMode(_dotsModeButton, _wordsModeButton));
         _dotsModeButton.DescriptionButton.onClick.AddListener(() => ShowDescription(_dotsModeButton, true));
         _dotsModeButton.CloseDescriptionButton.onClick.AddListener(() => ShowDescription(_dotsModeButton, false));
 
@@ -36,7 +36,35 @@ public class GameModePopup : MonoBehaviour
         ShowPopup(false);
     }
 
-    private void SetGameMode(GameModeType gameModeType) => GameEvents.GameModeChangedMethod(gameModeType);
+    private void SetRepresentation()
+    {
+        GameModeType currentGameMode = (GameModeType)DataSaver.LoadIntData(GameModeHandler.GameModeKey);
+        if (currentGameMode.Equals(GameModeType.WordsMode))
+        {
+            _wordsModeButton.MarkerImage.gameObject.SetActive(true);
+            _dotsModeButton.MarkerImage.gameObject.SetActive(false);
+        }
+        else if (currentGameMode.Equals(GameModeType.DotsMode))
+        {
+            _wordsModeButton.MarkerImage.gameObject.SetActive(false);
+            _dotsModeButton.MarkerImage.gameObject.SetActive(true);
+        }
+    }
+
+    private void SetGameMode(GameModeButtonView representativeToGameMode, GameModeButtonView representativeFromGameMode)
+    {
+        GameEvents.GameModeChangedMethod(representativeToGameMode.PresentedGameMode);
+        representativeToGameMode.MarkerImage.gameObject.SetActive(true);
+
+        representativeFromGameMode.MarkerImage.gameObject.SetActive(false);
+    }
+
     private void ShowDescription(GameModeButtonView buttonView, bool show) => buttonView.DescriptionImage.gameObject.SetActive(show);
-    public void ShowPopup(bool show) => _gameModePopup.SetActive(show);
+    public void ShowPopup(bool show)
+    {
+        _gameModePopup.SetActive(show);
+        if (show)
+            SetRepresentation();
+    }
+    
 }

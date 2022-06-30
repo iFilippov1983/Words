@@ -1,3 +1,4 @@
+using Game;
 using Lofelt.NiceVibrations;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class GameUtility : MonoBehaviour
 {
-    [SerializeField] private GameLevelData _levelData;
+    [SerializeField] private GameModeHandler _gameModeHandler;
     [SerializeField] private DataProfile _dataProfile;
 
     private void Awake()
@@ -43,7 +44,13 @@ public class GameUtility : MonoBehaviour
     [Button]
     private void ResetProgress()
     {
-        DataSaver.ClearGameData(_levelData);
+        DataSaver.ClearGameData();
+        //Ulock first level
+        DataSaver.SaveIntData(_dataProfile.ProgressKey, 0);
+        DataSaver.SaveIntData(CurrencyManager.coinsKey, 0);
+        
+        _gameModeHandler.SetGameMode(GameModeType.WordsMode);
+
         _dataProfile.UsedWords.Clear();
         _dataProfile.isUpdated = false;
     }
@@ -58,12 +65,14 @@ public class GameUtility : MonoBehaviour
     [Button]
     [HideInPlayMode]
     //private void SetLevel(int number, string categoryName = "Easy")
-    private void SetLevel(int number, GameModeType gameMode = GameModeType.DotsMode)
+    private void SetLevel(int number, GameModeType gameMode = GameModeType.WordsMode)
     {
         var index = number - 1;
         if (index >= 0)
-            //DataSaver.SaveIntData(categoryName, number - 1);
-            DataSaver.SaveIntData(gameMode.ToString(), number - 1);
+        {
+            DataSaver.SaveIntData(_dataProfile.ProgressKey, index);
+            _gameModeHandler.SetGameMode(gameMode);
+        }
         else
             Debug.LogError("Level number can't be less than 1");
     }

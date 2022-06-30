@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
   - CategoryName: Dots
-    GameMode: 2
+    GameMode: 1
     BoardData:
     - {fileID: 11400000, guid: 22d149162066b0a4c9b63f51533e4af5, type: 2}
     - {fileID: 11400000, guid: 8e05de641043b7944941a2807ac68951, type: 2}
@@ -40,7 +40,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 6959bf17453332b47a097870cf46ae96, type: 2}
     - {fileID: 11400000, guid: 9b89ee89dad9e7742bb08fe61c2827cf, type: 2}
   - CategoryName: Words
-    GameMode: 1
+    GameMode: 0
     BoardData:
     - {fileID: 11400000, guid: b29051e1c34f7ec4bbb21ad6c8c406e0, type: 2}
     - {fileID: 11400000, guid: b8657e873b6666b4d875aba13e4eccba, type: 2}

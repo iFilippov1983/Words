@@ -6,6 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DataProfile", menuName = "Data/DataProfile")]
 public class DataProfile : ScriptableObject
 {
+    public readonly string ProgressKey = "Progress";
+
     public int CurrentLevelNumber;
     public GameModeType GameMode;
     public bool MousePositionIsFar = false;

@@ -1,5 +1,5 @@
 ﻿public enum GameModeType
 { 
-    WordsMode = 1,
-    DotsMode = 2
+    WordsMode = 0,
+    DotsMode = 1
 }

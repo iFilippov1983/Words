@@ -12,59 +12,59 @@ public class SelectPuzzleButton : MonoBehaviour
     
     private bool _levelLocked;
 
-    void Start()
-    {
-        _levelLocked = false;
-        var button = GetComponent<Button>();
-        button.onClick.AddListener(OnButtonClick);
-        UpdateButtonInformation();
+    //void Start()
+    //{
+    //    _levelLocked = false;
+    //    var button = GetComponent<Button>();
+    //    button.onClick.AddListener(OnButtonClick);
+    //    UpdateButtonInformation();
 
-        button.interactable = _levelLocked
-            ? false
-            : true;
-    }
+    //    button.interactable = _levelLocked
+    //        ? false
+    //        : true;
+    //}
 
-    void Update()
-    {
+    //void Update()
+    //{
         
-    }
+    //}
 
-    private void UpdateButtonInformation()
-    {
-        int currentIndex = -1;
-        int totalBoards = 0;
+    //private void UpdateButtonInformation()
+    //{
+    //    int currentIndex = -1;
+    //    int totalBoards = 0;
 
-        foreach (var data in levelData.Data)
-        {
-            if (data.CategoryName.Equals(gameObject.name))
-            {
-                currentIndex = DataSaver.LoadIntData(gameObject.name);
-                totalBoards = data.BoardData.Count;
+    //    foreach (var data in levelData.Data)
+    //    {
+    //        if (data.CategoryName.Equals(gameObject.name))
+    //        {
+    //            currentIndex = DataSaver.LoadIntData(gameObject.name);
+    //            totalBoards = data.BoardData.Count;
 
-                if (levelData.Data[0].CategoryName.Equals(gameObject.name) && currentIndex < 0)
-                {
-                    DataSaver.SaveIntData(levelData.Data[0].CategoryName, 0);//Unlocks first level
-                    currentIndex = DataSaver.LoadIntData(gameObject.name);
-                    totalBoards = data.BoardData.Count;
-                }
-            }
-        }
+    //            if (levelData.Data[0].CategoryName.Equals(gameObject.name) && currentIndex < 0)
+    //            {
+    //                DataSaver.SaveIntData(levelData.Data[0].CategoryName, 0);//Unlocks first level
+    //                currentIndex = DataSaver.LoadIntData(gameObject.name);
+    //                totalBoards = data.BoardData.Count;
+    //            }
+    //        }
+    //    }
 
-        if (currentIndex.Equals(-1))
-            _levelLocked = true;
+    //    if (currentIndex.Equals(-1))
+    //        _levelLocked = true;
 
-        categoryText.text = _levelLocked 
-            ? string.Empty 
-            : (currentIndex.ToString() + "/" + totalBoards.ToString());
+    //    categoryText.text = _levelLocked 
+    //        ? string.Empty 
+    //        : (currentIndex.ToString() + "/" + totalBoards.ToString());
 
-        progressBarFilling.fillAmount = (currentIndex > 0 && totalBoards > 0) 
-            ? (float)currentIndex / (float) totalBoards 
-            : 0f;
-    }
+    //    progressBarFilling.fillAmount = (currentIndex > 0 && totalBoards > 0) 
+    //        ? (float)currentIndex / (float) totalBoards 
+    //        : 0f;
+    //}
 
-    private void OnButtonClick()
-    {
-        gameData.selectedCategoryName = gameObject.name;
-        SceneManager.LoadScene(Literal.Scene_GameScene);
-    }
+    //private void OnButtonClick()
+    //{
+    //    gameData.selectedCategoryName = gameObject.name;
+    //    SceneManager.LoadScene(Literal.Scene_GameScene);
+    //}
 }

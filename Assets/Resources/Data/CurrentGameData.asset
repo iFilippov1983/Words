@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197eaa14d88ca7e4da8a85709afd05ed, type: 3}
   m_Name: CurrentGameData
   m_EditorClassIdentifier: 
-  selectedCategoryName: Dots
-  selectedGameMode: 2
-  selectedBoardData: {fileID: 11400000, guid: 8e05de641043b7944941a2807ac68951, type: 2}
+  selectedGameMode: 1
+  selectedBoardData: {fileID: 11400000, guid: b29051e1c34f7ec4bbb21ad6c8c406e0, type: 2}

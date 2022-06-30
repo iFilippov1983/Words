@@ -74,7 +74,8 @@ public class WordCheker : MonoBehaviour
 
         //If there's NO category selection
         //int number = DataSaver.LoadIntData(currentGameData.selectedCategoryName)
-        int number = DataSaver.LoadIntData(currentGameData.selectedGameMode.ToString())
+        //int number = DataSaver.LoadIntData(currentGameData.selectedGameMode.ToString())
+        int number = DataSaver.LoadIntData(_dataProfile.ProgressKey)
         + gameLevelData.Data[0].BoardData.Count * _gameCyclesCount
         - (_levelNumberToCycleFrom - 1) * _gameCyclesCount + 1;
 
@@ -214,35 +215,37 @@ public class WordCheker : MonoBehaviour
         {
             //Save current level progress
             //var categoryName = currentGameData.selectedCategoryName;
-            var gameMode = currentGameData.selectedGameMode;
-            var currentBoardIndex = DataSaver.LoadIntData(gameMode.ToString());
+            //var gameMode = currentGameData.selectedGameMode;
+            //var currentBoardIndex = DataSaver.LoadIntData(gameMode.ToString());
+            var currentBoardIndex = DataSaver.LoadIntData(_dataProfile.ProgressKey);
             //int nextBoardIndex = -1;
             int currentCategoryIndex = 0;
-            bool readNextCategoryName = false;
+            //bool readNextCategoryName = false;
             _currentLevelNotCompleted = false;
 
-            for (int index = 0; index < gameLevelData.Data.Count; index++)
-            {
-                if (readNextCategoryName)
-                {
-                    //nextBoardIndex = DataSaver.LoadIntData(gameLevelData.Data[index].CategoryName);
-                    //nextBoardIndex = DataSaver.LoadIntData(gameLevelData.Data[index].GameMode.ToString());
-                    readNextCategoryName = false;
-                }
+            //for (int index = 0; index < gameLevelData.Data.Count; index++)
+            //{
+            //    if (readNextCategoryName)
+            //    {
+            //        //nextBoardIndex = DataSaver.LoadIntData(gameLevelData.Data[index].CategoryName);
+            //        //nextBoardIndex = DataSaver.LoadIntData(gameLevelData.Data[index].GameMode.ToString());
+            //        readNextCategoryName = false;
+            //    }
 
-                //if (gameLevelData.Data[index].CategoryName.Equals(categoryName))
-                if (gameLevelData.Data[index].GameMode.Equals(gameMode))
-                { 
-                    readNextCategoryName = true;
-                    currentCategoryIndex = index;
-                }
-            }
+            //    //if (gameLevelData.Data[index].CategoryName.Equals(categoryName))
+            //    if (gameLevelData.Data[index].GameMode.Equals(gameMode))
+            //    { 
+            //        readNextCategoryName = true;
+            //        currentCategoryIndex = index;
+            //    }
+            //}
 
             int currentCategorySize = gameLevelData.Data[currentCategoryIndex].BoardData.Count;
             if (currentBoardIndex < currentCategorySize)
                 currentBoardIndex++;
 
-            DataSaver.SaveIntData(gameMode.ToString(), currentBoardIndex);
+            //DataSaver.SaveIntData(gameMode.ToString(), currentBoardIndex);
+            DataSaver.SaveIntData(_dataProfile.ProgressKey, currentBoardIndex);
 
             //Make game cycle
             if (currentBoardIndex >= currentCategorySize)
@@ -252,9 +255,10 @@ public class WordCheker : MonoBehaviour
                 currentBoardIndex = _levelNumberToCycleFrom - 1;
                 loadNextCategory = false;
                 //categoryName = gameLevelData.Data[currentCategoryIndex].CategoryName;
-                gameMode = gameLevelData.Data[currentCategoryIndex].GameMode;
+                //gameMode = gameLevelData.Data[currentCategoryIndex].GameMode;
 
-                DataSaver.SaveIntData(gameMode.ToString(), currentBoardIndex);
+                //DataSaver.SaveIntData(gameMode.ToString(), currentBoardIndex);
+                DataSaver.SaveIntData(_dataProfile.ProgressKey, currentBoardIndex);
                 DataSaver.SaveIntData(CyclesCountKey, _gameCyclesCount);
                 _dataProfile.isUpdated = false;
                 GameEvents.BoardCompletedMethod(loadNextCategory);

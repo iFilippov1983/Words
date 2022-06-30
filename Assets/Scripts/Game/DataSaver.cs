@@ -77,17 +77,24 @@ public static class DataSaver
         PlayerPrefs.Save();
     }
 
-    public static void ClearGameData(GameLevelData levelData)
+    //public static void ClearGameData(GameLevelData levelData)
+    //{
+    //    PlayerPrefs.DeleteAll();
+    //    _listNames.Clear();
+
+    //    //Ulock first level
+    //    //PlayerPrefs.SetInt(levelData.Data[0].CategoryName, 0);
+    //    PlayerPrefs.SetInt(levelData.Data[0].GameMode.ToString(), 0);
+
+    //    PlayerPrefs.SetInt(CurrencyManager.coinsKey, 0);
+       
+    //    PlayerPrefs.Save();
+    //}
+
+    public static void ClearGameData()
     {
         PlayerPrefs.DeleteAll();
         _listNames.Clear();
-
-        //Ulock first level
-        //PlayerPrefs.SetInt(levelData.Data[0].CategoryName, 0);
-        PlayerPrefs.SetInt(levelData.Data[0].GameMode.ToString(), 0);
-
-        PlayerPrefs.SetInt(CurrencyManager.coinsKey, 0);
-       
         PlayerPrefs.Save();
     }
 
