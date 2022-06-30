@@ -56,11 +56,13 @@ public class GameUtility : MonoBehaviour
 
     [Button]
     [HideInPlayMode]
-    private void SetLevel(int number, string categoryName = "Easy")
+    //private void SetLevel(int number, string categoryName = "Easy")
+    private void SetLevel(int number, GameModeType categoryName = GameModeType.DotsMode)
     {
         var index = number - 1;
         if (index >= 0)
-            DataSaver.SaveIntData(categoryName, number - 1);
+            //DataSaver.SaveIntData(categoryName, number - 1);
+            DataSaver.SaveIntData(categoryName.ToString(), number - 1);
         else
             Debug.LogError("Level number can't be less than 1");
     }

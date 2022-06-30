@@ -63,7 +63,7 @@ public class SelectPuzzleButton : MonoBehaviour
     }
 
     private void OnButtonClick()
-    { 
+    {
         gameData.selectedCategoryName = gameObject.name;
         SceneManager.LoadScene(Literal.Scene_GameScene);
     }

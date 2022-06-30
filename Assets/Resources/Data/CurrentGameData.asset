@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: CurrentGameData
   m_EditorClassIdentifier: 
   selectedCategoryName: Easy
-  selectedBoardData: {fileID: 11400000, guid: b29051e1c34f7ec4bbb21ad6c8c406e0, type: 2}
+  selectedGameMode: 2
+  selectedBoardData: {fileID: 11400000, guid: 8e05de641043b7944941a2807ac68951, type: 2}

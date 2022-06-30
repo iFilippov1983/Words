@@ -6,5 +6,6 @@ using UnityEngine;
 public class GameData : ScriptableObject
 {
     public string selectedCategoryName;
+    public GameModeType selectedGameMode;
     public BoardData selectedBoardData;
 }

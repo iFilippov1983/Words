@@ -11,6 +11,7 @@ public class GameLevelData : ScriptableObject
     public struct CategoryRecord
     { 
         public string CategoryName;
+        public GameModeType GameMode;
         public List<BoardData> BoardData;
     }
 

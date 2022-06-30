@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundData _soundData;
     [Range(0f, 1f)]
     [SerializeField] private float _effectFactor;
+    [Range(1f, 10f)]
     [SerializeField] private float _defaultEffectValue;
 
     private AudioSource _audioSource;

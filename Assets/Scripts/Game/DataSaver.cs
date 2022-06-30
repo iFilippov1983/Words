@@ -14,7 +14,7 @@ public static class DataSaver
 
     public static int LoadIntData(string key)
     {
-        int value = 0;// -1?
+        int value = 0;
         if (PlayerPrefs.HasKey(key))
         { 
             value = PlayerPrefs.GetInt(key);
@@ -74,8 +74,6 @@ public static class DataSaver
             PlayerPrefs.SetString(key, listToSave[index]);
         }
 
-        //Debug.Log("Data saver count index: " + _countIndex);
-
         PlayerPrefs.Save();
     }
 
@@ -83,10 +81,11 @@ public static class DataSaver
     {
         PlayerPrefs.DeleteAll();
         _listNames.Clear();
-       
+
         //Ulock first level
-        PlayerPrefs.SetInt(levelData.Data[0].CategoryName, 0);
-        
+        //PlayerPrefs.SetInt(levelData.Data[0].CategoryName, 0);
+        PlayerPrefs.SetInt(levelData.Data[0].GameMode.ToString(), 0);
+
         PlayerPrefs.SetInt(CurrencyManager.coinsKey, 0);
        
         PlayerPrefs.Save();

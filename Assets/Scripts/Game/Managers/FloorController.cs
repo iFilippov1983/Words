@@ -8,7 +8,8 @@ public class FloorController : MonoBehaviour
 
     public void SetPosition()
     {
-        var categoryName = _currentGameData.selectedCategoryName;
+        //var categoryName = _currentGameData.selectedCategoryName;
+        var categoryName = _currentGameData.selectedGameMode.ToString();
         var currentBoardIndex = DataSaver.LoadIntData(categoryName);
         bool moveOnes = currentBoardIndex >= firstBoardExpandLevel - 1;
         bool moveTwice = currentBoardIndex >= secondBoardExpandLevel - 1;

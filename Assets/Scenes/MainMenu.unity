@@ -324,8 +324,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundData: {fileID: 11400000, guid: e0eb3a1fdad6f3e47b555d45db09d09d, type: 2}
-  _effectFactor: 0
-  _defaultEffectValue: 0
+  _effectFactor: 0.1
+  _defaultEffectValue: 1
 --- !u!1 &438574977
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,14 +885,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1111014881}
     - target: {fileID: 1185745918270158104, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1185745918270158104, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1185745918270158104, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
       propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1046814845}
@@ -900,34 +892,6 @@ PrefabInstance:
       propertyPath: onPurchaseComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1046814845}
-    - target: {fileID: 1185745918270158104, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1185745918270158104, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnPurchaseFailed
-      objectReference: {fileID: 0}
-    - target: {fileID: 1185745918270158104, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: IAPCore, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1185745918270158104, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1911752499182051600, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2206304486378582546, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2206304486378582546, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2206304486378582546, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
       propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -936,30 +900,6 @@ PrefabInstance:
       propertyPath: onPurchaseComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1046814845}
-    - target: {fileID: 2206304486378582546, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2206304486378582546, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnPurchaseFailed
-      objectReference: {fileID: 0}
-    - target: {fileID: 2206304486378582546, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: IAPCore, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2206304486378582546, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965678143712520098, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965678143712520098, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2965678143712520098, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
       propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -968,30 +908,6 @@ PrefabInstance:
       propertyPath: onPurchaseComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1046814845}
-    - target: {fileID: 2965678143712520098, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965678143712520098, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnPurchaseFailed
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965678143712520098, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: IAPCore, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965678143712520098, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413222744963231610, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413222744963231610, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5413222744963231610, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
       propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1000,30 +916,6 @@ PrefabInstance:
       propertyPath: onPurchaseComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1046814845}
-    - target: {fileID: 5413222744963231610, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413222744963231610, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnPurchaseFailed
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413222744963231610, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: IAPCore, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413222744963231610, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6423463862828993244, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6423463862828993244, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6423463862828993244, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
       propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1032,22 +924,6 @@ PrefabInstance:
       propertyPath: onPurchaseComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1046814845}
-    - target: {fileID: 6423463862828993244, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6423463862828993244, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnPurchaseFailed
-      objectReference: {fileID: 0}
-    - target: {fileID: 6423463862828993244, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: IAPCore, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6423463862828993244, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: onPurchaseFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 9149001351799981831, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
       propertyPath: m_Pivot.x
       value: 0
