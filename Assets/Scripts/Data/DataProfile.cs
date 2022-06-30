@@ -7,6 +7,7 @@ using UnityEngine;
 public class DataProfile : ScriptableObject
 {
     public int CurrentLevelNumber;
+    public GameModeType GameMode;
     public bool MousePositionIsFar = false;
     public bool BoardCanPrompt = false;
     public bool isUpdated = false;

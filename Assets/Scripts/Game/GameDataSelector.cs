@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameDataSelector : MonoBehaviour
@@ -37,6 +35,7 @@ public class GameDataSelector : MonoBehaviour
             if (data.GameMode.Equals(currentGameData.selectedGameMode))
             {
                 int boardIndex = DataSaver.LoadIntData(currentGameData.selectedGameMode.ToString());
+
 
                 if (boardIndex < data.BoardData.Count)
                 {

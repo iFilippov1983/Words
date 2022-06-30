@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43eea4a0031497c44b57002bf700a7bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PresentedGameMode: 1
   ChooseModeButton: {fileID: 5942173698692286296}
   DescriptionButton: {fileID: 517964988703851996}
   CloseDescriptionButton: {fileID: 3318975295036328517}
@@ -4046,6 +4047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43eea4a0031497c44b57002bf700a7bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PresentedGameMode: 2
   ChooseModeButton: {fileID: 2012243375663576578}
   DescriptionButton: {fileID: 2206120395088627344}
   CloseDescriptionButton: {fileID: 2406738920526492697}
@@ -5911,7 +5913,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Task is to find given\n words in the board"
+  m_text: "Task is to find given\n words on the board"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6884,6 +6886,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 14633744002717552}
+  - component: {fileID: 1924439651}
   m_Layer: 5
   m_Name: SetGameModePopup
   m_TagString: Untagged
@@ -6911,6 +6914,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1924439651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4556700255881488239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9053036c4f92774bb2f86bfe3bcec28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameModePopup: {fileID: 3777783281932259211}
+  _backButtonObject: {fileID: 2561265477601444966}
+  _wordsModeButton: {fileID: 2287713526281507074}
+  _dotsModeButton: {fileID: 5313799887964690834}
 --- !u!1 &4613618328772923388
 GameObject:
   m_ObjectHideFlags: 0

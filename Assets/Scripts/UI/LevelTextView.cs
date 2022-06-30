@@ -8,7 +8,7 @@ public class LevelTextView : MonoBehaviour
 
     private async void Start()
     {
-        while(dataProfile.isUpdated == false)
+        while (dataProfile.isUpdated == false)
             await System.Threading.Tasks.Task.Yield();
         levelText.text = dataProfile.CurrentLevelNumber.ToString();
     }

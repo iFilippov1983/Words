@@ -11,7 +11,7 @@ public class LifesManager : MonoBehaviour
     public const string TimeKey = "Time";
     public const string DateTimeKey = "LastSavedTime";
     private const string LifesFull = "FULL";
-    private const int ExitCost = -1;
+    private const int ExitCost = 1;
 
     [SerializeField] private BuyLifesPopup _buyLifesPopup;
     [SerializeField] private Button _showPopupButton;
@@ -51,16 +51,17 @@ public class LifesManager : MonoBehaviour
         BuyLifesPopup.ContinueWhithExtraLifes -= ChangeLifesAmount;
     }
 
-#if UNITY_IOS
     private void OnApplicationQuit()
     {
+#if UNITY_IOS || UNITY_IPHONE
         if (SceneManager.GetActiveScene().name.Equals(Literal.Scene_GameScene))
         {
             int amount = -ExitCost;
             TryChangeLifesAmountMethod(amount);
         }
-    }
 #endif
+    }
+
 
     private void FixedUpdate()
     {

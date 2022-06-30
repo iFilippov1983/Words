@@ -214,9 +214,9 @@ public class WordCheker : MonoBehaviour
         {
             //Save current level progress
             //var categoryName = currentGameData.selectedCategoryName;
-            var categoryName = currentGameData.selectedGameMode;
-            var currentBoardIndex = DataSaver.LoadIntData(categoryName.ToString());
-            int nextBoardIndex = -1;
+            var gameMode = currentGameData.selectedGameMode;
+            var currentBoardIndex = DataSaver.LoadIntData(gameMode.ToString());
+            //int nextBoardIndex = -1;
             int currentCategoryIndex = 0;
             bool readNextCategoryName = false;
             _currentLevelNotCompleted = false;
@@ -226,12 +226,12 @@ public class WordCheker : MonoBehaviour
                 if (readNextCategoryName)
                 {
                     //nextBoardIndex = DataSaver.LoadIntData(gameLevelData.Data[index].CategoryName);
-                    nextBoardIndex = DataSaver.LoadIntData(gameLevelData.Data[index].GameMode.ToString());
+                    //nextBoardIndex = DataSaver.LoadIntData(gameLevelData.Data[index].GameMode.ToString());
                     readNextCategoryName = false;
                 }
 
                 //if (gameLevelData.Data[index].CategoryName.Equals(categoryName))
-                if (gameLevelData.Data[index].GameMode.Equals(categoryName))
+                if (gameLevelData.Data[index].GameMode.Equals(gameMode))
                 { 
                     readNextCategoryName = true;
                     currentCategoryIndex = index;
@@ -242,41 +242,53 @@ public class WordCheker : MonoBehaviour
             if (currentBoardIndex < currentCategorySize)
                 currentBoardIndex++;
 
-            DataSaver.SaveIntData(categoryName.ToString(), currentBoardIndex);
+            DataSaver.SaveIntData(gameMode.ToString(), currentBoardIndex);
 
-            //Unlock next category
+            //Make game cycle
             if (currentBoardIndex >= currentCategorySize)
             {
-                currentCategoryIndex++;
-                if (currentCategoryIndex < gameLevelData.Data.Count) //If this is not the last category
-                {
-                    //categoryName = gameLevelData.Data[currentCategoryIndex].CategoryName;
-                    categoryName = gameLevelData.Data[currentCategoryIndex].GameMode;
-                    currentBoardIndex = 0;
-                    loadNextCategory = true;
+                _gameCyclesCount++;
+                currentCategoryIndex = 0;
+                currentBoardIndex = _levelNumberToCycleFrom - 1;
+                loadNextCategory = false;
+                //categoryName = gameLevelData.Data[currentCategoryIndex].CategoryName;
+                gameMode = gameLevelData.Data[currentCategoryIndex].GameMode;
 
-                    if (nextBoardIndex <= 0)
-                    {
-                        DataSaver.SaveIntData(categoryName.ToString(), currentBoardIndex);
-                    }
+                DataSaver.SaveIntData(gameMode.ToString(), currentBoardIndex);
+                DataSaver.SaveIntData(CyclesCountKey, _gameCyclesCount);
+                _dataProfile.isUpdated = false;
+                GameEvents.BoardCompletedMethod(loadNextCategory);
 
-                    _dataProfile.isUpdated = false;
-                    GameEvents.BoardCompletedMethod(loadNextCategory);
-                }
-                else //If there's NO category selection
-                {
-                    _gameCyclesCount++;
-                    currentCategoryIndex = 0;
-                    currentBoardIndex = _levelNumberToCycleFrom - 1;
-                    loadNextCategory = false;
-                    //categoryName = gameLevelData.Data[currentCategoryIndex].CategoryName;
-                    categoryName = gameLevelData.Data[currentCategoryIndex].GameMode;
+                //currentCategoryIndex++;
+                //if (currentCategoryIndex < gameLevelData.Data.Count) //If this is not the last category
+                //{
+                //    //categoryName = gameLevelData.Data[currentCategoryIndex].CategoryName;
+                //    gameMode = gameLevelData.Data[currentCategoryIndex].GameMode;
+                //    currentBoardIndex = 0;
+                //    loadNextCategory = true;
 
-                    DataSaver.SaveIntData(categoryName.ToString(), currentBoardIndex);
-                    DataSaver.SaveIntData(CyclesCountKey, _gameCyclesCount);
-                    _dataProfile.isUpdated = false;
-                    GameEvents.BoardCompletedMethod(loadNextCategory);
-                }
+                //    if (nextBoardIndex <= 0)
+                //    {
+                //        DataSaver.SaveIntData(gameMode.ToString(), currentBoardIndex);
+                //    }
+
+                //    _dataProfile.isUpdated = false;
+                //    GameEvents.BoardCompletedMethod(loadNextCategory);
+                //}
+                //else //If there's NO category selection
+                //{
+                //    _gameCyclesCount++;
+                //    currentCategoryIndex = 0;
+                //    currentBoardIndex = _levelNumberToCycleFrom - 1;
+                //    loadNextCategory = false;
+                //    //categoryName = gameLevelData.Data[currentCategoryIndex].CategoryName;
+                //    gameMode = gameLevelData.Data[currentCategoryIndex].GameMode;
+
+                //    DataSaver.SaveIntData(gameMode.ToString(), currentBoardIndex);
+                //    DataSaver.SaveIntData(CyclesCountKey, _gameCyclesCount);
+                //    _dataProfile.isUpdated = false;
+                //    GameEvents.BoardCompletedMethod(loadNextCategory);
+                //}
                 //else //If there's category selection
                 //{
                 //    SceneManager.LoadScene(Literal.Scene_SelectCategory);
@@ -306,7 +318,6 @@ public class WordCheker : MonoBehaviour
                 bdSearchingWord.isFound = true;
             }
         }
-
     }
 
     [Button]

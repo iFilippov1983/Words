@@ -177,4 +177,13 @@ public static class GameEvents
         OnNoWordsAvailable?.Invoke();
     }
     //************
+
+    public delegate void GameModeChanged(GameModeType gameModeType);
+    public static event GameModeChanged OnGameModeChanged;
+
+    public static void GameModeChangedMethod(GameModeType gameModeType)
+    { 
+        OnGameModeChanged?.Invoke(gameModeType);
+    }
+    //************
 }

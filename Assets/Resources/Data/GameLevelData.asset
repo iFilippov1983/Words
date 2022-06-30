@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameLevelData
   m_EditorClassIdentifier: 
   Data:
-  - CategoryName: Easy
+  - CategoryName: Dots
     GameMode: 2
     BoardData:
     - {fileID: 11400000, guid: 22d149162066b0a4c9b63f51533e4af5, type: 2}
@@ -39,5 +39,29 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 376a4008d57624740a1a3ae0d5572c4a, type: 2}
     - {fileID: 11400000, guid: 6959bf17453332b47a097870cf46ae96, type: 2}
     - {fileID: 11400000, guid: 9b89ee89dad9e7742bb08fe61c2827cf, type: 2}
-    - {fileID: 11400000, guid: fa22db5fc49349b4c8e1344305a17292, type: 2}
-    - {fileID: 11400000, guid: d50711e4a21dffd45a481b50a37edf76, type: 2}
+  - CategoryName: Words
+    GameMode: 1
+    BoardData:
+    - {fileID: 11400000, guid: b29051e1c34f7ec4bbb21ad6c8c406e0, type: 2}
+    - {fileID: 11400000, guid: b8657e873b6666b4d875aba13e4eccba, type: 2}
+    - {fileID: 11400000, guid: efd2eac5900136f4290204fefa716bd7, type: 2}
+    - {fileID: 11400000, guid: e1ca8363c0d34e84cb693be5a1925f07, type: 2}
+    - {fileID: 11400000, guid: 02b497c4e18dc2d48becf92e710a92f7, type: 2}
+    - {fileID: 11400000, guid: 5ded05ee093204a448dd86ba81e4c5b9, type: 2}
+    - {fileID: 11400000, guid: 162a48ad1c2434048b8bbbf42ddefdab, type: 2}
+    - {fileID: 11400000, guid: 13012ef46d2217b41a9d153988189ca6, type: 2}
+    - {fileID: 11400000, guid: 1ac8c9f981540aa458c095426f2a4f29, type: 2}
+    - {fileID: 11400000, guid: 972d4e21d79070441bc52175af4b8c87, type: 2}
+    - {fileID: 11400000, guid: 3829bd7f1a0e1fb408858be070557d4d, type: 2}
+    - {fileID: 11400000, guid: ace9cfa79b799d94a8622626bcab6564, type: 2}
+    - {fileID: 11400000, guid: 81e6564819c58a040a043879996f8083, type: 2}
+    - {fileID: 11400000, guid: 3ee9fd037efdfcc48a869428b470faa9, type: 2}
+    - {fileID: 11400000, guid: 412f0d245742034498038d7ac8375b09, type: 2}
+    - {fileID: 11400000, guid: a36803ae8950ae249ac5b7376a0212b1, type: 2}
+    - {fileID: 11400000, guid: 4e4b26ff0bb5b4d4baa06531a41b0d08, type: 2}
+    - {fileID: 11400000, guid: 665071df2353d044993d24dde5e554e9, type: 2}
+    - {fileID: 11400000, guid: 5f1c0465914cdce4d84997edaefaac82, type: 2}
+    - {fileID: 11400000, guid: 0911c17ccb7282d48aa52a02a42e21e6, type: 2}
+    - {fileID: 11400000, guid: 8300f3e0bbd0ca14792d91bb3e88a1d0, type: 2}
+    - {fileID: 11400000, guid: eda4b45ca0b50a440a8d39f856c919ca, type: 2}
+    - {fileID: 11400000, guid: 713ec1e524378cd43af13858e24c8349, type: 2}
