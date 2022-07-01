@@ -108,7 +108,6 @@ public class Timer : MonoBehaviour
             GameEvents.TimeToPromptMethod();
             _promptTimer = _timeToPrompt;
         }
-
     }
 
     private void ActivateGameOverGUI()
@@ -120,6 +119,5 @@ public class Timer : MonoBehaviour
     private void ResetPromptTimer(string word, List<int> squareIndexes) => ResetPromptTimer();
     private void ResetPromptTimer(List<int> squareIndexes) => ResetPromptTimer();
     private void ResetPromptTimer() => _promptTimer = _timeToPrompt;
-
     public static void ResetPromptTimerMethod() => OnResetPromptTimer?.Invoke();
 }

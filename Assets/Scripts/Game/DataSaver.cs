@@ -16,9 +16,7 @@ public static class DataSaver
     {
         int value = 0;
         if (PlayerPrefs.HasKey(key))
-        { 
             value = PlayerPrefs.GetInt(key);
-        }
 
         return value;
     }
@@ -27,9 +25,7 @@ public static class DataSaver
     { 
         float value = 0f;
         if (PlayerPrefs.HasKey(key))
-        { 
             value = PlayerPrefs.GetFloat(key);
-        }
 
         return value;
     }
@@ -76,20 +72,6 @@ public static class DataSaver
 
         PlayerPrefs.Save();
     }
-
-    //public static void ClearGameData(GameLevelData levelData)
-    //{
-    //    PlayerPrefs.DeleteAll();
-    //    _listNames.Clear();
-
-    //    //Ulock first level
-    //    //PlayerPrefs.SetInt(levelData.Data[0].CategoryName, 0);
-    //    PlayerPrefs.SetInt(levelData.Data[0].GameMode.ToString(), 0);
-
-    //    PlayerPrefs.SetInt(CurrencyManager.coinsKey, 0);
-       
-    //    PlayerPrefs.Save();
-    //}
 
     public static void ClearGameData()
     {

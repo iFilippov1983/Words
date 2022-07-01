@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class GameModePopup : MonoBehaviour
 {
+    [SerializeField] private Button _showPopupButton;
     [SerializeField] private GameObject _gameModePopup;
     [SerializeField] private GameObject _backButtonObject;
     [SerializeField] private GameModeButtonView _wordsModeButton;
@@ -13,6 +14,8 @@ public class GameModePopup : MonoBehaviour
 
     void Start()
     {
+        _showPopupButton.onClick.AddListener(() => ShowPopup(true));
+
         _wordsModeButton.ChooseModeButton.onClick.AddListener(() => SetGameMode(_wordsModeButton, _dotsModeButton));
         _wordsModeButton.DescriptionButton.onClick.AddListener(() => ShowDescription(_wordsModeButton, true));
         _wordsModeButton.CloseDescriptionButton.onClick.AddListener(() => ShowDescription(_wordsModeButton, false));
@@ -66,5 +69,4 @@ public class GameModePopup : MonoBehaviour
         if (show)
             SetRepresentation();
     }
-    
 }

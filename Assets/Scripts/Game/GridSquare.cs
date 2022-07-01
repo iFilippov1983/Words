@@ -327,6 +327,7 @@ public class GridSquare : MonoBehaviour
         }
     }
 
+    //Used in animation events
     private void PlayPromptSound()
     {
         SoundManager.PalaySound(Sound.Prompt);

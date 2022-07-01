@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//Legasy
 public class SelectPuzzleButton : MonoBehaviour
 {
     public GameData gameData;

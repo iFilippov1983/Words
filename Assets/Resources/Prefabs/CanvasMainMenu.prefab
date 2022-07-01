@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43eea4a0031497c44b57002bf700a7bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PresentedGameMode: 1
+  PresentedGameMode: 0
   ChooseModeButton: {fileID: 5942173698692286296}
   DescriptionButton: {fileID: 517964988703851996}
   CloseDescriptionButton: {fileID: 3318975295036328517}
@@ -4047,7 +4047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43eea4a0031497c44b57002bf700a7bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PresentedGameMode: 2
+  PresentedGameMode: 1
   ChooseModeButton: {fileID: 2012243375663576578}
   DescriptionButton: {fileID: 2206120395088627344}
   CloseDescriptionButton: {fileID: 2406738920526492697}

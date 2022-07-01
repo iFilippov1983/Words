@@ -70,7 +70,6 @@ public class WinPopup : MonoBehaviour
         {
             await ShowMessage();
             SceneManager.LoadScene(Literal.Scene_MainMenu);
-            //SceneManager.LoadScene(Literal.Scene_SelectCategory);// Comment previous two lines of code and comment this line out if category selection avalable
         }
         else
         {

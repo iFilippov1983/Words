@@ -140,19 +140,14 @@ namespace Game
             if (targetLetter == null)
             {
                 yield return MoveToPosition(letter, endPosition, firstLetterFlySpeed, timeCurve);
-                // yield return endScalingDelayFirstWfs;
             }
             else
             {
                 yield return MoveToTarget(letter, targetLetter);
                 yield return MoveToPosition(letter, endPosition, firstLetterFlySpeed * 6f);
-                // yield return endScalingDelayWfs;
             }
 
-            // yield return ScaleToZero(letter, endScaleSpeed, scaleCurve);
-
             LetterReachedSearchingWord?.Invoke(searchingWord);
-          
         }
 
         private IEnumerator Animate(Transform letter,

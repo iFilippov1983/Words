@@ -58,10 +58,6 @@ public class NoWordsAvailablePopup : MonoBehaviour
     private void ShowNoWordsPopup()
     {
         _noWordsPopup.SetActive(true);
-
-        //SoundManager.PalaySound(Sound.Loose);
-        //Debug.Log("[Sound] NoWordsAvailablePopup - ShowNoWordsPopup");
-
         GameEvents.MenuIsActiveMethod(true);
 
         var animation = _noWordsPopup.GetComponent<Animation>();

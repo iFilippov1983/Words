@@ -238,7 +238,6 @@ public class Prompter : MonoBehaviour
                     }
                     if (word.StartsWith(_word))
                     {
-                        //Debug.Log($"Word starts with: {_word}");
                         var raysList = SetRaysFrom(square.BodyPosition);
                         foreach (var ray in raysList)
                         {

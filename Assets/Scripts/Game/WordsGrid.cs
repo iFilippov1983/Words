@@ -36,7 +36,7 @@ public class WordsGrid : MonoBehaviour
     private void SetSelfPosition()
     {
         _finalScale = GetSquareScale(_defaultScale, _minimumScale);
-        _floorController.SetPosition();//(_finalScale)
+        _floorController.SetPosition();
         float yPosition = floorTransform.position.y + floorTransform.localScale.y + currentGameData.selectedBoardData.Rows * _finalScale.y * _startPositionFactor;
         transform.position = new Vector3(0, yPosition, 0);
     }
@@ -214,7 +214,6 @@ public class WordsGrid : MonoBehaviour
         _squareList.Clear();
         tasks.Clear();
 
-        //SetSelfPosition();
         SpawnGridSquares();
         SetSquaresPosition();
     }

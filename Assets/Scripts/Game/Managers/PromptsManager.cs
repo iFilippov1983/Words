@@ -50,7 +50,6 @@ public class PromptsManager : MonoBehaviour
         if (_inMainMenu) return;
         GameEvents.OnCorrectWord += DisableUseButtonClickability;
         GameEvents.OnBoardConfigurationChanged += EnableUseButtonClickability;
-        //GameEvents.OnWordToPromptFound += PauseUseButtonClickability;
         BoardResetManager.OnDisactivateMenuInteraction += DisableUseButtonClickability;
         BuyPromptsPopup.ContinueWhithExtraPrompts += ChangePromptsAmount;
 
@@ -64,7 +63,6 @@ public class PromptsManager : MonoBehaviour
         TryChangePromptsAmount -= ChangePromptsAmount;
         GameEvents.OnCorrectWord -= DisableUseButtonClickability;
         GameEvents.OnBoardConfigurationChanged -= EnableUseButtonClickability;
-        //GameEvents.OnWordToPromptFound -= PauseUseButtonClickability;
         BoardResetManager.OnDisactivateMenuInteraction -= DisableUseButtonClickability;
         BuyPromptsPopup.ContinueWhithExtraPrompts -= ChangePromptsAmount;
     }
@@ -86,10 +84,8 @@ public class PromptsManager : MonoBehaviour
         if (success)
         {
             DisableUseButtonClickability();
-            //_buisyAnimation.Play();
             await Prompter.MakeManualPrompt();
             Timer.ResetPromptTimerMethod();
-            //_buisyAnimation.Stop();
             EnableUseButtonClickability();
         }
     }
@@ -122,7 +118,6 @@ public class PromptsManager : MonoBehaviour
             _promptsAmountText.text = Prompts.ToString();
             _plusImage.gameObject.SetActive(_canBuy);
         }
-            
     }
 
     private void LoadData()

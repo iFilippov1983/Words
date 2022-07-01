@@ -120,7 +120,6 @@ public class BoardResetManager : MonoBehaviour
             _resetsAmountText.text = BoardResets.ToString();
             _plusImage.gameObject.SetActive(_canBuy);
         }
-            
     }
 
     private void LoadData()

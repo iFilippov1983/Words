@@ -56,7 +56,6 @@ public class BuyPromptsPopup : MonoBehaviour, IAnimatableObjectParent
         if (succes)
         {
             OnAnimationInitialize?.Invoke();
-
             await DesactivateButtonInteraction();
         }
     }

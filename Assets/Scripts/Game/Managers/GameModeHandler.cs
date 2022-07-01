@@ -11,8 +11,6 @@ public class GameModeHandler : MonoBehaviour
         var gameMode = DataSaver.LoadIntData(GameModeKey);
         _currentGameData.selectedGameMode = (GameModeType)gameMode;
         GameEvents.OnGameModeChanged += SetGameMode;
-
-        Debug.Log($"Handler: {_currentGameData.selectedGameMode}");
     }
 
     private void OnDestroy()

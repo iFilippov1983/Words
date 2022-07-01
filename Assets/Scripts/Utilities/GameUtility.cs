@@ -64,7 +64,6 @@ public class GameUtility : MonoBehaviour
 
     [Button]
     [HideInPlayMode]
-    //private void SetLevel(int number, string categoryName = "Easy")
     private void SetLevel(int number, GameModeType gameMode = GameModeType.WordsMode)
     {
         var index = number - 1;
@@ -72,6 +71,7 @@ public class GameUtility : MonoBehaviour
         {
             DataSaver.SaveIntData(_dataProfile.ProgressKey, index);
             _gameModeHandler.SetGameMode(gameMode);
+            _dataProfile.CurrentLevelNumber = index;
         }
         else
             Debug.LogError("Level number can't be less than 1");
