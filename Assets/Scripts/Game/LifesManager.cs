@@ -11,7 +11,7 @@ public class LifesManager : MonoBehaviour
     public const string TimeKey = "Time";
     public const string DateTimeKey = "LastSavedTime";
     private const string LifesFull = "FULL";
-    private const int ExitCost = -1;
+    private const int ExitCost = 1;
 
     [SerializeField] private BuyLifesPopup _buyLifesPopup;
     [SerializeField] private Button _showPopupButton;
