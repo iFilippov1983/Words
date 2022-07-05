@@ -1,0 +1,184 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Words_31
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 6
+  Rows: 22
+  UseDotsMode: 0
+  UsePrompts: 1
+  TimeToPrompt: 15
+  Board:
+  - Size: 22
+    Row:
+    - M
+    - K
+    - S
+    - K
+    - H
+    - W
+    - X
+    - C
+    - E
+    - S
+    - I
+    - V
+    - D
+    - A
+    - Y
+    - A
+    - L
+    - E
+    - T
+    - N
+    - I
+    - E
+  - Size: 22
+    Row:
+    - H
+    - X
+    - H
+    - K
+    - V
+    - F
+    - I
+    - J
+    - V
+    - A
+    - C
+    - V
+    - O
+    - V
+    - R
+    - H
+    - P
+    - N
+    - D
+    - A
+    - C
+    - L
+  - Size: 22
+    Row:
+    - T
+    - I
+    - S
+    - B
+    - E
+    - X
+    - J
+    - W
+    - V
+    - Y
+    - W
+    - K
+    - N
+    - E
+    - A
+    - S
+    - E
+    - K
+    - V
+    - P
+    - Y
+    - C
+  - Size: 22
+    Row:
+    - U
+    - K
+    - P
+    - A
+    - Q
+    - P
+    - O
+    - K
+    - B
+    - Y
+    - O
+    - N
+    - S
+    - Z
+    - X
+    - V
+    - C
+    - R
+    - O
+    - E
+    - U
+    - P
+  - Size: 22
+    Row:
+    - O
+    - Z
+    - B
+    - Y
+    - Y
+    - J
+    - X
+    - L
+    - Y
+    - S
+    - A
+    - E
+    - N
+    - D
+    - J
+    - U
+    - H
+    - T
+    - N
+    - T
+    - A
+    - D
+  - Size: 22
+    Row:
+    - H
+    - T
+    - J
+    - O
+    - M
+    - B
+    - P
+    - N
+    - S
+    - V
+    - A
+    - J
+    - F
+    - R
+    - B
+    - C
+    - T
+    - E
+    - G
+    - D
+    - U
+    - B
+  SearchingWords:
+  - Word: CYCLE
+    isFound: 0
+  - Word: UPDATE
+    isFound: 0
+  - Word: BUDGET
+    isFound: 0
+  - Word: NORTH
+    isFound: 0
+  - Word: PAINT
+    isFound: 0
+  - Word: DELAY
+    isFound: 0
+  - Word: PHRASE
+    isFound: 0
+  - Word: ADVISE
+    isFound: 0
+  - Word: SEASON
+    isFound: 0

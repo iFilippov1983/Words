@@ -1,0 +1,178 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Words_29
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 6
+  Rows: 21
+  UseDotsMode: 0
+  UsePrompts: 1
+  TimeToPrompt: 15
+  Board:
+  - Size: 21
+    Row:
+    - U
+    - N
+    - S
+    - W
+    - C
+    - M
+    - Q
+    - A
+    - T
+    - I
+    - T
+    - E
+    - N
+    - A
+    - L
+    - P
+    - K
+    - N
+    - A
+    - L
+    - F
+  - Size: 21
+    Row:
+    - Z
+    - N
+    - H
+    - H
+    - X
+    - Z
+    - P
+    - R
+    - N
+    - R
+    - F
+    - H
+    - P
+    - X
+    - Q
+    - W
+    - F
+    - I
+    - S
+    - H
+    - S
+  - Size: 21
+    Row:
+    - D
+    - U
+    - A
+    - T
+    - U
+    - Z
+    - Y
+    - Q
+    - E
+    - S
+    - T
+    - R
+    - E
+    - A
+    - M
+    - O
+    - T
+    - H
+    - G
+    - W
+    - P
+  - Size: 21
+    Row:
+    - O
+    - O
+    - L
+    - Y
+    - R
+    - S
+    - Y
+    - Z
+    - X
+    - W
+    - T
+    - E
+    - K
+    - G
+    - A
+    - L
+    - H
+    - N
+    - E
+    - T
+    - I
+  - Size: 21
+    Row:
+    - R
+    - R
+    - O
+    - T
+    - L
+    - E
+    - O
+    - V
+    - Z
+    - R
+    - I
+    - R
+    - T
+    - V
+    - M
+    - R
+    - L
+    - N
+    - I
+    - S
+    - R
+  - Size: 21
+    Row:
+    - J
+    - K
+    - R
+    - Q
+    - Y
+    - X
+    - R
+    - G
+    - L
+    - A
+    - S
+    - S
+    - J
+    - R
+    - H
+    - C
+    - N
+    - U
+    - L
+    - T
+    - I
+  SearchingWords:
+  - Word: FLASH
+    isFound: 0
+  - Word: SPIRIT
+    isFound: 0
+  - Word: NIGHT
+    isFound: 0
+  - Word: TENNIS
+    isFound: 0
+  - Word: LUNCH
+    isFound: 0
+  - Word: PLANET
+    isFound: 0
+  - Word: STREAM
+    isFound: 0
+  - Word: WRITER
+    isFound: 0
+  - Word: GLASS
+    isFound: 0

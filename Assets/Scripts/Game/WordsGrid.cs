@@ -28,6 +28,7 @@ public class WordsGrid : MonoBehaviour
     {
         _camera = Camera.main;
         _floorController = FindObjectOfType<FloorController>();
+        _floorController.SetPosition();
         SetSelfPosition();
         SpawnGridSquares();
         SetSquaresPosition();
@@ -36,7 +37,6 @@ public class WordsGrid : MonoBehaviour
     private void SetSelfPosition()
     {
         _finalScale = GetSquareScale(_defaultScale, _minimumScale);
-        _floorController.SetPosition();
         float yPosition = floorTransform.position.y + floorTransform.localScale.y + currentGameData.selectedBoardData.Rows * _finalScale.y * _startPositionFactor;
         transform.position = new Vector3(0, yPosition, 0);
     }

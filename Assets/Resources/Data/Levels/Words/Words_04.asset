@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Words_04
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 4
+  Rows: 12
+  UseDotsMode: 0
+  UsePrompts: 1
+  TimeToPrompt: 15
+  Board:
+  - Size: 12
+    Row:
+    - Q
+    - S
+    - Y
+    - Y
+    - D
+    - C
+    - S
+    - R
+    - F
+    - B
+    - U
+    - G
+  - Size: 12
+    Row:
+    - O
+    - W
+    - R
+    - D
+    - O
+    - A
+    - T
+    - O
+    - E
+    - E
+    - L
+    - E
+  - Size: 12
+    Row:
+    - T
+    - D
+    - X
+    - I
+    - N
+    - U
+    - L
+    - A
+    - T
+    - A
+    - R
+    - T
+  - Size: 12
+    Row:
+    - Y
+    - E
+    - L
+    - D
+    - U
+    - S
+    - K
+    - R
+    - E
+    - S
+    - T
+    - Y
+  SearchingWords:
+  - Word: FEEL
+    isFound: 0
+  - Word: REST
+    isFound: 0

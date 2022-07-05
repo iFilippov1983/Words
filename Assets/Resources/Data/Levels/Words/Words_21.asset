@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Words_21
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 6
+  Rows: 17
+  UseDotsMode: 0
+  UsePrompts: 1
+  TimeToPrompt: 15
+  Board:
+  - Size: 17
+    Row:
+    - Z
+    - Z
+    - T
+    - D
+    - X
+    - X
+    - S
+    - I
+    - L
+    - U
+    - L
+    - Y
+    - A
+    - L
+    - I
+    - M
+    - I
+  - Size: 17
+    Row:
+    - H
+    - K
+    - F
+    - O
+    - D
+    - B
+    - T
+    - K
+    - K
+    - C
+    - S
+    - G
+    - F
+    - D
+    - E
+    - L
+    - T
+  - Size: 17
+    Row:
+    - P
+    - K
+    - Q
+    - K
+    - J
+    - O
+    - B
+    - R
+    - S
+    - J
+    - G
+    - A
+    - T
+    - E
+    - O
+    - I
+    - F
+  - Size: 17
+    Row:
+    - T
+    - V
+    - N
+    - W
+    - P
+    - I
+    - R
+    - H
+    - F
+    - X
+    - N
+    - Q
+    - P
+    - I
+    - C
+    - V
+    - Y
+  - Size: 17
+    Row:
+    - J
+    - A
+    - N
+    - A
+    - O
+    - K
+    - W
+    - J
+    - C
+    - J
+    - R
+    - C
+    - I
+    - S
+    - U
+    - M
+    - T
+  - Size: 17
+    Row:
+    - S
+    - K
+    - Z
+    - M
+    - G
+    - P
+    - X
+    - V
+    - R
+    - C
+    - R
+    - A
+    - F
+    - T
+    - P
+    - A
+    - R
+  SearchingWords:
+  - Word: JOB
+    isFound: 1
+  - Word: LUCK
+    isFound: 0
+  - Word: GATE
+    isFound: 1
+  - Word: FILE
+    isFound: 1
+  - Word: CRAFT
+    isFound: 1
+  - Word: LIMIT
+    isFound: 1
+  - Word: MUSIC
+    isFound: 0
+  - Word: PARTY
+    isFound: 1

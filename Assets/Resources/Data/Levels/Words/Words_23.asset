@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Words_23
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 6
+  Rows: 18
+  UseDotsMode: 0
+  UsePrompts: 1
+  TimeToPrompt: 15
+  Board:
+  - Size: 18
+    Row:
+    - R
+    - K
+    - R
+    - K
+    - A
+    - E
+    - E
+    - C
+    - N
+    - A
+    - D
+    - P
+    - E
+    - T
+    - S
+    - P
+    - E
+    - R
+  - Size: 18
+    Row:
+    - W
+    - W
+    - K
+    - S
+    - Q
+    - Q
+    - V
+    - K
+    - O
+    - W
+    - P
+    - V
+    - H
+    - K
+    - C
+    - N
+    - O
+    - S
+  - Size: 18
+    Row:
+    - M
+    - X
+    - X
+    - K
+    - I
+    - P
+    - N
+    - A
+    - F
+    - E
+    - F
+    - P
+    - A
+    - M
+    - S
+    - U
+    - N
+    - D
+  - Size: 18
+    Row:
+    - B
+    - F
+    - K
+    - I
+    - I
+    - H
+    - R
+    - A
+    - M
+    - A
+    - R
+    - D
+    - V
+    - E
+    - T
+    - C
+    - W
+    - O
+  - Size: 18
+    Row:
+    - G
+    - F
+    - H
+    - F
+    - A
+    - N
+    - B
+    - Y
+    - P
+    - K
+    - L
+    - H
+    - C
+    - A
+    - I
+    - O
+    - L
+    - L
+  - Size: 18
+    Row:
+    - E
+    - T
+    - K
+    - N
+    - Z
+    - Y
+    - K
+    - Y
+    - C
+    - I
+    - M
+    - L
+    - C
+    - O
+    - Q
+    - F
+    - A
+    - R
+  SearchingWords:
+  - Word: STEP
+    isFound: 0
+  - Word: TEAM
+    isFound: 0
+  - Word: DANCE
+    isFound: 0
+  - Word: COACH
+    isFound: 0
+  - Word: DRAMA
+    isFound: 0
+  - Word: FOCUS
+    isFound: 0
+  - Word: DOLLAR
+    isFound: 0
+  - Word: PERSON
+    isFound: 0

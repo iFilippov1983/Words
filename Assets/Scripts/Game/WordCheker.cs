@@ -21,7 +21,7 @@ public class WordCheker : MonoBehaviour
     private bool _dotsMode;
     private List<int> _correctSquareList = new List<int>();
 
-    [SerializeField] private int _levelNumberToCycleFrom = 10;
+    [SerializeField] private int _levelNumberToCycleFrom = 18;
     [SerializeField] private SearchingWordsList _searchingWordsList;
     [SerializeField] private DataProfile _dataProfile;
     [SerializeField] private List<TextAsset> _dictionaries;

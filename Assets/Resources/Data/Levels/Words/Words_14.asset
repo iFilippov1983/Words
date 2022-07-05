@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Words_14
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 6
+  Rows: 12
+  UseDotsMode: 0
+  UsePrompts: 1
+  TimeToPrompt: 15
+  Board:
+  - Size: 12
+    Row:
+    - U
+    - A
+    - B
+    - C
+    - P
+    - G
+    - F
+    - L
+    - Y
+    - B
+    - G
+    - A
+  - Size: 12
+    Row:
+    - F
+    - W
+    - O
+    - V
+    - D
+    - N
+    - Q
+    - S
+    - A
+    - O
+    - H
+    - I
+  - Size: 12
+    Row:
+    - P
+    - Q
+    - S
+    - G
+    - S
+    - O
+    - S
+    - G
+    - E
+    - Y
+    - E
+    - R
+  - Size: 12
+    Row:
+    - S
+    - U
+    - T
+    - S
+    - E
+    - O
+    - E
+    - V
+    - S
+    - F
+    - C
+    - Y
+  - Size: 12
+    Row:
+    - W
+    - O
+    - Q
+    - R
+    - A
+    - J
+    - A
+    - S
+    - Q
+    - K
+    - Z
+    - O
+  - Size: 12
+    Row:
+    - N
+    - B
+    - L
+    - K
+    - D
+    - P
+    - K
+    - C
+    - A
+    - R
+    - Y
+    - T
+  SearchingWords:
+  - Word: AIR
+    isFound: 0
+  - Word: TOY
+    isFound: 0
+  - Word: BAG
+    isFound: 0
+  - Word: FLY
+    isFound: 0
+  - Word: SEA
+    isFound: 0
+  - Word: EYE
+    isFound: 0
+  - Word: SKY
+    isFound: 0
+  - Word: CAR
+    isFound: 0

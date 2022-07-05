@@ -1,0 +1,166 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Words_27
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 6
+  Rows: 19
+  UseDotsMode: 0
+  UsePrompts: 1
+  TimeToPrompt: 15
+  Board:
+  - Size: 19
+    Row:
+    - Y
+    - I
+    - C
+    - F
+    - A
+    - G
+    - C
+    - E
+    - S
+    - R
+    - E
+    - T
+    - S
+    - I
+    - S
+    - B
+    - M
+    - A
+    - G
+  - Size: 19
+    Row:
+    - M
+    - J
+    - E
+    - C
+    - A
+    - N
+    - O
+    - M
+    - O
+    - D
+    - E
+    - L
+    - V
+    - O
+    - F
+    - I
+    - E
+    - N
+    - I
+  - Size: 19
+    Row:
+    - X
+    - V
+    - Y
+    - T
+    - S
+    - J
+    - M
+    - X
+    - T
+    - W
+    - W
+    - J
+    - D
+    - I
+    - D
+    - D
+    - L
+    - O
+    - C
+  - Size: 19
+    Row:
+    - H
+    - N
+    - I
+    - X
+    - U
+    - L
+    - K
+    - H
+    - P
+    - P
+    - S
+    - O
+    - P
+    - I
+    - N
+    - D
+    - I
+    - R
+    - E
+  - Size: 19
+    Row:
+    - T
+    - S
+    - F
+    - N
+    - C
+    - H
+    - E
+    - W
+    - M
+    - R
+    - I
+    - N
+    - J
+    - X
+    - E
+    - L
+    - S
+    - U
+    - T
+  - Size: 19
+    Row:
+    - L
+    - S
+    - J
+    - C
+    - Z
+    - T
+    - B
+    - J
+    - W
+    - V
+    - V
+    - K
+    - L
+    - E
+    - V
+    - E
+    - E
+    - F
+    - U
+  SearchingWords:
+  - Word: MAGIC
+    isFound: 0
+  - Word: SISTER
+    isFound: 0
+  - Word: NOISE
+    isFound: 0
+  - Word: FUTURE
+    isFound: 0
+  - Word: FIELD
+    isFound: 0
+  - Word: INDEX
+    isFound: 0
+  - Word: LEVEL
+    isFound: 0
+  - Word: PRISON
+    isFound: 0
+  - Word: MODEL
+    isFound: 0

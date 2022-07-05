@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Words_06
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 5
+  Rows: 12
+  UseDotsMode: 0
+  UsePrompts: 1
+  TimeToPrompt: 15
+  Board:
+  - Size: 12
+    Row:
+    - I
+    - C
+    - R
+    - K
+    - O
+    - N
+    - T
+    - U
+    - B
+    - F
+    - C
+    - J
+  - Size: 12
+    Row:
+    - S
+    - H
+    - A
+    - M
+    - S
+    - K
+    - C
+    - W
+    - P
+    - Y
+    - J
+    - M
+  - Size: 12
+    Row:
+    - O
+    - A
+    - R
+    - K
+    - T
+    - P
+    - M
+    - A
+    - O
+    - Y
+    - B
+    - G
+  - Size: 12
+    Row:
+    - G
+    - Z
+    - I
+    - O
+    - N
+    - C
+    - O
+    - R
+    - R
+    - U
+    - A
+    - P
+  - Size: 12
+    Row:
+    - M
+    - N
+    - P
+    - Z
+    - Y
+    - R
+    - G
+    - H
+    - B
+    - K
+    - N
+    - C
+  SearchingWords:
+  - Word: BANK
+    isFound: 0

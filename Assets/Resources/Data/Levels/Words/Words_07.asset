@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Words_07
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 5
+  Rows: 12
+  UseDotsMode: 0
+  UsePrompts: 1
+  TimeToPrompt: 15
+  Board:
+  - Size: 12
+    Row:
+    - B
+    - J
+    - P
+    - X
+    - L
+    - L
+    - J
+    - L
+    - Z
+    - M
+    - T
+    - E
+  - Size: 12
+    Row:
+    - R
+    - M
+    - A
+    - R
+    - N
+    - Y
+    - D
+    - P
+    - X
+    - E
+    - F
+    - I
+  - Size: 12
+    Row:
+    - M
+    - C
+    - J
+    - Z
+    - P
+    - L
+    - G
+    - S
+    - O
+    - E
+    - D
+    - A
+  - Size: 12
+    Row:
+    - J
+    - D
+    - S
+    - Z
+    - V
+    - W
+    - O
+    - Y
+    - Q
+    - X
+    - R
+    - S
+  - Size: 12
+    Row:
+    - I
+    - N
+    - O
+    - N
+    - H
+    - E
+    - L
+    - D
+    - W
+    - E
+    - A
+    - T
+  SearchingWords:
+  - Word: MEED
+    isFound: 0

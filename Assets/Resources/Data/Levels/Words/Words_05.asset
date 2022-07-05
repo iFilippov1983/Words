@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Words_05
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 5
+  Rows: 12
+  UseDotsMode: 0
+  UsePrompts: 1
+  TimeToPrompt: 15
+  Board:
+  - Size: 12
+    Row:
+    - U
+    - N
+    - E
+    - N
+    - O
+    - G
+    - S
+    - L
+    - E
+    - G
+    - A
+    - L
+  - Size: 12
+    Row:
+    - R
+    - X
+    - U
+    - A
+    - V
+    - M
+    - P
+    - C
+    - A
+    - M
+    - E
+    - L
+  - Size: 12
+    Row:
+    - R
+    - E
+    - W
+    - P
+    - A
+    - Q
+    - I
+    - X
+    - S
+    - A
+    - L
+    - T
+  - Size: 12
+    Row:
+    - J
+    - V
+    - W
+    - V
+    - F
+    - N
+    - H
+    - C
+    - L
+    - U
+    - B
+    - Z
+  - Size: 12
+    Row:
+    - N
+    - G
+    - C
+    - O
+    - S
+    - A
+    - Y
+    - Y
+    - R
+    - T
+    - O
+    - L
+  SearchingWords:
+  - Word: SAY
+    isFound: 0
+  - Word: TRY
+    isFound: 0
+  - Word: GET
+    isFound: 0

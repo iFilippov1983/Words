@@ -1,0 +1,172 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd73accb15849c409a4568688d831d5, type: 3}
+  m_Name: Words_33
+  m_EditorClassIdentifier: 
+  TimeInSeconds: 120
+  Columns: 6
+  Rows: 20
+  UseDotsMode: 0
+  UsePrompts: 1
+  TimeToPrompt: 15
+  Board:
+  - Size: 20
+    Row:
+    - H
+    - O
+    - Y
+    - M
+    - V
+    - J
+    - D
+    - R
+    - O
+    - C
+    - E
+    - R
+    - Z
+    - G
+    - E
+    - S
+    - R
+    - U
+    - N
+    - H
+  - Size: 20
+    Row:
+    - D
+    - U
+    - M
+    - W
+    - G
+    - M
+    - X
+    - Q
+    - K
+    - S
+    - S
+    - M
+    - O
+    - K
+    - E
+    - F
+    - U
+    - R
+    - E
+    - T
+  - Size: 20
+    Row:
+    - O
+    - P
+    - E
+    - U
+    - W
+    - K
+    - H
+    - Z
+    - Z
+    - D
+    - Y
+    - N
+    - Y
+    - O
+    - C
+    - N
+    - Y
+    - G
+    - N
+    - N
+  - Size: 20
+    Row:
+    - W
+    - X
+    - Q
+    - C
+    - O
+    - Q
+    - K
+    - X
+    - D
+    - O
+    - B
+    - O
+    - Z
+    - E
+    - M
+    - E
+    - I
+    - E
+    - M
+    - O
+  - Size: 20
+    Row:
+    - B
+    - H
+    - X
+    - E
+    - J
+    - Z
+    - G
+    - R
+    - E
+    - T
+    - G
+    - E
+    - C
+    - A
+    - H
+    - Q
+    - J
+    - T
+    - E
+    - L
+  - Size: 20
+    Row:
+    - Q
+    - N
+    - O
+    - E
+    - K
+    - O
+    - T
+    - Q
+    - P
+    - Y
+    - C
+    - J
+    - N
+    - D
+    - L
+    - E
+    - S
+    - I
+    - N
+    - G
+  SearchingWords:
+  - Word: MONTH
+    isFound: 0
+  - Word: SINGLE
+    isFound: 0
+  - Word: NURSE
+    isFound: 0
+  - Word: ENERGY
+    isFound: 0
+  - Word: INCOME
+    isFound: 0
+  - Word: HANDLE
+    isFound: 0
+  - Word: RECORD
+    isFound: 0
+  - Word: SMOKE
+    isFound: 0
+  - Word: NOBODY
+    isFound: 0
