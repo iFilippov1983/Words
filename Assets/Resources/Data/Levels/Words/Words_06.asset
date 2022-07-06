@@ -21,74 +21,76 @@ MonoBehaviour:
   Board:
   - Size: 12
     Row:
-    - I
-    - C
-    - R
-    - K
-    - O
-    - N
-    - T
-    - U
+    - M
     - B
+    - I
+    - V
+    - T
+    - R
+    - O
+    - L
+    - L
+    - C
+    - O
+    - S
+  - Size: 12
+    Row:
+    - K
+    - H
+    - I
+    - A
+    - D
+    - T
+    - S
+    - T
+    - O
+    - M
+    - P
+    - T
+  - Size: 12
+    Row:
+    - Q
     - F
     - C
-    - J
-  - Size: 12
-    Row:
-    - S
-    - H
-    - A
-    - M
-    - S
-    - K
-    - C
-    - W
-    - P
-    - Y
-    - J
-    - M
-  - Size: 12
-    Row:
-    - O
-    - A
-    - R
-    - K
-    - T
-    - P
-    - M
-    - A
-    - O
-    - Y
-    - B
-    - G
-  - Size: 12
-    Row:
-    - G
-    - Z
-    - I
-    - O
-    - N
-    - C
-    - O
-    - R
     - R
     - U
+    - U
+    - R
+    - W
+    - G
+    - R
     - A
-    - P
+    - B
   - Size: 12
     Row:
-    - M
-    - N
-    - P
+    - V
     - Z
+    - F
     - Y
-    - R
-    - G
-    - H
     - B
+    - I
+    - S
+    - A
+    - L
+    - T
+    - Y
+    - A
+  - Size: 12
+    Row:
+    - U
+    - K
+    - R
+    - E
+    - A
+    - S
+    - W
+    - I
+    - N
+    - G
     - K
     - N
-    - C
   SearchingWords:
   - Word: BANK
+    isFound: 0
+  - Word: COST
     isFound: 0

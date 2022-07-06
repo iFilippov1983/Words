@@ -122,8 +122,6 @@ MonoBehaviour:
     isFound: 0
   - Word: FAST
     isFound: 0
-  - Word: GOLD
-    isFound: 0
   - Word: LOGIC
     isFound: 0
   - Word: BUILD
