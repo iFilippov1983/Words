@@ -750,7 +750,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: -450
+    m_Top: 700
     m_Bottom: 0
   m_ChildAlignment: 1
   m_Spacing: -700
@@ -6465,6 +6465,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3885656956633232376}
+  - component: {fileID: 5959189372236581657}
   - component: {fileID: 8611818641668146551}
   - component: {fileID: 1011217799013194481}
   - component: {fileID: 7588276406907323731}
@@ -6493,9 +6494,28 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 544.8}
-  m_SizeDelta: {x: 1000, y: 2200}
+  m_AnchoredPosition: {x: 0, y: 23.166}
+  m_SizeDelta: {x: 1000, y: 3243.269}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5959189372236581657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4314157068898577855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5545ebe76d79014c8825aa9a3155a0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dataProfile: {fileID: 11400000, guid: 9d61609ae2bf1f14bb00b16ee5eecf8f, type: 2}
+  _gameLevelData: {fileID: 11400000, guid: 75deecb38375e8241956861d3ed15356, type: 2}
+  _levelCellPrefab: {fileID: 1885098716697592802, guid: 6f812f8a0f4678b4da1d8073a66da03e, type: 3}
+  _listContent: {fileID: 4675351817332395551}
+  _initialCellsSpacing: -700
+  _initialTopPadding: 600
+  _paddingStep: -700
 --- !u!222 &8611818641668146551
 CanvasRenderer:
   m_ObjectHideFlags: 0

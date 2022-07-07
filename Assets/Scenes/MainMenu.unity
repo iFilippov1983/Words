@@ -1061,6 +1061,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasMainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 9149001351849223828, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
+      propertyPath: m_Colors.m_PressedColor.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9149001352587975429, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
