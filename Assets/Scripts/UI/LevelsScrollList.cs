@@ -17,7 +17,6 @@ public class LevelsScrollList : MonoBehaviour
     [SerializeField] private int _paddingStep = -700;
 
     private Dictionary<int, BoardData> _boardDataDic;
-    private int _currentLevelIndex = 0;
     private int _levelIndexInProgress = 0;
 
     private void Start()
@@ -29,7 +28,7 @@ public class LevelsScrollList : MonoBehaviour
 
     private void SetData()
     {
-        _currentLevelIndex = DataSaver.LoadIntData(DataKey.ProgressKey);
+        
         foreach (var d in _gameLevelData.Data)
         {
             if (d.GameMode.Equals(_dataProfile.GameMode))
@@ -41,25 +40,41 @@ public class LevelsScrollList : MonoBehaviour
 
     private Dictionary<int, BoardData> MakeBoardDataDictionary(List<BoardData> boardDataList)
     {
-        int gameCyclesCount = DataSaver.LoadIntData(DataKey.CyclesCountKey);
         var dic = new Dictionary<int, BoardData>();
+        int gameCyclesCount = DataSaver.LoadIntData(DataKey.CyclesCountKey);
+        int currentLevelIndex = DataSaver.LoadIntData(DataKey.ProgressKey);
 
-        _levelIndexInProgress = _currentLevelIndex 
+        _levelIndexInProgress = currentLevelIndex 
             + boardDataList.Count * gameCyclesCount 
             - (_dataProfile.LevelNumberToCycleFrom - 1) * gameCyclesCount;
 
-        bool timeToSpawnExtraCells = _currentLevelIndex > boardDataList.Count - MinimumVisibleSquaresAmount;
+        bool timeToSpawnExtraCells = currentLevelIndex > boardDataList.Count - MinimumVisibleSquaresAmount;
         if (timeToSpawnExtraCells)
             gameCyclesCount++;
 
         do
         {
-            for (int i = boardDataList.Count; i > 0 ; i--)
+            if (gameCyclesCount == 0)
             {
-                int number = i + boardDataList.Count * gameCyclesCount;
-                dic.Add(number, boardDataList[i - 1]);
+                for (int i = boardDataList.Count; i > 0; i--)
+                {
+                    int number = i;
+                    dic.Add(number, boardDataList[i - 1]);
+                }
+                gameCyclesCount--;
             }
-            gameCyclesCount--;
+            else
+            {
+                for (int i = boardDataList.Count; i > _dataProfile.LevelNumberToCycleFrom - 1; i--)
+                {
+                    int number = i 
+                        + boardDataList.Count * gameCyclesCount 
+                        - (_dataProfile.LevelNumberToCycleFrom - 1) * gameCyclesCount;
+                    dic.Add(number, boardDataList[i - 1]);
+                }
+                gameCyclesCount--;
+            }
+            
         } while (gameCyclesCount >= 0);
 
         return dic;

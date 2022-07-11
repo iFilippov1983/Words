@@ -70,7 +70,6 @@ public class WordCheker : MonoBehaviour
 
         _dataProfile.CurrentLevelNumber = number;
         _dataProfile.isUpdated = true;
-        //    
 
         foreach (var sw in currentGameData.selectedBoardData.SearchingWords)
             sw.isFound = false;
