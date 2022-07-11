@@ -14,5 +14,7 @@ public class LevelCell : MonoBehaviour
 
     public Image LevelImage;
     public Image ToLevelLine;
+    public Image IsHardImage;
+    public Image HasExtraRewardImage;
     public TextMeshProUGUI LevelNumber;
 }

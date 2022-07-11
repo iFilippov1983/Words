@@ -17,7 +17,7 @@ public class GameDataSelector : MonoBehaviour
         {
             if (data.GameMode.Equals(currentGameData.selectedGameMode))
             {
-                int boardIndex = DataSaver.LoadIntData(dataProfile.ProgressKey);
+                int boardIndex = DataSaver.LoadIntData(DataKey.ProgressKey);
 
                 if (boardIndex < data.BoardData.Count)
                 {

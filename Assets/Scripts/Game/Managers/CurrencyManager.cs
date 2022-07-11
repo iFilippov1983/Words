@@ -24,7 +24,7 @@ namespace Game
      
         private void Start()
         {
-            var loadedCoins = DataSaver.LoadIntData(coinsKey);
+            var loadedCoins = DataSaver.LoadIntData(DataKey.CoinsKey);
             SetCoins(Mathf.Max(0, loadedCoins));
             
             coinSpawner.CoinArrived += OnCoinArrived;
@@ -34,7 +34,7 @@ namespace Game
 
         private void OnDestroy()
         {
-            DataSaver.SaveIntData(coinsKey, Coins);
+            DataSaver.SaveIntData(DataKey.CoinsKey, Coins);
 
             coinSpawner.CoinArrived -= OnCoinArrived;
             TryChangeCoinsAmount -= ChangeCoinsAmount;

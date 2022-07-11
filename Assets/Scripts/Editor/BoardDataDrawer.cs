@@ -20,7 +20,7 @@ public class BoardDataDrawer : Editor
     {
         serializedObject.Update();
 
-        DrawColumnsRowsInputFields();
+        DrawInputFields();
         EditorGUILayout.Space();
         ConvertToUpperButton();
 
@@ -42,7 +42,7 @@ public class BoardDataDrawer : Editor
         }
     }
 
-    private void DrawColumnsRowsInputFields()
+    private void DrawInputFields()
     {
         var columnsTemp = GameDataInstance.Columns;
         var rowsTemp = GameDataInstance.Rows;
@@ -54,6 +54,9 @@ public class BoardDataDrawer : Editor
         GameDataInstance.UsePrompts = EditorGUILayout.Toggle("Use Prompts", GameDataInstance.UsePrompts);
         if(GameDataInstance.UsePrompts)
             GameDataInstance.TimeToPrompt = EditorGUILayout.FloatField("Time To Prompt (seconds)", GameDataInstance.TimeToPrompt);
+        GameDataInstance.IsHard = EditorGUILayout.Toggle("Is Hard", GameDataInstance.IsHard);
+        GameDataInstance.HasExtraReward = EditorGUILayout.Toggle("Has Extra Reward", GameDataInstance.HasExtraReward);
+
 
         bool somethingChanged =
             (GameDataInstance.Columns != columnsTemp || GameDataInstance.Rows != rowsTemp)

@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class PromptsManager : MonoBehaviour
 {
-    private const string PromptsKey = "Prompts";
+    //private const string PromptsKey = "Prompts";
     private const int PromptUseCost = 1;
 
     [SerializeField] private Prompter _prompter;
@@ -122,15 +122,15 @@ public class PromptsManager : MonoBehaviour
 
     private void LoadData()
     {
-        var startPrompts = DataSaver.HasKey(PromptsKey)
-            ? DataSaver.LoadIntData(PromptsKey)
+        var startPrompts = DataSaver.HasKey(DataKey.PromptsKey)
+            ? DataSaver.LoadIntData(DataKey.PromptsKey)
             : _defaultPromptsAmount;
         SetPrompts(Mathf.Max(0, startPrompts));
     }
 
     private void SaveData()
     {
-        DataSaver.SaveIntData(PromptsKey, Prompts);
+        DataSaver.SaveIntData(DataKey.PromptsKey, Prompts);
     }
 
     public static bool TryChangePromptAmountMethod(int amount)

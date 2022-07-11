@@ -9,7 +9,7 @@ public class FloorController : MonoBehaviour
 
     public void SetPosition()
     {
-        int currentBoardIndex = DataSaver.LoadIntData(_dataProfile.ProgressKey);
+        int currentBoardIndex = DataSaver.LoadIntData(DataKey.ProgressKey);
         float yOffset = 0f;
         foreach (Level level in _levelsToOffsetPosition)
             if (currentBoardIndex >= level.number - 1)

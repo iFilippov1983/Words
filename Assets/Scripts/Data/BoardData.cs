@@ -48,6 +48,8 @@ public class BoardData : ScriptableObject
     public bool UseDotsMode = false;
     public bool UsePrompts = false;
     public float TimeToPrompt = 0;
+    public bool IsHard;
+    public bool HasExtraReward;
 
     public BoardRow[] Board;
     public List<BDSearchingWord> SearchingWords = new List<BDSearchingWord>();

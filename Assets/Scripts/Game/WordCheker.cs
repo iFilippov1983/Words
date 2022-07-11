@@ -10,8 +10,8 @@ public class WordCheker : MonoBehaviour
     public GameData currentGameData;
     public GameLevelData gameLevelData;
 
-    private const string UsedWordsKey = "UsedWords";
-    private const string CyclesCountKey = "CyclesCount";
+    //private const string UsedWordsKey = "UsedWords";
+    //private const string CyclesCountKey = "CyclesCount";
     private string _word;
     private string _extraWord;
     private int _assignedPoints = 0;
@@ -21,7 +21,6 @@ public class WordCheker : MonoBehaviour
     private bool _dotsMode;
     private List<int> _correctSquareList = new List<int>();
 
-    [SerializeField] private int _levelNumberToCycleFrom = 18;
     [SerializeField] private SearchingWordsList _searchingWordsList;
     [SerializeField] private DataProfile _dataProfile;
     [SerializeField] private List<TextAsset> _dictionaries;
@@ -62,12 +61,12 @@ public class WordCheker : MonoBehaviour
     private void Init()
     {
         _currentLevelNotCompleted = true;
-        _gameCyclesCount = DataSaver.LoadIntData(CyclesCountKey); 
-        _dataProfile.SetUsedExtraWordsList(DataSaver.LoadSavedStringList(UsedWordsKey));
+        _gameCyclesCount = DataSaver.LoadIntData(DataKey.CyclesCountKey); 
+        _dataProfile.SetUsedExtraWordsList(DataSaver.LoadSavedStringList(DataKey.UsedWordsKey));
 
-        int number = DataSaver.LoadIntData(_dataProfile.ProgressKey)
+        int number = DataSaver.LoadIntData(DataKey.ProgressKey)
         + gameLevelData.Data[0].BoardData.Count * _gameCyclesCount
-        - (_levelNumberToCycleFrom - 1) * _gameCyclesCount + 1;
+        - (_dataProfile.LevelNumberToCycleFrom - 1) * _gameCyclesCount + 1;
 
         _dataProfile.CurrentLevelNumber = number;
         _dataProfile.isUpdated = true;
@@ -86,11 +85,11 @@ public class WordCheker : MonoBehaviour
             if(_dotsMode)
                 _dataProfile.UsedWords.Clear();
 
-            DataSaver.SaveStringDataFromList(UsedWordsKey, _dataProfile.UsedWords);
+            DataSaver.SaveStringDataFromList(DataKey.UsedWordsKey, _dataProfile.UsedWords);
         }
         else
         {
-            DataSaver.ClearSavedStringListData(UsedWordsKey);
+            DataSaver.ClearSavedStringListData(DataKey.UsedWordsKey);
         }
 
         _dataProfile.UsedWords.Clear();
@@ -203,7 +202,7 @@ public class WordCheker : MonoBehaviour
 
         if (currentGameData.selectedBoardData.SearchingWords.Count.Equals(_completedWords))
         {
-            var currentBoardIndex = DataSaver.LoadIntData(_dataProfile.ProgressKey);
+            var currentBoardIndex = DataSaver.LoadIntData(DataKey.ProgressKey);
             int currentCategoryIndex = 0;
             _currentLevelNotCompleted = false;
 
@@ -211,18 +210,18 @@ public class WordCheker : MonoBehaviour
             if (currentBoardIndex < currentCategorySize)
                 currentBoardIndex++;
 
-            DataSaver.SaveIntData(_dataProfile.ProgressKey, currentBoardIndex);
+            DataSaver.SaveIntData(DataKey.ProgressKey, currentBoardIndex);
 
             //Make game cycle
             if (currentBoardIndex >= currentCategorySize)
             {
                 _gameCyclesCount++;
                 currentCategoryIndex = 0;
-                currentBoardIndex = _levelNumberToCycleFrom - 1;
+                currentBoardIndex = _dataProfile.LevelNumberToCycleFrom - 1;
                 loadNextCategory = false;
 
-                DataSaver.SaveIntData(_dataProfile.ProgressKey, currentBoardIndex);
-                DataSaver.SaveIntData(CyclesCountKey, _gameCyclesCount);
+                DataSaver.SaveIntData(DataKey.ProgressKey, currentBoardIndex);
+                DataSaver.SaveIntData(DataKey.CyclesCountKey, _gameCyclesCount);
                 _dataProfile.isUpdated = false;
                 GameEvents.BoardCompletedMethod(loadNextCategory);
             }

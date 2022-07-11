@@ -6,9 +6,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DataProfile", menuName = "Data/DataProfile")]
 public class DataProfile : ScriptableObject
 {
-    public readonly string ProgressKey = "Progress";
+    //public readonly string ProgressKey = "Progress";
 
     public int CurrentLevelNumber;
+    public int LevelNumberToCycleFrom;
     public GameModeType GameMode;
     public bool MousePositionIsFar = false;
     public bool BoardCanPrompt = false;

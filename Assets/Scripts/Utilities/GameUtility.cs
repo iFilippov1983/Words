@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class GameUtility : MonoBehaviour
 {
+    [SerializeField] private GameLevelData _gameLevelData;
     [SerializeField] private GameModeHandler _gameModeHandler;
     [SerializeField] private DataProfile _dataProfile;
 
@@ -46,8 +47,8 @@ public class GameUtility : MonoBehaviour
     {
         DataSaver.ClearGameData();
         //Ulock first level
-        DataSaver.SaveIntData(_dataProfile.ProgressKey, 0);
-        DataSaver.SaveIntData(CurrencyManager.coinsKey, 0);
+        DataSaver.SaveIntData(DataKey.ProgressKey, 0);
+        DataSaver.SaveIntData(DataKey.CoinsKey, 0);
         
         _gameModeHandler.SetGameMode(GameModeType.WordsMode);
 
@@ -66,12 +67,30 @@ public class GameUtility : MonoBehaviour
     [HideInPlayMode]
     private void SetLevel(int number, GameModeType gameMode = GameModeType.WordsMode)
     {
-        var index = number - 1;
+        int gameCyclesCount = 0;
+        int index = number - 1;
+        if (index >= _gameLevelData.Data[0].BoardData.Count)
+        {
+            index -= _gameLevelData.Data[0].BoardData.Count;
+            gameCyclesCount++;
+
+            while (index > _gameLevelData.Data[0].BoardData.Count - _dataProfile.LevelNumberToCycleFrom)
+            {
+                index -= (_gameLevelData.Data[0].BoardData.Count - (_dataProfile.LevelNumberToCycleFrom - 1));
+                gameCyclesCount++;
+                Debug.Log($"1 - Number: {number}, Index: {index}, Cycles: {gameCyclesCount}");
+            }
+            index += _dataProfile.LevelNumberToCycleFrom - 1;
+        }
+
+        Debug.Log($"2 - Number: {number}, Index: {index}, Cycles: {gameCyclesCount}");
+
         if (index >= 0)
         {
-            DataSaver.SaveIntData(_dataProfile.ProgressKey, index);
+            DataSaver.SaveIntData(DataKey.CyclesCountKey, gameCyclesCount);
+            DataSaver.SaveIntData(DataKey.ProgressKey, index);
             _gameModeHandler.SetGameMode(gameMode);
-            _dataProfile.CurrentLevelNumber = index;
+            _dataProfile.CurrentLevelNumber = number;
         }
         else
             Debug.LogError("Level number can't be less than 1");

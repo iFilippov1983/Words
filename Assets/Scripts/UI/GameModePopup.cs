@@ -41,7 +41,7 @@ public class GameModePopup : MonoBehaviour
 
     private void SetRepresentation()
     {
-        GameModeType currentGameMode = (GameModeType)DataSaver.LoadIntData(GameModeHandler.GameModeKey);
+        GameModeType currentGameMode = (GameModeType)DataSaver.LoadIntData(DataKey.GameModeKey);
         if (currentGameMode.Equals(GameModeType.WordsMode))
         {
             _wordsModeButton.MarkerImage.gameObject.SetActive(true);

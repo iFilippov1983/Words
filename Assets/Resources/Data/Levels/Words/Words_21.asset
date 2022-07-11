@@ -18,6 +18,8 @@ MonoBehaviour:
   UseDotsMode: 0
   UsePrompts: 1
   TimeToPrompt: 15
+  IsDifficult: 0
+  HasExtraReward: 1
   Board:
   - Size: 17
     Row:

@@ -916,6 +916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e74f7f54bf0ad4087152240f1902c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameLevelData: {fileID: 11400000, guid: 75deecb38375e8241956861d3ed15356, type: 2}
   _gameModeHandler: {fileID: 378412603}
   _dataProfile: {fileID: 11400000, guid: 9d61609ae2bf1f14bb00b16ee5eecf8f, type: 2}
 --- !u!1001 &9149001352488127743
@@ -1060,10 +1061,6 @@ PrefabInstance:
     - target: {fileID: 9149001351799981835, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
       propertyPath: m_Name
       value: CanvasMainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 9149001351849223828, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
-      propertyPath: m_Colors.m_PressedColor.a
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9149001352587975429, guid: 52dcbc36c84db5844841d3c50ca00280, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

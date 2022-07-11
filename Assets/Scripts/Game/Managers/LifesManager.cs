@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class LifesManager : MonoBehaviour
 {
-    public const string LifesKey = "Lifes";
-    public const string TimeKey = "Time";
-    public const string DateTimeKey = "LastSavedTime";
+    //public const string LifesKey = "Lifes";
+    //public const string TimeKey = "Time";
+    //public const string DateTimeKey = "LastSavedTime";
     private const string LifesFull = "FULL";
     private const int ExitCost = 1;
 
@@ -158,17 +158,17 @@ public class LifesManager : MonoBehaviour
 
     private void SetStartLifes()
     {
-        var startLifes = DataSaver.HasKey(LifesKey)
-            ? DataSaver.LoadIntData(LifesKey)
+        var startLifes = DataSaver.HasKey(DataKey.LifesKey)
+            ? DataSaver.LoadIntData(DataKey.LifesKey)
             : _defaultLifesAmount;
         SetLifes(Mathf.Max(0, startLifes));
     }
 
     private void SetTime()
     {
-        _timeLeft = DataSaver.LoadFloatData(TimeKey);
+        _timeLeft = DataSaver.LoadFloatData(DataKey.TimeKey);
 
-        DateTime lastSavedTime = DataSaver.LoadDateTime(DateTimeKey, DateTime.UtcNow);
+        DateTime lastSavedTime = DataSaver.LoadDateTime(DataKey.DateTimeKey, DateTime.UtcNow);
         TimeSpan timePassed = DateTime.UtcNow - lastSavedTime;
         float secondsPassed = (float)timePassed.TotalSeconds;
         float secondsInWeek = 7f * 24f * 60f * 60f;
@@ -192,9 +192,9 @@ public class LifesManager : MonoBehaviour
 
     private void SaveData()
     {
-        DataSaver.SaveIntData(LifesKey, Lifes);
-        DataSaver.SaveFloatData(TimeKey, _timeLeft);
-        DataSaver.SaveDateTime(DateTimeKey, DateTime.UtcNow);
+        DataSaver.SaveIntData(DataKey.LifesKey, Lifes);
+        DataSaver.SaveFloatData(DataKey.TimeKey, _timeLeft);
+        DataSaver.SaveDateTime(DataKey.DateTimeKey, DateTime.UtcNow);
     }
 
     public static bool TryChangeLifesAmountMethod(int amount)

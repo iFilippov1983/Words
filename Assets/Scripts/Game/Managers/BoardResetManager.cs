@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class BoardResetManager : MonoBehaviour
 {
-    private const string BoardResetKey = "BoardReset";
+    //private const string BoardResetKey = "BoardReset";
     private const int BoardResetUseCost = 1;
 
     [SerializeField] private WordsGrid _grid;
@@ -124,15 +124,15 @@ public class BoardResetManager : MonoBehaviour
 
     private void LoadData()
     {
-        var startAmount = DataSaver.HasKey(BoardResetKey)
-            ? DataSaver.LoadIntData(BoardResetKey)
+        var startAmount = DataSaver.HasKey(DataKey.BoardResetKey)
+            ? DataSaver.LoadIntData(DataKey.BoardResetKey)
             : _defaultResetsAmount;
         SetBoardResets(Mathf.Max(0, startAmount));
     }
 
     private void SaveData()
     { 
-        DataSaver.SaveIntData(BoardResetKey, BoardResets);
+        DataSaver.SaveIntData(DataKey.BoardResetKey, BoardResets);
     }
 
     public static bool TryChangeBoardResetsAmountMethod(int amount)

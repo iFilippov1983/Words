@@ -2,26 +2,24 @@ using UnityEngine;
 
 public class GameModeHandler : MonoBehaviour
 {
-    public static readonly string GameModeKey = "GameMode";
-
     [SerializeField] private GameData _currentGameData;
 
     private void Start()
     {
-        var gameMode = DataSaver.LoadIntData(GameModeKey);
+        var gameMode = DataSaver.LoadIntData(DataKey.GameModeKey);
         _currentGameData.selectedGameMode = (GameModeType)gameMode;
         GameEvents.OnGameModeChanged += SetGameMode;
     }
 
     private void OnDestroy()
     {
-        DataSaver.SaveIntData(GameModeKey, (int)_currentGameData.selectedGameMode);
+        DataSaver.SaveIntData(DataKey.GameModeKey, (int)_currentGameData.selectedGameMode);
         GameEvents.OnGameModeChanged -= SetGameMode;
     }
 
     public void SetGameMode(GameModeType gameModeType)
     {
         _currentGameData.selectedGameMode = gameModeType;
-        DataSaver.SaveIntData(GameModeKey, (int)_currentGameData.selectedGameMode);
+        DataSaver.SaveIntData(DataKey.GameModeKey, (int)_currentGameData.selectedGameMode);
     }
 }

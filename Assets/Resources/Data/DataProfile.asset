@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6424a052ae08d4dae465049cc14cd3, type: 3}
   m_Name: DataProfile
   m_EditorClassIdentifier: 
-  CurrentLevelNumber: 1
+  CurrentLevelNumber: 35
+  LevelNumberToCycleFrom: 18
   GameMode: 0
   MousePositionIsFar: 0
   BoardCanPrompt: 0
