@@ -1,5 +1,9 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class LevelsScrollList : MonoBehaviour
@@ -17,13 +21,14 @@ public class LevelsScrollList : MonoBehaviour
     [SerializeField] private int _paddingStep = -700;
 
     private Dictionary<int, BoardData> _boardDataDic;
+    private ScrollRect _scrollRect;
     private int _levelIndexInProgress = 0;
 
     private void Start()
     {
         SetData();
         MakeScrollList();
-        AdjustLayoutGroup();
+        Adjust();
     }
 
     private void SetData()
@@ -113,10 +118,12 @@ public class LevelsScrollList : MonoBehaviour
         }
     }
 
-    private void AdjustLayoutGroup()
+    private void Adjust()
     {
         var padding = _initialTopPadding + _levelIndexInProgress * _paddingStep;
         _listContent.padding.top = padding;
         _listContent.spacing = _initialCellsSpacing;
+        _scrollRect = GetComponent<ScrollRect>();
+        _scrollRect.movementType = ScrollRect.MovementType.Elastic;
     }
 }

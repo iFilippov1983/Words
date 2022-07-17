@@ -6570,8 +6570,8 @@ MonoBehaviour:
   m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
-  m_Elasticity: 0.5
-  m_Inertia: 0
+  m_Elasticity: 1
+  m_Inertia: 1
   m_DecelerationRate: 100
   m_ScrollSensitivity: 1
   m_Viewport: {fileID: 0}
